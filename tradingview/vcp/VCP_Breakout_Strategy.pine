@@ -245,9 +245,14 @@ lastTotal  := totalTrades
 if newEntry
     nBought      := nBought + 1
     eventThisBar := true
-    entryPx      := strategy.position_size > 0 ? strategy.opentrades.entry_price(0) : strategy.closedtrades.entry_price(strategy.closedtrades - 1)
     lastEvent    := "BOUGHT " + dateStr
-    state        := strategy.position_size > 0 ? 2 : 0
+    if strategy.position_size > 0
+        entryPx := strategy.opentrades.entry_price(0)
+        state   := 2
+    else
+        // Entered and exited inside the same session.
+        entryPx := strategy.closedtrades.entry_price(strategy.closedtrades - 1)
+        state   := 0
     if showLabels
         label.new(bar_index, low, "BOUGHT\n" + str.tostring(entryPx, format.mintick), yloc = yloc.belowbar,
              style = label.style_label_up, color = color.green, textcolor = color.white, size = size.small,
@@ -281,7 +286,8 @@ if state == 2 and strategy.position_size == 0
     lastEvent    := "CLOSED " + dateStr
 
 // C) Open position: trail on a completed daily close below the trailing EMA; sold at the next open.
-if state == 2 and strategy.position_size > 0 and emaTrail > close
+trailHit = emaTrail > close
+if state == 2 and strategy.position_size > 0 and trailHit
     strategy.close("VCP", comment = "TRAIL")
     lastEvent := "TRAIL EXIT at next open (" + dateStr + ")"
 
