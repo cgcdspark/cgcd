@@ -89,7 +89,7 @@ if not chart.is_standard
     runtime.error("FBB: use a standard candlestick/bar chart, not Heikin-Ashi, Renko or other synthetic types.")
 if not (timeframe.isdaily and timeframe.multiplier == 1)
     runtime.error("FBB: designed for the 1D timeframe only.")
-if bandMaxPct < bandMinPct
+if bandMinPct > bandMaxPct
     runtime.error("FBB: R-multiple max target must be >= min target.")
 
 // ───────────────────────────── Helpers ────────────────────────────
@@ -270,16 +270,18 @@ if state == 2 and strategy.position_size > 0
 
 // D) Pending setup: expire / invalidate at this session's close if not filled.
 if state == 1
-    string reason = ""
-    if high >= trigPx
-        reason := "GAP"          // trigger traded but no fill at or below max entry
-        nExpGap += 1
-    else if low < stopPx
-        reason := "BROKE LOW"    // stop level traded before the trigger
-        nExpBroke += 1
-    else if bar_index - setupBar >= expiryBars
-        reason := "TIMEOUT"
-        nExpTime += 1
+    // GAP: trigger traded but no fill at or below max entry.
+    // BROKE LOW: the stop level traded before the trigger.
+    hitTrigger = high >= trigPx
+    brokeLow   = stopPx > low
+    timedOut   = bar_index - setupBar >= expiryBars
+    reason     = hitTrigger ? "GAP" : brokeLow ? "BROKE LOW" : timedOut ? "TIMEOUT" : ""
+    if reason == "GAP"
+        nExpGap := nExpGap + 1
+    if reason == "BROKE LOW"
+        nExpBroke := nExpBroke + 1
+    if reason == "TIMEOUT"
+        nExpTime := nExpTime + 1
     if reason != ""
         strategy.cancel("FBB")
         strategy.cancel("FBB-X")

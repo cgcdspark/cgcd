@@ -73,7 +73,7 @@ if not chart.is_standard
     runtime.error("FBB Scanner: use a standard candlestick/bar chart, not Heikin-Ashi, Renko or other synthetic types.")
 if not (timeframe.isdaily and timeframe.multiplier == 1)
     runtime.error("FBB Scanner: designed for the 1D timeframe only.")
-if bandMaxPct < bandMinPct
+if bandMinPct > bandMaxPct
     runtime.error("FBB Scanner: R-multiple max target must be >= min target.")
 
 // ───────────────────────────── Helpers ────────────────────────────
@@ -190,7 +190,7 @@ if st == 1
         tgtPx    := targetFor(entryPx, stopPx)
         st       := 2
         status   := 3
-    else if high >= trigPx or low < stopPx or bar_index - setupBar >= expiryBars
+    else if high >= trigPx or stopPx > low or bar_index - setupBar >= expiryBars
         st     := 0
         status := 6
     else
