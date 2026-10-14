@@ -110,6 +110,27 @@ I couldn't test the scan text here. If Chartink rejects a pasted clause, build i
 | 0.94 × close ≤ lows | Stop within 6% |
 | close × avg volume > ₹5 cr | Liquidity floor. **Not** a strategy rule. Adjust or remove it. |
 
+### Breakout scan, pivot-based stop (wider net)
+
+The strict scan measures the 6% stop from the breakout-day **close**. Strong breakout candles often close 7–10% above the final contraction low, so the strict scan drops the best moves. This version requires the final 7-day contraction low to be within 6% of the **pivot** (the base high) instead. That is the usual VCP way of sizing the stop. It also drops the "7-day range ≤ 10%" line, because the pivot test is tighter. If you then buy at the next open, check that the stop is still within your limit from your actual price.
+
+```
+( {cash} (
+  latest close > 1 day ago max( 250 , latest high )
+  and 1 day ago max( 30 , latest high ) <= 31 days ago max( 220 , latest high )
+  and 1 day ago min( 30 , latest low ) >= 0.65 * 1 day ago max( 250 , latest high )
+  and ( 8 days ago max( 13 , latest high ) - 8 days ago min( 13 , latest low ) ) * 1 day ago max( 7 , latest high ) > ( 1 day ago max( 7 , latest high ) - 1 day ago min( 7 , latest low ) ) * 8 days ago max( 13 , latest high )
+  and ( 21 days ago max( 30 , latest high ) - 21 days ago min( 30 , latest low ) ) * 8 days ago max( 13 , latest high ) > ( 8 days ago max( 13 , latest high ) - 8 days ago min( 13 , latest low ) ) * 21 days ago max( 30 , latest high )
+  and 1 day ago sma( latest volume , 7 ) <= 1 day ago sma( latest volume , 50 )
+  and latest volume >= 1.5 * 1 day ago sma( latest volume , 50 )
+  and latest close > latest ema( latest close , 20 )
+  and latest close > latest ema( latest close , 50 )
+  and latest close > latest ema( latest close , 200 )
+  and 0.94 * 1 day ago max( 250 , latest high ) <= 1 day ago min( 7 , latest low )
+  and latest close * 1 day ago sma( latest volume , 50 ) > 50000000
+) )
+```
+
 ### Coiling scan (watchlist: VCP formed, not yet broken out)
 
 ```
