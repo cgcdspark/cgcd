@@ -1,0 +1,106 @@
+//@version=6
+// ============================================================================
+// NSE Sector Rotation v1.0 — relative strength of NSE sector indices vs NIFTY.
+// Works on any 1D chart (the table does not depend on the chart symbol).
+//
+// RS line = sector close / benchmark close. Quadrant (RRG-style):
+//   Leading   = RS above its EMA and rising over the momentum lookback
+//   Improving = RS below its EMA but rising        <- money rotating IN
+//   Weakening = RS above its EMA but falling       <- money rotating OUT
+//   Lagging   = RS below its EMA and falling
+// Sorted by RS change over the momentum lookback (default 20 sessions, about 1 month).
+// Edit any symbol in the inputs if TradingView names an index differently;
+// an invalid symbol shows "n/a" instead of stopping the script.
+// ============================================================================
+indicator("NSE Sector Rotation v1.0", shorttitle = "Sector RS", overlay = true)
+
+benchSym = input.symbol("NSE:NIFTY", "Benchmark")
+rsEmaLen = input.int(50, "RS trend EMA (sessions)", minval = 5)
+momLen   = input.int(20, "RS momentum lookback, about 1 month (sessions)", minval = 5)
+longLen  = input.int(60, "RS longer lookback, about 3 months (sessions)", minval = 10)
+tblPos   = input.string("Top right", "Table position", options = ["Top right", "Bottom right", "Top left", "Bottom left"])
+
+grp = "Sector index symbols"
+s01 = input.symbol("NSE:CNXIT", "IT", group = grp)
+s02 = input.symbol("NSE:BANKNIFTY", "Bank", group = grp)
+s03 = input.symbol("NSE:CNXFINANCE", "Fin Services", group = grp)
+s04 = input.symbol("NSE:CNXPSUBANK", "PSU Bank", group = grp)
+s05 = input.symbol("NSE:CNXAUTO", "Auto", group = grp)
+s06 = input.symbol("NSE:CNXFMCG", "FMCG", group = grp)
+s07 = input.symbol("NSE:CNXPHARMA", "Pharma", group = grp)
+s08 = input.symbol("NSE:CNXMETAL", "Metal", group = grp)
+s09 = input.symbol("NSE:CNXREALTY", "Realty", group = grp)
+s10 = input.symbol("NSE:CNXENERGY", "Energy", group = grp)
+s11 = input.symbol("NSE:CNXINFRA", "Infra", group = grp)
+s12 = input.symbol("NSE:CNXMEDIA", "Media", group = grp)
+s13 = input.symbol("NSE:CNXPSE", "PSE", group = grp)
+s14 = input.symbol("NSE:CNXCOMMODITIES", "Commodities", group = grp)
+s15 = input.symbol("NSE:CNXCONSUMPTION", "Consumption", group = grp)
+s16 = input.symbol("NSE:CNXMNC", "MNC", group = grp)
+
+bench = request.security(benchSym, "D", close, ignore_invalid_symbol = true)
+
+// [RS change over momLen %, RS change over longLen %, RS above its EMA, data available]
+stats(string sym) =>
+    c   = request.security(sym, "D", close, ignore_invalid_symbol = true)
+    rs  = bench > 0 ? c / bench : na
+    rsE = ta.ema(rs, rsEmaLen)
+    m1  = (rs / rs[momLen] - 1.0) * 100.0
+    m3  = (rs / rs[longLen] - 1.0) * 100.0
+    [m1, m3, rs > rsE, not na(m1) and not na(rsE)]
+
+[m1_01, m3_01, up_01, ok_01] = stats(s01)
+[m1_02, m3_02, up_02, ok_02] = stats(s02)
+[m1_03, m3_03, up_03, ok_03] = stats(s03)
+[m1_04, m3_04, up_04, ok_04] = stats(s04)
+[m1_05, m3_05, up_05, ok_05] = stats(s05)
+[m1_06, m3_06, up_06, ok_06] = stats(s06)
+[m1_07, m3_07, up_07, ok_07] = stats(s07)
+[m1_08, m3_08, up_08, ok_08] = stats(s08)
+[m1_09, m3_09, up_09, ok_09] = stats(s09)
+[m1_10, m3_10, up_10, ok_10] = stats(s10)
+[m1_11, m3_11, up_11, ok_11] = stats(s11)
+[m1_12, m3_12, up_12, ok_12] = stats(s12)
+[m1_13, m3_13, up_13, ok_13] = stats(s13)
+[m1_14, m3_14, up_14, ok_14] = stats(s14)
+[m1_15, m3_15, up_15, ok_15] = stats(s15)
+[m1_16, m3_16, up_16, ok_16] = stats(s16)
+
+quadrant(float m1, bool above, bool ok) =>
+    not ok ? "n/a" : above ? (m1 > 0 ? "Leading" : "Weakening") : (m1 > 0 ? "Improving" : "Lagging")
+quadColor(string q) =>
+    q == "Leading" ? color.lime : q == "Improving" ? color.aqua : q == "Weakening" ? color.orange : q == "Lagging" ? color.red : color.gray
+
+pos = switch tblPos
+    "Bottom right" => position.bottom_right
+    "Top left"     => position.top_left
+    "Bottom left"  => position.bottom_left
+    => position.top_right
+var table t = table.new(pos, 5, 17, bgcolor = color.new(color.black, 15), border_color = color.gray, border_width = 1)
+
+if barstate.islast
+    names = array.from("IT", "Bank", "Fin Services", "PSU Bank", "Auto", "FMCG", "Pharma", "Metal", "Realty", "Energy", "Infra", "Media", "PSE", "Commodities", "Consumption", "MNC")
+    m1s   = array.from(m1_01, m1_02, m1_03, m1_04, m1_05, m1_06, m1_07, m1_08, m1_09, m1_10, m1_11, m1_12, m1_13, m1_14, m1_15, m1_16)
+    m3s   = array.from(m3_01, m3_02, m3_03, m3_04, m3_05, m3_06, m3_07, m3_08, m3_09, m3_10, m3_11, m3_12, m3_13, m3_14, m3_15, m3_16)
+    ups   = array.from(up_01, up_02, up_03, up_04, up_05, up_06, up_07, up_08, up_09, up_10, up_11, up_12, up_13, up_14, up_15, up_16)
+    oks   = array.from(ok_01, ok_02, ok_03, ok_04, ok_05, ok_06, ok_07, ok_08, ok_09, ok_10, ok_11, ok_12, ok_13, ok_14, ok_15, ok_16)
+    // Sort key: missing data goes to the bottom.
+    keys = array.new_float()
+    for i = 0 to array.size(m1s) - 1
+        array.push(keys, array.get(oks, i) ? array.get(m1s, i) : -1e9)
+    idx = array.sort_indices(keys, order.descending)
+    hdr = color.new(color.gray, 40)
+    table.cell(t, 0, 0, "Sector", text_color = color.white, bgcolor = hdr, text_size = size.small)
+    table.cell(t, 1, 0, "Quadrant", text_color = color.white, bgcolor = hdr, text_size = size.small)
+    table.cell(t, 2, 0, "RS " + str.tostring(momLen) + "d %", text_color = color.white, bgcolor = hdr, text_size = size.small)
+    table.cell(t, 3, 0, "RS " + str.tostring(longLen) + "d %", text_color = color.white, bgcolor = hdr, text_size = size.small)
+    table.cell(t, 4, 0, "Above RS EMA", text_color = color.white, bgcolor = hdr, text_size = size.small)
+    for r = 0 to array.size(idx) - 1
+        j  = array.get(idx, r)
+        ok = array.get(oks, j)
+        q  = quadrant(array.get(m1s, j), array.get(ups, j), ok)
+        table.cell(t, 0, r + 1, array.get(names, j), text_color = color.white, text_size = size.small, text_halign = text.align_left)
+        table.cell(t, 1, r + 1, q, text_color = quadColor(q), text_size = size.small)
+        table.cell(t, 2, r + 1, ok ? str.tostring(array.get(m1s, j), "0.0") : "—", text_color = color.white, text_size = size.small)
+        table.cell(t, 3, r + 1, ok ? str.tostring(array.get(m3s, j), "0.0") : "—", text_color = color.white, text_size = size.small)
+        table.cell(t, 4, r + 1, ok ? (array.get(ups, j) ? "yes" : "no") : "—", text_color = color.white, text_size = size.small)

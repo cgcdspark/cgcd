@@ -1,0 +1,370 @@
+//@version=6
+// ============================================================================
+// VCP Base Breakout — research strategy, v1.0
+// Market: NSE equities, 1D standard candles only. Long only, one position.
+//
+// Setup (all on COMPLETED daily candles, no lookahead):
+//   1. Long base: the highest high of the last <= 250 sessions was set at least
+//      30 sessions ago, and the base is no deeper than 35%.
+//   2. VCP proxy: the base is split into three windows (first / middle / final).
+//      Each window's high-low depth must be shallower than the one before, the
+//      final contraction must be tight (<= 10%), and volume must dry up in it.
+//   3. Breakout: today's close is above the base high AND above the 20/50
+//      (and 200) EMAs, on volume >= 1.5x the 50-day average.
+//   4. Sector rotation: the stock's sector index is outperforming the NIFTY
+//      (RS line above its 50 EMA and higher than 20 sessions ago).
+// Entry:  next session, limit buy at the max entry price (fills at the open if
+//         the open is at or below it; skipped if it gaps above).
+// Stop:   below the final contraction low (or the breakout-day low if lower),
+//         never more than 6% below entry. The stop is never tightened.
+// Exit:   initial stop, or a daily close below the trailing EMA (sold next open).
+//
+// A backtest is not evidence of profitability and does not reproduce real fills.
+// ============================================================================
+strategy(title = "VCP Base Breakout v1.0", shorttitle = "VCP-BO", overlay = true,
+     initial_capital = 1000000, default_qty_type = strategy.cash, default_qty_value = 100000,
+     pyramiding = 0, margin_long = 100, margin_short = 100,
+     commission_type = strategy.commission.percent, commission_value = 0.12, slippage = 2,
+     process_orders_on_close = false, calc_on_order_fills = false, calc_on_every_tick = false,
+     use_bar_magnifier = false, fill_orders_on_standard_ohlc = true,
+     backtest_fill_limits_assumption = 1, max_labels_count = 500, max_bars_back = 500)
+
+// ───────────────────────────── Inputs ─────────────────────────────
+grpW = "Backtest window (gates NEW signals only)"
+startTime = input.time(timestamp("01 Jan 2012 00:00 +0530"), "Start date", group = grpW)
+endTime   = input.time(timestamp("31 Dec 2099 00:00 +0530"), "End date", group = grpW)
+
+grpB = "1. Base"
+minBase  = input.int(30, "Min base length (sessions)", minval = 20, group = grpB)
+maxBase  = input.int(250, "Max base length (sessions)", minval = 40, maxval = 400, group = grpB)
+maxDepth = input.float(35.0, "Max base depth (%)", minval = 5, step = 1, group = grpB)
+
+grpV = "2. VCP (volatility contraction)"
+finalLen   = input.int(7, "Final contraction window (sessions)", minval = 3, group = grpV)
+midLen     = input.int(13, "Middle contraction window (sessions)", minval = 3, group = grpV)
+minFirst   = input.int(10, "Min first contraction window (sessions)", minval = 3, group = grpV,
+     tooltip = "The first window is the rest of the base, from the base high up to the middle window. Min base must be at least final + middle + this.")
+needShrink = input.bool(true, "Each contraction shallower than the previous", group = grpV)
+maxFinal   = input.float(10.0, "Max final contraction depth (%)", minval = 1, step = 0.5, group = grpV)
+useDry     = input.bool(true, "Require volume dry-up in final contraction", group = grpV)
+dryRatio   = input.float(1.0, "  Final-window avg volume <= x * 50-day avg", minval = 0.1, step = 0.1, group = grpV)
+
+grpK = "3. Breakout"
+volMult     = input.float(1.5, "Breakout volume >= x * prior 50-day avg", minval = 0, step = 0.1, group = grpK)
+reqAbove200 = input.bool(true, "Require close above 200 EMA (as well as 20 and 50)", group = grpK)
+missingVol  = input.string("Reject signal", "If volume is missing / zero",
+     options = ["Reject signal", "Skip volume check"], group = grpK)
+
+grpS = "4. Sector rotation"
+useSector     = input.bool(true, "Require sector money rotation", group = grpS)
+sectorIn      = input.string("AUTO", "Sector index (AUTO or a symbol, e.g. NSE:CNXIT)", group = grpS)
+benchSym      = input.symbol("NSE:NIFTY", "Benchmark", group = grpS)
+rsEmaLen      = input.int(50, "RS trend EMA (sessions)", minval = 5, group = grpS)
+rsMomLen      = input.int(20, "RS momentum lookback (sessions)", minval = 5, group = grpS)
+missingSector = input.string("Ignore filter (flag in table)", "If sector data is unavailable",
+     options = ["Ignore filter (flag in table)", "Block trades"], group = grpS)
+
+grpX = "5. Stop and exit"
+stopBufPct = input.float(0.10, "Stop buffer below contraction low (%)", minval = 0, step = 0.05, group = grpX)
+maxStopPct = input.float(6.0, "Max stop distance (% of entry)", minval = 1, maxval = 30, step = 0.5, group = grpX)
+trailLen   = input.int(50, "Trail: exit on a daily close below EMA", options = [10, 20, 50], group = grpX)
+
+grpD = "Display"
+showEmas   = input.bool(true, "Plot EMAs", group = grpD)
+showLevels = input.bool(true, "Plot pivot / stop / entry", group = grpD)
+showLabels = input.bool(true, "Show state labels", group = grpD)
+showTable  = input.bool(true, "Show status table", group = grpD)
+
+// ───────────────────────────── Guards ─────────────────────────────
+if not chart.is_standard
+    runtime.error("VCP-BO: use a standard candlestick/bar chart, not Heikin-Ashi, Renko or other synthetic types.")
+if not (timeframe.isdaily and timeframe.multiplier == 1)
+    runtime.error("VCP-BO: designed for the 1D timeframe only.")
+if finalLen + midLen + minFirst > minBase
+    runtime.error("VCP-BO: min base length must be at least final + middle + min first window.")
+
+// ───────────────────────────── Helpers ────────────────────────────
+roundDn(float x) =>
+    math.floor(x / syminfo.mintick + 1e-9) * syminfo.mintick
+
+pct(float a, float b) =>
+    (a / b - 1.0) * 100.0
+
+// Base and contraction measurements for the base that ENDS `off` bars ago
+// (off = 1: evaluated on a breakout bar, using only the bars before it;
+//  off = 0: the base as of today, for the watchlist table).
+// Returns [base high, base length, base low, final/middle/first depth %, final low, final avg volume].
+baseScan(int off, bool need) =>
+    bh   = ta.highest(high[off], maxBase)
+    hb   = ta.highestbars(high[off], maxBase)
+    bLen = na(hb) ? 0 : 1 - hb
+    float bLow = na
+    float d1   = na
+    float d2   = na
+    float d3   = na
+    float fLow = na
+    float fVol = na
+    if need and not na(bh) and bLen >= minBase and bLen - finalLen - midLen >= minFirst
+        float h1 = na
+        float l1 = na
+        float h2 = na
+        float l2 = na
+        float h3 = na
+        float l3 = na
+        float vs = 0.0
+        for i = off to off + bLen - 1
+            k = i - off
+            if k <= finalLen - 1
+                h1 := na(h1) ? high[i] : math.max(h1, high[i])
+                l1 := na(l1) ? low[i] : math.min(l1, low[i])
+                vs += nz(volume[i])
+            else if k <= finalLen + midLen - 1
+                h2 := na(h2) ? high[i] : math.max(h2, high[i])
+                l2 := na(l2) ? low[i] : math.min(l2, low[i])
+            else
+                h3 := na(h3) ? high[i] : math.max(h3, high[i])
+                l3 := na(l3) ? low[i] : math.min(l3, low[i])
+        d1   := (h1 - l1) / h1 * 100.0
+        d2   := (h2 - l2) / h2 * 100.0
+        d3   := (h3 - l3) / h3 * 100.0
+        bLow := math.min(l1, math.min(l2, l3))
+        fLow := l1
+        fVol := vs / finalLen
+    [bh, bLen, bLow, d1, d2, d3, fLow, fVol]
+
+vcpPass(float bh, float bLow, float d1, float d2, float d3, float fVol, float vAvg) =>
+    depthOk = not na(bLow) and (bh - bLow) / bh * 100.0 <= maxDepth
+    shapeOk = not needShrink or (d2 > d1 and d3 > d2)
+    finalOk = not na(d1) and d1 <= maxFinal
+    dryOk   = not useDry or (not na(vAvg) and vAvg > 0 and fVol <= dryRatio * vAvg)
+    depthOk and shapeOk and finalOk and dryOk
+
+// Approximate map from TradingView's sector/industry to an NSE sector index.
+// Override with the "Sector index" input when the stock belongs elsewhere.
+autoSector() =>
+    ind = syminfo.industry
+    sec = syminfo.sector
+    string s = ""
+    if str.contains(ind, "Bank")
+        s := "NSE:BANKNIFTY"
+    else if str.contains(ind, "Real Estate")
+        s := "NSE:CNXREALTY"
+    else if sec == "Finance"
+        s := "NSE:CNXFINANCE"
+    else if sec == "Technology Services"
+        s := "NSE:CNXIT"
+    else if sec == "Health Technology" or sec == "Health Services"
+        s := "NSE:CNXPHARMA"
+    else if sec == "Consumer Non-Durables"
+        s := "NSE:CNXFMCG"
+    else if sec == "Consumer Durables"
+        s := "NSE:CNXAUTO"
+    else if sec == "Non-Energy Minerals"
+        s := "NSE:CNXMETAL"
+    else if sec == "Energy Minerals" or sec == "Utilities"
+        s := "NSE:CNXENERGY"
+    else if sec == "Process Industries"
+        s := "NSE:CNXCOMMODITIES"
+    else if sec == "Retail Trade" or sec == "Consumer Services"
+        s := "NSE:CNXCONSUMPTION"
+    else if sec == "Communications"
+        s := "NSE:CNXMEDIA"
+    else if sec == "Producer Manufacturing" or sec == "Industrial Services" or sec == "Transportation"
+        s := "NSE:CNXINFRA"
+    s
+
+rsState(float rs, float rsE, float rsPast) =>
+    na(rs) or na(rsE) or na(rsPast) ? "n/a" : rs > rsE ? (rs > rsPast ? "Leading" : "Weakening") : (rs > rsPast ? "Improving" : "Lagging")
+
+// ─────────────────────── Indicators (every bar) ───────────────────
+emaFast  = ta.ema(close, 20)
+emaMid   = ta.ema(close, 50)
+emaSlow  = ta.ema(close, 200)
+emaTrail = ta.ema(close, trailLen)
+volSma   = ta.sma(volume, 50)
+
+prelimBreak = close > ta.highest(high[1], maxBase)
+[bh1, bLen1, bLow1, d1b, d2b, d3b, fLow1, fVol1] = baseScan(1, prelimBreak)
+[bh0, bLen0, bLow0, d1c, d2c, d3c, fLow0, fVol0] = baseScan(0, barstate.islast)
+vcpBreak = vcpPass(bh1, bLow1, d1b, d2b, d3b, fVol1, volSma[1])
+vcpNow   = vcpPass(bh0, bLow0, d1c, d2c, d3c, fVol0, volSma)
+
+// Sector relative strength vs benchmark (same-day closes; no lookahead on a 1D chart).
+sectorSym    = sectorIn == "AUTO" ? autoSector() : sectorIn
+sectorMapped = sectorSym != ""
+secClose     = request.security(sectorMapped ? sectorSym : benchSym, "D", close, ignore_invalid_symbol = true)
+benchClose   = request.security(benchSym, "D", close, ignore_invalid_symbol = true)
+rs           = sectorMapped and benchClose > 0 ? secClose / benchClose : na
+rsEma        = ta.ema(rs, rsEmaLen)
+rsPast       = rs[rsMomLen]
+sectorData   = not na(rs) and not na(rsEma) and not na(rsPast)
+sectorRot    = rs > rsEma and rs > rsPast
+sectorOk     = not useSector or (sectorData ? sectorRot : missingSector == "Ignore filter (flag in table)")
+
+// ───────────────────────────── Signal ─────────────────────────────
+volMissing = na(volume) or volume <= 0 or na(volSma[1]) or volSma[1] <= 0
+volOk      = volMissing ? missingVol == "Skip volume check" : volume >= volMult * volSma[1]
+maOk       = close > emaFast and close > emaMid and (not reqAbove200 or close > emaSlow)
+inWindow   = time >= startTime and time <= endTime
+breakout   = barstate.isconfirmed and inWindow and prelimBreak and vcpBreak and maOk and volOk and sectorOk
+
+// Stop under the final contraction (or the breakout-day low if lower): it is only ever widened, never tightened.
+candStop     = roundDn(math.min(fLow1, low) * (1.0 - stopBufPct / 100.0))
+// Highest acceptable fill: the stop must stay within maxStopPct of the entry.
+candMaxEntry = roundDn(candStop / (1.0 - maxStopPct / 100.0))
+candRiskPct  = (close - candStop) / close * 100.0
+candAccept   = not na(candStop) and candStop > 0 and candMaxEntry >= close
+
+// ───────────────────────────── State ──────────────────────────────
+// state: 0 = IDLE, 1 = BUY PENDING (next session), 2 = OPEN.
+var int    state      = 0
+var string lastEvent  = "—"
+var float  pivotPx    = na
+var float  stopPx     = na
+var float  maxEntryPx = na
+var float  entryPx    = na
+var int    lastTotal  = 0
+var int    lastClosed = 0
+
+var int nBreakouts = 0
+var int nRejected  = 0
+var int nBought    = 0
+var int nSkipped   = 0
+var int nSL        = 0
+var int nTrail     = 0
+
+stateAtOpen  = state
+eventThisBar = false
+rejectedNow  = false
+dateStr      = str.format_time(time, "yyyy-MM-dd", syminfo.timezone)
+
+// A) Entry filled this session.
+totalTrades = strategy.opentrades + strategy.closedtrades
+newEntry    = totalTrades > lastTotal
+lastTotal  := totalTrades
+if newEntry
+    nBought      := nBought + 1
+    eventThisBar := true
+    entryPx      := strategy.position_size > 0 ? strategy.opentrades.entry_price(0) : strategy.closedtrades.entry_price(strategy.closedtrades - 1)
+    lastEvent    := "BOUGHT " + dateStr
+    state        := strategy.position_size > 0 ? 2 : 0
+    if showLabels
+        label.new(bar_index, low, "BOUGHT\n" + str.tostring(entryPx, format.mintick), yloc = yloc.belowbar,
+             style = label.style_label_up, color = color.green, textcolor = color.white, size = size.small,
+             tooltip = "Entry " + str.tostring(entryPx, format.mintick) + " | stop " + str.tostring(stopPx, format.mintick) +
+                 " | risk " + str.tostring((entryPx - stopPx) / entryPx * 100.0, "0.00") + "%")
+
+// B) Trades closed (stop intrabar, or trail at the open). Labels go on the exit bar.
+closedNow = strategy.closedtrades
+if closedNow > lastClosed
+    for i = lastClosed to closedNow - 1
+        ep  = strategy.closedtrades.entry_price(i)
+        xp  = strategy.closedtrades.exit_price(i)
+        xb  = strategy.closedtrades.exit_bar_index(i)
+        why = strategy.closedtrades.exit_comment(i)
+        p   = pct(xp, ep)
+        if why == "SL"
+            nSL := nSL + 1
+        if why == "TRAIL"
+            nTrail := nTrail + 1
+        if xb == bar_index
+            eventThisBar := true
+        if showLabels
+            label.new(xb, high, "CLOSED " + why + "\n" + (p >= 0 ? "+" : "") + str.tostring(p, "0.00") + "%",
+                 yloc = yloc.abovebar, style = label.style_label_down, color = p >= 0 ? color.teal : color.red,
+                 textcolor = color.white, size = size.small,
+                 tooltip = "Entry " + str.tostring(ep, format.mintick) + " -> exit " + str.tostring(xp, format.mintick) + " (gross, before costs)")
+    lastClosed := closedNow
+if state == 2 and strategy.position_size == 0
+    state        := 0
+    eventThisBar := true
+    lastEvent    := "CLOSED " + dateStr
+
+// C) Open position: trail on a completed daily close below the trailing EMA; sold at the next open.
+if state == 2 and strategy.position_size > 0 and emaTrail > close
+    strategy.close("VCP", comment = "TRAIL")
+    lastEvent := "TRAIL EXIT at next open (" + dateStr + ")"
+
+// D) Buy pending: the limit order had one session to fill; otherwise the open gapped above max entry.
+if state == 1 and not newEntry
+    strategy.cancel("VCP")
+    strategy.cancel("VCP-X")
+    nSkipped     := nSkipped + 1
+    state        := 0
+    eventThisBar := true
+    lastEvent    := "SKIPPED (gap above max entry) " + dateStr
+    if showLabels
+        label.new(bar_index, high, "SKIPPED\nGAP", yloc = yloc.abovebar, style = label.style_label_down,
+             color = color.gray, textcolor = color.white, size = size.small)
+
+// E) New breakout: only when flat, nothing pending, and no other event on this bar.
+if breakout and state == 0 and not eventThisBar and strategy.position_size == 0
+    nBreakouts := nBreakouts + 1
+    if candAccept
+        state      := 1
+        pivotPx    := bh1
+        stopPx     := candStop
+        maxEntryPx := candMaxEntry
+        lastEvent  := "BREAKOUT " + dateStr + ": buy next open"
+        // Limit buy at max entry: fills at the next open if the open is at or below it.
+        strategy.entry("VCP", strategy.long, limit = maxEntryPx, comment = "VCP")
+        strategy.exit("VCP-X", from_entry = "VCP", stop = stopPx, comment = "SL")
+        if showLabels
+            label.new(bar_index, low, "BREAKOUT", yloc = yloc.belowbar, style = label.style_label_up,
+                 color = color.orange, textcolor = color.black, size = size.small,
+                 tooltip = "Pivot (base high) " + str.tostring(bh1, format.mintick) +
+                     "\nBase " + str.tostring(bLen1) + " sessions, depth " + str.tostring((bh1 - bLow1) / bh1 * 100.0, "0.0") + "%" +
+                     "\nContractions " + str.tostring(d3b, "0.0") + "% > " + str.tostring(d2b, "0.0") + "% > " + str.tostring(d1b, "0.0") + "%" +
+                     "\nVolume " + str.tostring(volume / volSma[1], "0.0") + "x avg" +
+                     "\nStop " + str.tostring(stopPx, format.mintick) + " | max entry " + str.tostring(maxEntryPx, format.mintick) +
+                     "\nRisk at close " + str.tostring(candRiskPct, "0.00") + "%" +
+                     "\nSector " + sectorSym + ": " + rsState(rs, rsEma, rsPast))
+    else
+        nRejected   := nRejected + 1
+        rejectedNow := true
+
+// ───────────────────────────── Plots ──────────────────────────────
+plot(showEmas ? emaFast : na, "EMA 20", color.new(color.aqua, 0), 1)
+plot(showEmas ? emaMid : na, "EMA 50", color.new(color.orange, 0), 2)
+plot(showEmas ? emaSlow : na, "EMA 200", color.new(color.purple, 0), 2)
+plot(showEmas and trailLen == 10 ? emaTrail : na, "Trail EMA 10", color.new(color.yellow, 0), 1)
+
+baseVisible = bLen0 >= minBase
+plot(showLevels and baseVisible ? bh0 : na, "Base high (pivot)", color.new(color.fuchsia, 20), 1, plot.style_linebr)
+wasOrIsLive = stateAtOpen != 0 or state != 0
+plot(showLevels and wasOrIsLive ? stopPx : na, "Stop-loss", color.red, 2, plot.style_linebr)
+plot(showLevels and (stateAtOpen == 2 or state == 2) ? entryPx : na, "Entry", color.gray, 1, plot.style_linebr)
+bgcolor(stateAtOpen == 2 or state == 2 ? color.new(color.green, 90) : na, title = "OPEN position")
+plotshape(rejectedNow, "Breakout rejected (stop too wide)", shape.xcross, location.abovebar, color.new(color.gray, 30), size = size.tiny)
+
+// ───────────────────────────── Table ──────────────────────────────
+var table info = table.new(position.top_right, 2, 14, bgcolor = color.new(color.black, 15), border_color = color.gray, border_width = 1)
+row(int r, string k, string v, color c) =>
+    table.cell(info, 0, r, k, text_color = color.white, text_size = size.small, text_halign = text.align_left)
+    table.cell(info, 1, r, v, text_color = c, text_size = size.small, text_halign = text.align_right)
+passTxt(bool b) =>
+    b ? "PASS" : "FAIL"
+passCol(bool b) =>
+    b ? color.lime : color.red
+
+if showTable and barstate.islast
+    stateTxt = state == 1 ? "BUY NEXT OPEN" : state == 2 ? "OPEN" : "IDLE"
+    stateCol = state == 1 ? color.orange : state == 2 ? color.lime : color.silver
+    rsTxt    = sectorMapped ? sectorSym + ": " + rsState(rs, rsEma, rsPast) : "unmapped (set Sector index)"
+    baseOk   = bLen0 >= minBase
+    distPct  = pct(bh0, close)
+    maNow    = close > emaFast and close > emaMid and (not reqAbove200 or close > emaSlow)
+    row(0, "State", stateTxt, stateCol)
+    row(1, "Last event", lastEvent, color.white)
+    row(2, "Sector RS", rsTxt, sectorData and sectorRot ? color.lime : sectorData ? color.red : color.orange)
+    row(3, "Base today", baseOk ? str.tostring(bLen0) + " sessions, depth " + str.tostring((bh0 - bLow0) / bh0 * 100.0, "0.0") + "%" : "none (under " + str.tostring(minBase) + " sessions)", color.white)
+    row(4, "Contractions first > mid > final", baseOk ? str.tostring(d3c, "0.0") + "% > " + str.tostring(d2c, "0.0") + "% > " + str.tostring(d1c, "0.0") + "%" : "—", color.white)
+    row(5, "Final-window volume vs 50d", baseOk ? str.tostring(fVol0 / volSma, "0.00") + "x" : "—", color.white)
+    row(6, "VCP today", baseOk ? passTxt(vcpNow) : "—", baseOk ? passCol(vcpNow) : color.silver)
+    row(7, "Pivot / distance", baseOk ? str.tostring(bh0, format.mintick) + " / " + str.tostring(distPct, "0.0") + "% away" : "—", color.white)
+    row(8, "Close above 20/50" + (reqAbove200 ? "/200" : "") + " EMA", passTxt(maNow), passCol(maNow))
+    row(9, "Watchlist", baseOk and vcpNow and sectorOk ? "COILING: alert at pivot" : "—", color.orange)
+    row(10, "Breakouts / rejected", str.tostring(nBreakouts) + " / " + str.tostring(nRejected), color.white)
+    row(11, "Bought / skipped (gap)", str.tostring(nBought) + " / " + str.tostring(nSkipped), color.white)
+    row(12, "Exits SL / TRAIL", str.tostring(nSL) + " / " + str.tostring(nTrail), color.white)
+    row(13, "Trail / max stop", "EMA " + str.tostring(trailLen) + " / " + str.tostring(maxStopPct, "0.0") + "%", color.white)
