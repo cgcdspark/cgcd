@@ -1,0 +1,249 @@
+//@version=6
+// ============================================================================
+// FBB Scanner v1.1 — companion to "First Bullish Bounce (FBB) v1.1" strategy.
+// For TradingView's Pine Screener (or any 1D chart). Same signal, level and
+// target rules as the strategy; keep both files in sync when rules change.
+//
+// "Status" plot codes (filter on these in the Pine Screener):
+//   1 = READY, new today          2 = READY, pending from an earlier session
+//   3 = TRIGGERED today           4 = IN TRADE (per strategy rules)
+//   5 = CLOSED today              6 = EXPIRED today
+//   9 = REJECTED today (qualifying candle, but risk too wide for min R:R)
+//   0 = nothing
+// Signals use completed daily candles only: run it after the NSE close.
+// Research/alert tool only — it places no orders.
+// ============================================================================
+indicator("FBB Scanner v1.1", shorttitle = "FBB Scan", overlay = true, max_labels_count = 500)
+
+// ───────────────────────────── Inputs ─────────────────────────────
+grpT = "1. Trend"
+emaFastLen     = input.int(20, "Fast EMA length", minval = 1, group = grpT)
+emaMidLen      = input.int(50, "Trend EMA length", minval = 1, group = grpT)
+emaSlowLen     = input.int(200, "Long EMA length", minval = 1, group = grpT)
+useEmaStack    = input.bool(true, "Require trend EMA > long EMA (50 > 200)", group = grpT)
+useEstablished = input.bool(true, "Require established uptrend before reversal", group = grpT)
+trendLen       = input.int(20, "  Lookback (sessions)", minval = 2, group = grpT)
+minPctAbove    = input.float(70.0, "  Min % of prior closes above trend EMA", minval = 0, maxval = 100, group = grpT)
+useAdx         = input.bool(false, "Use ADX filter", group = grpT)
+adxLen         = input.int(14, "  ADX length", minval = 1, group = grpT)
+adxMin         = input.float(20.0, "  Min ADX", minval = 0, group = grpT)
+
+grpP = "2. Pullback / support"
+pbMode    = input.string("20 or 50 EMA", "Pullback reference",
+     options = ["20 EMA", "50 EMA", "20 or 50 EMA", "Swing-low support", "EMA or support"], group = grpP)
+pbTolPct  = input.float(1.5, "Touch tolerance (± % around level)", minval = 0, step = 0.1, group = grpP)
+pivLeft   = input.int(5, "Swing low: left bars", minval = 1, group = grpP)
+pivRight  = input.int(5, "Swing low: right bars (confirmation delay)", minval = 1, group = grpP)
+supMaxAge = input.int(60, "Swing low: max age (sessions)", minval = 1, group = grpP)
+
+grpC = "3. Reversal candle"
+minBodyPct  = input.float(50.0, "Min real body (% of range)", minval = 0, maxval = 100, group = grpC)
+closeTopPct = input.float(25.0, "Close within top X% of range", minval = 0, maxval = 100, group = grpC)
+volMult     = input.float(1.2, "Min volume vs average (x)", minval = 0, step = 0.1, group = grpC)
+volLen      = input.int(20, "Volume average length (prior sessions)", minval = 1, group = grpC)
+missingVol  = input.string("Reject signal", "If volume is missing / zero",
+     options = ["Reject signal", "Skip volume check"], group = grpC)
+
+grpE = "4. Entry"
+trigBufPct = input.float(0.10, "Trigger buffer above reversal high (%)", minval = 0, step = 0.05, group = grpE)
+expiryBars = input.int(3, "Setup expiry (sessions)", minval = 1, group = grpE)
+
+grpS = "5. Stop-loss"
+stopBufType = input.string("Percent", "Stop buffer type", options = ["Percent", "ATR"], group = grpS)
+stopBufPct  = input.float(0.10, "  Percent buffer below reversal low (%)", minval = 0, step = 0.05, group = grpS)
+atrLen      = input.int(14, "  ATR length", minval = 1, group = grpS)
+atrMult     = input.float(0.10, "  ATR buffer multiple", minval = 0, step = 0.05, group = grpS)
+maxStopPct  = input.float(3.0, "Max stop distance (% of entry)", minval = 0.1, maxval = 50, step = 0.1, group = grpS)
+
+grpX = "6. Target / exit"
+tgtMode    = input.string("R-multiple within band", "Target mode", options = ["R-multiple within band", "Fixed %"], group = grpX,
+     tooltip = "R-multiple: target = entry + min R:R x risk, floored at the band minimum; setups needing more than the band maximum are rejected.\nFixed %: target = entry x (1 + fixed %). Fixed % reproduces v1.0.")
+tgtPct     = input.float(5.0, "Fixed target (%)", options = [3.0, 5.0, 7.0], group = grpX)
+bandMinPct = input.float(3.0, "R-multiple: min target (%)", minval = 0.1, step = 0.5, group = grpX)
+bandMaxPct = input.float(7.0, "R-multiple: max target (%)", minval = 0.1, step = 0.5, group = grpX)
+minRR      = input.float(2.5, "Min planned reward:risk", minval = 0.1, step = 0.1, group = grpX)
+maxHold = input.int(10, "Max holding period (sessions, entry day = 1)", minval = 1, group = grpX)
+
+grpD = "Display"
+showLevels = input.bool(true, "Plot trigger / stop / target", group = grpD)
+showLabels = input.bool(true, "Show state labels", group = grpD)
+
+// ───────────────────────────── Guards ─────────────────────────────
+if not chart.is_standard
+    runtime.error("FBB Scanner: use a standard candlestick/bar chart, not Heikin-Ashi, Renko or other synthetic types.")
+if not (timeframe.isdaily and timeframe.multiplier == 1)
+    runtime.error("FBB Scanner: designed for the 1D timeframe only.")
+if bandMaxPct < bandMinPct
+    runtime.error("FBB Scanner: R-multiple max target must be >= min target.")
+
+// ───────────────────────────── Helpers ────────────────────────────
+// The tiny epsilon stops float noise (e.g. 2000.0000001) from moving a level by a whole tick.
+roundUp(float x) =>
+    math.ceil(x / syminfo.mintick - 1e-9) * syminfo.mintick
+roundDn(float x) =>
+    math.floor(x / syminfo.mintick + 1e-9) * syminfo.mintick
+
+useRMode = tgtMode == "R-multiple within band"
+// Largest target the rules allow: it sets the widest stop that can still reach min R:R.
+capFrac  = useRMode ? bandMaxPct / 100.0 : tgtPct / 100.0
+if capFrac >= minRR
+    runtime.error("FBB Scanner: min R:R must exceed the largest target fraction.")
+
+// Target from an entry and a fixed stop. R-multiple rounds UP so R:R never drops below the minimum.
+targetFor(float entry, float stop) =>
+    useRMode ? roundUp(entry + math.max(minRR * (entry - stop), entry * bandMinPct / 100.0)) : math.round_to_mintick(entry * (1.0 + tgtPct / 100.0))
+
+// Low within ±tolerance of the level and close back at/above it.
+touches(float level) =>
+    lo = level * (1.0 - pbTolPct / 100.0)
+    hi = level * (1.0 + pbTolPct / 100.0)
+    not na(level) and low <= hi and low >= lo and close >= level
+
+// ─────────────────────── Indicators (every bar) ───────────────────
+emaFast = ta.ema(close, emaFastLen)
+emaMid  = ta.ema(close, emaMidLen)
+emaSlow = ta.ema(close, emaSlowLen)
+atrVal  = ta.atr(atrLen)
+[diPlus, diMinus, adxVal] = ta.dmi(adxLen, adxLen)
+volSma   = ta.sma(volume, volLen)
+volAvg   = volSma[1]                                    // average of PRIOR sessions only
+aboveCnt = math.sum(close > emaMid ? 1.0 : 0.0, trendLen)
+pivLow   = ta.pivotlow(low, pivLeft, pivRight)          // reported only after pivRight bars: no lookahead
+
+// Most recent CONFIRMED swing low.
+var float supLevel = na
+var int   supBar   = na
+if not na(pivLow)
+    supLevel := pivLow
+    supBar   := bar_index - pivRight
+supValid = not na(supLevel) and bar_index - supBar <= supMaxAge
+
+// ───────────────────────────── Rules ──────────────────────────────
+// 1. Trend
+trendOk       = close > emaMid
+emaStackOk    = not useEmaStack or emaMid > emaSlow
+establishedOk = not useEstablished or (emaMid[1] > emaMid[1 + trendLen] and aboveCnt[1] / trendLen * 100.0 >= minPctAbove)
+adxOk         = not useAdx or adxVal >= adxMin
+
+// 2. Pullback
+touch20     = touches(emaFast)
+touch50     = touches(emaMid)
+touchSupRaw = touches(supLevel)
+touchSup    = supValid and touchSupRaw
+pullbackOk = switch pbMode
+    "20 EMA"            => touch20
+    "50 EMA"            => touch50
+    "20 or 50 EMA"      => touch20 or touch50
+    "Swing-low support" => touchSup
+    => touch20 or touch50 or touchSup
+
+// 3. Reversal candle
+rng        = high - low
+body       = close - open
+candleOk   = rng > 0 and close > open and body >= rng * minBodyPct / 100.0 and high - close <= rng * closeTopPct / 100.0
+volMissing = na(volume) or volume <= 0 or na(volAvg) or volAvg <= 0
+volOk      = volMissing ? missingVol == "Skip volume check" : volume >= volMult * volAvg
+
+reversal = barstate.isconfirmed and trendOk and emaStackOk and establishedOk and adxOk and pullbackOk and candleOk and volOk
+
+// 4–6. Candidate levels from the signal candle
+stopBuf      = stopBufType == "ATR" ? atrMult * atrVal : low * stopBufPct / 100.0
+candTrigger  = math.max(roundUp(high * (1.0 + trigBufPct / 100.0)), high + syminfo.mintick)
+candStop     = roundDn(low - stopBuf)
+// Highest fill price that still satisfies BOTH the max stop distance and the min R:R
+// (R:R falls as entry rises because the stop is fixed): entry <= stop*RR/(RR - target).
+// In R-multiple mode "target" is the band maximum, so this also caps risk at bandMax / RR.
+candMaxEntry = roundDn(math.min(candStop / (1.0 - maxStopPct / 100.0), candStop * minRR / (minRR - capFrac)))
+candTarget   = targetFor(candTrigger, candStop)
+candTgtPct   = (candTarget / candTrigger - 1.0) * 100.0
+candRiskPct  = (candTrigger - candStop) / candTrigger * 100.0
+candRR       = (candTarget - candTrigger) / (candTrigger - candStop)
+// The stop is never moved to make a setup pass: a setup that fails at its trigger price is rejected.
+candAccept   = not na(candStop) and candStop > 0 and candTrigger <= candMaxEntry
+
+// ───────────────────── Per-stock state (mirrors strategy) ─────────────────────
+// st: 0 = IDLE, 1 = READY, 2 = IN TRADE. Fills are inferred from daily OHLC the same way the
+// strategy's stop-limit order behaves: filled if the trigger traded AND price was at or below max entry.
+var int   st         = 0
+var int   setupBar   = na
+var float trigPx     = na
+var float stopPx     = na
+var float maxEntryPx = na
+var float tgtPx      = na
+var float entryPx    = na
+var int   entryBar   = na
+
+status = 0
+
+if st == 2
+    held = bar_index - entryBar + 1
+    if low <= stopPx or high >= tgtPx or held >= maxHold
+        st     := 0
+        status := 5
+    else
+        status := 4
+
+if st == 1
+    if high >= trigPx and low <= maxEntryPx
+        entryPx  := open > trigPx ? open : trigPx
+        entryBar := bar_index
+        tgtPx    := targetFor(entryPx, stopPx)
+        st       := 2
+        status   := 3
+    else if high >= trigPx or low < stopPx or bar_index - setupBar >= expiryBars
+        st     := 0
+        status := 6
+    else
+        status := 2
+
+if reversal and st == 0 and status == 0
+    if candAccept
+        st         := 1
+        setupBar   := bar_index
+        trigPx     := candTrigger
+        stopPx     := candStop
+        maxEntryPx := candMaxEntry
+        tgtPx      := candTarget
+        status     := 1
+    else
+        status := 9
+
+// ───────────────────────────── Labels ─────────────────────────────
+if showLabels and status == 1
+    label.new(bar_index, low, "READY", yloc = yloc.belowbar, style = label.style_label_up, color = color.orange,
+         textcolor = color.black, size = size.small,
+         tooltip = "Trigger " + str.tostring(trigPx, format.mintick) + "\nStop " + str.tostring(stopPx, format.mintick) +
+             "\nTarget " + str.tostring(tgtPx, format.mintick) + " (" + str.tostring(candTgtPct, "0.00") + "%)" +
+             "\nRisk " + str.tostring(candRiskPct, "0.00") + "% | R:R " + str.tostring(candRR, "0.00"))
+if showLabels and status == 3
+    label.new(bar_index, low, "TRIGGERED", yloc = yloc.belowbar, style = label.style_label_up, color = color.green,
+         textcolor = color.white, size = size.small)
+if showLabels and status == 6
+    label.new(bar_index, high, "EXPIRED", yloc = yloc.abovebar, style = label.style_label_down, color = color.gray,
+         textcolor = color.white, size = size.small)
+if showLabels and status == 9
+    label.new(bar_index, high, "REJECTED\nrisk " + str.tostring(candRiskPct, "0.0") + "%", yloc = yloc.abovebar,
+         style = label.style_label_down, color = color.new(color.gray, 40), textcolor = color.white, size = size.tiny)
+
+// ──────────────── Screener columns (data window / status line only) ────────────────
+isReady   = status == 1 or status == 2
+hasLevels = status >= 1 and status <= 4
+dataOnly  = display.data_window + display.status_line
+plot(status, "Status", display = dataOnly)
+plot(isReady ? trigPx : na, "Trigger", display = dataOnly)
+plot(isReady ? maxEntryPx : na, "Max entry", display = dataOnly)
+plot(hasLevels ? stopPx : na, "Stop", display = dataOnly)
+plot(hasLevels ? tgtPx : na, "Target", display = dataOnly)
+plot(isReady ? (trigPx - stopPx) / trigPx * 100.0 : status == 9 ? candRiskPct : na, "Risk %", display = dataOnly)
+plot(isReady ? (tgtPx / trigPx - 1.0) * 100.0 : na, "Target %", display = dataOnly)
+plot(isReady ? (tgtPx - trigPx) / (trigPx - stopPx) : na, "R:R", display = dataOnly)
+plot(isReady ? (trigPx / close - 1.0) * 100.0 : na, "Distance to trigger %", display = dataOnly)
+plot(isReady ? expiryBars - (bar_index - setupBar) : na, "Sessions left", display = dataOnly)
+
+// ───────────────────────────── Chart lines ────────────────────────
+plot(showLevels and isReady ? trigPx : na, "Trigger line", color.green, 2, plot.style_linebr)
+plot(showLevels and hasLevels ? stopPx : na, "Stop line", color.red, 2, plot.style_linebr)
+plot(showLevels and hasLevels ? tgtPx : na, "Target line", color.blue, 2, plot.style_linebr)
+
+alertcondition(status == 1, "FBB READY", "FBB READY on {{ticker}}: trigger {{plot(\"Trigger\")}}, stop {{plot(\"Stop\")}}")
+alertcondition(status == 3, "FBB TRIGGERED", "FBB TRIGGERED on {{ticker}}")

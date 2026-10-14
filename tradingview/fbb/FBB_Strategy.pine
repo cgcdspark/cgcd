@@ -1,6 +1,6 @@
 //@version=6
 // ============================================================================
-// First Bullish Bounce (FBB) — swing-trading research strategy, v1.0
+// First Bullish Bounce (FBB) — swing-trading research strategy, v1.1
 // Market: NSE equities, 1D standard candles only.
 //
 // Purpose: test whether the setup has a measurable historical edge. It is NOT
@@ -16,7 +16,7 @@
 // candle's close can only fill from the next session onwards
 // (process_orders_on_close = false).
 // ============================================================================
-strategy(title = "First Bullish Bounce (FBB) v1.0", shorttitle = "FBB", overlay = true,
+strategy(title = "First Bullish Bounce (FBB) v1.1", shorttitle = "FBB", overlay = true,
      initial_capital = 1000000, default_qty_type = strategy.cash, default_qty_value = 100000,
      pyramiding = 0, margin_long = 100, margin_short = 100,
      commission_type = strategy.commission.percent, commission_value = 0.12, slippage = 2,
@@ -69,8 +69,12 @@ atrMult     = input.float(0.10, "  ATR buffer multiple", minval = 0, step = 0.05
 maxStopPct  = input.float(3.0, "Max stop distance (% of entry)", minval = 0.1, maxval = 50, step = 0.1, group = grpS)
 
 grpX = "6. Target / exit"
-tgtPct  = input.float(5.0, "Target (%)", options = [3.0, 5.0, 7.0], group = grpX)
-minRR   = input.float(2.5, "Min planned reward:risk", minval = 0.1, step = 0.1, group = grpX)
+tgtMode    = input.string("R-multiple within band", "Target mode", options = ["R-multiple within band", "Fixed %"], group = grpX,
+     tooltip = "R-multiple: target = entry + min R:R x risk, floored at the band minimum; setups needing more than the band maximum are rejected.\nFixed %: target = entry x (1 + fixed %). Fixed % reproduces v1.0.")
+tgtPct     = input.float(5.0, "Fixed target (%)", options = [3.0, 5.0, 7.0], group = grpX)
+bandMinPct = input.float(3.0, "R-multiple: min target (%)", minval = 0.1, step = 0.5, group = grpX)
+bandMaxPct = input.float(7.0, "R-multiple: max target (%)", minval = 0.1, step = 0.5, group = grpX)
+minRR      = input.float(2.5, "Min planned reward:risk", minval = 0.1, step = 0.1, group = grpX)
 maxHold = input.int(10, "Max holding period (sessions, entry day = 1)", minval = 1, group = grpX)
 
 grpD = "Display"
@@ -85,6 +89,8 @@ if not chart.is_standard
     runtime.error("FBB: use a standard candlestick/bar chart, not Heikin-Ashi, Renko or other synthetic types.")
 if not (timeframe.isdaily and timeframe.multiplier == 1)
     runtime.error("FBB: designed for the 1D timeframe only.")
+if bandMaxPct < bandMinPct
+    runtime.error("FBB: R-multiple max target must be >= min target.")
 
 // ───────────────────────────── Helpers ────────────────────────────
 // The tiny epsilon stops float noise (e.g. 2000.0000001) from moving a level by a whole tick.
@@ -92,6 +98,16 @@ roundUp(float x) =>
     math.ceil(x / syminfo.mintick - 1e-9) * syminfo.mintick
 roundDn(float x) =>
     math.floor(x / syminfo.mintick + 1e-9) * syminfo.mintick
+
+useRMode = tgtMode == "R-multiple within band"
+// Largest target the rules allow: it sets the widest stop that can still reach min R:R.
+capFrac  = useRMode ? bandMaxPct / 100.0 : tgtPct / 100.0
+if capFrac >= minRR
+    runtime.error("FBB: min R:R must exceed the largest target fraction.")
+
+// Target from an entry and a fixed stop. R-multiple rounds UP so R:R never drops below the minimum.
+targetFor(float entry, float stop) =>
+    useRMode ? roundUp(entry + math.max(minRR * (entry - stop), entry * bandMinPct / 100.0)) : math.round_to_mintick(entry * (1.0 + tgtPct / 100.0))
 
 // Low within ±tolerance of the level and close back at/above it.
 touches(float level) =>
@@ -148,14 +164,15 @@ inWindow = time >= startTime and time <= endTime
 reversal = barstate.isconfirmed and inWindow and trendOk and emaStackOk and establishedOk and adxOk and pullbackOk and candleOk and volOk
 
 // 4–6. Candidate levels from the signal candle
-tgtFrac      = tgtPct / 100.0
 stopBuf      = stopBufType == "ATR" ? atrMult * atrVal : low * stopBufPct / 100.0
 candTrigger  = math.max(roundUp(high * (1.0 + trigBufPct / 100.0)), high + syminfo.mintick)
 candStop     = roundDn(low - stopBuf)
 // Highest fill price that still satisfies BOTH the max stop distance and the min R:R
 // (R:R falls as entry rises because the stop is fixed): entry <= stop*RR/(RR - target).
-candMaxEntry = roundDn(math.min(candStop / (1.0 - maxStopPct / 100.0), candStop * minRR / (minRR - tgtFrac)))
-candTarget   = math.round_to_mintick(candTrigger * (1.0 + tgtFrac))
+// In R-multiple mode "target" is the band maximum, so this also caps risk at bandMax / RR.
+candMaxEntry = roundDn(math.min(candStop / (1.0 - maxStopPct / 100.0), candStop * minRR / (minRR - capFrac)))
+candTarget   = targetFor(candTrigger, candStop)
+candTgtPct   = (candTarget / candTrigger - 1.0) * 100.0
 candRiskPct  = (candTrigger - candStop) / candTrigger * 100.0
 candRR       = (candTarget - candTrigger) / (candTrigger - candStop)
 // The stop is never moved to make a setup pass: a setup that fails at its trigger price is rejected.
@@ -208,7 +225,7 @@ if newEntry
         state := 2
         // Re-base the target on the ACTUAL fill price. Takes effect from the next session;
         // on the fill session itself the pre-placed planned target applies.
-        tgtPx := math.round_to_mintick(entryPx * (1.0 + tgtFrac))
+        tgtPx := targetFor(entryPx, stopPx)
         strategy.exit("FBB-X", from_entry = "FBB", stop = stopPx, limit = tgtPx, comment_profit = "TP", comment_loss = "SL")
     else
         state := 0   // entered and exited inside the same session
@@ -292,7 +309,7 @@ if reversal and state == 0 and not eventThisBar and strategy.position_size == 0
             label.new(bar_index, low, "READY", yloc = yloc.belowbar, style = label.style_label_up,
                  color = color.orange, textcolor = color.black, size = size.small,
                  tooltip = "Trigger " + str.tostring(trigPx, format.mintick) + "\nMax entry " + str.tostring(maxEntryPx, format.mintick) +
-                     "\nStop " + str.tostring(stopPx, format.mintick) + "\nPlanned target " + str.tostring(tgtPx, format.mintick) +
+                     "\nStop " + str.tostring(stopPx, format.mintick) + "\nPlanned target " + str.tostring(tgtPx, format.mintick) + " (" + str.tostring(candTgtPct, "0.00") + "%)" +
                      "\nRisk " + str.tostring(candRiskPct, "0.00") + "% | R:R " + str.tostring(candRR, "0.00"))
     else
         nRejected  += 1
@@ -328,8 +345,8 @@ if showTable and barstate.islast
     row(3, "Entry", state == 2 ? str.tostring(entryPx, format.mintick) : "—", color.white)
     row(4, "Stop / target", state != 0 ? str.tostring(stopPx, format.mintick) + " / " + str.tostring(tgtPx, format.mintick) : "—", color.white)
     row(5, "Sessions", state == 1 ? "expires in " + str.tostring(expiryBars - (bar_index - setupBar)) : state == 2 ? "held " + str.tostring(bar_index - entryBar + 1) + " / " + str.tostring(maxHold) : "—", color.white)
-    row(6, "Target % / min R:R", str.tostring(tgtPct, "0.0") + "% / " + str.tostring(minRR, "0.0"), color.white)
-    row(7, "Max risk allowed", str.tostring(math.min(maxStopPct, tgtPct / minRR), "0.00") + "% of entry", color.white)
+    row(6, "Target / min R:R", (useRMode ? str.tostring(minRR, "0.0") + "R in " + str.tostring(bandMinPct, "0.#") + "–" + str.tostring(bandMaxPct, "0.#") + "%" : str.tostring(tgtPct, "0.0") + "% fixed") + " / " + str.tostring(minRR, "0.0"), color.white)
+    row(7, "Max risk allowed", str.tostring(math.min(maxStopPct, capFrac * 100.0 / minRR), "0.00") + "% of entry", color.white)
     row(8, "Qualifying candles (flat)", str.tostring(nCandidates), color.white)
     row(9, "Rejected R:R / stop", str.tostring(nRejected), color.white)
     row(10, "Triggered", str.tostring(nTriggered), color.white)
