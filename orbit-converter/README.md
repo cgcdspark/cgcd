@@ -27,6 +27,9 @@ design and the conversion pipeline before the desktop build.
 
 ## Conversions
 
+The ring only shows formats that make sense for the file you dropped. A PNG offers JPEG,
+WebP, PDF and Word; an Excel file offers PDF, Word, CSV and HTML.
+
 | From | To | Notes |
 |---|---|---|
 | PNG, JPEG, WebP, GIF, BMP | PNG, JPEG, WebP | JPEG quality 92, WebP 90; transparency flattened to white for JPEG; EXIF rotation applied. GIF uses the first frame. |
@@ -34,8 +37,13 @@ design and the conversion pipeline before the desktop build.
 | Several images | One PDF | "Merge into one" bubble appears when 2+ images are dropped |
 | PDF | PNG, JPEG | Rendered at 2× (max 6000 px side). Multi-page PDFs produce a ZIP of pages. |
 | PDF | TXT | Text layer only. Scanned PDFs report "No selectable text" (no OCR yet). |
-| TXT, MD, CSV, LOG, JSON… | PDF | A4, wrapped. CSV/LOG/JSON use a monospace font. UTF-8 or Windows-1252 input. |
-| DOCX | TXT, HTML | Via Mammoth. Formatting is simplified. |
+| Images | Word (DOCX) | One picture per page, upright |
+| PDF | Word (DOCX) | Text only, paragraphs rebuilt from line spacing; larger lines become headings |
+| TXT, MD, LOG, JSON… | PDF, Word | A4, wrapped. LOG/JSON/XML use a monospace font. UTF-8 or Windows-1252 input. |
+| CSV, TSV | Excel, PDF, Word | Detects comma, semicolon or tab. Numbers become numbers; IDs like `007` stay text. |
+| Word (DOCX) | PDF | Simplified layout: headings, bold/italic, lists, tables and pictures. Not a pixel-exact copy. |
+| Word (DOCX) | TXT, HTML | Via Mammoth |
+| Excel (XLSX) | PDF, Word, CSV, HTML | Every visible sheet; formula results, not formulas. Wide sheets print landscape with the header row repeated. Several sheets → ZIP of CSVs. |
 
 Formats are detected from file content, not the extension. A PNG named `photo.jpg` is
 treated as a PNG.
@@ -56,11 +64,18 @@ re-parse for PDFs and ZIPs. A file that fails the check is discarded and reporte
 | PDF → TXT | ✅ | ✅ on a LibreOffice-made PDF |
 | TXT/CSV → PDF | ✅ | ✅ text read back with `pdftotext` |
 | DOCX → TXT/HTML | ✅ | ✅ on a LibreOffice-made DOCX |
+| Word → PDF (simplified layout) | ✅ | ✅ headings, lists, numbering, table, image checked with poppler; visually inspected |
+| Excel → PDF / Word / CSV / HTML | ✅ | ✅ formulas, dates, hidden sheets, 300-row landscape sheet |
+| CSV → Excel / PDF / Word | ✅ | ✅ quotes, embedded newlines, leading zeros, number types (read back with openpyxl) |
+| Text / PDF / images → Word | ✅ | ✅ read back with python-docx; every Word/Excel output also opened by LibreOffice |
+| Refuses old .doc/.xls and password-protected Office files | ✅ | ✅ |
 | Rejects empty, corrupt, mislabelled, password-protected and scanned inputs | ✅ | ✅ 7 cases |
 | Batch queue with progress, failures, Save all | ✅ | ✅ |
 | Phone layout (390 px) | ✅ | ✅ no horizontal scroll |
-| DOCX → PDF | ❌ | Needs LibreOffice. Planned for the Windows app. |
-| Non-Latin text (Hindi, CJK, emoji) in TXT → PDF | ⚠️ | Replaced with `?` and a warning. Needs an embedded Unicode font. |
+| Pixel-exact Word/Excel → PDF (fonts, columns, charts, headers/footers) | ❌ | Needs LibreOffice. Planned for the Windows app. |
+| PowerPoint (PPTX), old .doc/.xls | ❌ | Not started |
+| PDF → Excel (table detection) | ❌ | Unreliable in general; not started |
+| Non-Latin text (Hindi, CJK, emoji) in anything → PDF | ⚠️ | Replaced with `?` and a warning. Needs an embedded Unicode font. Word, Excel and CSV outputs keep it. |
 | OCR for scanned PDFs | ❌ | Out of scope for now |
 | Shift-drag from File Explorer without the window open | ❌ | Needs the Windows app (browsers can't see drags outside their window) |
 | Offline use with no internet at all | ❌ | Libraries load from CDNs. Bundle them for the packaged app. |
@@ -84,7 +99,7 @@ and pypdf.
 ```bash
 cd tests
 npm install                 # pdf.js, pdf-lib, JSZip, Mammoth, served instead of the CDNs
-python3 make_fixtures.py    # needs Pillow, pypdf and LibreOffice
+python3 make_fixtures.py    # needs Pillow, pypdf, python-docx, openpyxl and LibreOffice
 node run-tests.mjs          # needs Playwright with Chromium, and poppler-utils
 ```
 
@@ -98,4 +113,6 @@ All libraries allow commercial use:
 | pdf-lib | 1.17.1 | MIT |
 | JSZip | 3.10.1 | MIT (dual MIT/GPLv3, used under MIT) |
 | Mammoth | 1.8.0 | BSD-2-Clause |
+| docx | 9.0.2 | MIT (loaded only when a Word file is made) |
+| ExcelJS | 4.4.0 | MIT (loaded only when an Excel file is read or made) |
 | Fonts: Sora, Manrope, JetBrains Mono | Google Fonts | SIL Open Font License |

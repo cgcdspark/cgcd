@@ -78,4 +78,65 @@ buf = io.BytesIO()
 img.convert("RGB").save(buf, format="PDF")
 open(p("scanned.pdf"), "wb").write(buf.getvalue())
 
+# Rich Word document (python-docx): headings, bold/italic, lists, table, picture, non-Latin text
+import docx as pydocx
+from docx.shared import Inches
+d = pydocx.Document()
+d.add_heading("Launch Plan", level=1)
+para = d.add_paragraph("This plan has ")
+para.add_run("bold words").bold = True
+para.add_run(" and ")
+para.add_run("italic words").italic = True
+para.add_run(".")
+d.add_heading("Milestones", level=2)
+for item in ["Finish prototype", "Run user tests"]:
+    d.add_paragraph(item, style="List Bullet")
+for item in ["Draft listing", "Submit to store"]:
+    d.add_paragraph(item, style="List Number")
+t = d.add_table(rows=3, cols=3)
+for r, row in enumerate([["Region", "Owner", "Budget"], ["North", "Asha", "1200"], ["South", "Ben", "950"]]):
+    for c, v in enumerate(row):
+        t.cell(r, c).text = v
+d.add_picture(p("alpha.png"), width=Inches(3))
+d.add_paragraph("Greeting in Hindi: नमस्ते दुनिया")
+d.save(p("plan.docx"))
+
+# Workbook (openpyxl), then recalculated by LibreOffice so formula results are cached like a real Excel file
+import datetime
+import openpyxl
+wb = openpyxl.Workbook()
+ws = wb.active
+ws.title = "Sales"
+ws.append(["Region", "Units", "Price", "Revenue", "Date"])
+for i, (region, units, price) in enumerate([("North", 120, 9.5), ("South", 80, 12.25), ("East", 45, 20)], start=2):
+    ws.append([region, units, price, f"=B{i}*C{i}", datetime.date(2026, 3, 13 + i)])
+ws.append(["Total", "=SUM(B2:B4)", None, "=SUM(D2:D4)", None])
+staff = wb.create_sheet("Staff")
+staff.append(["Name", "Role"])
+staff.append(["Asha", "Lead"])
+hidden = wb.create_sheet("Secret")
+hidden.append(["do not export"])
+hidden.sheet_state = "hidden"
+wide = openpyxl.Workbook()
+wws = wide.active
+wws.title = "Wide"
+wws.append([f"Column {c}" for c in range(1, 11)])
+for r in range(300):
+    wws.append([f"r{r}c{c}" for c in range(1, 11)])
+raw = os.path.join(out, "_raw")
+os.makedirs(raw, exist_ok=True)
+wb.save(os.path.join(raw, "sales.xlsx"))
+wide.save(os.path.join(raw, "wide.xlsx"))
+for name in ["sales.xlsx", "wide.xlsx"]:
+    subprocess.run(["soffice", "--headless", "--convert-to", "xlsx:Calc MS Excel 2007 XML", "--outdir", out, os.path.join(raw, name)], check=True, capture_output=True, timeout=180)
+shutil.rmtree(raw)
+
+# CSV edge cases: quoted commas, embedded newline, leading zeros, semicolons elsewhere
+open(p("tricky.csv"), "w", encoding="utf-8").write('id,name,note\n007,"Smith, J","line one\nline two"\n42,Ana,"say ""hi"""\n')
+
+# Legacy / protected Office containers (OLE header) should be refused with a clear reason
+ole = bytes([0xD0, 0xCF, 0x11, 0xE0, 0xA1, 0xB1, 0x1A, 0xE1]) + bytes(504)
+open(p("old.xls"), "wb").write(ole)
+open(p("protected.docx"), "wb").write(ole)
+
 print("fixtures:", sorted(os.listdir(out)))

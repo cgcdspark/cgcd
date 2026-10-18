@@ -27,6 +27,8 @@ const VENDOR = {
   "pdf-lib.min.js": path.join(nm, "pdf-lib/dist/pdf-lib.min.js"),
   "jszip.min.js": path.join(nm, "jszip/dist/jszip.min.js"),
   "mammoth.browser.min.js": path.join(nm, "mammoth/mammoth.browser.min.js"),
+  "index.umd.js": path.join(nm, "docx/build/index.umd.js"),
+  "exceljs.min.js": path.join(nm, "exceljs/dist/exceljs.min.js"),
 };
 const page_html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>${readFileSync(path.join(root, "index.html"), "utf8")}</body></html>`;
 const server = createServer((req, res) => { res.setHeader("content-type", "text/html; charset=utf-8"); res.end(page_html); });
@@ -79,14 +81,17 @@ async function run(names, target) {
 function inspect(r, label) {
   const file = path.join(outDir, `${label}.${r.ext}`);
   writeFileSync(file, Buffer.from(r.b64, "base64"));
-  return JSON.parse(execFileSync("python3", [path.join(here, "validate.py"), file], { encoding: "utf8" }));
+  const office = r.ext === "docx" || r.ext === "xlsx" ? ["--office"] : [];
+  const info = JSON.parse(execFileSync("python3", [path.join(here, "validate.py"), file, ...office], { encoding: "utf8" }));
+  info.file = file;
+  return info;
 }
 
 async function conversion(label, inputs, target, expect) {
   const r = await run([].concat(inputs), target);
   if (r.error || r.sniffError) { check(label, false, r.error || r.sniffError); return; }
   const info = inspect(r, label);
-  const problems = expect(info, r) || [];
+  const problems = [...(expect(info, r) || []), ...(info.office_opens === false ? ["LibreOffice could not open it"] : [])];
   check(`${label}  (${r.ms} ms)`, r.verified && problems.length === 0, [!r.verified && "app verification failed", ...problems].filter(Boolean).join("; "));
 }
 const want = (cond, msg) => (cond ? [] : [msg]);
@@ -115,11 +120,56 @@ await conversion("TXT → PDF (wrapping, unicode fallback)", "notes.txt", "pdf",
   ...want(/Row 149/.test(i.text), "last line missing"),
   ...want(r.warn && /replaced/.test(r.warn), "no warning about replaced characters"),
 ]);
-await conversion("CSV → PDF (monospace)", "data.csv", "pdf", (i) => want(/79,Item 79,276.5/.test(i.text), "rows missing"));
+await conversion("CSV → PDF (table)", "data.csv", "pdf", (i) => want(/79\s+Item 79\s+276\.5/.test(i.text) && /id\s+name\s+amount/.test(i.text), "rows missing"));
 await conversion("Windows-1252 text → PDF", "latin1.txt", "pdf", (i) => want(/Café crème brûlée/.test(i.text), `text: ${i.text?.trim()}`));
 await conversion("DOCX (LibreOffice) → TXT", "report.docx", "txt", (i) => want(/Revenue grew/.test(i.text), "text missing"));
 await conversion("DOCX → HTML", "report.docx", "html", (i) => want(/<!doctype html>/i.test(i.text) && /Revenue grew/.test(i.text), "html missing content"));
 await conversion("PNG with .jpg name detected as PNG → JPEG", "png-named.jpg", "jpg", (i, r) => [...want(r.fmt === "png", `sniffed ${r.fmt}`), ...want(i.format === "JPEG", `format ${i.format}`)]);
+
+console.log("Word and Excel (Word/Excel outputs also opened by LibreOffice)");
+const docText = (i) => [...i.paragraphs.map((p) => p.text), ...i.tables.flat(2)].join("\n");
+await conversion("Word → PDF (headings, lists, table, image)", "plan.docx", "pdf", (i, r) => {
+  const imgs = execFileSync("pdfimages", ["-list", i.file], { encoding: "utf8" }).split("\n").filter((l) => /^\s*\d+\s+\d+\s+image\b/.test(l)).length;
+  return [
+    ...want(/Launch Plan/.test(i.text) && /bold words and italic words/.test(i.text), "body text missing"),
+    ...want(/•\s+Finish prototype/.test(i.text), "bullet missing"),
+    ...want(/1\.\s+Draft listing/.test(i.text) && /2\.\s+Submit to store/.test(i.text), "numbering missing"),
+    ...want(/Region\s+Owner\s+Budget/.test(i.text) && /South\s+Ben\s+950/.test(i.text), "table missing"),
+    ...want(imgs === 1, `expected 1 image, found ${imgs}`),
+    ...want(/replaced/.test(r.warn || ""), "Hindi replacement not reported"),
+  ];
+});
+await conversion("Word (LibreOffice) → PDF", "report.docx", "pdf", (i) => want(/Revenue grew/.test(i.text), "text missing"));
+await conversion("Excel → CSV (2 visible sheets → ZIP, hidden skipped)", "sales.xlsx", "csv", (i) => {
+  const sales = i.entries?.find((e) => /Sales/.test(e.name))?.text || "";
+  return [
+    ...want(i.entries?.length === 2 && !i.entries.some((e) => /Secret/.test(e.name)), `entries ${i.entries?.map((e) => e.name)}`),
+    ...want(/North,120,9\.5,1140,2026-03-15/.test(sales), "formula result or date wrong: " + sales.split("\n")[1]),
+    ...want(/Total,245,,3020,/.test(sales), "totals wrong: " + sales.split("\n")[4]),
+  ];
+});
+await conversion("Excel (single sheet) → CSV", "wide.xlsx", "csv", (i) => want(i.format === "TEXT" && i.text.split("\n").filter(Boolean).length === 301, "row count"));
+await conversion("Excel → PDF (sheets as tables)", "sales.xlsx", "pdf", (i) => want(/Sales/.test(i.text) && /South\s+80\s+12\.25\s+980/.test(i.text) && /Staff/.test(i.text) && !/do not export/.test(i.text), "content wrong"));
+await conversion("Excel wide sheet → PDF (landscape, header repeats)", "wide.xlsx", "pdf", (i) => {
+  const size = execFileSync("pdfinfo", [i.file], { encoding: "utf8" }).match(/Page size:\s+([\d.]+) x ([\d.]+)/);
+  const headers = (i.text.match(/Column 1\s+Column 2/g) || []).length;
+  return [...want(+size[1] > +size[2], "not landscape"), ...want(i.pages > 1 && headers === i.pages, `header on ${headers} of ${i.pages} pages`), ...want(/r299c10/.test(i.text), "last cell missing")];
+});
+await conversion("Excel → Word (tables)", "sales.xlsx", "docx", (i) => want(i.tables.length === 2 && i.tables[0][2].join() === "South,80,12.25,980,2026-03-16", JSON.stringify(i.tables[0]?.[2])));
+await conversion("Excel → HTML", "sales.xlsx", "html", (i) => want(/<table>/.test(i.text) && /<td class="n">1140<\/td>/.test(i.text), "table missing"));
+await conversion("CSV → Excel (types, quotes, leading zeros)", "tricky.csv", "xlsx", (i) => {
+  const rows = i.sheets && Object.values(i.sheets)[0];
+  return [
+    ...want(rows?.[1]?.[0] === "007", `leading zeros lost: ${rows?.[1]?.[0]}`),
+    ...want(rows?.[2]?.[0] === 42, `number not numeric: ${JSON.stringify(rows?.[2]?.[0])}`),
+    ...want(rows?.[1]?.[1] === "Smith, J" && rows?.[1]?.[2] === "line one\nline two" && rows?.[2]?.[2] === 'say "hi"', "quoting wrong"),
+  ];
+});
+await conversion("CSV → Word", "data.csv", "docx", (i) => want(i.tables[0]?.length === 81 && i.tables[0][80].join() === "79,Item 79,276.5", "table wrong"));
+await conversion("Text → Word (keeps Hindi)", "notes.txt", "docx", (i) => want(/नमस्ते/.test(docText(i)) && /Row 149/.test(docText(i)), "text missing"));
+await conversion("PDF → Word (text)", "report.pdf", "docx", (i) => want(/Quarterly Report/.test(docText(i)) && /Revenue grew/.test(docText(i)), docText(i).slice(0, 120)));
+await conversion("PNG → Word (picture)", "alpha.png", "docx", (i) => want(i.images === 1, `images ${i.images}`));
+await conversion("Rotated JPEG → Word (upright)", "rotated.jpg", "docx", (i) => want(i.images === 1, `images ${i.images}`));
 
 console.log("Invalid inputs are rejected with a clear reason");
 for (const [label, file, target, pattern] of [
@@ -130,6 +180,9 @@ for (const [label, file, target, pattern] of [
   ["Broken PDF", "broken.pdf", "png", /could not be read|damaged/i],
   ["Password-protected PDF", "locked.pdf", "txt", /password/i],
   ["Scanned PDF without text → TXT", "scanned.pdf", "txt", /no selectable text/i],
+  ["Scanned PDF → Word", "scanned.pdf", "docx", /no selectable text/i],
+  ["Old .xls", "old.xls", "csv", /older .doc, .xls/i],
+  ["Password-protected .docx", "protected.docx", "pdf", /password protected/i],
 ]) {
   const r = await run([file], target);
   const msg = r.sniffError || r.error || "";
@@ -141,7 +194,7 @@ console.log("Interface");
 await page.setInputFiles("#picker", path.join(fixtures, "alpha.png"));
 await page.waitForSelector(".radial.open .bubble");
 const bubbleLabels = await page.$$eval(".radial .bubble .b-label", (els) => els.map((e) => e.textContent));
-check(`Radial menu shows PNG targets: ${bubbleLabels.join(", ")}`, bubbleLabels.join() === "JPEG,WebP,PDF");
+check(`Radial menu shows PNG targets: ${bubbleLabels.join(", ")}`, bubbleLabels.join() === "JPEG,WebP,PDF,Word");
 const focused = await page.evaluate(() => document.activeElement?.dataset.fmt);
 check("First format is keyboard-focused", focused === "jpg", `focused ${focused}`);
 await page.waitForTimeout(450);
@@ -193,10 +246,23 @@ const dropResult = await page.evaluate(async () => {
   if (bubble) { fire("dragenter", bubble); fire("drop", bubble); }
   return { radialOpen, labels };
 });
-check(`Shift-drag opens radial mid-drag with ${dropResult.labels.join(",")}`, dropResult.radialOpen && dropResult.labels.join() === "pdf");
+check(`Shift-drag opens radial mid-drag with ${dropResult.labels.join(",")}`, dropResult.radialOpen && dropResult.labels.join() === "pdf,docx");
 await page.waitForFunction(() => [...document.querySelectorAll(".job-name")].some((e) => e.textContent === "dragged.txt") && !document.querySelector(".job .spinner"), null, { timeout: 10000 });
 check("Dropping on the PDF bubble converts immediately", await page.evaluate(() => [...document.querySelectorAll(".job")].some((j) => j.textContent.includes("dragged.txt") && j.querySelector(".state.ok"))));
 await page.screenshot({ path: path.join(outDir, "ui-queue.png") });
+
+// Sample Excel file → radial shows Excel targets → PDF
+for (const [sample, expected, pick] of [["xlsx", "pdf,docx,csv,html", "pdf"], ["docx", "pdf,txt,html", "pdf"]]) {
+  const before = (await page.$$(".job .state.ok")).length;
+  await page.click(`[data-sample="${sample}"]`);
+  await page.waitForSelector(".radial.open .bubble");
+  const got = await page.$$eval(".radial .bubble", (els) => els.map((e) => e.dataset.fmt).join());
+  await page.waitForTimeout(400);
+  if (sample === "xlsx") await page.screenshot({ path: path.join(outDir, "ui-radial-excel.png") });
+  await page.click(`.radial .bubble[data-fmt="${pick}"]`);
+  await page.waitForFunction((n) => document.querySelectorAll(".job .state.ok").length > n, before, { timeout: 15000 });
+  check(`${sample} sample offers ${got} and converts to ${pick}`, got === expected);
+}
 
 // Phone width
 await page.setViewportSize({ width: 390, height: 844 });
