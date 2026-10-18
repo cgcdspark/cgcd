@@ -1,11 +1,13 @@
-/* Coverage terminal: sector value chains + company deep dives.
-   Views are rendered from window.SECTORS / COMPANIES / SENTIMENT_MODELS (data.js). */
+/* Coverage terminal: sector value chains (single-line diagrams) + company datasheets.
+   Views are rendered from window.SECTORS / COMPANIES / SENTIMENT_MODELS (data.js)
+   and the equipment drawings in window.ART (art.js). */
 (function () {
   "use strict";
 
   const SECTORS = window.SECTORS;
   const COMPANIES = window.COMPANIES;
   const MODELS = window.SENTIMENT_MODELS;
+  const ART = window.ART || {};
 
   const app = document.getElementById("app");
   const nav = document.getElementById("sector-nav");
@@ -14,11 +16,10 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const fmt = (n, d = 0) => n == null || !isFinite(n) ? "—" : n.toLocaleString("en-IN", { minimumFractionDigits: d, maximumFractionDigits: d });
   const pct = (n, d = 1) => n == null || !isFinite(n) ? "—" : (n * 100).toFixed(d) + "%";
-  const rad = (deg) => (deg * Math.PI) / 180;
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const sign = (c) => (c >= 0 ? "+" : "−") + Math.abs(c).toFixed(1);
 
-  // 24px line icons, drawn with currentColor.
+  // 24px line icons: fallback drawing for products without a line-art plate.
   const ICONS = {
     turbine: '<path d="M3 8h3l2-3h8l2 3h3v8h-3l-2 3H8l-2-3H3z"/><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5V7M14.2 13.2l2 1.2M9.8 13.2l-2 1.2"/>',
     boiler: '<rect x="6" y="6" width="12" height="15" rx="2"/><path d="M9 2.5V6M15 2.5V6M9 10h6M9 16c1-1.4 2-1.4 3 0s2 1.4 3 0"/>',
@@ -59,7 +60,9 @@
     car: '<path d="M3 16v-3l2.2-5h13.6l2.2 5v3z"/><path d="M3 16v2.5h3V16M18 16v2.5h3V16M7 12.5h.01M17 12.5h.01"/>',
     gear: '<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/>'
   };
-  const icon = (name) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ICONS.gear}</svg>`;
+  // Equipment drawing for a product: line art if we have it, else the scaled icon.
+  const pic = (name) => `<svg class="art" viewBox="0 0 120 90" aria-hidden="true">${
+    ART[name] || `<g class="ico" transform="translate(30 15) scale(2.5)">${ICONS[name] || ICONS.gear}</g>`}</svg>`;
 
   function findCompany(id) {
     for (const s of Object.values(SECTORS)) {
@@ -68,12 +71,12 @@
     }
     return null;
   }
-  // All value-chain products a company appears in, within its sector.
+  // Every value-chain product a company appears in, within its sector.
   function footprint(sector, coId) {
     const out = [];
-    sector.chains.forEach((ch) => ch.stages.forEach((st) => st.nodes.forEach((n) => {
+    sector.chains.forEach((ch) => ch.stages.forEach((st, i) => st.nodes.forEach((n, j) => {
       const hit = n.cos.find((c) => c.id === coId);
-      if (hit) out.push({ chain: ch, stage: st, node: n, note: hit.note });
+      if (hit) out.push({ chain: ch, stage: st, node: n, note: hit.note, code: `${i + 1}.${j + 1}` });
     })));
     return out;
   }
@@ -86,72 +89,71 @@
   const bindGo = (root) => root.querySelectorAll("[data-go]").forEach((b) => b.addEventListener("click", () => go(b.dataset.go)));
 
   // ---------- routing ----------
+  let current = { sector: null, company: null };
   function go(token) {
     if (location.hash.slice(1) === token) render();
     else location.hash = token;
   }
   function render() {
-    closeMenus();
     const token = location.hash.slice(1) || "capgoods";
     if (SECTORS[token]) renderSector(SECTORS[token]);
     else if (findCompany(token)) renderCompany(token);
     else renderSector(SECTORS.capgoods);
+    syncNav();
     window.scrollTo({ top: 0 });
   }
   window.addEventListener("hashchange", render);
 
-  // ---------- top bar dropdowns ----------
+  // ---------- sector rail (one dropdown per sector) ----------
   function buildNav() {
     nav.innerHTML = Object.values(SECTORS).map((s) => `
-      <div class="dd">
-        <button class="dd-btn" id="dd-${s.id}" aria-haspopup="true" aria-expanded="false">
-          ${esc(s.name)}
-          <svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <div class="sec" data-sec="${s.id}">
+        <button class="sec-btn" aria-expanded="false" aria-controls="menu-${s.id}">
+          <span class="nm">${esc(s.name)}</span>
+          <span class="ct">${s.coverage.length}<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></span>
         </button>
-        <div class="dd-menu" role="menu" hidden>
-          <button class="dd-open" data-go="${s.id}">Open ${esc(s.name)} value chain <span aria-hidden="true">→</span></button>
-          <div class="dd-label eyebrow">Coverage · ${s.coverage.length} companies</div>
+        <div class="sec-menu" id="menu-${s.id}" hidden>
+          <button class="sec-open" data-go="${s.id}">Value chain <span aria-hidden="true">→</span></button>
           ${s.coverage.map((c) => `
-            <button class="dd-co" data-go="${c.id}" role="menuitem">
+            <button class="sec-co" data-go="${c.id}" data-co="${c.id}">
               <span>${c.live ? '<span class="live-dot" title="Deep dive live"></span>' : ""}${esc(c.name)}</span><span class="tk">${esc(c.ticker)}</span>
             </button>`).join("")}
         </div>
       </div>`).join("");
-
     nav.addEventListener("click", (e) => {
-      const btn = e.target.closest(".dd-btn");
+      const btn = e.target.closest(".sec-btn");
       if (btn) {
         const menu = btn.nextElementSibling;
-        const open = menu.hidden;
-        closeMenus();
-        menu.hidden = !open;
-        btn.setAttribute("aria-expanded", String(open));
+        menu.hidden = !menu.hidden;
+        btn.setAttribute("aria-expanded", String(!menu.hidden));
         return;
       }
       const t = e.target.closest("[data-go]");
       if (t) go(t.dataset.go);
     });
-    document.addEventListener("click", (e) => { if (!e.target.closest(".dd")) closeMenus(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenus(); });
   }
-  function closeMenus() {
-    nav.querySelectorAll(".dd-menu").forEach((m) => (m.hidden = true));
-    nav.querySelectorAll(".dd-btn").forEach((b) => b.setAttribute("aria-expanded", "false"));
-  }
-  function markCurrent(id) {
-    nav.querySelectorAll(".dd-btn").forEach((b) => b.classList.toggle("is-current", b.id === "dd-" + id));
+  function syncNav() {
+    nav.querySelectorAll(".sec").forEach((el) => {
+      const on = el.dataset.sec === current.sector;
+      el.classList.toggle("is-current", on);
+      if (on) {
+        el.querySelector(".sec-menu").hidden = false;
+        el.querySelector(".sec-btn").setAttribute("aria-expanded", "true");
+      }
+      el.querySelectorAll(".sec-co").forEach((b) => b.classList.toggle("on", b.dataset.co === current.company));
+    });
   }
 
   // ======================================================================
-  // Sector page: value chain with company callouts
+  // Sector page: value chain as a single-line diagram
   // ======================================================================
   function renderSector(s) {
-    markCurrent(s.id);
+    current = { sector: s.id, company: null };
     const live = s.coverage.filter((c) => c.live).length;
     const products = s.chains.reduce((a, ch) => a + ch.stages.reduce((b, st) => b + st.nodes.length, 0), 0);
     const byId = Object.fromEntries(s.coverage.map((c) => [c.id, c]));
 
-    // Default selection: first node that features a live company, else the first node.
+    // Open on the first product that features a live company.
     let chainIdx = 0, nodeId = null, coSel = null;
     outer: for (let i = 0; i < s.chains.length; i++) {
       for (const st of s.chains[i].stages) for (const n of st.nodes) {
@@ -161,167 +163,176 @@
     if (!nodeId) nodeId = s.chains[0].stages[0].nodes[0].id;
 
     app.innerHTML = `
-      ${s.draft ? `<div class="banner"><b>Draft universe</b> This company list is a placeholder. Send the coverage list and it will be mapped like Capital Goods.</div>` : ""}
-      <section class="hero fade-in">
+      ${s.draft ? `<div class="hazard"><span class="stripe"></span><p><b>Draft universe.</b> This company list is a placeholder. Send the coverage list and it will be mapped like Capital Goods.</p></div>` : ""}
+      <section class="title-block fade-in">
         <div>
-          <div class="eyebrow">Sector</div>
+          <div class="crumb">Sector · ${s.chains.length} value chain${s.chains.length > 1 ? "s" : ""}</div>
           <h1>${esc(s.name)}</h1>
-          <p>${esc(s.tagline)}. Click a product to see who makes it, or pick a company to light up where it plays.</p>
+          <p class="lede">${esc(s.tagline)}. Click any piece of equipment to see who makes it, or tag a company to trace where it plays.</p>
         </div>
-        <div class="kpis">
-          <div class="kpi"><div class="eyebrow">Companies</div><div class="v">${s.coverage.length}</div></div>
-          <div class="kpi"><div class="eyebrow">Products mapped</div><div class="v">${products}</div></div>
-          <div class="kpi"><div class="eyebrow">Deep dives live</div><div class="v pos">${live}</div></div>
-        </div>
-      </section>
-
-      <section class="card fade-in">
-        <div class="card-head">
-          <div><div class="eyebrow">Coverage</div><h2>Highlight a company</h2></div>
-          <span class="note">Green ticker = deep dive live</span>
-        </div>
-        <div class="chips" id="cov">${s.coverage.map((c) => `
-          <button class="co-chip" data-co="${c.id}" aria-pressed="false">${c.live ? '<span class="live-dot" style="margin-right:0"></span>' : ""}${esc(c.name)} <span class="tk">${esc(c.ticker)}</span></button>`).join("")}
+        <div class="strip">
+          <div><div class="label">Companies</div><div class="v">${s.coverage.length}</div></div>
+          <div><div class="label">Products</div><div class="v">${products}</div></div>
+          <div><div class="label">Deep dives</div><div class="v sig">${live}</div></div>
         </div>
       </section>
 
-      <section class="card fade-in">
-        <div class="card-head">
-          <div><div class="eyebrow">Value chain</div><h2 id="chain-h"></h2></div>
+      <section class="sheet fade-in">
+        <div class="sheet-head"><h2>Trace a company</h2><span class="label">■ = deep dive live</span></div>
+        <div class="sheet-body"><div class="tagrow">${s.coverage.map((c) => `
+          <button class="co-tag" data-co="${c.id}" aria-pressed="false">${c.live ? '<span class="live-dot" style="margin-right:0"></span>' : ""}${esc(c.name)}<span class="tk">${esc(c.ticker)}</span></button>`).join("")}
+        </div></div>
+      </section>
+
+      <section class="sheet fade-in">
+        <div class="sheet-head">
+          <h2 id="chain-h"></h2>
           ${s.chains.length > 1 ? `<div class="tabs" role="tablist">${s.chains.map((ch, i) => `<button class="tab" role="tab" data-ch="${i}" aria-selected="false">${esc(ch.name)}</button>`).join("")}</div>` : ""}
         </div>
-        <div class="chain-layout">
-          <div class="chain-scroll"><div class="chain" id="chain"></div></div>
-          <aside class="detail" id="detail" aria-live="polite"></aside>
+        <div class="sheet-body">
+          <div class="sld-layout">
+            <div class="sld-scroll"><div class="sld" id="sld"></div></div>
+            <aside class="spec" id="spec" aria-live="polite"></aside>
+          </div>
         </div>
       </section>`;
 
-    const chainEl = document.getElementById("chain");
-    const detail = document.getElementById("detail");
+    const sld = document.getElementById("sld");
+    const spec = document.getElementById("spec");
+
+    const nodeById = (id) => {
+      for (const ch of s.chains) for (const [i, st] of ch.stages.entries()) for (const [j, n] of st.nodes.entries()) if (n.id === id) return { ch, st, n, code: `${i + 1}.${j + 1}` };
+      return null;
+    };
+    const inChain = (ch, pred) => ch.stages.some((st) => st.nodes.some(pred));
 
     function drawChain() {
       const ch = s.chains[chainIdx];
       document.getElementById("chain-h").textContent = ch.title;
       app.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-selected", String(+t.dataset.ch === chainIdx)));
-      chainEl.classList.toggle("no-seq", !ch.sequence);
-      chainEl.innerHTML = ch.stages.map((st, i) => `
+      sld.classList.toggle("seq", !!ch.sequence);
+      sld.innerHTML = ch.stages.map((st, i) => `
         <div class="stage">
-          <div class="stage-head"><span class="step">${i + 1}</span><span class="name">${esc(st.name)}</span></div>
-          ${st.nodes.map((n) => {
+          <div class="stage-head"><span class="code">${ch.sequence ? "STG " + (i + 1) : "ZONE"}</span><span class="nm">${esc(st.name)}</span></div>
+          <div class="bus"></div>
+          <div class="feeders">${st.nodes.map((n, j) => {
             const has = coSel && n.cos.some((c) => c.id === coSel);
-            return `<button class="node ${coSel ? (has ? "hit" : "dim") : ""}" data-node="${n.id}" aria-pressed="${n.id === nodeId && !coSel}">
-              <span class="node-top"><span class="icon-tile">${icon(n.icon)}</span><span class="node-name">${esc(n.name)}</span></span>
-              <span class="chips">${n.cos.map((c) => {
-                const co = byId[c.id];
-                return `<span class="tkr ${c.id === coSel ? "sel" : co && co.live ? "live" : ""}">${esc(co ? co.ticker : c.id)}</span>`;
-              }).join("")}</span>
+            return `<button class="plate ${coSel ? (has ? "hit" : "dim") : ""}" data-node="${n.id}" aria-pressed="${n.id === nodeId && !coSel}">
+              <span class="eq">EQ ${i + 1}.${j + 1}</span>
+              <span class="pic">${pic(n.icon)}</span>
+              <span class="cap"><span class="nm">${esc(n.name)}</span>
+                <span class="tickers">${n.cos.map((c) => {
+                  const co = byId[c.id];
+                  return `<span class="tkr ${c.id === coSel ? "sel" : co && co.live ? "live" : ""}">${esc(co ? co.ticker : c.id)}</span>`;
+                }).join("")}</span></span>
             </button>`;
-          }).join("")}
+          }).join("")}</div>
         </div>`).join("");
-      chainEl.querySelectorAll(".node").forEach((b) => b.addEventListener("click", () => {
+      sld.querySelectorAll(".plate").forEach((b) => b.addEventListener("click", () => {
         nodeId = b.dataset.node;
         setCompany(null);
-        if (window.matchMedia("(max-width: 1100px)").matches) detail.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (window.matchMedia("(max-width: 1180px)").matches) spec.scrollIntoView({ behavior: "smooth", block: "start" });
       }));
     }
 
-    function nodeById(id) {
-      for (const ch of s.chains) for (const st of ch.stages) for (const n of st.nodes) if (n.id === id) return { ch, st, n };
-      return null;
-    }
-
-    function drawDetail() {
+    function drawSpec() {
       if (coSel) {
         const co = byId[coSel];
         const fp = footprint(s, coSel);
-        detail.innerHTML = `
-          <div class="eyebrow">${esc(co.ticker)} · ${fp.length} products</div>
-          <h3 style="margin:4px 0 12px">${esc(co.name)}</h3>
-          <ul class="prod-list">${fp.map((f) => `
-            <li><span class="icon-tile">${icon(f.node.icon)}</span><span>${esc(f.node.name)}<small>${esc(f.chain.name)} · ${esc(f.note)}</small></span></li>`).join("")}
-          </ul>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <button class="btn" data-go="${co.id}">${co.live ? "Open deep dive" : "Open profile"} →</button>
-            <button class="btn ghost" id="clear-co">Clear</button>
+        spec.innerHTML = `
+          <div class="spec-band"><span>Company trace</span><b>${esc(co.ticker)}</b></div>
+          <div class="spec-body">
+            <h3>${esc(co.name)}</h3>
+            <div class="label">${fp.length} products across ${new Set(fp.map((f) => f.chain.id)).size} chain(s)</div>
+            <ul class="fp-list">${fp.map((f) => `
+              <li><span class="mini">${pic(f.node.icon)}</span><span><b>${esc(f.node.name)}</b><small>${esc(f.chain.name)} · EQ ${f.code}</small><small>${esc(f.note)}</small></span></li>`).join("")}
+            </ul>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn" data-go="${co.id}">${co.live ? "Open deep dive" : "Open profile"} →</button>
+              <button class="btn ghost" id="clear-co">Clear</button>
+            </div>
           </div>`;
-        bindGo(detail);
-        detail.querySelector("#clear-co").addEventListener("click", () => setCompany(null));
+        bindGo(spec);
+        spec.querySelector("#clear-co").addEventListener("click", () => setCompany(null));
         return;
       }
       const hit = nodeById(nodeId);
-      if (!hit) { detail.innerHTML = ""; return; }
-      const { st, n } = hit;
-      detail.innerHTML = `
-        <div class="detail-head"><span class="icon-tile">${icon(n.icon)}</span>
-          <div><div class="eyebrow">${esc(st.name)}</div><h3>${esc(n.name)}</h3></div></div>
-        <p class="desc">${esc(n.desc)}</p>
-        <div class="eyebrow" style="margin-bottom:8px">Covered companies · ${n.cos.length}</div>
-        <ul class="co-list">${n.cos.map((c) => {
-          const co = byId[c.id];
-          if (!co) return "";
-          return `<li><button class="co-row" data-go="${co.id}">
-            <span class="nm">${esc(co.name)} <span class="mono note">${esc(co.ticker)}</span></span>
-            <span class="go">${co.live ? '<span class="pill live">Live</span>' : "Profile"} →</span>
-            <span class="nt">${esc(c.note)}</span>
-          </button></li>`;
-        }).join("")}</ul>`;
-      bindGo(detail);
+      if (!hit) { spec.innerHTML = ""; return; }
+      const { st, n, code } = hit;
+      spec.innerHTML = `
+        <div class="spec-band"><span>Spec sheet · ${esc(st.name)}</span><b>EQ ${code}</b></div>
+        <div class="pic">${pic(n.icon)}</div>
+        <div class="spec-body">
+          <h3>${esc(n.name)}</h3>
+          <p class="desc">${esc(n.desc)}</p>
+          <div>
+            <div class="label" style="margin-bottom:6px">Made by · ${n.cos.length} covered</div>
+            <ul class="rows">${n.cos.map((c) => {
+              const co = byId[c.id];
+              if (!co) return "";
+              return `<li><button class="row-btn" data-go="${co.id}">
+                <span class="nm">${esc(co.name)}<span class="tk">${esc(co.ticker)}</span></span>
+                <span class="go">${co.live ? '<span class="badge live">Live</span>' : "Profile"} →</span>
+                <span class="nt">${esc(c.note)}</span>
+              </button></li>`;
+            }).join("")}</ul>
+          </div>
+        </div>`;
+      bindGo(spec);
     }
 
     function setCompany(id) {
       coSel = id;
-      app.querySelectorAll(".co-chip").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.co === id)));
-      // Jump to the first chain where the company appears.
-      if (id && !s.chains[chainIdx].stages.some((st) => st.nodes.some((n) => n.cos.some((c) => c.id === id)))) {
-        const i = s.chains.findIndex((ch) => ch.stages.some((st) => st.nodes.some((n) => n.cos.some((c) => c.id === id))));
+      app.querySelectorAll(".co-tag").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.co === id)));
+      const has = (n) => n.cos.some((c) => c.id === id);
+      if (id && !inChain(s.chains[chainIdx], has)) {
+        const i = s.chains.findIndex((ch) => inChain(ch, has));
         if (i >= 0) chainIdx = i;
       }
       drawChain();
-      drawDetail();
+      drawSpec();
     }
 
     app.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => {
       chainIdx = +t.dataset.ch;
-      const first = s.chains[chainIdx].stages[0].nodes[0];
-      if (!nodeById(nodeId) || !s.chains[chainIdx].stages.some((st) => st.nodes.some((n) => n.id === nodeId))) nodeId = first.id;
+      if (!inChain(s.chains[chainIdx], (n) => n.id === nodeId)) nodeId = s.chains[chainIdx].stages[0].nodes[0].id;
       drawChain();
-      drawDetail();
+      drawSpec();
     }));
-    app.querySelectorAll(".co-chip").forEach((b) => b.addEventListener("click", () => setCompany(coSel === b.dataset.co ? null : b.dataset.co)));
+    app.querySelectorAll(".co-tag").forEach((b) => b.addEventListener("click", () => setCompany(coSel === b.dataset.co ? null : b.dataset.co)));
 
     drawChain();
-    drawDetail();
+    drawSpec();
   }
 
   // ======================================================================
-  // Company page
+  // Company page: equipment datasheet
   // ======================================================================
   function renderCompany(id) {
     const loc = findCompany(id);
     const s = loc.sector;
-    markCurrent(s.id);
+    current = { sector: s.id, company: id };
     const data = COMPANIES[id];
     const fp = footprint(s, id);
-    const crumbs = `<nav class="crumbs" aria-label="Breadcrumb"><button data-go="${s.id}">${esc(s.name)}</button><span>/</span><span>${esc(loc.company.name)}</span></nav>`;
+    const crumb = `<div class="crumb"><button data-go="${s.id}">${esc(s.name)}</button><span>/</span><span>NSE: ${esc(loc.company.ticker)}</span></div>`;
     const fpHtml = `
-      <section class="card fade-in">
-        <div class="card-head"><div><div class="eyebrow">Value-chain footprint</div><h2>Where ${esc(loc.company.name)} plays</h2></div>
-          <button class="btn ghost" data-go="${s.id}">View ${esc(s.name)} chain</button></div>
-        <div class="footprint">${fp.map((f) => `
-          <div class="fp"><span class="icon-tile">${icon(f.node.icon)}</span><div><b>${esc(f.node.name)}</b><small>${esc(f.chain.name)} · ${esc(f.stage.name)}</small><small>${esc(f.note)}</small></div></div>`).join("")}
-        </div>
+      <section class="sheet fade-in">
+        <div class="sheet-head"><h2>Value-chain footprint</h2><button class="btn ghost" data-go="${s.id}">${esc(s.name)} chain →</button></div>
+        <div class="sheet-body"><div class="plates-row">${fp.map((f) => `
+          <div class="plate"><span class="eq">EQ ${f.code}</span><span class="pic">${pic(f.node.icon)}</span>
+            <span class="cap"><span class="nm">${esc(f.node.name)}</span><span class="sub">${esc(f.chain.name)} · ${esc(f.stage.name)}</span><span class="sub">${esc(f.note)}</span></span></div>`).join("")}
+        </div></div>
       </section>`;
 
     if (!loc.company.live || !data) {
-      app.innerHTML = `${crumbs}
-        <section class="co-hero fade-in"><div>
-          <div class="eyebrow">NSE: ${esc(loc.company.ticker)}</div>
-          <h1>${esc(loc.company.name)}</h1>
-          <div class="meta"><span class="pill queued">Deep dive in build queue</span></div>
-        </div></section>
+      app.innerHTML = `
+        <section class="title-block fade-in"><div>${crumb}<h1>${esc(loc.company.name)}</h1>
+          <p class="lede">Deep dive in the build queue. The value-chain footprint below comes from the sector map.</p></div>
+          <div class="strip"><div><div class="label">Products</div><div class="v">${fp.length}</div></div><div><div class="label">Status</div><div class="v">QUEUED</div></div></div>
+        </section>
         ${fpHtml}
-        <section class="card empty fade-in">
-          <h2>Deep dive not built yet</h2>
+        <section class="sheet empty fade-in">
+          <div class="label">Next step</div>
           <p>Profile, financials with estimates and the sentiment tracker appear here once the company is added to COMPANIES in data.js and marked live.</p>
           <button class="btn" data-go="${s.id}">Back to ${esc(s.name)}</button>
         </section>`;
@@ -330,54 +341,57 @@
     }
 
     const model = MODELS[data.sentimentModel];
-    app.innerHTML = `${crumbs}
-      <div class="banner"><b>Sample data</b> Financials, price, estimates and sentiment readings are placeholders for the interface build. Replace them with house-model numbers in data.js.</div>
+    app.innerHTML = `
+      <div class="hazard"><span class="stripe"></span><p><b>Sample data.</b> Financials, price, estimates and sentiment readings are placeholders for the interface build. Replace them with house-model numbers in data.js.</p></div>
 
-      <section class="co-hero fade-in">
-        <div>
-          <div class="eyebrow">${esc(data.exchange)}: ${esc(data.ticker)}</div>
-          <h1>${esc(data.name)}</h1>
-          <div class="meta"><span class="tag">${esc(data.hq)}</span><span class="tag">Est. ${data.founded}</span><span class="tag">Rating ${esc(data.rating)}</span><span class="tag">TP ${data.targetPrice ? "₹" + fmt(data.targetPrice) : "—"}</span></div>
-        </div>
-        <div class="quote" id="quote"></div>
+      <section class="title-block fade-in">
+        <div>${crumb}<h1>${esc(data.name)}</h1>
+          <p class="lede">${esc(data.hq)} · Est. ${data.founded} · Rating ${esc(data.rating)} · TP ${data.targetPrice ? "₹" + fmt(data.targetPrice) : "—"}</p></div>
+        <div class="strip" id="quote"></div>
       </section>
 
       <div class="grid-2">
-        <section class="card about fade-in">
-          <div class="card-head"><div><div class="eyebrow">Company</div><h2>About</h2></div></div>
-          ${data.about.map((p) => `<p>${esc(p)}</p>`).join("")}
-          <div class="facts">${data.facts.map((f) => `<div class="fact"><div class="k">${esc(f.k)}</div><div class="v">${esc(f.v)}</div></div>`).join("")}</div>
-        </section>
-        <section class="card fade-in">
-          <div class="card-head"><div><div class="eyebrow">Demand</div><h2>End-market mix</h2></div><span class="note">% of revenue, indicative</span></div>
-          <div class="mix">${data.endMarkets.map((m) => `
-            <div class="mix-row"><span>${esc(m.name)}</span><span class="mono" style="text-align:right">${m.share}%</span>
-            <div class="mix-track"><div class="mix-fill" style="width:${m.share * 2.2}%"></div></div></div>`).join("")}
+        <section class="sheet about fade-in">
+          <div class="sheet-head"><h2>About</h2></div>
+          <div class="sheet-body">
+            ${data.about.map((p) => `<p>${esc(p)}</p>`).join("")}
+            <div class="facts">${data.facts.map((f) => `<div class="fact"><div class="label">${esc(f.k)}</div><div class="v">${esc(f.v)}</div></div>`).join("")}</div>
           </div>
-          <div class="card-head" style="margin:20px 0 10px"><div><div class="eyebrow">Monitor</div><h2>What to watch</h2></div></div>
-          <ul class="watch">${data.watch.map((w) => `<li>${esc(w)}</li>`).join("")}</ul>
+        </section>
+        <section class="sheet fade-in">
+          <div class="sheet-head"><h2>End-market mix</h2><span class="label">% of revenue, indicative</span></div>
+          <div class="sheet-body">
+            <div class="mix">${data.endMarkets.map((m) => `
+              <div class="mix-row"><span>${esc(m.name)}</span><span class="mono" style="text-align:right">${m.share}%</span>
+              <div class="mix-track"><div class="mix-fill" style="width:${m.share * 2.2}%"></div></div></div>`).join("")}
+            </div>
+            <div class="label" style="margin:20px 0 8px">What to watch</div>
+            <ul class="watch">${data.watch.map((w) => `<li>${esc(w)}</li>`).join("")}</ul>
+          </div>
         </section>
       </div>
 
       ${fpHtml}
 
-      <section class="card fade-in">
-        <div class="card-head"><div><div class="eyebrow">Product portfolio</div><h2>Rating spectrum</h2></div><span class="note">MVA on log scale · bubble = share of revenue</span></div>
-        <div class="svg-wrap" id="products"></div>
+      <section class="sheet fade-in">
+        <div class="sheet-head"><h2>Rating spectrum</h2><span class="label">MVA, log scale · circle = share of revenue</span></div>
+        <div class="sheet-body svg-wrap" id="products"></div>
       </section>
 
-      <section class="card fade-in">
-        <div class="card-head"><div><div class="eyebrow">Key financials · ₹ crore</div><h2>Earnings trajectory</h2></div><span class="note">FY ending March · shaded columns are estimates</span></div>
-        <div class="svg-wrap" id="finchart"></div>
-        <div class="legend">
-          <span><span class="sw" style="background:var(--accent)"></span>Revenue (actual)</span>
-          <span><span class="sw" style="background:var(--est-soft);border:1px dashed var(--est)"></span>Revenue (estimate)</span>
-          <span><span class="sw" style="background:var(--ink-2);height:3px;vertical-align:3px"></span>EBITDA margin (right axis)</span>
+      <section class="sheet fade-in">
+        <div class="sheet-head"><h2>Key financials</h2><span class="label">₹ crore · FY ending March</span></div>
+        <div class="sheet-body">
+          <div class="svg-wrap" id="finchart"></div>
+          <div class="legend">
+            <span><span class="sw" style="background:var(--ink)"></span>Revenue, actual</span>
+            <span><span class="sw" style="background:repeating-linear-gradient(-45deg,var(--signal) 0 3px,var(--ink) 3px 4.5px)"></span>Revenue, estimate</span>
+            <span><span class="sw" style="background:var(--neg);height:3px;border:0;vertical-align:3px"></span>EBITDA margin (right axis)</span>
+          </div>
+          <div class="svg-wrap" style="margin-top:18px"><table class="fin" id="fintable"></table></div>
         </div>
-        <div class="svg-wrap" style="margin-top:16px"><table class="fin" id="fintable"></table></div>
       </section>
 
-      <section class="card fade-in" id="sentiment"></section>`;
+      <section class="sheet fade-in" id="sentiment"></section>`;
 
     bindGo(app);
     const state = { cmp: data.cmp };
@@ -395,10 +409,10 @@
     const nextE = data.financials.find((f) => f.e);
     if (!host.dataset.built) {
       host.innerHTML = `
-        <div class="qstat"><label class="eyebrow" for="cmp-input">CMP ₹ (${esc(data.asOf)})</label><div><input id="cmp-input" class="cmp-input" type="number" min="1" step="1" value="${state.cmp}"></div></div>
-        <div class="qstat"><div class="eyebrow">Mkt cap ₹ cr</div><div class="v mono" id="q-mcap"></div></div>
-        <div class="qstat"><div class="eyebrow">P/E ${nextE ? esc(nextE.fy) : ""}</div><div class="v mono" id="q-pe"></div></div>
-        <div class="qstat"><div class="eyebrow">Net cash ₹ cr</div><div class="v mono">${fmt(data.netCash)}</div></div>`;
+        <div><label class="label" for="cmp-input">CMP ₹ · ${esc(data.asOf)}</label><div><input id="cmp-input" class="cmp-input" type="number" min="1" step="1" value="${state.cmp}"></div></div>
+        <div><div class="label">Mkt cap ₹ cr</div><div class="v" id="q-mcap"></div></div>
+        <div><div class="label">P/E ${nextE ? esc(nextE.fy) : ""}</div><div class="v sig" id="q-pe"></div></div>
+        <div><div class="label">Net cash ₹ cr</div><div class="v">${fmt(data.netCash)}</div></div>`;
       host.dataset.built = "1";
       host.querySelector("#cmp-input").addEventListener("input", (e) => {
         const v = parseFloat(e.target.value);
@@ -412,22 +426,22 @@
   // ---------- product rating spectrum ----------
   function drawProducts(host, products) {
     const W = 860, rowH = 52, top = 34, H = top + products.length * rowH + 6;
-    const x0 = 280, x1 = 760;
+    const x0 = 320, x1 = 750;
     const lmin = Math.log10(0.1), lmax = Math.log10(200);
     const X = (mva) => x0 + ((Math.log10(mva) - lmin) / (lmax - lmin)) * (x1 - x0);
     let out = "";
     [0.1, 0.5, 1, 2.5, 10, 50, 160].forEach((t) => {
       out += `<line class="grid" x1="${X(t)}" x2="${X(t)}" y1="${top - 8}" y2="${H - 6}"/><text x="${X(t)}" y="${top - 14}" text-anchor="middle">${t}</text>`;
     });
-    out += `<text x="${x1 + 10}" y="${top - 14}">MVA</text>`;
+    out += `<line class="axis" x1="${x0}" x2="${x1}" y1="${top - 8}" y2="${top - 8}"/><text x="${x1 + 10}" y="${top - 14}">MVA</text>`;
     products.forEach((p, i) => {
       const y = top + i * rowH + rowH / 2;
       const r = 6 + Math.sqrt(p.share) * 2.2;
       out += `<text class="t-strong" x="0" y="${y - 4}">${esc(p.name)}</text>
         <text class="t-sub" x="0" y="${y + 13}">${esc(p.kv)} · ${esc(p.note)}</text>
-        <line class="track" x1="${x0}" x2="${x1}" y1="${y}" y2="${y}" stroke-width="10" stroke-linecap="round"/>
-        <line class="range" x1="${X(p.mvaMin)}" x2="${X(p.mvaMax)}" y1="${y}" y2="${y}" stroke-width="10"/>
-        <text x="${X(p.mvaMax) + 10}" y="${y + 4}">${p.mvaMax}</text>
+        <rect class="track" x="${x0}" y="${y - 6}" width="${x1 - x0}" height="12"/>
+        <rect class="range" x="${X(p.mvaMin)}" y="${y - 6}" width="${X(p.mvaMax) - X(p.mvaMin)}" height="12"/>
+        <text class="t-ink" x="${x1 + 10}" y="${y + 4}">${p.mvaMax}</text>
         <circle class="bubble" cx="${W - 36}" cy="${y}" r="${r}"/>
         <text class="t-ink" x="${W - 36}" y="${y + 4}" text-anchor="middle">${p.share}%</text>`;
     });
@@ -442,31 +456,30 @@
     const step = niceStep(maxRev, 4);
     const top = Math.ceil(maxRev / step) * step;
     const mMax = 0.25;
-    const bw = (iw / fin.length) * 0.5;
+    const bw = (iw / fin.length) * 0.52;
     const xc = (i) => L + (iw / fin.length) * (i + 0.5);
     const yR = (v) => T + ih - (v / top) * ih;
     const yM = (m) => T + ih - (m / mMax) * ih;
-    let out = "";
+    let out = `<defs><pattern id="hatchE" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hatch-bg" width="7" height="7"/><line class="hatch-ln" x1="0" y1="0" x2="0" y2="7"/></pattern></defs>`;
     for (let v = 0; v <= top; v += step) out += `<line class="grid" x1="${L}" x2="${W - R}" y1="${yR(v)}" y2="${yR(v)}"/><text x="${L - 8}" y="${yR(v) + 4}" text-anchor="end">${fmt(v)}</text>`;
     for (let m = 0; m <= mMax + 1e-9; m += 0.05) out += `<text x="${W - R + 8}" y="${yM(m) + 4}">${Math.round(m * 100)}%</text>`;
+    out += `<line class="axis" x1="${L}" x2="${W - R}" y1="${T + ih}" y2="${T + ih}"/>`;
     const firstE = fin.findIndex((f) => f.e);
     if (firstE > 0) {
       const xs = L + (iw / fin.length) * firstE;
-      out += `<rect class="est-zone" x="${xs}" y="${T}" width="${W - R - xs}" height="${ih}"/>
-        <line class="est-line" x1="${xs}" x2="${xs}" y1="${T}" y2="${T + ih}"/>
-        <text class="t-est" x="${xs + 6}" y="${T + 12}" letter-spacing="1">ESTIMATES</text>`;
+      out += `<line class="est-line" x1="${xs}" x2="${xs}" y1="${T}" y2="${T + ih}"/><text class="t-ink" x="${xs + 6}" y="${T + 10}" letter-spacing="1">ESTIMATES →</text>`;
     }
     fin.forEach((f, i) => {
       const x = xc(i) - bw / 2, y = yR(f.revenue);
-      out += `<rect class="${f.e ? "bar-e" : "bar-a"}" x="${x}" y="${y}" width="${bw}" height="${T + ih - y}" rx="4"/>
-        <text class="${f.e ? "t-est" : "t-ink"}" x="${xc(i)}" y="${y - 6}" text-anchor="middle">${fmt(f.revenue)}</text>
-        <text class="${f.e ? "t-est" : ""}" x="${xc(i)}" y="${H - 12}" text-anchor="middle">${f.fy}</text>`;
+      out += `<rect class="${f.e ? "bar-e" : "bar-a"}" x="${x}" y="${y}" width="${bw}" height="${T + ih - y}"/>
+        <text class="t-ink" x="${xc(i)}" y="${y - 6}" text-anchor="middle">${fmt(f.revenue)}</text>
+        <text class="t-ink" x="${xc(i)}" y="${H - 12}" text-anchor="middle">${f.fy}</text>`;
     });
     const pts = fin.map((f, i) => [xc(i), yM(f.ebitda / f.revenue)]);
     out += `<polyline class="line-m" points="${pts.map((p) => p.join(",")).join(" ")}"/>`;
     pts.forEach((p, i) => {
       out += `<circle class="dot-m" cx="${p[0]}" cy="${p[1]}" r="4"/>`;
-      if (i === pts.length - 1) out += `<text class="t-ink" x="${p[0] + 10}" y="${p[1] + 18}">${pct(fin[i].ebitda / fin[i].revenue)}</text>`;
+      if (i === pts.length - 1) out += `<text class="t-neg" x="${p[0] + 10}" y="${p[1] + 18}">${pct(fin[i].ebitda / fin[i].revenue)}</text>`;
     });
     host.innerHTML = `<svg class="chart" style="min-width:560px" viewBox="0 0 ${W} ${H}" role="img" aria-label="Revenue and EBITDA margin">${out}</svg>`;
   }
@@ -495,11 +508,11 @@
   // Sentiment tracker
   // ======================================================================
   const ZONES = [
-    { max: 30, label: "Risk-off", cls: "z0", color: "var(--neg)" },
-    { max: 45, label: "Cautious", cls: "z1", color: "#e9825f" },
-    { max: 60, label: "Neutral", cls: "z2", color: "var(--muted)" },
-    { max: 75, label: "Constructive", cls: "z3", color: "var(--pos)" },
-    { max: 100, label: "Euphoric", cls: "z4", color: "var(--warn)" }
+    { max: 30, label: "Risk-off", color: "var(--neg)" },
+    { max: 45, label: "Cautious", color: "#e9825f" },
+    { max: 60, label: "Neutral", color: "var(--hair)" },
+    { max: 75, label: "Constructive", color: "var(--pos)" },
+    { max: 100, label: "Euphoric", color: "var(--signal)" }
   ];
   const zoneOf = (v) => ZONES.find((z) => v <= z.max) || ZONES[ZONES.length - 1];
 
@@ -516,35 +529,35 @@
     const lastB = s.basket[s.basket.length - 1], lastN = s.nifty[s.nifty.length - 1];
 
     host.innerHTML = `
-      <div class="card-head">
-        <div><div class="eyebrow">Market sentiment · ${esc(model.name)}</div><h2>Sentiment score & drivers</h2></div>
-        <span class="note">Readings are sample inputs. Set them to your current view.</span>
-      </div>
-      <div class="senti">
-        <div class="gauge-box">
-          <div id="gauge"></div>
-          <div class="score-label" id="score-label"></div>
-          <p class="score-sum" id="score-sum"></p>
-          <div class="presets" id="presets">${Object.entries(model.presets).map(([k, p]) => `<button class="preset" data-p="${k}">${esc(p.label)}</button>`).join("")}</div>
+      <div class="sheet-head"><h2>Market sentiment · ${esc(model.name)}</h2><span class="label">Sample readings · set to your view</span></div>
+      <div class="sheet-body">
+        <div class="senti">
+          <div>
+            <div class="meter-score"><span class="num" id="score-num"></span><span class="of">/ 100</span></div>
+            <div class="svg-wrap" id="meter"></div>
+            <span class="zone-label" id="zone"></span>
+            <p class="score-sum" id="score-sum"></p>
+            <div class="presets" id="presets">${Object.entries(model.presets).map(([k, p]) => `<button class="preset" data-p="${k}">${esc(p.label)}</button>`).join("")}</div>
+          </div>
+          <div>
+            <div class="label" style="margin-bottom:10px">Why the score is where it is</div>
+            <ul class="reasons" id="reasons"></ul>
+            <div class="label" style="margin:20px 0 2px">AI-trade transmission</div>
+            <div class="transmission" id="transmission"></div>
+          </div>
         </div>
-        <div>
-          <div class="eyebrow" style="margin-bottom:10px">Why the score is where it is</div>
-          <ul class="reasons" id="reasons"></ul>
-          <div class="eyebrow" style="margin:18px 0 4px">AI-trade transmission</div>
-          <div class="chain-mini" id="chainmini"></div>
-        </div>
-      </div>
-      <div class="grid-2" style="margin-top:24px">
-        <div>
-          <div class="card-head" style="margin-bottom:4px"><div><div class="eyebrow">Scenario lab</div><h2 style="font-size:16px">Factor readings</h2></div><span class="note">contribution in score points</span></div>
-          <div id="factors"></div>
-        </div>
-        <div style="min-width:0">
-          <div class="card-head" style="margin-bottom:4px"><div><div class="eyebrow">Basket vs Nifty · rebased 100</div><h2 style="font-size:16px">Relative performance</h2></div>
-            <span class="note mono">rel ${((lastB / lastN - 1) * 100).toFixed(1)}%</span></div>
-          <div class="svg-wrap" id="idx"></div>
-          <ol class="events" id="events"></ol>
-          <p class="note" style="margin-top:8px">Illustrative series. Basket: ${model.basket.map(esc).join(", ")}.</p>
+        <div class="grid-2" style="margin-top:28px">
+          <div>
+            <div class="label" style="margin-bottom:4px">Scenario lab · factor readings (contribution in score points)</div>
+            <div id="factors"></div>
+          </div>
+          <div style="min-width:0">
+            <div class="label" style="margin-bottom:8px">Basket vs Nifty · rebased 100 · rel ${((lastB / lastN - 1) * 100).toFixed(1)}%</div>
+            <div class="svg-wrap" id="idx"></div>
+            <div class="legend"><span><span class="sw" style="background:var(--ink);height:3px;border:0;vertical-align:3px"></span>Transformer basket</span><span><span class="sw" style="border:0;border-top:2px dashed var(--steel);height:0;vertical-align:3px"></span>Nifty 50</span></div>
+            <ol class="events" id="events"></ol>
+            <p class="note" style="margin-top:8px">Illustrative series. Basket: ${model.basket.map(esc).join(", ")}.</p>
+          </div>
         </div>
       </div>`;
 
@@ -573,15 +586,16 @@
 
     drawIndex(host.querySelector("#idx"), model);
     host.querySelector("#events").innerHTML = model.events.map((ev, i) =>
-      `<li><b class="mono" style="color:${ev.type === "anti" ? "var(--neg)" : "var(--warn)"}">${i + 1} · ${esc(ev.month)}</b> ${esc(ev.label)}</li>`).join("");
+      `<li><b class="mono" style="color:${ev.type === "anti" ? "var(--neg)" : "var(--warn)"}">[${i + 1}] ${esc(ev.month)}</b> ${esc(ev.label)}</li>`).join("");
 
     function update() {
       const r = score(model, vals);
       const z = zoneOf(r.total);
-      drawGauge(host.querySelector("#gauge"), r.total);
-      const lab = host.querySelector("#score-label");
-      lab.textContent = z.label;
-      lab.style.color = z.color;
+      host.querySelector("#score-num").textContent = Math.round(r.total);
+      drawMeter(host.querySelector("#meter"), r.total);
+      const zl = host.querySelector("#zone");
+      zl.textContent = z.label;
+      zl.style.background = z.color;
 
       const drag = [...r.contribs].sort((a, b) => a.c - b.c)[0];
       const lift = [...r.contribs].sort((a, b) => b.c - a.c)[0];
@@ -604,9 +618,9 @@
       const sorted = [...r.contribs].sort((a, b) => Math.abs(b.c) - Math.abs(a.c));
       host.querySelector("#reasons").innerHTML = sorted.slice(0, 4).map(({ f, v, c }) => {
         const tone = v <= -20 ? "bear" : v >= 20 ? "bull" : "neutral";
-        const col = tone === "bear" ? "var(--neg)" : tone === "bull" ? "var(--pos)" : "var(--line-2)";
-        const tcol = tone === "neutral" ? "var(--muted)" : col;
-        return `<li class="reason"><span class="stripe" style="background:${col}"></span><div>
+        const col = tone === "bear" ? "var(--neg)" : tone === "bull" ? "var(--pos)" : "var(--hair)";
+        const tcol = tone === "neutral" ? "var(--steel)" : col;
+        return `<li class="reason"><span style="background:${col}"></span><div>
           <span class="why" style="color:${tcol}">${tone === "bear" ? "Drag" : tone === "bull" ? "Support" : "Neutral"} · ${sign(c)} pts</span>
           <h4>${esc(f.name)}</h4><p>${esc(f[tone])}</p></div></li>`;
       }).join("");
@@ -617,33 +631,28 @@
         : ai >= 20
           ? ["Hyperscaler capex upgrades", "Global AI-power names re-rate", "India transformer basket bid", `${data.ticker} supported`]
           : ["AI trade range-bound", "Global read-through muted", "Domestic orders & earnings drive", `${data.ticker} trades on fundamentals`];
-      const cc = ai <= -20 ? "var(--neg)" : ai >= 20 ? "var(--pos)" : "var(--muted)";
-      host.querySelector("#chainmini").innerHTML = steps.map((t, i) =>
-        `<span class="n" style="${i === steps.length - 1 ? `border-color:${cc};color:${cc};font-weight:600` : ""}">${esc(t)}</span>${i < steps.length - 1 ? '<span class="a">→</span>' : ""}`).join("");
+      const end = ai <= -20 ? "background:var(--neg);color:var(--paper)" : ai >= 20 ? "background:var(--pos);color:var(--paper)" : "background:var(--concrete)";
+      host.querySelector("#transmission").innerHTML = steps.map((t, i) =>
+        `<span class="n" style="${i === steps.length - 1 ? end : ""}">${esc(t)}</span>${i < steps.length - 1 ? '<span class="a" aria-hidden="true"></span>' : ""}`).join("");
 
       host.querySelectorAll(".preset").forEach((b) => b.classList.toggle("on", b.dataset.p === preset));
     }
     update();
   }
 
-  function drawGauge(host, value) {
-    const W = 320, H = 230, cx = 160, cy = 150, r = 120;
-    const pt = (v, rr) => { const a = rad(180 + v * 1.8); return [cx + rr * Math.cos(a), cy + rr * Math.sin(a)]; };
+  // Linear zone meter with a pointer.
+  function drawMeter(host, value) {
+    const W = 360, H = 64, L = 6, R = 6, y = 22, h = 16;
+    const X = (v) => L + (v / 100) * (W - L - R);
     let out = "", from = 0;
     ZONES.forEach((z) => {
-      const [x1, y1] = pt(from + 0.6, r), [x2, y2] = pt(z.max - 0.6, r);
-      out += `<path class="${z.cls}" d="M${x1},${y1} A${r},${r} 0 0 1 ${x2},${y2}" fill="none" stroke-width="14" stroke-linecap="butt"/>`;
+      out += `<rect x="${X(from)}" y="${y}" width="${X(z.max) - X(from)}" height="${h}" style="fill:${z.color};stroke:var(--ink);stroke-width:1.2"/>`;
       from = z.max;
     });
-    for (let t = 0; t <= 100; t += 10) {
-      const [a1, b1] = pt(t, r - 14), [a2, b2] = pt(t, r - (t % 50 === 0 ? 26 : 20));
-      out += `<line class="tick" x1="${a1}" y1="${b1}" x2="${a2}" y2="${b2}"/>`;
-    }
-    [0, 50, 100].forEach((t) => { const [x, y] = pt(t, r - 38); out += `<text x="${x}" y="${y + 4}" text-anchor="middle">${t}</text>`; });
-    const [nx, ny] = pt(value, r - 8);
-    out += `<line class="needle" x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}"/><circle class="hub" cx="${cx}" cy="${cy}" r="6"/>
-      <text class="score" x="${cx}" y="${cy + 50}" text-anchor="middle">${Math.round(value)}</text>
-      <text x="${cx}" y="${cy + 68}" text-anchor="middle" letter-spacing="1.5">OF 100</text>`;
+    for (let t = 0; t <= 100; t += 10) out += `<line x1="${X(t)}" x2="${X(t)}" y1="${y + h}" y2="${y + h + (t % 50 ? 4 : 8)}" style="stroke:var(--ink)"/>`;
+    [0, 50, 100].forEach((t) => (out += `<text x="${X(t)}" y="${H - 2}" text-anchor="${t === 0 ? "start" : t === 100 ? "end" : "middle"}">${t}</text>`));
+    const px = X(value);
+    out += `<path d="M${px - 8},4 L${px + 8},4 L${px},${y - 2} Z" style="fill:var(--ink)"/><line x1="${px}" x2="${px}" y1="${y}" y2="${y + h}" style="stroke:var(--ink);stroke-width:3"/>`;
     host.innerHTML = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Sentiment score ${Math.round(value)} of 100">${out}</svg>`;
   }
 
@@ -657,24 +666,23 @@
     const Y = (v) => T + ih - ((v - lo) / (hi - lo)) * ih;
     let out = "";
     for (let v = lo; v <= hi; v += 10) out += `<line class="grid" x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`;
+    out += `<line class="axis" x1="${L}" x2="${W - R}" y1="${T + ih}" y2="${T + ih}"/>`;
     s.months.forEach((m, i) => { if (i % 3 === 0) out += `<text x="${X(i)}" y="${H - 10}" text-anchor="middle">${m}</text>`; });
-    model.events.forEach((ev, k) => {
-      const i = s.months.indexOf(ev.month);
-      if (i < 0) return;
-      const cls = ev.type === "anti" ? "anti" : "macro";
-      const cy = T + 8 + (k % 2) * 20;
-      out += `<line class="ev-${cls}" x1="${X(i)}" x2="${X(i)}" y1="${T}" y2="${T + ih}"/>
-        <circle class="ev-dot ev-${cls}" cx="${X(i)}" cy="${cy}" r="8" style="stroke-dasharray:none"/>
-        <text class="${cls === "anti" ? "t-neg" : "t-warn"}" x="${X(i)}" y="${cy + 4}" text-anchor="middle">${k + 1}</text>`;
-    });
     const line = (arr) => arr.map((v, i) => `${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(" ");
     const li = s.basket.length - 1;
     out += `<polygon class="a-basket" points="${X(0)},${T + ih} ${line(s.basket)} ${X(li)},${T + ih}"/>
       <polyline class="l-nifty" points="${line(s.nifty)}"/>
       <polyline class="l-basket" points="${line(s.basket)}"/>
-      <circle class="bar-a" cx="${X(li)}" cy="${Y(s.basket[li])}" r="4"/>
-      <text class="t-acc" x="${W - R - 6}" y="${T + ih - 22}" text-anchor="end">— Transformer basket</text>
-      <text x="${W - R - 6}" y="${T + ih - 8}" text-anchor="end">- - Nifty 50</text>`;
+      <circle class="dot-end" cx="${X(li)}" cy="${Y(s.basket[li])}" r="4"/>`;
+    model.events.forEach((ev, k) => {
+      const i = s.months.indexOf(ev.month);
+      if (i < 0) return;
+      const cls = ev.type === "anti" ? "anti" : "macro";
+      const by = T + (k % 2) * 20;
+      out += `<line class="ev-${cls}" x1="${X(i)}" x2="${X(i)}" y1="${T}" y2="${T + ih}"/>
+        <rect class="ev-box" x="${X(i) - 8}" y="${by}" width="16" height="16"/>
+        <text class="${cls === "anti" ? "t-neg" : "t-warn"}" x="${X(i)}" y="${by + 12}" text-anchor="middle">${k + 1}</text>`;
+    });
     host.innerHTML = `<svg class="chart" style="min-width:480px" viewBox="0 0 ${W} ${H}" role="img" aria-label="Transformer basket versus Nifty">${out}</svg>`;
   }
 

@@ -7,21 +7,24 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=DM+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<header class="bar">
-  <div class="bar-inner">
+<div class="shell">
+  <aside class="rail">
     <a class="brand" href="#capgoods" aria-label="Coverage Terminal home">
-      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 18V9M10 18V5M16 18v-7M22 18H2"/></svg></span>
-      <span><span class="brand-name">Coverage Terminal</span><span class="brand-sub">Capital Goods · Consumer Durables · EMS</span></span>
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square" aria-hidden="true"><path d="M3 20h18M6 20V10l6-6 6 6v10M10 20v-5h4v5"/></svg></span>
+      <span><span class="brand-name">Coverage Terminal</span><span class="brand-sub">CAP GOODS · DURABLES · EMS</span></span>
     </a>
+    <div class="label">Sectors</div>
     <nav class="sector-nav" id="sector-nav" aria-label="Sectors"></nav>
-  </div>
-</header>
-<main id="app" aria-live="polite"></main>
+    <div class="rail-foot"><b>■</b> Deep dive live<br>All figures are sample data until replaced with house estimates.</div>
+  </aside>
+  <main id="app" aria-live="polite"></main>
+</div>
 <script src="js/data.js"></script>
+<script src="js/art.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

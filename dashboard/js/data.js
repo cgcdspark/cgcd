@@ -74,7 +74,7 @@ window.SECTORS = {
               desc: "HT and LT cables connecting substations, plants and buildings.",
               cos: [{ id: "kec", note: "Power and telecom cables (KEC Cables)" }] }
           ]},
-          { name: "Consume & automate", nodes: [
+          { name: "End use", nodes: [
             { id: "motors", name: "Motors & drives", icon: "motor",
               desc: "The largest consumer of industrial power; efficiency upgrades drive replacement demand.",
               cos: [{ id: "abb", note: "Motion: LV/HV motors and drives" },

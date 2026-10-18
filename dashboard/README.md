@@ -10,7 +10,7 @@ No build step: open `index.html` in a browser (or serve the folder with `python3
 - **Sentiment tracker**: a 0–100 score built from weighted factor readings (AI-capex trade regime, basket vs Nifty, order inflow, input costs, valuation, flows). It explains the score in words, shows the AI-trade transmission chain (e.g. anti-AI trade hot → global AI-power names sell off → India transformer basket de-rates), and has presets plus sliders for scenarios.
 
 ## Adding the next company
-All content lives in `js/data.js`:
+All content lives in `js/data.js` (equipment drawings for the value chains are in `js/art.js`):
 1. In `SECTORS[sector].coverage`, set `live: true` on the company. Its value-chain products are listed under `chains`.
 2. Add an entry under `COMPANIES` with the same id (copy the `voltamp` block as a template).
 3. Set `sentimentModel` to an existing model in `SENTIMENT_MODELS`, or add a new model (e.g. cables, RAC/cooling, EMS) with its own factors.
