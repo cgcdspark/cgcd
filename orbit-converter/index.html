@@ -1,0 +1,1383 @@
+<title>Orbit Converter</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Convert images, PDFs, text and Word files locally in your browser. Nothing is uploaded.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one calm stage. Drop surface on the left, conversion queue on the right; stacks on phones.
+   The radial menu floats above everything at the drop point. Deliberately single-theme (dark). */
+:root {
+  color-scheme: dark;
+  --bg: #0c0d13;
+  --bg-glow-a: #1a2040;
+  --bg-glow-b: #2a1b2f;
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-hi: rgba(255, 255, 255, 0.08);
+  --surface-solid: #161823;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-hi: rgba(255, 255, 255, 0.18);
+  --fg: #eceef6;
+  --muted: #9ba1b9;
+  --faint: #6a6f88;
+  --accent: #aab9ff;
+  --accent-ink: #10142a;
+  --accent-warm: #ffc6a8;
+  --ok: #72dcae;
+  --err: #ff8d98;
+  --warn: #f3cb7f;
+  --fmt-png: #8ed2ff;
+  --fmt-jpg: #ffc48e;
+  --fmt-webp: #b8f09c;
+  --fmt-gif: #f7a6d6;
+  --fmt-bmp: #c9b6ff;
+  --fmt-pdf: #ff9c9c;
+  --fmt-txt: #d7dae8;
+  --fmt-docx: #9cb8ff;
+  --fmt-html: #f0aaff;
+  --fmt-zip: #e6d39a;
+  --font-display: "Sora", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Manrope", "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Mono", Consolas, ui-monospace, monospace;
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.5, 1);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(1100px 700px at 12% -10%, var(--bg-glow-a), transparent 60%),
+    radial-gradient(900px 600px at 105% 110%, var(--bg-glow-b), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--fg);
+  font: 500 15px/1.5 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.app {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 24px;
+  padding-block: 20px 24px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  max-width: 1240px;
+  margin-inline: auto;
+}
+
+/* Header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-mark {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: conic-gradient(from 200deg, var(--accent), var(--accent-warm), var(--accent));
+  position: relative;
+  box-shadow: 0 6px 24px -6px rgba(170, 185, 255, 0.55);
+}
+.brand-mark::after {
+  content: ""; position: absolute; inset: 9px; border-radius: 50%; background: var(--bg);
+}
+.brand-name { font: 600 18px/1 var(--font-display); letter-spacing: -0.01em; }
+.brand-name span { color: var(--muted); font-weight: 500; }
+.privacy {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 12px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--line);
+  color: var(--muted); font-size: 13px;
+}
+.privacy i { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 3px rgba(114, 220, 174, 0.15); }
+
+/* Main grid */
+.main { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 860px) { .main { grid-template-columns: minmax(0, 1fr); } }
+
+.panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* Drop stage */
+.stage {
+  position: relative;
+  min-height: 460px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: 18px;
+  padding: 40px 24px;
+  overflow: hidden;
+  transition: border-color 200ms var(--ease-out), background 200ms var(--ease-out);
+}
+.stage::before {
+  content: ""; position: absolute; inset: 14px; border-radius: 16px;
+  border: 1.5px dashed var(--line-hi); pointer-events: none;
+  transition: border-color 200ms var(--ease-out), inset 260ms var(--ease-out);
+}
+.stage.is-over { background: linear-gradient(180deg, rgba(170,185,255,0.12), rgba(170,185,255,0.04)); border-color: rgba(170,185,255,0.45); }
+.stage.is-over::before { border-color: var(--accent); inset: 8px; }
+.stage-orb {
+  width: 112px; height: 112px; position: relative; display: grid; place-items: center;
+}
+.stage-orb .ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 1px solid var(--line-hi);
+}
+.stage-orb .ring.r2 { inset: -18px; border-color: var(--line); }
+.stage-orb .ring.r3 { inset: -38px; border-color: rgba(255,255,255,0.05); }
+.stage-orb .dot {
+  position: absolute; width: 10px; height: 10px; border-radius: 50%;
+  top: 50%; left: 50%; margin: -5px;
+  animation: orbit 9s linear infinite;
+}
+.stage-orb .dot.d1 { background: var(--fmt-png); --r: 56px; }
+.stage-orb .dot.d2 { background: var(--fmt-pdf); --r: 74px; animation-duration: 13s; animation-direction: reverse; }
+.stage-orb .dot.d3 { background: var(--fmt-jpg); --r: 94px; animation-duration: 17s; }
+@keyframes orbit { from { transform: rotate(0deg) translateX(var(--r)); } to { transform: rotate(360deg) translateX(var(--r)); } }
+.stage.is-over .stage-orb .ring { border-color: var(--accent); }
+
+.stage h1 {
+  margin: 8px 0 0; font: 600 clamp(24px, 3.2vw, 32px)/1.15 var(--font-display);
+  letter-spacing: -0.02em; text-wrap: balance;
+}
+.stage p.lead { margin: 0; color: var(--muted); max-width: 44ch; text-wrap: balance; }
+.stage-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 12px; border: 1px solid var(--line-hi);
+  background: var(--surface-hi); cursor: pointer;
+  font-weight: 600; font-size: 14px;
+  transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+}
+.btn:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.26); }
+.btn:active { transform: translateY(1px); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+.btn.primary:hover { background: #bcc8ff; }
+.btn.ghost { background: transparent; border-color: transparent; color: var(--muted); padding-inline: 10px; }
+.btn.ghost:hover { color: var(--fg); background: var(--surface); }
+.btn.small { padding: 6px 12px; font-size: 13px; border-radius: 10px; }
+.btn[disabled] { opacity: 0.4; pointer-events: none; }
+kbd {
+  font: 500 12px/1 var(--font-mono); padding: 3px 6px; border-radius: 6px;
+  border: 1px solid var(--line-hi); background: var(--surface); color: var(--fg);
+}
+.hint { color: var(--faint); font-size: 13px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: center; }
+.samples { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 6px; }
+.samples-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); font-weight: 700; }
+.sample-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.sample {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 8px;
+  border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+  cursor: pointer; font-size: 13px; color: var(--muted);
+  transition: color 160ms, border-color 160ms, background 160ms;
+}
+.sample:hover { color: var(--fg); border-color: var(--line-hi); background: var(--surface-hi); }
+.formats-line { font: 400 12px/1.6 var(--font-mono); color: var(--faint); max-width: 52ch; }
+
+/* File glyph */
+.glyph {
+  --c: var(--fmt-txt);
+  position: relative; width: 30px; height: 38px; flex: none;
+  border-radius: 5px 9px 5px 5px;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--c) 32%, #1c1f2c), color-mix(in srgb, var(--c) 12%, #14161f));
+  border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+  display: grid; place-items: end center; padding-bottom: 5px;
+  font: 600 7.5px/1 var(--font-mono); letter-spacing: 0.04em; color: var(--c);
+  clip-path: polygon(0 0, 68% 0, 100% 24%, 100% 100%, 0 100%);
+}
+.glyph::after {
+  content: ""; position: absolute; right: 0; top: 0; width: 32%; height: 24%;
+  background: color-mix(in srgb, var(--c) 55%, #0c0d13);
+  border-bottom-left-radius: 4px;
+}
+.glyph.sm { width: 22px; height: 28px; font-size: 0; padding: 0; border-radius: 4px 7px 4px 4px; }
+.glyph.lg { width: 64px; height: 80px; font-size: 13px; padding-bottom: 10px; border-radius: 9px 16px 9px 9px; }
+.glyph[data-fmt="png"] { --c: var(--fmt-png); }
+.glyph[data-fmt="jpg"] { --c: var(--fmt-jpg); }
+.glyph[data-fmt="webp"] { --c: var(--fmt-webp); }
+.glyph[data-fmt="gif"] { --c: var(--fmt-gif); }
+.glyph[data-fmt="bmp"] { --c: var(--fmt-bmp); }
+.glyph[data-fmt="pdf"] { --c: var(--fmt-pdf); }
+.glyph[data-fmt="txt"] { --c: var(--fmt-txt); }
+.glyph[data-fmt="docx"] { --c: var(--fmt-docx); }
+.glyph[data-fmt="html"] { --c: var(--fmt-html); }
+.glyph[data-fmt="zip"] { --c: var(--fmt-zip); }
+.glyph[data-fmt="unknown"] { --c: var(--faint); }
+
+/* Queue */
+.queue { display: flex; flex-direction: column; min-height: 460px; }
+.queue-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 18px 20px 14px; border-bottom: 1px solid var(--line); flex-wrap: wrap;
+}
+.queue-head h2 { margin: 0; font: 600 16px/1.2 var(--font-display); letter-spacing: -0.01em; }
+.queue-stats { font: 400 12px/1 var(--font-mono); color: var(--muted); margin-top: 6px; font-variant-numeric: tabular-nums; }
+.queue-actions { display: flex; gap: 6px; }
+.queue-list { list-style: none; margin: 0; padding: 8px; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; max-height: 62vh; }
+.queue-empty {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; padding: 40px 28px; text-align: center; color: var(--muted);
+}
+.queue-empty .stack { position: relative; width: 84px; height: 60px; margin-bottom: 6px; }
+.queue-empty .stack .glyph { position: absolute; top: 0; }
+.queue-empty .stack .glyph:nth-child(1) { left: 0; transform: rotate(-10deg); opacity: 0.6; }
+.queue-empty .stack .glyph:nth-child(2) { left: 27px; top: -6px; }
+.queue-empty .stack .glyph:nth-child(3) { left: 54px; transform: rotate(10deg); opacity: 0.6; }
+.queue-empty strong { color: var(--fg); font: 600 15px/1.3 var(--font-display); }
+.queue-empty p { margin: 0; max-width: 34ch; font-size: 14px; }
+
+.job {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center;
+  padding: 12px; border-radius: var(--radius-md);
+  transition: background 160ms var(--ease-out);
+  animation: job-in 320ms var(--ease-out) both;
+}
+.job:hover { background: var(--surface); }
+@keyframes job-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.job-body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.job-title { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.job-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; font-size: 14px; }
+.job-arrow { display: inline-flex; align-items: center; gap: 6px; flex: none; font: 500 11px/1 var(--font-mono); color: var(--muted); }
+.fmt-tag {
+  padding: 3px 7px; border-radius: 6px; font: 600 11px/1 var(--font-mono); letter-spacing: 0.03em;
+  color: var(--c, var(--fg)); background: color-mix(in srgb, var(--c, var(--fg)) 14%, transparent);
+}
+.job-meta { font: 400 12px/1.4 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.job-meta .ok { color: var(--ok); }
+.job-meta .err { color: var(--err); font-family: var(--font-body); font-size: 13px; }
+.job-meta .warn { color: var(--warn); font-family: var(--font-body); font-size: 12.5px; }
+.bar { height: 4px; border-radius: 4px; background: var(--surface-hi); overflow: hidden; }
+.bar > i {
+  display: block; height: 100%; width: var(--p, 0%); border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+  transition: width 240ms var(--ease-out);
+}
+.bar.indeterminate > i { width: 35%; animation: indet 1.1s var(--ease-out) infinite; }
+@keyframes indet { from { transform: translateX(-100%); } to { transform: translateX(300%); } }
+.job-side { display: flex; align-items: center; gap: 6px; }
+.state {
+  display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--surface-hi); flex: none;
+}
+.state svg { width: 14px; height: 14px; }
+.state.ok { background: rgba(114, 220, 174, 0.14); color: var(--ok); }
+.state.err { background: rgba(255, 141, 152, 0.14); color: var(--err); }
+.state.skip { color: var(--faint); }
+.spinner { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--line-hi); border-top-color: var(--accent); animation: spin 800ms linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Footer */
+.foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--faint); font-size: 12.5px; }
+.foot a { color: var(--muted); }
+
+/* Radial menu */
+.radial {
+  position: fixed; inset: 0; z-index: 50;
+  background: radial-gradient(600px 600px at var(--x) var(--y), rgba(12, 13, 19, 0.35), rgba(8, 9, 13, 0.72));
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  opacity: 0; transition: opacity 180ms var(--ease-out);
+}
+.radial.open { opacity: 1; }
+.radial-core {
+  position: absolute; left: var(--x); top: var(--y); width: 0; height: 0;
+}
+.radial-ring {
+  position: absolute; left: calc(var(--R) * -1 - 46px); top: calc(var(--R) * -1 - 46px);
+  width: calc(var(--R) * 2 + 92px); height: calc(var(--R) * 2 + 92px);
+  border-radius: 50%;
+  background:
+    radial-gradient(closest-side, rgba(22, 24, 35, 0.92) 0 calc(100% - 92px), transparent calc(100% - 91px)),
+    radial-gradient(closest-side, transparent calc(100% - 93px), rgba(255,255,255,0.06) calc(100% - 92px), rgba(255,255,255,0.025) 100%);
+  border: 1px solid var(--line);
+  box-shadow: 0 40px 90px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.06);
+  transform: scale(0.6); opacity: 0;
+  transition: transform 340ms var(--ease-spring), opacity 200ms var(--ease-out);
+}
+.radial.open .radial-ring { transform: scale(1); opacity: 1; }
+.radial-center {
+  position: absolute; left: -70px; top: -70px; width: 140px; height: 140px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  text-align: center; pointer-events: none;
+  transform: scale(0.8); opacity: 0;
+  transition: transform 300ms var(--ease-spring) 40ms, opacity 200ms var(--ease-out) 40ms;
+}
+.radial.open .radial-center { transform: scale(1); opacity: 1; }
+.radial-center .count {
+  position: absolute; top: 18px; right: 30px; min-width: 22px; height: 22px; padding: 0 6px;
+  border-radius: 11px; background: var(--accent); color: var(--accent-ink);
+  font: 700 12px/22px var(--font-mono);
+}
+.radial-center .title { font-size: 12px; color: var(--muted); max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.radial-center .title.hot { color: var(--fg); font-weight: 600; }
+.bubble {
+  --c: var(--fg);
+  position: absolute; left: -38px; top: -38px; width: 76px; height: 76px;
+  border-radius: 50%; border: 1px solid color-mix(in srgb, var(--c) 30%, transparent);
+  background: radial-gradient(circle at 30% 25%, color-mix(in srgb, var(--c) 22%, #232636), #181a26 70%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  cursor: pointer; padding: 0;
+  transform: translate(0, 0) scale(0.3); opacity: 0;
+  transition:
+    transform 380ms var(--ease-spring) calc(var(--i) * 28ms),
+    opacity 220ms var(--ease-out) calc(var(--i) * 28ms),
+    box-shadow 180ms var(--ease-out), border-color 180ms var(--ease-out), background 180ms var(--ease-out);
+}
+.radial.open .bubble { transform: translate(var(--bx), var(--by)) scale(1); opacity: 1; }
+.radial.closing .bubble { transition-delay: 0ms; }
+.bubble .b-label { font: 600 14px/1 var(--font-display); color: var(--c); letter-spacing: 0.01em; }
+.bubble .b-sub { font-size: 10.5px; color: var(--muted); line-height: 1.1; max-width: 66px; }
+.bubble:hover, .bubble.is-active, .bubble:focus-visible {
+  border-color: var(--c);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--c) 16%, transparent), 0 16px 32px -10px color-mix(in srgb, var(--c) 45%, transparent);
+  background: radial-gradient(circle at 30% 25%, color-mix(in srgb, var(--c) 34%, #232636), #1b1d2a 70%);
+  outline: none;
+}
+.radial.open .bubble:hover, .radial.open .bubble.is-active, .radial.open .bubble:focus-visible { transform: translate(var(--bx), var(--by)) scale(1.08); transition-delay: 0ms; }
+.bubble[data-fmt="png"] { --c: var(--fmt-png); }
+.bubble[data-fmt="jpg"] { --c: var(--fmt-jpg); }
+.bubble[data-fmt="webp"] { --c: var(--fmt-webp); }
+.bubble[data-fmt="pdf"], .bubble[data-fmt="pdf-merge"] { --c: var(--fmt-pdf); }
+.bubble[data-fmt="txt"] { --c: var(--fmt-txt); }
+.bubble[data-fmt="html"] { --c: var(--fmt-html); }
+.radial-help {
+  position: absolute; left: 50%; bottom: max(24px, env(safe-area-inset-bottom, 0px)); transform: translateX(-50%);
+  display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+  color: var(--muted); font-size: 12.5px; width: max-content; max-width: calc(100% - 32px);
+}
+.radial-help span { display: inline-flex; gap: 6px; align-items: center; }
+.radial-empty {
+  position: absolute; left: -110px; top: 86px; width: 220px; text-align: center; font-size: 13px; color: var(--err);
+}
+
+/* Toasts */
+.toasts {
+  position: fixed; z-index: 60; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  display: flex; flex-direction: column; gap: 8px; align-items: flex-end; pointer-events: none;
+  max-width: calc(100% - 32px);
+}
+.toast {
+  pointer-events: auto; display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px; border-radius: 12px; font-size: 13.5px;
+  background: rgba(24, 26, 38, 0.92); border: 1px solid var(--line-hi);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 20px 40px -16px rgba(0,0,0,0.7);
+  animation: toast-in 280ms var(--ease-spring) both;
+}
+.toast.out { animation: toast-out 200ms var(--ease-out) both; }
+.toast i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+.toast.ok i { background: var(--ok); }
+.toast.err i { background: var(--err); }
+@keyframes toast-in { from { opacity: 0; transform: translateY(10px) scale(0.97); } }
+@keyframes toast-out { to { opacity: 0; transform: translateY(6px); } }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 560px) {
+  .stage { min-height: 400px; padding: 32px 18px; }
+  .queue { min-height: 0; }
+  .job { grid-template-columns: auto minmax(0, 1fr); }
+  .job-side { grid-column: 1 / -1; justify-content: flex-end; }
+}
+@media (hover: none) and (pointer: coarse) { .hint { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; transition-delay: 0ms !important; }
+}
+</style>
+
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true"></div>
+      <div class="brand-name">Orbit <span>Converter</span></div>
+    </div>
+    <div class="privacy" title="Files are read and converted by this page in your browser. Nothing is sent to a server."><i></i>Processed on this device. Nothing is uploaded.</div>
+  </header>
+
+  <main class="main">
+    <section class="panel stage" id="stage" aria-label="Drop files to convert">
+      <div class="stage-orb" aria-hidden="true">
+        <div class="ring r3"></div><div class="ring r2"></div><div class="ring"></div>
+        <div class="dot d1"></div><div class="dot d2"></div><div class="dot d3"></div>
+        <div class="glyph lg" data-fmt="unknown" id="stageGlyph">FILE</div>
+      </div>
+      <h1 id="stageTitle">Drop files to convert</h1>
+      <p class="lead">Release a file and pick its new format from the ring. The converted copy is created separately and your original stays untouched.</p>
+      <div class="stage-actions">
+        <button class="btn primary" id="pickBtn" type="button">Choose files</button>
+      </div>
+      <div class="hint">Hold <kbd>Shift</kbd> while dragging to pick a format before you let go &middot; <kbd>Ctrl</kbd>+<kbd>O</kbd> to browse</div>
+      <div class="samples">
+        <div class="samples-label">No file handy? Try a sample</div>
+        <div class="sample-row">
+          <button class="sample" type="button" data-sample="png"><span class="glyph sm" data-fmt="png"></span>Gradient.png</button>
+          <button class="sample" type="button" data-sample="pdf"><span class="glyph sm" data-fmt="pdf"></span>Quarterly brief.pdf</button>
+          <button class="sample" type="button" data-sample="txt"><span class="glyph sm" data-fmt="txt"></span>Meeting notes.txt</button>
+        </div>
+      </div>
+      <div class="formats-line">PNG &middot; JPEG &middot; WebP &middot; GIF &middot; BMP &middot; PDF &middot; TXT &middot; DOCX</div>
+    </section>
+
+    <section class="panel queue" aria-labelledby="queueTitle">
+      <div class="queue-head">
+        <div>
+          <h2 id="queueTitle">Conversions</h2>
+          <div class="queue-stats" id="queueStats">0 files</div>
+        </div>
+        <div class="queue-actions">
+          <button class="btn small" id="saveAllBtn" type="button" disabled>Save all (.zip)</button>
+          <button class="btn small ghost" id="clearBtn" type="button" disabled>Clear</button>
+        </div>
+      </div>
+      <div class="queue-empty" id="queueEmpty">
+        <div class="stack" aria-hidden="true">
+          <span class="glyph" data-fmt="jpg">JPG</span><span class="glyph" data-fmt="pdf">PDF</span><span class="glyph" data-fmt="png">PNG</span>
+        </div>
+        <strong>Nothing converted yet</strong>
+        <p>Converted files appear here with their size and a check that the output is valid. Save them one by one or all at once.</p>
+      </div>
+      <ul class="queue-list" id="queueList" aria-live="polite" hidden></ul>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Conversions run locally with pdf.js, pdf-lib, JSZip and Mammoth, all open source.</span>
+    <span>Word to PDF and Shift-drag from File Explorer are planned for the Windows app.</span>
+  </footer>
+</div>
+
+<div class="radial" id="radial" hidden role="dialog" aria-modal="true" aria-label="Choose an output format">
+  <div class="radial-core" id="radialCore">
+    <div class="radial-ring"></div>
+    <div class="radial-center">
+      <span class="glyph lg" id="radialGlyph" data-fmt="png">PNG</span>
+      <span class="count" id="radialCount" hidden>2</span>
+      <span class="title" id="radialTitle">photo.png</span>
+    </div>
+    <div id="radialBubbles"></div>
+  </div>
+  <div class="radial-help" id="radialHelp">
+    <span><kbd>&larr;</kbd><kbd>&rarr;</kbd> move</span>
+    <span><kbd>Enter</kbd> convert</span>
+    <span><kbd>1</kbd>&ndash;<kbd>7</kbd> pick</span>
+    <span><kbd>Esc</kbd> cancel</span>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+<input type="file" id="picker" multiple hidden>
+<div class="sr" id="announcer" aria-live="assertive"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
+<script>
+(() => {
+  "use strict";
+
+  /* ---------------------------------------------------------------
+   * Format registry and conversion routes
+   * ------------------------------------------------------------- */
+  const FORMATS = {
+    png:  { label: "PNG",  ext: "png",  mime: "image/png" },
+    jpg:  { label: "JPEG", ext: "jpg",  mime: "image/jpeg" },
+    webp: { label: "WebP", ext: "webp", mime: "image/webp" },
+    gif:  { label: "GIF",  ext: "gif",  mime: "image/gif" },
+    bmp:  { label: "BMP",  ext: "bmp",  mime: "image/bmp" },
+    pdf:  { label: "PDF",  ext: "pdf",  mime: "application/pdf" },
+    txt:  { label: "Text", ext: "txt",  mime: "text/plain" },
+    docx: { label: "Word", ext: "docx", mime: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" },
+    html: { label: "HTML", ext: "html", mime: "text/html" },
+    zip:  { label: "ZIP",  ext: "zip",  mime: "application/zip" },
+  };
+  const IMAGE_SOURCES = ["png", "jpg", "webp", "gif", "bmp"];
+  const ROUTES = {
+    png:  ["jpg", "webp", "pdf"],
+    jpg:  ["png", "webp", "pdf"],
+    webp: ["png", "jpg", "pdf"],
+    gif:  ["png", "jpg", "webp", "pdf"],
+    bmp:  ["png", "jpg", "webp", "pdf"],
+    pdf:  ["png", "jpg", "txt"],
+    txt:  ["pdf"],
+    docx: ["txt", "html"],
+  };
+  const TARGET_INFO = {
+    png:  { label: "PNG",  sub: "Lossless" },
+    jpg:  { label: "JPEG", sub: "Smaller" },
+    webp: { label: "WebP", sub: "Web ready" },
+    pdf:  { label: "PDF",  sub: "Document" },
+    "pdf-merge": { label: "PDF", sub: "Merge into one" },
+    txt:  { label: "TXT",  sub: "Plain text" },
+    html: { label: "HTML", sub: "Web page" },
+  };
+  const TARGET_ORDER = ["png", "jpg", "webp", "pdf", "pdf-merge", "txt", "html"];
+  const TEXT_EXTS = ["txt", "text", "md", "markdown", "csv", "tsv", "log", "ini", "cfg", "json", "xml", "yaml", "yml", ""];
+  const MAX_BYTES = 1024 * 1024 * 1024; // 1 GB: beyond this a browser tab is likely to run out of memory
+  const MAX_CANVAS_SIDE = 16384;
+  const MAX_CANVAS_PIXELS = 268_000_000;
+  const PDF_RENDER_MAX_SIDE = 6000;
+  const JPEG_QUALITY = 0.92;
+  const WEBP_QUALITY = 0.9;
+
+  class ConvertError extends Error {}
+
+  if (window.pdfjsLib) {
+    // pdf.worker.min.js is loaded as a normal script, so pdf.js runs its parser on the main
+    // thread instead of spawning a worker. That keeps it working inside sandboxed frames.
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  }
+
+  const extOf = (name) => { const m = /\.([^.\\/]+)$/.exec(name || ""); return m ? m[1].toLowerCase() : ""; };
+  const baseOf = (name) => (name || "file").replace(/\.[^.\\/]+$/, "") || "file";
+  const tick = () => new Promise((r) => setTimeout(r, 0));
+  const fmtBytes = (n) => {
+    if (n < 1024) return n + " B";
+    if (n < 1024 * 1024) return (n / 1024).toFixed(n < 10240 ? 1 : 0) + " KB";
+    return (n / 1024 / 1024).toFixed(n < 10 * 1024 * 1024 ? 1 : 0) + " MB";
+  };
+  const startsWith = (bytes, sig, offset = 0) => sig.every((b, i) => bytes[offset + i] === b);
+  const ascii = (s) => [...s].map((c) => c.charCodeAt(0));
+
+  /* ---------------------------------------------------------------
+   * Format detection by content, never by extension alone
+   * ------------------------------------------------------------- */
+  async function sniff(file) {
+    if (!file || file.size === 0) return { fmt: null, reason: "The file is empty." };
+    if (file.size > MAX_BYTES) return { fmt: null, reason: "Files over 1 GB are too large to convert in a browser tab." };
+    const head = new Uint8Array(await file.slice(0, 1024).arrayBuffer());
+    if (startsWith(head, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])) return { fmt: "png" };
+    if (startsWith(head, [0xff, 0xd8, 0xff])) return { fmt: "jpg" };
+    if (startsWith(head, ascii("GIF87a")) || startsWith(head, ascii("GIF89a"))) return { fmt: "gif" };
+    if (startsWith(head, ascii("RIFF")) && startsWith(head, ascii("WEBP"), 8)) return { fmt: "webp" };
+    if (startsWith(head, ascii("BM")) && head.length >= 26) return { fmt: "bmp" };
+    const headText = new TextDecoder("latin1").decode(head);
+    if (headText.includes("%PDF-")) return { fmt: "pdf" };
+    if (startsWith(head, [0x50, 0x4b, 0x03, 0x04])) {
+      try {
+        const zip = await JSZip.loadAsync(file);
+        if (zip.file("word/document.xml")) return { fmt: "docx" };
+      } catch (_) { /* fall through */ }
+      return { fmt: null, reason: "This is a ZIP archive, not a supported document." };
+    }
+    const ext = extOf(file.name);
+    if (TEXT_EXTS.includes(ext)) {
+      const sample = new Uint8Array(await file.slice(0, 65536).arrayBuffer());
+      if (sample.includes(0)) return { fmt: null, reason: "This looks like a binary file, not plain text." };
+      try {
+        // A cut multi-byte character at the 64 KB boundary is fine; anything else must be valid UTF-8.
+        new TextDecoder("utf-8", { fatal: true }).decode(sample.subarray(0, file.size > 65536 ? 65532 : sample.length));
+        return { fmt: "txt" };
+      } catch (_) {
+        return { fmt: "txt", note: "Not valid UTF-8; decoded as Windows-1252." };
+      }
+    }
+    const named = FORMATS[ext] || (ext === "jpeg" ? FORMATS.jpg : null);
+    if (named) return { fmt: null, reason: `The file is named .${ext} but isn't a valid ${named.label} file. It may be damaged.` };
+    return { fmt: null, reason: ext ? `.${ext} files aren't supported yet.` : "This file type isn't supported yet." };
+  }
+
+  const mimeToFmt = (mime) => {
+    if (!mime) return null;
+    if (mime === "image/jpeg" || mime === "image/jpg") return "jpg";
+    if (mime === "text/plain" || mime === "text/markdown" || mime === "text/csv") return "txt";
+    for (const [k, v] of Object.entries(FORMATS)) if (v.mime === mime) return k;
+    return null;
+  };
+
+  /* ---------------------------------------------------------------
+   * Converters
+   * ------------------------------------------------------------- */
+  function canvasToBlob(canvas, mime, quality) {
+    return new Promise((resolve, reject) => {
+      canvas.toBlob((b) => (b ? resolve(b) : reject(new ConvertError("The browser could not encode the image."))), mime, quality);
+    });
+  }
+
+  async function decodeImage(file) {
+    let bmp;
+    try {
+      bmp = await createImageBitmap(file, { imageOrientation: "from-image" });
+    } catch (_) {
+      throw new ConvertError("The image could not be decoded. It may be damaged or incomplete.");
+    }
+    if (bmp.width > MAX_CANVAS_SIDE || bmp.height > MAX_CANVAS_SIDE || bmp.width * bmp.height > MAX_CANVAS_PIXELS) {
+      bmp.close();
+      throw new ConvertError(`The image is ${bmp.width}×${bmp.height} px, larger than a browser canvas can hold.`);
+    }
+    return bmp;
+  }
+
+  function drawToCanvas(bmp, flattenWhite) {
+    const canvas = document.createElement("canvas");
+    canvas.width = bmp.width; canvas.height = bmp.height;
+    const ctx = canvas.getContext("2d");
+    if (flattenWhite) { ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+    ctx.drawImage(bmp, 0, 0);
+    return canvas;
+  }
+
+  async function imageToRaster(file, target, progress) {
+    progress(0.15);
+    const bmp = await decodeImage(file);
+    progress(0.45);
+    const canvas = drawToCanvas(bmp, target === "jpg");
+    const dims = `${bmp.width}×${bmp.height}`;
+    bmp.close();
+    const q = target === "jpg" ? JPEG_QUALITY : target === "webp" ? WEBP_QUALITY : undefined;
+    const blob = await canvasToBlob(canvas, FORMATS[target].mime, q);
+    canvas.width = canvas.height = 0;
+    progress(1);
+    return { blob, ext: FORMATS[target].ext, info: dims };
+  }
+
+  // Reads the EXIF orientation tag so JPEGs embedded untouched in a PDF are not shown sideways.
+  function jpegOrientation(bytes) {
+    const v = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    let off = 2;
+    while (off + 4 < v.byteLength) {
+      const marker = v.getUint16(off);
+      const len = v.getUint16(off + 2);
+      if (marker === 0xffe1 && v.getUint32(off + 4) === 0x45786966) {
+        const tiff = off + 10;
+        const little = v.getUint16(tiff) === 0x4949;
+        const ifd = tiff + v.getUint32(tiff + 4, little);
+        const n = v.getUint16(ifd, little);
+        for (let i = 0; i < n; i++) {
+          const e = ifd + 2 + i * 12;
+          if (e + 10 > v.byteLength) break;
+          if (v.getUint16(e, little) === 0x0112) return v.getUint16(e + 8, little);
+        }
+        return 1;
+      }
+      if ((marker & 0xff00) !== 0xff00 || marker === 0xffda) break;
+      off += 2 + len;
+    }
+    return 1;
+  }
+
+  async function imagesToPdf(files, progress) {
+    const { PDFDocument } = PDFLib;
+    const doc = await PDFDocument.create();
+    doc.setProducer("Orbit Converter"); doc.setCreator("Orbit Converter");
+    for (let i = 0; i < files.length; i++) {
+      const { file, fmt } = files[i];
+      let img;
+      const bytes = new Uint8Array(await file.arrayBuffer());
+      try {
+        if (fmt === "jpg" && jpegOrientation(bytes) === 1) img = await doc.embedJpg(bytes);
+        else if (fmt === "png") img = await doc.embedPng(bytes);
+      } catch (_) { img = null; /* re-encode below */ }
+      if (!img) {
+        const bmp = await decodeImage(file);
+        const canvas = drawToCanvas(bmp, fmt === "jpg");
+        bmp.close();
+        const asJpeg = fmt === "jpg";
+        const blob = await canvasToBlob(canvas, asJpeg ? "image/jpeg" : "image/png", asJpeg ? 0.95 : undefined);
+        canvas.width = canvas.height = 0;
+        const data = new Uint8Array(await blob.arrayBuffer());
+        img = asJpeg ? await doc.embedJpg(data) : await doc.embedPng(data);
+      }
+      // 96 px = 1 inch = 72 pt, so the page prints at the image's natural screen size.
+      const w = img.width * 0.75, h = img.height * 0.75;
+      const page = doc.addPage([w, h]);
+      page.drawImage(img, { x: 0, y: 0, width: w, height: h });
+      progress((i + 1) / (files.length + 0.2));
+      await tick();
+    }
+    const out = await doc.save();
+    progress(1);
+    return { blob: new Blob([out], { type: "application/pdf" }), ext: "pdf", info: `${files.length} page${files.length > 1 ? "s" : ""}` };
+  }
+
+  async function openPdf(file) {
+    const data = new Uint8Array(await file.arrayBuffer());
+    try {
+      return await pdfjsLib.getDocument({ data, isEvalSupported: false, disableFontFace: false }).promise;
+    } catch (e) {
+      if (e && e.name === "PasswordException") throw new ConvertError("This PDF is password protected. Remove the password and try again.");
+      throw new ConvertError("The PDF could not be read. It may be damaged or incomplete.");
+    }
+  }
+
+  async function pdfToImages(file, target, progress, base) {
+    const pdf = await openPdf(file);
+    const n = pdf.numPages;
+    const mime = FORMATS[target].mime, ext = FORMATS[target].ext;
+    const outputs = [];
+    for (let p = 1; p <= n; p++) {
+      const page = await pdf.getPage(p);
+      const vp1 = page.getViewport({ scale: 1 });
+      const scale = Math.min(2, PDF_RENDER_MAX_SIDE / Math.max(vp1.width, vp1.height));
+      const vp = page.getViewport({ scale });
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.ceil(vp.width); canvas.height = Math.ceil(vp.height);
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      await page.render({ canvasContext: ctx, viewport: vp }).promise;
+      outputs.push(await canvasToBlob(canvas, mime, target === "jpg" ? JPEG_QUALITY : undefined));
+      canvas.width = canvas.height = 0;
+      page.cleanup();
+      progress(p / (n + (n > 1 ? 0.3 : 0)));
+      await tick();
+    }
+    await pdf.destroy();
+    if (outputs.length === 1) return { blob: outputs[0], ext, info: "1 page" };
+    const zip = new JSZip();
+    const pad = String(n).length;
+    outputs.forEach((b, i) => zip.file(`${base} p${String(i + 1).padStart(pad, "0")}.${ext}`, b));
+    const blob = await zip.generateAsync({ type: "blob", compression: "STORE" });
+    progress(1);
+    return { blob, ext: "zip", nameSuffix: ` ${FORMATS[target].label} pages`, info: `${n} pages in a ZIP`, innerExt: ext, innerCount: n };
+  }
+
+  async function pdfToText(file, progress) {
+    const pdf = await openPdf(file);
+    const pages = [];
+    for (let p = 1; p <= pdf.numPages; p++) {
+      const page = await pdf.getPage(p);
+      const tc = await page.getTextContent();
+      let s = "";
+      for (const it of tc.items) { s += it.str || ""; if (it.hasEOL) s += "\n"; }
+      pages.push(s.replace(/[ \t]+\n/g, "\n").trim());
+      page.cleanup();
+      progress(p / pdf.numPages);
+      if (p % 5 === 0) await tick();
+    }
+    const n = pdf.numPages;
+    await pdf.destroy();
+    const text = pages.join("\n\n\f\n\n").trim();
+    if (!text.replace(/\f/g, "").trim()) {
+      throw new ConvertError("No selectable text found. The PDF is probably scanned images, which needs OCR (not supported yet).");
+    }
+    const blob = new Blob(["﻿" + text.replace(/\n/g, "\r\n") + "\r\n"], { type: "text/plain;charset=utf-8" });
+    return { blob, ext: "txt", info: `${n} page${n > 1 ? "s" : ""} of text` };
+  }
+
+  async function readText(file, note) {
+    const buf = await file.arrayBuffer();
+    let text = new TextDecoder(note ? "windows-1252" : "utf-8").decode(buf);
+    if (text.charCodeAt(0) === 0xfeff) text = text.slice(1);
+    return text;
+  }
+
+  async function textToPdf(file, progress, note) {
+    const { PDFDocument, StandardFonts, rgb } = PDFLib;
+    const raw = (await readText(file, note)).replace(/\r\n?/g, "\n").replace(/\t/g, "    ");
+    const ext = extOf(file.name);
+    const mono = ["csv", "tsv", "log", "json", "xml", "yaml", "yml", "ini", "cfg"].includes(ext);
+    const doc = await PDFDocument.create();
+    doc.setTitle(baseOf(file.name)); doc.setProducer("Orbit Converter"); doc.setCreator("Orbit Converter");
+    const font = await doc.embedFont(mono ? StandardFonts.Courier : StandardFonts.Helvetica);
+    const size = mono ? 9.5 : 11, lh = size * 1.45;
+    const W = 595.28, H = 841.89, M = 64; // A4 with comfortable margins
+    const maxW = W - M * 2;
+
+    // Standard PDF fonts only cover Latin (WinAnsi). Swap anything else for "?" and report it.
+    const okCache = new Map();
+    let replaced = 0;
+    const safe = (s) => {
+      let out = "";
+      for (const ch of s) {
+        let ok = okCache.get(ch);
+        if (ok === undefined) { try { font.encodeText(ch); ok = true; } catch (_) { ok = false; } okCache.set(ch, ok); }
+        if (ok) out += ch; else { out += "?"; replaced++; }
+      }
+      return out;
+    };
+    const width = (s) => font.widthOfTextAtSize(s, size);
+    const wrap = (line) => {
+      if (!line) return [""];
+      const out = [];
+      let cur = "";
+      for (const token of line.split(/(\s+)/)) {
+        if (!token) continue;
+        if (width(cur + token) <= maxW) { cur += token; continue; }
+        if (cur.trim()) { out.push(cur.replace(/\s+$/, "")); cur = ""; }
+        let w = /^\s+$/.test(token) ? "" : token; // a wrapped line never starts with the gap that broke it
+        while (width(w) > maxW) {
+          let k = w.length;
+          while (k > 1 && width(w.slice(0, k)) > maxW) k--;
+          out.push(w.slice(0, k)); w = w.slice(k);
+        }
+        cur = w;
+      }
+      out.push(cur.replace(/\s+$/, ""));
+      return out;
+    };
+
+    const lines = [];
+    const src = raw.split("\n");
+    for (let i = 0; i < src.length; i++) {
+      for (const l of wrap(safe(src[i]))) lines.push(l);
+      if (i % 2000 === 0) { progress(0.6 * (i / src.length)); await tick(); }
+    }
+    while (lines.length > 1 && lines[lines.length - 1] === "") lines.pop();
+    const perPage = Math.floor((H - M * 2) / lh);
+    const pageCount = Math.max(1, Math.ceil(lines.length / perPage));
+    for (let p = 0; p < pageCount; p++) {
+      const page = doc.addPage([W, H]);
+      const chunk = lines.slice(p * perPage, (p + 1) * perPage);
+      chunk.forEach((l, i) => { if (l) page.drawText(l, { x: M, y: H - M - size - i * lh, size, font, color: rgb(0.1, 0.1, 0.12) }); });
+      if (pageCount > 1) {
+        const label = `${p + 1} / ${pageCount}`;
+        page.drawText(label, { x: W - M - font.widthOfTextAtSize(label, 8), y: M / 2, size: 8, font, color: rgb(0.55, 0.55, 0.6) });
+      }
+      if (p % 20 === 0) { progress(0.6 + 0.35 * (p / pageCount)); await tick(); }
+    }
+    const out = await doc.save();
+    progress(1);
+    const warn = replaced ? `${replaced} non-Latin character${replaced > 1 ? "s were" : " was"} replaced with “?”. Full Unicode text is planned.` : null;
+    return { blob: new Blob([out], { type: "application/pdf" }), ext: "pdf", info: `${pageCount} page${pageCount > 1 ? "s" : ""}`, warn };
+  }
+
+  async function docxConvert(file, target, progress) {
+    const arrayBuffer = await file.arrayBuffer();
+    progress(0.3);
+    try {
+      if (target === "txt") {
+        const r = await mammoth.extractRawText({ arrayBuffer });
+        progress(1);
+        const text = r.value.replace(/\n{3,}/g, "\n\n").trim();
+        return { blob: new Blob(["﻿" + text.replace(/\n/g, "\r\n") + "\r\n"], { type: "text/plain;charset=utf-8" }), ext: "txt", info: `${text.length.toLocaleString()} characters` };
+      }
+      const r = await mammoth.convertToHtml({ arrayBuffer });
+      progress(1);
+      const title = baseOf(file.name).replace(/[<>&"]/g, "");
+      const html = `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title>` +
+        `<style>body{font:16px/1.6 Georgia,serif;max-width:46rem;margin:3rem auto;padding:0 1.25rem;color:#1b1b1f}img{max-width:100%}table{border-collapse:collapse}td,th{border:1px solid #ccc;padding:.4rem .6rem}</style>` +
+        `</head><body>\n${r.value}\n</body></html>\n`;
+      return { blob: new Blob([html], { type: "text/html;charset=utf-8" }), ext: "html", info: "Formatting simplified", warn: r.messages.some((m) => m.type === "warning") ? "Some Word formatting could not be carried over." : null };
+    } catch (e) {
+      throw new ConvertError("The Word document could not be read. It may be damaged or password protected.");
+    }
+  }
+
+  async function convert(sources, target, progress = () => {}) {
+    // sources: [{file, fmt, note}] — more than one only for pdf-merge
+    const { file, fmt, note } = sources[0];
+    const base = baseOf(file.name);
+    if (target === "pdf-merge" || (target === "pdf" && IMAGE_SOURCES.includes(fmt))) return imagesToPdf(sources, progress);
+    if (IMAGE_SOURCES.includes(fmt) && ["png", "jpg", "webp"].includes(target)) return imageToRaster(file, target, progress);
+    if (fmt === "pdf" && (target === "png" || target === "jpg")) return pdfToImages(file, target, progress, base);
+    if (fmt === "pdf" && target === "txt") return pdfToText(file, progress);
+    if (fmt === "txt" && target === "pdf") return textToPdf(file, progress, note);
+    if (fmt === "docx" && (target === "txt" || target === "html")) return docxConvert(file, target, progress);
+    throw new ConvertError(`${FORMATS[fmt]?.label || fmt} can't be converted to ${TARGET_INFO[target]?.label || target}.`);
+  }
+
+  /* ---------------------------------------------------------------
+   * Output verification: never hand over a file we haven't checked
+   * ------------------------------------------------------------- */
+  async function checkBytes(bytes, ext) {
+    const h = bytes.subarray(0, 16);
+    switch (ext) {
+      case "png": return startsWith(h, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+      case "jpg": return startsWith(h, [0xff, 0xd8, 0xff]) && bytes[bytes.length - 2] === 0xff && bytes[bytes.length - 1] === 0xd9;
+      case "webp": return startsWith(h, ascii("RIFF")) && startsWith(h, ascii("WEBP"), 8);
+      case "pdf": {
+        if (!startsWith(h, ascii("%PDF-"))) return false;
+        try {
+          const pdf = await pdfjsLib.getDocument({ data: bytes.slice(), isEvalSupported: false }).promise;
+          const ok = pdf.numPages > 0;
+          await pdf.destroy();
+          return ok;
+        } catch (_) { return false; }
+      }
+      case "txt": case "html":
+        try { new TextDecoder("utf-8", { fatal: true }).decode(bytes); return true; } catch (_) { return false; }
+      default: return false;
+    }
+  }
+
+  async function verify(result) {
+    const bytes = new Uint8Array(await result.blob.arrayBuffer());
+    if (!bytes.length) return false;
+    if (result.ext !== "zip") return checkBytes(bytes, result.ext);
+    try {
+      const zip = await JSZip.loadAsync(bytes);
+      const entries = Object.values(zip.files).filter((f) => !f.dir);
+      if (entries.length !== result.innerCount) return false;
+      for (const e of entries) if (!(await checkBytes(await e.async("uint8array"), result.innerExt))) return false;
+      return true;
+    } catch (_) { return false; }
+  }
+
+  /* ---------------------------------------------------------------
+   * Saving: the claude.ai viewer needs its downloads capability;
+   * anywhere else a normal download link works.
+   * ------------------------------------------------------------- */
+  const downloadsCap = (window.claude && typeof window.claude.use === "function")
+    ? window.claude.use("downloads").catch(() => null)
+    : Promise.resolve(undefined);
+
+  async function saveBlob(blob, filename) {
+    const cap = await downloadsCap;
+    if (cap) {
+      try { await cap.save({ filename, data: blob }); toast(`Saved ${filename}`, "ok"); }
+      catch (e) {
+        if (e && e.code === "declined") return;
+        if (e && e.code === "rate_limited") { toast("A save is already waiting for confirmation.", "err"); return; }
+        toast("Saving isn't available in this view.", "err");
+      }
+      return;
+    }
+    if (cap === null) { toast("Saving isn't available in this view.", "err"); return; }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = filename; a.rel = "noopener";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+    toast(`Saved ${filename}`, "ok");
+  }
+
+  /* ---------------------------------------------------------------
+   * Queue
+   * ------------------------------------------------------------- */
+  const $ = (id) => document.getElementById(id);
+  const jobs = [];
+  const usedNames = new Set();
+  let running = false;
+  let jobSeq = 0;
+
+  const ICONS = {
+    ok: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg>',
+    err: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 4v5"/><path d="M8 12h.01"/></svg>',
+    skip: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8"/></svg>',
+    wait: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="5.5" stroke-dasharray="2 2.6"/></svg>',
+  };
+
+  function uniqueName(name) {
+    if (!usedNames.has(name)) { usedNames.add(name); return name; }
+    const b = baseOf(name), e = extOf(name);
+    for (let i = 2; ; i++) { const n = `${b} (${i}).${e}`; if (!usedNames.has(n)) { usedNames.add(n); return n; } }
+  }
+
+  function esc(s) { return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+
+  function addJob(job) {
+    job.id = ++jobSeq;
+    job.progress = 0;
+    jobs.push(job);
+    const li = document.createElement("li");
+    li.className = "job"; li.id = "job-" + job.id;
+    job.el = li;
+    $("queueList").appendChild(li);
+    renderJob(job);
+    renderQueueChrome();
+    return job;
+  }
+
+  function renderJob(job) {
+    const srcFmt = job.sources[0]?.fmt || "unknown";
+    const title = job.sources.length > 1 ? `${job.sources.length} images` : job.sources[0]?.file.name || job.name;
+    const tgt = job.target ? TARGET_INFO[job.target] : null;
+    const tgtFmt = job.target === "pdf-merge" ? "pdf" : job.target;
+    let meta = "", side = "";
+    const inSize = job.sources.reduce((a, s) => a + (s.file?.size || 0), 0);
+    if (job.status === "queued") {
+      meta = `<div class="bar"><i style="--p:0%"></i></div>`;
+      side = `<span class="state" title="Waiting">${ICONS.wait}</span>`;
+    } else if (job.status === "running") {
+      meta = `<div class="bar"><i style="--p:${Math.round(job.progress * 100)}%"></i></div>`;
+      side = `<span class="state" title="Converting"><span class="spinner"></span></span>`;
+    } else if (job.status === "done") {
+      const r = job.result;
+      meta = `<div class="job-meta">${fmtBytes(inSize)} → ${fmtBytes(r.blob.size)} · ${esc(r.info)} · <span class="ok">verified</span></div>` +
+        (r.warn ? `<div class="job-meta"><span class="warn">${esc(r.warn)}</span></div>` : "") +
+        (job.note ? `<div class="job-meta"><span class="warn">${esc(job.note)}</span></div>` : "");
+      side = `<button class="btn small" type="button" data-save="${job.id}" aria-label="Save ${esc(job.outName)}">Save</button><span class="state ok" title="Verified">${ICONS.ok}</span>`;
+    } else if (job.status === "skipped") {
+      meta = `<div class="job-meta">${esc(job.error)}</div>`;
+      side = `<span class="state skip" title="Skipped">${ICONS.skip}</span>`;
+    } else {
+      meta = `<div class="job-meta"><span class="err">${esc(job.error)}</span></div>`;
+      side = (job.target ? `<button class="btn small ghost" type="button" data-retry="${job.id}">Retry</button>` : "") + `<span class="state err" title="Failed">${ICONS.err}</span>`;
+    }
+    job.el.innerHTML =
+      `<span class="glyph" data-fmt="${srcFmt}">${esc(FORMATS[srcFmt]?.ext.toUpperCase() || "?")}</span>` +
+      `<div class="job-body"><div class="job-title"><span class="job-name" title="${esc(title)}">${esc(title)}</span>` +
+      (tgt ? `<span class="job-arrow">→ <span class="fmt-tag" style="--c:var(--fmt-${tgtFmt})">${esc(job.result?.ext === "zip" ? "ZIP" : tgt.label)}</span></span>` : "") +
+      `</div>${meta}</div><div class="job-side">${side}</div>`;
+  }
+
+  function renderQueueChrome() {
+    const has = jobs.length > 0;
+    $("queueEmpty").hidden = has;
+    $("queueList").hidden = !has;
+    const done = jobs.filter((j) => j.status === "done").length;
+    const failed = jobs.filter((j) => j.status === "failed").length;
+    const active = jobs.filter((j) => j.status === "queued" || j.status === "running").length;
+    const parts = [`${jobs.length} file${jobs.length === 1 ? "" : "s"}`];
+    if (done) parts.push(`${done} ready`);
+    if (active) parts.push(`${active} in progress`);
+    if (failed) parts.push(`${failed} failed`);
+    $("queueStats").textContent = parts.join(" · ");
+    $("saveAllBtn").disabled = done < 2;
+    $("clearBtn").disabled = !has || active > 0;
+  }
+
+  async function runQueue() {
+    if (running) return;
+    running = true;
+    try {
+      let job;
+      while ((job = jobs.find((j) => j.status === "queued"))) {
+        job.status = "running"; job.progress = 0.02; renderJob(job); renderQueueChrome();
+        let last = 0;
+        const progress = (p) => {
+          job.progress = p;
+          const now = performance.now();
+          if (now - last > 60 || p >= 1) { last = now; const bar = job.el.querySelector(".bar > i"); if (bar) bar.style.setProperty("--p", Math.round(p * 100) + "%"); }
+        };
+        try {
+          const result = await convert(job.sources, job.target, progress);
+          if (!(await verify(result))) throw new ConvertError("The output failed validation, so it was discarded. Please report this file.");
+          job.result = result;
+          const base = job.sources.length > 1 ? "Combined images" : baseOf(job.sources[0].file.name);
+          job.outName = uniqueName(`${base}${result.nameSuffix || ""}.${result.ext}`);
+          job.status = "done";
+        } catch (e) {
+          job.status = "failed";
+          job.error = e instanceof ConvertError ? e.message : "Something went wrong while converting this file.";
+          if (!(e instanceof ConvertError)) console.error(e);
+        }
+        renderJob(job); renderQueueChrome();
+        await tick();
+      }
+    } finally {
+      running = false;
+    }
+    const done = jobs.filter((j) => j.status === "done" && !j.announced);
+    const failed = jobs.filter((j) => j.status === "failed" && !j.announced);
+    done.concat(failed).forEach((j) => (j.announced = true));
+    if (done.length && !failed.length) toast(done.length === 1 ? `${done[0].outName} is ready` : `${done.length} files ready`, "ok");
+    else if (failed.length) toast(`${done.length} converted, ${failed.length} failed`, failed.length && !done.length ? "err" : "");
+  }
+
+  /* ---------------------------------------------------------------
+   * Intake: files in → radial menu → jobs
+   * ------------------------------------------------------------- */
+  async function intake(fileList, origin, preset) {
+    const files = [...fileList];
+    if (!files.length) return;
+    const sniffed = await Promise.all(files.map(async (file) => ({ file, ...(await sniff(file)) })));
+    const good = sniffed.filter((s) => s.fmt);
+    for (const bad of sniffed.filter((s) => !s.fmt)) {
+      addJob({ sources: [{ file: bad.file, fmt: "unknown" }], target: null, status: "failed", error: bad.reason, announced: true });
+    }
+    if (!good.length) { toast(files.length === 1 ? "That file can't be converted." : "None of those files can be converted.", "err"); return; }
+    const targets = targetsFor(good);
+    if (!targets.length) { toast("These files have no format in common. Drop them in separate groups.", "err"); return; }
+    if (preset && targets.some((t) => t.id === preset)) { enqueue(good, preset); return; }
+    openRadial({ sources: good, targets, origin });
+  }
+
+  function targetsFor(sources) {
+    const counts = new Map();
+    for (const s of sources) for (const t of ROUTES[s.fmt] || []) counts.set(t, (counts.get(t) || 0) + 1);
+    const imgs = sources.filter((s) => IMAGE_SOURCES.includes(s.fmt)).length;
+    if (imgs > 1) counts.set("pdf-merge", imgs);
+    return TARGET_ORDER.filter((t) => counts.has(t)).map((t) => ({ id: t, applies: counts.get(t), total: sources.length }));
+  }
+
+  function enqueue(sources, target) {
+    if (target === "pdf-merge") {
+      const imgs = sources.filter((s) => IMAGE_SOURCES.includes(s.fmt));
+      addJob({ sources: imgs, target, status: "queued" });
+      for (const s of sources.filter((x) => !IMAGE_SOURCES.includes(x.fmt))) {
+        addJob({ sources: [s], target, status: "skipped", error: `Skipped: only images can be merged into a PDF.`, announced: true });
+      }
+    } else {
+      for (const s of sources) {
+        if ((ROUTES[s.fmt] || []).includes(target)) addJob({ sources: [s], target, status: "queued", note: s.note });
+        else addJob({ sources: [s], target, status: "skipped", announced: true,
+          error: s.fmt === target ? `Skipped: already ${FORMATS[s.fmt].label}.` : `Skipped: ${FORMATS[s.fmt].label} can't become ${TARGET_INFO[target].label}.` });
+      }
+    }
+    announce(`Converting to ${TARGET_INFO[target].label}`);
+    runQueue();
+  }
+
+  /* ---------------------------------------------------------------
+   * Radial menu
+   * ------------------------------------------------------------- */
+  const radial = { open: false, sources: null, targets: [], active: -1, returnFocus: null, dragMode: false };
+
+  function placeRadial(origin, count) {
+    const small = window.innerWidth < 520;
+    const R = small ? (count > 5 ? 108 : 96) : (count > 5 ? 136 : count > 3 ? 122 : 112);
+    const margin = R + 56;
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const x = Math.min(Math.max(origin?.x ?? vw / 2, margin), Math.max(margin, vw - margin));
+    const y = Math.min(Math.max(origin?.y ?? vh / 2, margin), Math.max(margin, vh - margin - 40));
+    const el = $("radial");
+    el.style.setProperty("--x", x + "px"); el.style.setProperty("--y", y + "px"); el.style.setProperty("--R", R + "px");
+    return R;
+  }
+
+  function openRadial({ sources, targets, origin, dragMode = false, label }) {
+    const el = $("radial");
+    radial.sources = sources; radial.targets = targets; radial.dragMode = dragMode;
+    if (!radial.open) radial.returnFocus = document.activeElement;
+    const R = placeRadial(origin, targets.length);
+
+    const fmts = [...new Set((sources || []).map((s) => s.fmt))];
+    const glyphFmt = fmts.length === 1 ? fmts[0] : (fmts.every((f) => IMAGE_SOURCES.includes(f)) ? fmts[0] : "unknown");
+    const g = $("radialGlyph");
+    g.dataset.fmt = glyphFmt || "unknown";
+    g.textContent = fmts.length === 1 ? FORMATS[fmts[0]].ext.toUpperCase() : (fmts.length ? "MIX" : "FILE");
+    const n = sources ? sources.length : 0;
+    $("radialCount").hidden = n < 2; $("radialCount").textContent = n;
+    const title = $("radialTitle");
+    title.textContent = label || (n === 1 ? sources[0].file.name : `${n} files`);
+    title.classList.toggle("hot", !!dragMode);
+
+    const wrap = $("radialBubbles");
+    wrap.innerHTML = "";
+    targets.forEach((t, i) => {
+      const a = -Math.PI / 2 + (i * 2 * Math.PI) / targets.length;
+      const info = TARGET_INFO[t.id];
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "bubble"; b.dataset.fmt = t.id; b.dataset.index = i;
+      b.style.setProperty("--bx", (Math.cos(a) * R).toFixed(1) + "px");
+      b.style.setProperty("--by", (Math.sin(a) * R).toFixed(1) + "px");
+      b.style.setProperty("--i", i);
+      const partial = t.total && t.applies < t.total && t.id !== "pdf-merge" ? `${t.applies} of ${t.total}` : info.sub;
+      b.innerHTML = `<span class="b-label">${info.label}</span><span class="b-sub">${partial}</span>`;
+      b.setAttribute("aria-label", `Convert to ${info.label}${t.id === "pdf-merge" ? ", merged into one file" : ""}`);
+      b.addEventListener("click", () => choose(i));
+      b.addEventListener("mouseenter", () => setActive(i, false));
+      b.addEventListener("dragenter", (e) => { e.preventDefault(); setActive(i, false); });
+      b.addEventListener("dragover", (e) => { e.preventDefault(); e.dataTransfer.dropEffect = "copy"; });
+      b.addEventListener("drop", (e) => { e.preventDefault(); e.stopPropagation(); handleBubbleDrop(e, t.id); });
+      wrap.appendChild(b);
+    });
+    $("radialHelp").hidden = dragMode;
+
+    el.hidden = false;
+    el.classList.remove("closing");
+    radial.open = true;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      el.classList.add("open");
+      if (!dragMode) setActive(0, true);
+    }));
+  }
+
+  function setActive(i, focus) {
+    const bs = [...$("radialBubbles").children];
+    if (!bs.length) return;
+    radial.active = (i + bs.length) % bs.length;
+    bs.forEach((b, k) => b.classList.toggle("is-active", k === radial.active));
+    if (focus) bs[radial.active].focus({ preventScroll: true });
+  }
+
+  function closeRadial() {
+    if (!radial.open) return;
+    const el = $("radial");
+    radial.open = false;
+    el.classList.add("closing");
+    el.classList.remove("open");
+    setTimeout(() => { if (!radial.open) { el.hidden = true; $("radialBubbles").innerHTML = ""; } }, 260);
+    const rf = radial.returnFocus;
+    if (rf && rf.focus && document.contains(rf)) rf.focus({ preventScroll: true });
+  }
+
+  function choose(i) {
+    const t = radial.targets[i];
+    if (!t || !radial.sources) return;
+    const b = $("radialBubbles").children[i];
+    if (b) b.classList.add("is-active");
+    const sources = radial.sources;
+    closeRadial();
+    enqueue(sources, t.id);
+  }
+
+  function handleBubbleDrop(e, target) {
+    const files = e.dataTransfer?.files;
+    dragDepth = 0; setStageOver(false);
+    closeRadial();
+    if (files && files.length) intake(files, { x: e.clientX, y: e.clientY }, target);
+  }
+
+  $("radial").addEventListener("pointerdown", (e) => { if (e.target === $("radial") || e.target === $("radialCore")) closeRadial(); });
+  $("radial").addEventListener("keydown", (e) => {
+    if (!radial.open) return;
+    const n = radial.targets.length;
+    if (e.key === "Escape") { e.preventDefault(); closeRadial(); }
+    else if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); setActive(radial.active + 1, true); }
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); setActive(radial.active - 1, true); }
+    else if (e.key === "Home") { e.preventDefault(); setActive(0, true); }
+    else if (e.key === "End") { e.preventDefault(); setActive(n - 1, true); }
+    else if (e.key === "Tab") { e.preventDefault(); setActive(radial.active + (e.shiftKey ? -1 : 1), true); }
+    else if (/^[1-9]$/.test(e.key) && +e.key <= n) { e.preventDefault(); choose(+e.key - 1); }
+  });
+  window.addEventListener("resize", () => { if (radial.open && !radial.dragMode) openRadial({ sources: radial.sources, targets: radial.targets }); });
+
+  /* ---------------------------------------------------------------
+   * Drag and drop, including the Shift-drag radial
+   * ------------------------------------------------------------- */
+  let dragDepth = 0;
+  const isFileDrag = (e) => [...(e.dataTransfer?.types || [])].includes("Files");
+  function setStageOver(on) {
+    $("stage").classList.toggle("is-over", on);
+    $("stageTitle").textContent = on ? "Release to choose a format" : "Drop files to convert";
+  }
+  function dragPreviewTargets(e) {
+    const items = [...(e.dataTransfer?.items || [])].filter((it) => it.kind === "file");
+    const pseudo = items.map((it) => ({ fmt: mimeToFmt(it.type) }));
+    if (!pseudo.length || pseudo.some((p) => !p.fmt)) return null;
+    return { sources: pseudo.map((p) => ({ fmt: p.fmt, file: { name: "", size: 0 } })), targets: targetsFor(pseudo) };
+  }
+
+  window.addEventListener("dragenter", (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepth++;
+    setStageOver(true);
+  });
+  window.addEventListener("dragover", (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "copy";
+    if (e.shiftKey && !radial.open) {
+      const preview = dragPreviewTargets(e);
+      if (preview && preview.targets.length) {
+        const n = preview.sources.length;
+        openRadial({ sources: preview.sources, targets: preview.targets, origin: { x: e.clientX, y: e.clientY }, dragMode: true, label: n > 1 ? `Drop on a format · ${n} files` : "Drop on a format" });
+      }
+    }
+  });
+  window.addEventListener("dragleave", (e) => {
+    if (!isFileDrag(e)) return;
+    dragDepth = Math.max(0, dragDepth - 1);
+    if (dragDepth === 0) { setStageOver(false); if (radial.dragMode) closeRadial(); }
+  });
+  window.addEventListener("drop", (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepth = 0; setStageOver(false);
+    if (radial.open && radial.dragMode) closeRadial();
+    intake(e.dataTransfer.files, { x: e.clientX, y: e.clientY });
+  });
+
+  /* ---------------------------------------------------------------
+   * Buttons, picker, keyboard, samples
+   * ------------------------------------------------------------- */
+  $("pickBtn").addEventListener("click", () => $("picker").click());
+  $("picker").addEventListener("change", (e) => {
+    const r = $("pickBtn").getBoundingClientRect();
+    intake(e.target.files, { x: r.left + r.width / 2, y: r.top + r.height / 2 });
+    e.target.value = "";
+  });
+  window.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "o" && !radial.open) { e.preventDefault(); $("picker").click(); }
+  });
+  $("queueList").addEventListener("click", (e) => {
+    const save = e.target.closest("[data-save]");
+    if (save) { const j = jobs.find((x) => x.id === +save.dataset.save); if (j) saveBlob(j.result.blob, j.outName); return; }
+    const retry = e.target.closest("[data-retry]");
+    if (retry) { const j = jobs.find((x) => x.id === +retry.dataset.retry); if (j) { j.status = "queued"; j.error = null; j.announced = false; renderJob(j); renderQueueChrome(); runQueue(); } }
+  });
+  $("saveAllBtn").addEventListener("click", async () => {
+    const done = jobs.filter((j) => j.status === "done");
+    if (!done.length) return;
+    const zip = new JSZip();
+    done.forEach((j) => zip.file(j.outName, j.result.blob));
+    const blob = await zip.generateAsync({ type: "blob", compression: "STORE" });
+    saveBlob(blob, `Orbit conversions ${new Date().toISOString().slice(0, 10)}.zip`);
+  });
+  $("clearBtn").addEventListener("click", () => {
+    for (let i = jobs.length - 1; i >= 0; i--) {
+      const j = jobs[i];
+      if (j.status === "queued" || j.status === "running") continue;
+      j.el.remove(); jobs.splice(i, 1);
+    }
+    renderQueueChrome();
+  });
+
+  async function makeSample(kind) {
+    if (kind === "png") {
+      const c = document.createElement("canvas"); c.width = 1600; c.height = 1000;
+      const x = c.getContext("2d");
+      const g = x.createLinearGradient(0, 0, 1600, 1000);
+      g.addColorStop(0, "#1d2350"); g.addColorStop(0.55, "#6b5bd6"); g.addColorStop(1, "#ffb08a");
+      x.fillStyle = g; x.fillRect(0, 0, 1600, 1000);
+      for (let i = 0; i < 6; i++) {
+        x.beginPath(); x.arc(1100 + i * 30, 420 - i * 10, 360 - i * 52, 0, Math.PI * 2);
+        x.strokeStyle = `rgba(255,255,255,${0.08 + i * 0.05})`; x.lineWidth = 2; x.stroke();
+      }
+      x.fillStyle = "rgba(255,255,255,0.92)"; x.font = "600 84px Sora, sans-serif"; x.fillText("Orbit", 120, 820);
+      const b = await canvasToBlob(c, "image/png");
+      return new File([b], "Gradient.png", { type: "image/png" });
+    }
+    if (kind === "txt") {
+      const t = [
+        "Product sync, 14 October",
+        "",
+        "Attendees: Design, Engineering, Support",
+        "",
+        "1. Radial menu ships behind the Shift-drag preference.",
+        "2. JPEG quality stays at 92 by default; WebP at 90.",
+        "3. Every output is checked before the Save button appears.",
+        "4. Originals are never modified or moved.",
+        "",
+        "Next steps",
+        "- Add HEIC input once a licence-safe decoder is chosen.",
+        "- Prepare the Microsoft Store listing and screenshots.",
+      ].join("\r\n");
+      return new File([t], "Meeting notes.txt", { type: "text/plain" });
+    }
+    const { PDFDocument, StandardFonts, rgb } = PDFLib;
+    const doc = await PDFDocument.create();
+    const f = await doc.embedFont(StandardFonts.HelveticaBold), r = await doc.embedFont(StandardFonts.Helvetica);
+    const pages = [["Quarterly brief", "Conversions per user rose 18% after the radial menu launched.", [42, 58, 66, 81]],
+                   ["Formats in use", "PDF remains the most requested output, followed by JPEG.", [74, 52, 31, 18]]];
+    for (const [title, body, bars] of pages) {
+      const p = doc.addPage([595.28, 841.89]);
+      p.drawRectangle({ x: 0, y: 760, width: 595.28, height: 82, color: rgb(0.11, 0.13, 0.27) });
+      p.drawText(title, { x: 56, y: 790, size: 24, font: f, color: rgb(1, 1, 1) });
+      p.drawText(body, { x: 56, y: 700, size: 12, font: r, color: rgb(0.15, 0.15, 0.2) });
+      bars.forEach((v, i) => p.drawRectangle({ x: 56 + i * 120, y: 420, width: 80, height: v * 3, color: rgb(0.42 + i * 0.1, 0.36, 0.84 - i * 0.12) }));
+    }
+    const bytes = await doc.save();
+    return new File([bytes], "Quarterly brief.pdf", { type: "application/pdf" });
+  }
+  document.querySelectorAll("[data-sample]").forEach((btn) => btn.addEventListener("click", async () => {
+    const r = btn.getBoundingClientRect();
+    const file = await makeSample(btn.dataset.sample);
+    intake([file], { x: r.left + r.width / 2, y: r.top - 150 });
+  }));
+
+  /* ---------------------------------------------------------------
+   * Toasts and announcements
+   * ------------------------------------------------------------- */
+  function toast(msg, kind = "") {
+    const t = document.createElement("div");
+    t.className = "toast " + kind;
+    t.innerHTML = `<i></i><span></span>`;
+    t.lastChild.textContent = msg;
+    $("toasts").appendChild(t);
+    while ($("toasts").children.length > 3) $("toasts").firstElementChild.remove();
+    setTimeout(() => { t.classList.add("out"); setTimeout(() => t.remove(), 220); }, 3600);
+  }
+  function announce(msg) { $("announcer").textContent = msg; }
+
+  if (!window.pdfjsLib || !window.PDFLib || !window.JSZip) {
+    toast("Some conversion libraries didn't load. Check your connection and reload.", "err");
+  }
+
+  // Exposed for automated tests.
+  window.Orbit = { sniff, convert, verify, targetsFor, ROUTES };
+})();
+</script>

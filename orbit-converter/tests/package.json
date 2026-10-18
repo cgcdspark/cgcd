@@ -1,0 +1,17 @@
+{
+  "name": "orbit-converter-tests",
+  "version": "1.0.0",
+  "description": "End-to-end tests for Orbit Converter",
+  "scripts": {
+    "fixtures": "python3 make_fixtures.py",
+    "test": "node run-tests.mjs"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "jszip": "3.10.1",
+    "mammoth": "1.8.0",
+    "pdf-lib": "1.17.1",
+    "pdfjs-dist": "3.11.174"
+  },
+  "private": true
+}
