@@ -1,110 +1,286 @@
 /* ==========================================================================
    Coverage universe data.
-   Everything the interface renders comes from this file. To add a company:
-     1. Set its `live: true` in SECTORS.
-     2. Add an entry under COMPANIES keyed by the same id.
-     3. Point `sentimentModel` at an existing model in SENTIMENT_MODELS or add one.
-   All financials, prices and sentiment readings below are SAMPLE figures used
-   to build the interface. Replace them with house-model numbers before use.
+   Everything the interface renders comes from this file.
+   - SECTORS[x].coverage: the companies in coverage (order = dropdown order).
+   - SECTORS[x].chains: value chains drawn on the sector page. Each product node
+     lists the covered companies that make it, with a one-line note.
+   To switch on a company deep dive: set `live: true` in coverage and add an
+   entry under COMPANIES keyed by the same id.
+   All financials, prices and sentiment readings are SAMPLE figures used to
+   build the interface. Product notes should be checked against filings.
    ========================================================================== */
 
 window.SECTORS = {
   capgoods: {
     id: "capgoods",
     name: "Capital Goods",
-    short: "CAP GOODS",
-    tagline: "Power T&D, electrification, EPC and industrial equipment",
-    segments: [
-      { id: "tnd", name: "Transformers & T&D Equipment", companies: [
-        { id: "voltamp", name: "Voltamp Transformers", ticker: "VOLTAMP", live: true },
-        { id: "taril", name: "Transformers & Rectifiers", ticker: "TARIL" },
-        { id: "powerindia", name: "Hitachi Energy India", ticker: "POWERINDIA" },
-        { id: "gvtd", name: "GE Vernova T&D India", ticker: "GVT&D" },
-        { id: "enrin", name: "Siemens Energy India", ticker: "ENRIN" },
-        { id: "shilchar", name: "Shilchar Technologies", ticker: "SHILCHAR" },
-        { id: "indotech", name: "Indo Tech Transformers", ticker: "INDOTECH" }
-      ]},
-      { id: "heavy", name: "Heavy Electricals & Automation", companies: [
-        { id: "siemens", name: "Siemens", ticker: "SIEMENS" },
-        { id: "abb", name: "ABB India", ticker: "ABB" },
-        { id: "cgpower", name: "CG Power", ticker: "CGPOWER" },
-        { id: "bhel", name: "BHEL", ticker: "BHEL" }
-      ]},
-      { id: "cables", name: "Cables & Wires", companies: [
-        { id: "kei", name: "KEI Industries", ticker: "KEI" },
-        { id: "polycab", name: "Polycab India", ticker: "POLYCAB" }
-      ]},
-      { id: "epc", name: "EPC & Infrastructure", companies: [
-        { id: "lt", name: "Larsen & Toubro", ticker: "LT" },
-        { id: "kec", name: "KEC International", ticker: "KEC" },
-        { id: "kpil", name: "Kalpataru Projects", ticker: "KPIL" }
-      ]},
-      { id: "process", name: "Energy & Process Equipment", companies: [
-        { id: "thermax", name: "Thermax", ticker: "THERMAX" },
-        { id: "triturbine", name: "Triveni Turbine", ticker: "TRITURBINE" },
-        { id: "cummins", name: "Cummins India", ticker: "CUMMINSIND" }
-      ]},
-      { id: "defence", name: "Defence", companies: [
-        { id: "bel", name: "Bharat Electronics", ticker: "BEL" },
-        { id: "hal", name: "Hindustan Aeronautics", ticker: "HAL" }
-      ]}
+    tagline: "Electrification, power equipment, industrial consumables and EPC",
+    coverage: [
+      { id: "abb", name: "ABB India", ticker: "ABB" },
+      { id: "siemens", name: "Siemens", ticker: "SIEMENS" },
+      { id: "cgpower", name: "CG Power & Industrial Solutions", ticker: "CGPOWER" },
+      { id: "cummins", name: "Cummins India", ticker: "CUMMINSIND" },
+      { id: "aia", name: "AIA Engineering", ticker: "AIAENG" },
+      { id: "grindwell", name: "Grindwell Norton", ticker: "GRINDWELL" },
+      { id: "triveni", name: "Triveni Turbine", ticker: "TRITURBINE" },
+      { id: "cumi", name: "Carborundum Universal", ticker: "CARBORUNIV" },
+      { id: "elgi", name: "Elgi Equipments", ticker: "ELGIEQUIP" },
+      { id: "kec", name: "KEC International", ticker: "KEC" },
+      { id: "kpil", name: "Kalpataru Projects International", ticker: "KPIL" },
+      { id: "voltamp", name: "Voltamp Transformers", ticker: "VOLTAMP", live: true },
+      { id: "thermax", name: "Thermax", ticker: "THERMAX" }
+    ],
+    chains: [
+      {
+        id: "power", name: "Power T&D", title: "Power: from generation to the plug",
+        sequence: true,
+        stages: [
+          { name: "Generate", nodes: [
+            { id: "steam-turbines", name: "Industrial steam turbines", icon: "turbine",
+              desc: "Captive and renewable power for sugar, process industries, waste-heat and biomass plants.",
+              cos: [{ id: "triveni", note: "Steam turbines up to ~100 MW; domestic, exports and aftermarket" }] },
+            { id: "boilers", name: "Boilers & captive power", icon: "boiler",
+              desc: "Utility and industrial boilers, captive power EPC and bioenergy plants.",
+              cos: [{ id: "thermax", note: "Industrial and utility boilers, captive power and bio-CNG EPC" }] },
+            { id: "gensets", name: "Gensets & engines", icon: "genset",
+              desc: "Backup and prime power for commercial, industrial and data-centre sites.",
+              cos: [{ id: "cummins", note: "Diesel and gas gensets, high-horsepower engines, data-centre backup" }] }
+          ]},
+          { name: "Transmit", nodes: [
+            { id: "lines", name: "Transmission lines & towers", icon: "tower",
+              desc: "EHV lines, tower manufacturing and erection for inter-state and green-energy corridors.",
+              cos: [{ id: "kec", note: "Global T&D EPC with in-house tower manufacturing" },
+                    { id: "kpil", note: "T&D EPC in India and overseas, incl. Linjemontage (Sweden)" }] },
+            { id: "substations", name: "EHV substations", icon: "substation",
+              desc: "Air- and gas-insulated substations, including RE pooling stations.",
+              cos: [{ id: "kec", note: "Substation EPC in India and the Middle East" },
+                    { id: "kpil", note: "Substation EPC" }] },
+            { id: "power-tx", name: "Power transformers", icon: "transformer",
+              desc: "Step-up and step-down transformers for grids, RE parks and heavy industry.",
+              cos: [{ id: "voltamp", note: "Up to 160 MVA / 220 kV; industrial and RE customer tilt" },
+                    { id: "cgpower", note: "Power transformers and reactors for utilities and industry" }] }
+          ]},
+          { name: "Distribute", nodes: [
+            { id: "dist-tx", name: "Distribution & dry-type transformers", icon: "transformer",
+              desc: "Oil-filled and cast-resin units for plants, buildings, metros and data centres.",
+              cos: [{ id: "voltamp", note: "Oil-filled and cast-resin dry types up to 33 kV" },
+                    { id: "cgpower", note: "Distribution transformers" }] },
+            { id: "switchgear", name: "MV / LV switchgear", icon: "switchgear",
+              desc: "Breakers, panels and protection that route and protect power downstream.",
+              cos: [{ id: "abb", note: "Electrification: MV/LV switchgear, breakers, smart power" },
+                    { id: "siemens", note: "Smart Infrastructure: MV/LV switchgear and LV products" },
+                    { id: "cgpower", note: "Switchgear and vacuum interrupters" }] },
+            { id: "cables", name: "Power cables", icon: "cable",
+              desc: "HT and LT cables connecting substations, plants and buildings.",
+              cos: [{ id: "kec", note: "Power and telecom cables (KEC Cables)" }] }
+          ]},
+          { name: "Consume & automate", nodes: [
+            { id: "motors", name: "Motors & drives", icon: "motor",
+              desc: "The largest consumer of industrial power; efficiency upgrades drive replacement demand.",
+              cos: [{ id: "abb", note: "Motion: LV/HV motors and drives" },
+                    { id: "siemens", note: "Digital Industries: motors and drives" },
+                    { id: "cgpower", note: "LT/HT industrial motors" }] },
+            { id: "automation", name: "Process & factory automation", icon: "robot",
+              desc: "Control systems, PLCs, robotics and plant software.",
+              cos: [{ id: "abb", note: "Process automation and robotics" },
+                    { id: "siemens", note: "PLCs, factory automation and industrial software" }] },
+            { id: "datacentre", name: "Data-centre power", icon: "server",
+              desc: "The AI-capex link: transformers, switchgear and backup power inside data centres.",
+              cos: [{ id: "voltamp", note: "Cast-resin dry-type transformers" },
+                    { id: "abb", note: "LV/MV distribution for data halls" },
+                    { id: "siemens", note: "Power distribution and building technologies" },
+                    { id: "cummins", note: "Backup gensets" }] },
+            { id: "rail", name: "Rail traction & signalling", icon: "train",
+              desc: "Locomotives, traction electricals and signalling for Indian Railways and metros.",
+              cos: [{ id: "siemens", note: "Mobility: locomotives, signalling, metro systems" },
+                    { id: "cgpower", note: "Railway traction electricals and signalling" }] }
+          ]}
+        ]
+      },
+      {
+        id: "industrial", name: "Industrial plant", title: "Industrial plant: from the mine to the factory floor",
+        sequence: true,
+        stages: [
+          { name: "Mine & grind", nodes: [
+            { id: "mill", name: "Mill liners & grinding media", icon: "mill",
+              desc: "Wear parts that crush and grind ore, clinker and coal.",
+              cos: [{ id: "aia", note: "High-chrome castings for cement, mining and thermal power; mining is the growth leg" }] },
+            { id: "minerals", name: "Electrominerals", icon: "crystal",
+              desc: "Silicon carbide, fused alumina and zirconia grains that feed abrasives and ceramics.",
+              cos: [{ id: "cumi", note: "SiC, alumina and zirconia, incl. VAW (Russia)" },
+                    { id: "grindwell", note: "Silicon carbide grains" }] }
+          ]},
+          { name: "Make", nodes: [
+            { id: "abrasives", name: "Bonded & coated abrasives", icon: "wheel",
+              desc: "Grinding wheels, belts and discs used in metalworking and fabrication.",
+              cos: [{ id: "grindwell", note: "Saint-Gobain's India abrasives arm" },
+                    { id: "cumi", note: "Murugappa group; India and overseas abrasives" }] },
+            { id: "ceramics", name: "Industrial & technical ceramics", icon: "ceramic",
+              desc: "Wear-resistant, refractory and engineered ceramics.",
+              cos: [{ id: "cumi", note: "Engineered and wear ceramics, refractories" },
+                    { id: "grindwell", note: "Silicon carbide and technical ceramics" }] },
+            { id: "plastics", name: "Performance plastics", icon: "polymer",
+              desc: "Engineered polymer components for industrial, auto and electronics customers.",
+              cos: [{ id: "grindwell", note: "Engineered polymer products" }] }
+          ]},
+          { name: "Run the plant", nodes: [
+            { id: "compressors", name: "Air compressors", icon: "compressor",
+              desc: "Compressed air is the fourth utility in most factories.",
+              cos: [{ id: "elgi", note: "Screw and oil-free compressors; large US and Europe business" }] },
+            { id: "heating", name: "Heating, cooling & boilers", icon: "flame",
+              desc: "Process heat, steam and absorption chilling.",
+              cos: [{ id: "thermax", note: "Industrial boilers, heaters and absorption chillers" }] },
+            { id: "whr", name: "Waste-heat & process power", icon: "turbine",
+              desc: "Turning process heat into captive power in steel, cement and sugar.",
+              cos: [{ id: "triveni", note: "Turbines for waste-heat, sugar, steel and cement" },
+                    { id: "thermax", note: "Waste-heat recovery boilers" }] },
+            { id: "water", name: "Water, waste & chemicals", icon: "drop",
+              desc: "Water and effluent treatment, resins and specialty chemicals.",
+              cos: [{ id: "thermax", note: "Water treatment, ion-exchange resins, chemicals" }] },
+            { id: "engines", name: "Industrial engines", icon: "engine",
+              desc: "Engines for construction, mining, compressors and rail.",
+              cos: [{ id: "cummins", note: "Industrial and off-highway engines; exports" }] }
+          ]}
+        ]
+      },
+      {
+        id: "infra", name: "Infra EPC", title: "Infrastructure EPC: what the contractors build",
+        sequence: false,
+        stages: [
+          { name: "Transport", nodes: [
+            { id: "railepc", name: "Railways & metro", icon: "train",
+              desc: "Track, electrification (OHE), signalling and metro systems.",
+              cos: [{ id: "kec", note: "Railway electrification, track and civil" },
+                    { id: "kpil", note: "Railway track and electrification" },
+                    { id: "siemens", note: "Signalling and metro systems" }] }
+          ]},
+          { name: "Urban & civil", nodes: [
+            { id: "buildings", name: "Buildings & factories", icon: "building",
+              desc: "Industrial plants, data-centre shells, residential and commercial buildings.",
+              cos: [{ id: "kec", note: "Civil: industrial, residential and data-centre buildings" },
+                    { id: "kpil", note: "Buildings & factories business" }] },
+            { id: "waterepc", name: "Water supply", icon: "drop",
+              desc: "Pipelines, treatment plants and distribution networks.",
+              cos: [{ id: "kpil", note: "Water pipelines and treatment" }] }
+          ]},
+          { name: "Energy & resources", nodes: [
+            { id: "oilgas", name: "Oil & gas pipelines", icon: "pipe",
+              desc: "Cross-country pipelines and terminals.",
+              cos: [{ id: "kpil", note: "Oil & gas pipeline EPC" }] },
+            { id: "re", name: "Renewables EPC", icon: "solar",
+              desc: "Solar and balance-of-plant execution.",
+              cos: [{ id: "kec", note: "Solar EPC" }] }
+          ]}
+        ]
+      }
     ]
   },
 
   durables: {
     id: "durables",
     name: "Consumer Durables",
-    short: "DURABLES",
-    tagline: "Electricals, cooling, wires and kitchen appliances",
-    segments: [
-      { id: "fmeg", name: "Electricals & FMEG", companies: [
-        { id: "havells", name: "Havells India", ticker: "HAVELLS" },
-        { id: "crompton", name: "Crompton Greaves CE", ticker: "CROMPTON" },
-        { id: "bajajelec", name: "Bajaj Electricals", ticker: "BAJAJELEC" },
-        { id: "vguard", name: "V-Guard Industries", ticker: "VGUARD" },
-        { id: "orientelec", name: "Orient Electric", ticker: "ORIENTELEC" }
-      ]},
-      { id: "cooling", name: "Cooling & HVAC", companies: [
-        { id: "voltas", name: "Voltas", ticker: "VOLTAS" },
-        { id: "bluestar", name: "Blue Star", ticker: "BLUESTARCO" },
-        { id: "whirlpool", name: "Whirlpool of India", ticker: "WHIRLPOOL" },
-        { id: "jchac", name: "Johnson Controls-Hitachi", ticker: "JCHAC" }
-      ]},
-      { id: "wires", name: "Wires & Cables (B2C)", companies: [
-        { id: "rrkabel", name: "RR Kabel", ticker: "RRKABEL" },
-        { id: "fincables", name: "Finolex Cables", ticker: "FINCABLES" }
-      ]},
-      { id: "kitchen", name: "Kitchen & Home", companies: [
-        { id: "ttk", name: "TTK Prestige", ticker: "TTKPRESTIG" },
-        { id: "hawkins", name: "Hawkins Cookers", ticker: "HAWKINCOOK" },
-        { id: "stovekraft", name: "Stove Kraft", ticker: "STOVEKRAFT" }
-      ]}
+    tagline: "Electricals, cooling and kitchen appliances",
+    draft: true,
+    coverage: [
+      { id: "havells", name: "Havells India", ticker: "HAVELLS" },
+      { id: "crompton", name: "Crompton Greaves CE", ticker: "CROMPTON" },
+      { id: "bajajelec", name: "Bajaj Electricals", ticker: "BAJAJELEC" },
+      { id: "vguard", name: "V-Guard Industries", ticker: "VGUARD" },
+      { id: "orientelec", name: "Orient Electric", ticker: "ORIENTELEC" },
+      { id: "voltas", name: "Voltas", ticker: "VOLTAS" },
+      { id: "bluestar", name: "Blue Star", ticker: "BLUESTARCO" },
+      { id: "whirlpool", name: "Whirlpool of India", ticker: "WHIRLPOOL" },
+      { id: "rrkabel", name: "RR Kabel", ticker: "RRKABEL" },
+      { id: "fincables", name: "Finolex Cables", ticker: "FINCABLES" },
+      { id: "ttk", name: "TTK Prestige", ticker: "TTKPRESTIG" },
+      { id: "hawkins", name: "Hawkins Cookers", ticker: "HAWKINCOOK" }
+    ],
+    chains: [
+      {
+        id: "home", name: "The home", title: "Inside the home: wiring to kitchen",
+        sequence: false,
+        stages: [
+          { name: "Wiring & protection", nodes: [
+            { id: "wires", name: "House wires & cables", icon: "cable", desc: "Building wires and flexible cables.",
+              cos: [{ id: "havells", note: "Wires and cables" }, { id: "rrkabel", note: "Wires and cables" }, { id: "fincables", note: "Electrical and communication cables" }] },
+            { id: "switchgearb2c", name: "Switches & switchgear", icon: "switch", desc: "Modular switches, MCBs and distribution boards.",
+              cos: [{ id: "havells", note: "Switchgear and switches" }, { id: "vguard", note: "Switchgear" }] }
+          ]},
+          { name: "Fans, lights & water", nodes: [
+            { id: "fans", name: "Fans", icon: "fan", desc: "Ceiling, table and BLDC fans.",
+              cos: [{ id: "crompton", note: "Fans" }, { id: "havells", note: "Fans" }, { id: "orientelec", note: "Fans" }, { id: "bajajelec", note: "Fans" }, { id: "vguard", note: "Fans" }] },
+            { id: "lighting", name: "Lighting", icon: "bulb", desc: "LED lamps, battens and professional lighting.",
+              cos: [{ id: "havells", note: "Lighting" }, { id: "crompton", note: "Lighting" }, { id: "bajajelec", note: "Lighting" }, { id: "orientelec", note: "Lighting" }] },
+            { id: "waterheaters", name: "Water heaters & pumps", icon: "drop", desc: "Geysers, residential and agri pumps.",
+              cos: [{ id: "crompton", note: "Pumps and water heaters" }, { id: "vguard", note: "Water heaters" }, { id: "havells", note: "Water heaters" }] }
+          ]},
+          { name: "Cooling", nodes: [
+            { id: "rac", name: "Room air conditioners", icon: "ac", desc: "Split and window ACs.",
+              cos: [{ id: "voltas", note: "Room ACs" }, { id: "bluestar", note: "Room ACs" }, { id: "havells", note: "Lloyd room ACs" }, { id: "whirlpool", note: "Room ACs" }] },
+            { id: "commercial", name: "Commercial cooling", icon: "snow", desc: "Central AC, VRF and commercial refrigeration.",
+              cos: [{ id: "bluestar", note: "MEP, VRF, commercial refrigeration" }, { id: "voltas", note: "Projects and commercial refrigeration" }] },
+            { id: "fridge", name: "Refrigerators & washers", icon: "box", desc: "Large home appliances.",
+              cos: [{ id: "whirlpool", note: "Refrigerators and washing machines" }] }
+          ]},
+          { name: "Kitchen", nodes: [
+            { id: "cookware", name: "Cookers & cookware", icon: "pot", desc: "Pressure cookers and cookware.",
+              cos: [{ id: "ttk", note: "Prestige cookers and cookware" }, { id: "hawkins", note: "Pressure cookers and cookware" }] },
+            { id: "smallapp", name: "Small appliances", icon: "plug", desc: "Mixers, kettles and cooktops.",
+              cos: [{ id: "ttk", note: "Kitchen appliances" }, { id: "bajajelec", note: "Small appliances" }] }
+          ]}
+        ]
+      }
     ]
   },
 
   ems: {
     id: "ems",
     name: "EMS",
-    short: "EMS",
     tagline: "Electronics manufacturing services, ODM and components",
-    segments: [
-      { id: "scale", name: "Scale EMS & ODM", companies: [
-        { id: "dixon", name: "Dixon Technologies", ticker: "DIXON" },
-        { id: "kaynes", name: "Kaynes Technology", ticker: "KAYNES" },
-        { id: "syrma", name: "Syrma SGS", ticker: "SYRMA" },
-        { id: "avalon", name: "Avalon Technologies", ticker: "AVALON" },
-        { id: "cyientdlm", name: "Cyient DLM", ticker: "CYIENTDLM" }
-      ]},
-      { id: "durodm", name: "Durables ODM", companies: [
-        { id: "amber", name: "Amber Enterprises", ticker: "AMBER" },
-        { id: "pgel", name: "PG Electroplast", ticker: "PGEL" },
-        { id: "epack", name: "EPACK Durable", ticker: "EPACK" }
-      ]},
-      { id: "hirel", name: "Defence & Hi-Rel Electronics", companies: [
-        { id: "datapatterns", name: "Data Patterns", ticker: "DATAPATTNS" },
-        { id: "centum", name: "Centum Electronics", ticker: "CENTUM" },
-        { id: "apollo", name: "Apollo Micro Systems", ticker: "APOLLO" }
-      ]}
+    draft: true,
+    coverage: [
+      { id: "dixon", name: "Dixon Technologies", ticker: "DIXON" },
+      { id: "kaynes", name: "Kaynes Technology", ticker: "KAYNES" },
+      { id: "syrma", name: "Syrma SGS", ticker: "SYRMA" },
+      { id: "avalon", name: "Avalon Technologies", ticker: "AVALON" },
+      { id: "cyientdlm", name: "Cyient DLM", ticker: "CYIENTDLM" },
+      { id: "amber", name: "Amber Enterprises", ticker: "AMBER" },
+      { id: "pgel", name: "PG Electroplast", ticker: "PGEL" },
+      { id: "epack", name: "EPACK Durable", ticker: "EPACK" },
+      { id: "datapatterns", name: "Data Patterns", ticker: "DATAPATTNS" },
+      { id: "centum", name: "Centum Electronics", ticker: "CENTUM" }
+    ],
+    chains: [
+      {
+        id: "ems", name: "Electronics", title: "Electronics: from components to finished products",
+        sequence: true,
+        stages: [
+          { name: "Components & semis", nodes: [
+            { id: "semis", name: "OSAT & semiconductors", icon: "chip", desc: "Chip assembly, test and packaging.",
+              cos: [{ id: "kaynes", note: "OSAT (Kaynes Semicon)" }] },
+            { id: "pcb", name: "Bare PCBs & components", icon: "pcb", desc: "Printed circuit boards and passive/electromechanical parts.",
+              cos: [{ id: "amber", note: "PCBs (Ascent Circuits) and components" }, { id: "kaynes", note: "Bare PCBs" }, { id: "syrma", note: "Magnetics and RFID" }] }
+          ]},
+          { name: "Board assembly", nodes: [
+            { id: "pcba", name: "PCB assembly (SMT)", icon: "pcb", desc: "Populating boards for OEM customers.",
+              cos: [{ id: "kaynes", note: "High-mix PCBA" }, { id: "syrma", note: "PCBA" }, { id: "avalon", note: "PCBA, US and India plants" }, { id: "cyientdlm", note: "PCBA for aerospace, medical, industrial" }, { id: "centum", note: "High-reliability PCBA" }] }
+          ]},
+          { name: "Box build & ODM", nodes: [
+            { id: "mobiles", name: "Mobiles & IT hardware", icon: "phone", desc: "PLI-led smartphone and laptop assembly.",
+              cos: [{ id: "dixon", note: "Mobiles, IT hardware" }] },
+            { id: "durodm", name: "Consumer durables ODM", icon: "ac", desc: "RACs, washing machines, TVs for brands.",
+              cos: [{ id: "amber", note: "RAC ODM and components" }, { id: "pgel", note: "RACs, washing machines, TVs" }, { id: "epack", note: "RAC ODM and small appliances" }, { id: "dixon", note: "TVs, washing machines, lighting" }] },
+            { id: "defence", name: "Defence & aerospace systems", icon: "shield", desc: "Radars, avionics and mission electronics.",
+              cos: [{ id: "datapatterns", note: "Radars, EW and avionics" }, { id: "centum", note: "Defence and space subsystems" }, { id: "cyientdlm", note: "Aerospace box builds" }] }
+          ]},
+          { name: "End markets", nodes: [
+            { id: "auto", name: "Auto & EV", icon: "car", desc: "Vehicle electronics and EV subsystems.",
+              cos: [{ id: "kaynes", note: "Auto and EV electronics" }, { id: "syrma", note: "Auto electronics" }] },
+            { id: "industrial", name: "Industrial & medical", icon: "gear", desc: "Industrial controls, medical devices, rail.",
+              cos: [{ id: "syrma", note: "Industrial and healthcare" }, { id: "avalon", note: "Industrial, clean energy, mobility" }, { id: "kaynes", note: "Industrial and railways" }] }
+          ]}
+        ]
+      }
     ]
   }
 };
