@@ -155,7 +155,7 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 | 4 | L304 | Silhouettes shaking hands | `E2-BIZ-024` |
 | 5 | flows | Figure in the dark | `E2-MOOD-003` |
 | 6 | L305 | ORIGINAL GRAPHIC: | `BigWords` |
-| 7 | L306 | ORIGINAL GRAPHIC: Nvidia revenue from China — Share of total revenue, by customer headquarters | `ColumnChart` |
+| 7 | L306 | ORIGINAL GRAPHIC: Nvidia revenue from China — China's share of revenue | `ColumnChart` |
 | 8 | L307 | Night drive through city traffic | `E2-BIZ-102` |
 
 **On-screen text**
@@ -227,7 +227,7 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
 | 1 | scene start | ORIGINAL GRAPHIC: | `CaseTimeline` |
-| 2 | L502 | Screen reflected in glasses | `E2-BIZ-014` |
+| 2 | L502 | Night drive through city traffic | `E2-BIZ-102` |
 | 3 | L503 | ORIGINAL GRAPHIC: | `CaseTimeline` |
 | 4 | flows | Financial district, silhouettes | `BIZ-043` |
 | 5 | L504 | ORIGINAL GRAPHIC: | `CaseTimeline` |
@@ -276,7 +276,7 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 | 1 | scene start | Figure in the dark | `E2-MOOD-003` |
 | 2 | L601 | ORIGINAL GRAPHIC: | `BigWords` |
 | 3 | L602 | ORIGINAL GRAPHIC: The spy question — What we actually know | `AllegedVsKnown` |
-| 4 | L604 | Screen reflected in glasses | `E2-BIZ-014` |
+| 4 | L604 | City at night, timelapse | `E2-BIZ-106` |
 | 5 | L606 | City streets at night | `E2-BIZ-092` |
 | 6 | L607 | ORIGINAL GRAPHIC: The investigations — Who is looking at what | `AllegedVsKnown` |
 | 7 | L608 | Financial district, silhouettes | `BIZ-043` |
