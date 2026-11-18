@@ -21,7 +21,7 @@ import sys
 from common import FPS, H, PROJECT, PUBLIC, W, load_manifest, load_storyboard, log, probe
 
 COMPONENTS = {"ValueChain", "Flow", "BarChart", "ColumnChart", "BigStat", "RangeBars", "Matrix", "Quote", "TitleCard", "EndCard",
-              "LowerThird", "ChapterCard", "CornerStat", "Bug", "SourceTag", "DataCentre", "PowerChain"}
+              "LowerThird", "ChapterCard", "CornerStat", "Bug", "SourceTag", "DataCentre", "PowerChain", "BigWords", "EmailReveal", "DocumentCard", "CaseTimeline", "HistoryTimeline", "RegionMap", "AllegedVsKnown", "ScenarioTree", "EventLine"}
 XFADE_SCENE = 8  # frames of dissolve at scene boundaries
 
 
@@ -201,7 +201,7 @@ def main() -> int:
             n += 1
             t += d
     (PROJECT / "08_SUBTITLES").mkdir(exist_ok=True)
-    (PROJECT / "08_SUBTITLES" / "the_hidden_winners_of_the_ai_boom.en.srt").write_text("\n".join(srt), encoding="utf-8")
+    (PROJECT / "08_SUBTITLES" / f"{sb['meta'].get('slug', 'the_hidden_winners_of_the_ai_boom')}.en.srt").write_text("\n".join(srt), encoding="utf-8")
 
     tl = {"fps": FPS, "width": W, "height": H, "durationInFrames": total, "shots": shots_out, "overlays": overlays_out,
           "captions": caps, "showCaptions": bool(sb["meta"].get("show_captions", False))}

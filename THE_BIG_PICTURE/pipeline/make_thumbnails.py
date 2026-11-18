@@ -36,8 +36,8 @@ def main() -> int:
     out = PROJECT / "10_THUMBNAIL"
     out.mkdir(exist_ok=True)
     npx = shutil.which("npx") or shutil.which("npx.cmd")
-    for i in (1, 2, 3):
-        rc = subprocess.call([npx, "remotion", "still", "src/index.ts", f"Thumb{i}", str(out / f"thumbnail_concept_{i}.png"), "--log", "error"], cwd=REMOTION)
+    for n, i in enumerate(sb["meta"].get("thumb_variants", [1, 2, 3]), 1):
+        rc = subprocess.call([npx, "remotion", "still", "src/index.ts", f"Thumb{i}", str(out / f"thumbnail_concept_{n}.png"), "--log", "error"], cwd=REMOTION)
         if rc:
             return rc
     log("Thumbnails written to 10_THUMBNAIL/", "ok")

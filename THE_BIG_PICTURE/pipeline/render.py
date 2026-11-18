@@ -15,10 +15,14 @@ import subprocess
 import sys
 import time
 
-from common import PIPELINE, PROJECT, REMOTION, ffmpeg, log
+from common import PIPELINE, PROJECT, REMOTION, ffmpeg, load_storyboard, log
 
 STEPS = ["voice", "footage", "timeline", "picture", "mix", "mux", "thumbs", "qc"]
-FINAL = PROJECT / "11_FINAL_DELIVERY" / "THE_BIG_PICTURE_EP01_The_Hidden_Winners_of_the_AI_Boom.mp4"
+try:
+    _SLUG = load_storyboard()["meta"].get("slug", "THE_BIG_PICTURE_EP01_The_Hidden_Winners_of_the_AI_Boom")
+except SystemExit:
+    _SLUG = "THE_BIG_PICTURE_EP01_The_Hidden_Winners_of_the_AI_Boom"
+FINAL = PROJECT / "11_FINAL_DELIVERY" / f"{_SLUG}.mp4"
 PICTURE = PROJECT / "09_RENDER" / "picture.mp4"
 
 

@@ -8,6 +8,9 @@ const VARIANTS: Record<number, {top: string; big: string; layout: 'split' | 'ful
   1: {top: 'WHO REALLY PROFITS?', big: 'THE HIDDEN|AI BOOM', layout: 'split'},
   2: {top: 'NOT THE CHIPS.', big: 'THE GRID.', layout: 'full'},
   3: {top: 'BEHIND THE', big: 'AI|REVOLUTION', layout: 'diag'},
+  4: {top: 'WHAT NOW?', big: 'NVIDIA|AFTER JENSEN', layout: 'split'},
+  5: {top: '33 YEARS. ONE CEO.', big: 'GONE IN|4 DAYS', layout: 'full'},
+  6: {top: 'THE NVIDIA SCANDAL', big: 'WHAT WE|KNOW', layout: 'diag'},
 };
 
 export const Thumbnail: React.FC<{variant: number}> = ({variant}) => {

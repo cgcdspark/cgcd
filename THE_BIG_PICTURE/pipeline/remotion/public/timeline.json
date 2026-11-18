@@ -2,14 +2,14 @@
  "fps": 25,
  "width": 1920,
  "height": 1080,
- "durationInFrames": 12550,
+ "durationInFrames": 17719,
  "shots": [
   {
    "id": "S00_01",
    "type": "footage",
    "from": 0,
-   "dur": 146,
-   "src": "footage/MOOD-015.mp4",
+   "dur": 55,
+   "src": "footage/E2-MOOD-097.mp4",
    "startFrom": 0,
    "motion": "none",
    "xfade": 0,
@@ -18,59 +18,74 @@
   },
   {
    "id": "S00_02",
-   "type": "footage",
-   "from": 146,
-   "dur": 77,
-   "src": "footage/IA-QTS.mp4",
-   "startFrom": 75,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": true,
-   "dim": 0.0
+   "type": "graphic",
+   "from": 55,
+   "dur": 270,
+   "component": "EmailReveal",
+   "props": {
+    "from": "Jensen Huang",
+    "to": "All NVIDIA employees",
+    "subject": "A Message to Our Company",
+    "date": "Sunday, 8 November 2026",
+    "lines": [
+     "I owe my family and all of you an apology.",
+     "I was unfaithful to my wife."
+    ],
+    "highlight": 1
+   },
+   "xfade": 0
   },
   {
    "id": "S00_03",
-   "type": "footage",
-   "from": 223,
-   "dur": 65,
-   "src": "footage/DC-010.mp4",
-   "startFrom": 1700,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
+   "type": "graphic",
+   "from": 325,
+   "dur": 225,
+   "component": "DocumentCard",
+   "props": {
+    "header": "FORM 8-K · ITEM 5.02",
+    "meta": "NVIDIA CORPORATION · FILED 12 NOVEMBER 2026",
+    "paragraphs": [
+     "On November 11, 2026, the Board of Directors of NVIDIA Corporation accepted the resignation of Jen-Hsun Huang, as NVIDIA's President, Chief Executive Officer and member of the Board, effective immediately.",
+     "Following Mr. Huang's resignation, the Board appointed Colette M. Kress to serve as interim Chief Executive Officer, while the Board conducts a search for a new Chief Executive Officer."
+    ],
+    "mark": 0
+   },
+   "xfade": 0
   },
   {
    "id": "S00_04",
-   "type": "footage",
-   "from": 288,
-   "dur": 68,
-   "src": "footage/DC-010.mp4",
-   "startFrom": 4600,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
+   "type": "graphic",
+   "from": 550,
+   "dur": 117,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "33 YEARS.",
+     "ONE CEO."
+    ],
+    "accent": "ONE CEO."
+   },
+   "xfade": 0
   },
   {
    "id": "S00_05",
    "type": "footage",
-   "from": 356,
-   "dur": 83,
-   "src": "footage/EL-008.mp4",
-   "startFrom": 75,
+   "from": 667,
+   "dur": 89,
+   "src": "footage/SEM-042.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 0,
-   "letterbox": true,
+   "letterbox": false,
    "dim": 0.0
   },
   {
    "id": "S00_06",
    "type": "footage",
-   "from": 439,
-   "dur": 82,
-   "src": "footage/MOOD-053.mp4",
-   "startFrom": 50,
+   "from": 756,
+   "dur": 88,
+   "src": "footage/DC-010.mp4",
+   "startFrom": 1750,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -79,10 +94,10 @@
   {
    "id": "S00_07",
    "type": "footage",
-   "from": 521,
-   "dur": 66,
-   "src": "footage/BIZ-033.mp4",
-   "startFrom": 25,
+   "from": 844,
+   "dur": 103,
+   "src": "footage/BIZ-085.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -90,23 +105,26 @@
   },
   {
    "id": "S00_08",
-   "type": "footage",
-   "from": 587,
-   "dur": 39,
-   "src": "footage/BIZ-035.mp4",
-   "startFrom": 25,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
+   "type": "graphic",
+   "from": 947,
+   "dur": 69,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "GONE.",
+     "IN LESS THAN A WEEK."
+    ],
+    "accent": "GONE."
+   },
+   "xfade": 0
   },
   {
    "id": "S00_09",
    "type": "footage",
-   "from": 626,
-   "dur": 38,
-   "src": "footage/BIZ-008.mp4",
-   "startFrom": 100,
+   "from": 1016,
+   "dur": 74,
+   "src": "footage/E2-MOOD-003.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -115,9 +133,9 @@
   {
    "id": "S00_10",
    "type": "footage",
-   "from": 664,
-   "dur": 44,
-   "src": "footage/EL-052.mp4",
+   "from": 1090,
+   "dur": 133,
+   "src": "footage/E2-BIZ-014.mp4",
    "startFrom": 0,
    "motion": "none",
    "xfade": 0,
@@ -127,11 +145,35 @@
   {
    "id": "S00_11",
    "type": "footage",
-   "from": 708,
-   "dur": 155,
-   "src": "footage/MOOD-113.mp4",
-   "startFrom": 550,
-   "motion": "push",
+   "from": 1223,
+   "dur": 100,
+   "src": "footage/E2-BIZ-106.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S00_12",
+   "type": "footage",
+   "from": 1323,
+   "dur": 100,
+   "src": "footage/SEM-045.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S00_13",
+   "type": "footage",
+   "from": 1423,
+   "dur": 133,
+   "src": "footage/E2-MOOD-004.mp4",
+   "startFrom": 0,
+   "motion": "none",
    "xfade": 0,
    "letterbox": false,
    "dim": 0.0
@@ -139,79 +181,348 @@
   {
    "id": "S01_01",
    "type": "footage",
-   "from": 855,
+   "from": 1548,
    "dur": 133,
-   "src": "footage/BIZ-053.mp4",
-   "startFrom": 75,
+   "src": "footage/E2-BIZ-106.mp4",
+   "startFrom": 100,
    "motion": "none",
    "xfade": 8,
    "letterbox": false,
-   "dim": 0.35
+   "dim": 0.45
   },
   {
    "id": "S02_01",
    "type": "footage",
-   "from": 980,
-   "dur": 93,
+   "from": 1673,
+   "dur": 127,
+   "src": "footage/E2-BIZ-092.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 8,
+   "letterbox": false,
+   "dim": 0.25
+  },
+  {
+   "id": "S02_02",
+   "type": "graphic",
+   "from": 1800,
+   "dur": 358,
+   "component": "DocumentCard",
+   "props": {
+    "header": "JEN-HSUN “JENSEN” HUANG",
+    "meta": "PROFILE",
+    "paragraphs": [
+     "Born in Taiwan. Sent to the United States at nine.",
+     "Enrolled at a school in rural Kentucky. Chores included cleaning the toilets.",
+     "Teenage job: washing dishes at Denny's."
+    ],
+    "mark": 0
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S02_03",
+   "type": "graphic",
+   "from": 2158,
+   "dur": 89,
+   "component": "DocumentCard",
+   "props": {
+    "header": "JEN-HSUN “JENSEN” HUANG",
+    "meta": "PROFILE",
+    "paragraphs": [
+     "Born in Taiwan. Sent to the United States at nine.",
+     "Enrolled at a school in rural Kentucky. Chores included cleaning the toilets.",
+     "Teenage job: washing dishes at Denny's."
+    ],
+    "mark": 2
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S02_04",
+   "type": "graphic",
+   "from": 2247,
+   "dur": 346,
+   "component": "HistoryTimeline",
+   "props": {
+    "kicker": "Nvidia",
+    "title": "From a diner booth to the top",
+    "start": 1993,
+    "end": 2026,
+    "points": [
+     {
+      "year": 1993,
+      "label": "Founded at a Denny's",
+      "hot": true
+     },
+     {
+      "year": 1996,
+      "label": "Most staff let go"
+     },
+     {
+      "year": 1999,
+      "label": "IPO at $12"
+     },
+     {
+      "year": 2006,
+      "label": "CUDA"
+     },
+     {
+      "year": 2012,
+      "label": "AlexNet"
+     },
+     {
+      "year": 2016,
+      "label": "First DGX-1 to OpenAI"
+     },
+     {
+      "year": 2023,
+      "label": "$1tn"
+     },
+     {
+      "year": 2025,
+      "label": "$5tn"
+     }
+    ]
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S02_05",
+   "type": "footage",
+   "from": 2593,
+   "dur": 117,
+   "src": "footage/SEM-037.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S02_06",
+   "type": "graphic",
+   "from": 2710,
+   "dur": 236,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "1996.",
+     "MORE THAN HALF",
+     "THE STAFF, GONE."
+    ],
+    "accent": "1996."
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S02_07",
+   "type": "footage",
+   "from": 2946,
+   "dur": 184,
+   "src": "footage/E2-BIZ-111.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S02_08",
+   "type": "footage",
+   "from": 3130,
+   "dur": 111,
+   "src": "footage/SEM-044.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S02_09",
+   "type": "graphic",
+   "from": 3241,
+   "dur": 143,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "“OUR COMPANY IS",
+     "THIRTY DAYS FROM",
+     "GOING OUT OF BUSINESS.”"
+    ],
+    "accent": "THIRTY DAYS FROM"
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S02_10",
+   "type": "footage",
+   "from": 3384,
+   "dur": 158,
    "src": "footage/BIZ-043.mp4",
-   "startFrom": 50,
+   "startFrom": 100,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S02_11",
+   "type": "graphic",
+   "from": 3542,
+   "dur": 229,
+   "component": "DocumentCard",
+   "props": {
+    "header": "PROSPECTUS · 3,500,000 SHARES",
+    "meta": "NVIDIA CORPORATION · JANUARY 1999",
+    "paragraphs": [
+     "Initial public offering price: $12.00 per share.",
+     "Directors: … Harvey C. Jones, 45, Director …"
+    ],
+    "mark": 1
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S03_01",
+   "type": "footage",
+   "from": 3763,
+   "dur": 92,
+   "src": "footage/MOOD-053.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 8,
    "letterbox": false,
    "dim": 0.2
   },
   {
-   "id": "S02_02",
-   "type": "still",
-   "from": 1073,
-   "dur": 80,
-   "src": "stills/DC-016.jpg",
+   "id": "S03_02",
+   "type": "footage",
+   "from": 3855,
+   "dur": 301,
+   "src": "footage/SEM-041.mp4",
    "startFrom": 0,
-   "motion": "driftR",
+   "motion": "none",
    "xfade": 0,
    "letterbox": false,
    "dim": 0.0
   },
   {
-   "id": "S02_03",
+   "id": "S03_03",
    "type": "graphic",
-   "from": 1153,
-   "dur": 347,
-   "component": "BarChart",
+   "from": 4156,
+   "dur": 187,
+   "component": "BigStat",
    "props": {
-    "kicker": "The spending wave",
-    "title": "Capital expenditure: latest year, and what comes next",
-    "source": "Microsoft: fiscal year to June 2026, cash PP&E plus finance-lease assets (10-K). Alphabet, Amazon (cash capex), Meta (incl. finance-lease principal): calendar 2025 (company results). US$ billions. Amazon 2026: company outlook, Q3 2026 results (cash capex).",
-    "bars": [
+    "kicker": "Nvidia · late 2008",
+    "value": 4,
+    "prefix": "< $",
+    "suffix": "bn",
+    "label": "What the whole company was worth"
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S03_04",
+   "type": "footage",
+   "from": 4343,
+   "dur": 225,
+   "src": "footage/SEM-001.mp4",
+   "startFrom": 75,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S03_05",
+   "type": "footage",
+   "from": 4568,
+   "dur": 157,
+   "src": "footage/MOOD-015.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S03_06",
+   "type": "graphic",
+   "from": 4725,
+   "dur": 142,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "AI'S",
+     "“BIG BANG”"
+    ],
+    "accent": "“BIG BANG”"
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S03_07",
+   "type": "footage",
+   "from": 4867,
+   "dur": 234,
+   "src": "footage/DC-010.mp4",
+   "startFrom": 1875,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S03_08",
+   "type": "footage",
+   "from": 5101,
+   "dur": 104,
+   "src": "footage/MOOD-049.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S03_09",
+   "type": "footage",
+   "from": 5205,
+   "dur": 80,
+   "src": "footage/DC-010.mp4",
+   "startFrom": 2600,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S03_10",
+   "type": "graphic",
+   "from": 5285,
+   "dur": 257,
+   "component": "ColumnChart",
+   "props": {
+    "kicker": "Nvidia market value",
+    "title": "From under $4bn to $5tn",
+    "unit": "",
+    "cols": [
      {
-      "label": "Microsoft",
-      "note": "FY to Jun 2026",
-      "value": 140.6,
-      "display": "~$141bn"
+      "label": "Nov 2008",
+      "value": 4,
+      "display": "<$4bn"
      },
      {
-      "label": "Amazon",
-      "note": "2025",
-      "value": 131.8,
-      "display": "$131.8bn"
+      "label": "May 2023",
+      "value": 1000,
+      "display": "$1tn"
      },
      {
-      "label": "Alphabet",
-      "note": "2025",
-      "value": 91.4,
-      "display": "$91.4bn"
-     },
-     {
-      "label": "Meta",
-      "note": "2025",
-      "value": 72.2,
-      "display": "$72.2bn"
-     },
-     {
-      "label": "Amazon",
-      "note": "2026 outlook",
-      "value": 220,
-      "display": "~$220bn",
+      "label": "Oct 2025",
+      "value": 5000,
+      "display": "$5tn",
       "highlight": true
      }
     ]
@@ -219,79 +530,12 @@
    "xfade": 0
   },
   {
-   "id": "S02_04",
-   "type": "footage",
-   "from": 1500,
-   "dur": 71,
-   "src": "footage/IA-QTS.mp4",
-   "startFrom": 600,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S02_05",
-   "type": "footage",
-   "from": 1571,
-   "dur": 70,
-   "src": "footage/DC-010.mp4",
-   "startFrom": 1800,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S03_01",
-   "type": "graphic",
-   "from": 1633,
-   "dur": 743,
-   "component": "ValueChain",
-   "props": {
-    "kicker": "The AI value chain",
-    "title": "Follow the money down the stack",
-    "source": "Company examples are illustrative, not exhaustive.",
-    "layers": [
-     {
-      "label": "AI applications & models",
-      "examples": "Chatbots · assistants · model labs"
-     },
-     {
-      "label": "GPUs & semiconductors",
-      "examples": "Nvidia · AMD · Broadcom"
-     },
-     {
-      "label": "Chip manufacturing",
-      "examples": "TSMC · ASML · SK hynix"
-     },
-     {
-      "label": "Data centres",
-      "examples": "Hyperscalers · colocation · neoclouds"
-     },
-     {
-      "label": "Electricity generation",
-      "examples": "Gas turbines · nuclear · renewables"
-     },
-     {
-      "label": "Transmission & substations",
-      "examples": "Utilities · grid builders"
-     },
-     {
-      "label": "Transformers, switchgear & cables",
-      "examples": "Hitachi Energy · Siemens Energy · Prysmian"
-     }
-    ]
-   },
-   "xfade": 8
-  },
-  {
    "id": "S04_01",
    "type": "footage",
-   "from": 2368,
-   "dur": 77,
-   "src": "footage/SEM-042.mp4",
-   "startFrom": 0,
+   "from": 5534,
+   "dur": 63,
+   "src": "footage/DC-010.mp4",
+   "startFrom": 3050,
    "motion": "none",
    "xfade": 8,
    "letterbox": false,
@@ -299,41 +543,108 @@
   },
   {
    "id": "S04_02",
-   "type": "footage",
-   "from": 2445,
-   "dur": 30,
-   "src": "footage/SEM-041.mp4",
-   "startFrom": 50,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S04_03",
    "type": "graphic",
-   "from": 2475,
-   "dur": 364,
+   "from": 5597,
+   "dur": 323,
    "component": "BigStat",
    "props": {
-    "kicker": "Nvidia · quarterly revenue",
+    "kicker": "Nvidia · one quarter",
     "value": 115.8,
     "decimals": 1,
     "prefix": "$",
     "suffix": "bn",
-    "label": "Revenue, quarter ended 25 Oct 2026",
-    "sublabel": "Data centre: $107.6bn · GAAP gross margin 74.8%",
-    "source": "Source: Nvidia Q3 FY2027 results (released 17 Nov 2026). Reported GAAP figures."
+    "label": "Revenue, three months to 25 Oct 2026",
+    "sublabel": "About 93% from data centres"
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S04_03",
+   "type": "graphic",
+   "from": 5920,
+   "dur": 117,
+   "component": "BigStat",
+   "props": {
+    "kicker": "Nvidia · one quarter",
+    "value": 65.3,
+    "decimals": 1,
+    "prefix": "$",
+    "suffix": "bn",
+    "label": "Profit, same three months"
    },
    "xfade": 0
   },
   {
    "id": "S04_04",
    "type": "footage",
-   "from": 2839,
-   "dur": 102,
-   "src": "footage/SEM-001.mp4",
-   "startFrom": 150,
+   "from": 6037,
+   "dur": 170,
+   "src": "footage/E2-BIZ-024.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S04_05",
+   "type": "footage",
+   "from": 6207,
+   "dur": 136,
+   "src": "footage/E2-MOOD-003.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S04_06",
+   "type": "graphic",
+   "from": 6343,
+   "dur": 56,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "CHINA."
+    ],
+    "accent": "CHINA."
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S04_07",
+   "type": "graphic",
+   "from": 6399,
+   "dur": 398,
+   "component": "ColumnChart",
+   "props": {
+    "kicker": "Nvidia revenue from China",
+    "title": "Share of total revenue, by customer headquarters",
+    "unit": "%",
+    "cols": [
+     {
+      "label": "FY2025",
+      "value": 19.2,
+      "display": "19%",
+      "highlight": true
+     },
+     {
+      "label": "FY2026",
+      "value": 9.1,
+      "display": "9%"
+     }
+    ]
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S04_08",
+   "type": "footage",
+   "from": 6797,
+   "dur": 98,
+   "src": "footage/E2-BIZ-102.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -341,39 +652,69 @@
   },
   {
    "id": "S05_01",
-   "type": "still",
-   "from": 2933,
-   "dur": 152,
-   "src": "stills/SEM-054.jpg",
-   "startFrom": 0,
-   "motion": "push",
+   "type": "footage",
+   "from": 6887,
+   "dur": 43,
+   "src": "footage/E2-BIZ-106.mp4",
+   "startFrom": 50,
+   "motion": "none",
    "xfade": 8,
    "letterbox": false,
-   "dim": 0.0
+   "dim": 0.25
   },
   {
    "id": "S05_02",
    "type": "graphic",
-   "from": 3085,
-   "dur": 204,
-   "component": "BigStat",
+   "from": 6930,
+   "dur": 89,
+   "component": "RegionMap",
    "props": {
-    "kicker": "TSMC · foundry market share",
-    "value": 72.5,
-    "decimals": 1,
-    "suffix": "%",
-    "label": "Share of global contract-chipmaking revenue",
-    "sublabel": "Second quarter of 2026",
-    "source": "Industry estimate: TrendForce, top-10 foundry ranking, Q2 2026."
+    "kicker": "South-East Asia",
+    "title": "Where the chips went",
+    "nodes": [
+     {
+      "id": "bj",
+      "name": "Beijing",
+      "lon": 116.4,
+      "lat": 39.9
+     },
+     {
+      "id": "tp",
+      "name": "Taipei",
+      "lon": 121.5,
+      "lat": 25.0
+     },
+     {
+      "id": "kl",
+      "name": "Kuala Lumpur",
+      "lon": 101.7,
+      "lat": 3.1,
+      "left": true
+     },
+     {
+      "id": "sg",
+      "name": "Singapore",
+      "lon": 103.8,
+      "lat": 1.35,
+      "hot": true
+     }
+    ],
+    "links": [],
+    "bbox": [
+     94,
+     -4,
+     128,
+     44
+    ]
    },
    "xfade": 0
   },
   {
    "id": "S05_03",
    "type": "footage",
-   "from": 3289,
-   "dur": 137,
-   "src": "footage/SEM-044.mp4",
+   "from": 7019,
+   "dur": 128,
+   "src": "footage/SEM-045.mp4",
    "startFrom": 0,
    "motion": "none",
    "xfade": 0,
@@ -383,10 +724,10 @@
   {
    "id": "S05_04",
    "type": "footage",
-   "from": 3426,
-   "dur": 138,
-   "src": "footage/SEM-037.mp4",
-   "startFrom": 25,
+   "from": 7147,
+   "dur": 112,
+   "src": "footage/E2-BIZ-024.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -395,116 +736,80 @@
   {
    "id": "S05_05",
    "type": "graphic",
-   "from": 3564,
-   "dur": 282,
-   "component": "Flow",
+   "from": 7259,
+   "dur": 343,
+   "component": "RegionMap",
    "props": {
-    "kicker": "The semiconductor ecosystem",
-    "title": "Who makes an AI chip?",
-    "source": "Simplified. *Foundry revenue share: TrendForce industry estimate, Q2 2026. ASML is the only supplier of EUV lithography systems.",
+    "kicker": "Under investigation since 2024",
+    "title": "Did the chips reach China?",
     "nodes": [
      {
-      "id": "d",
-      "x": 0,
-      "y": 60,
-      "w": 360,
-      "tag": "Design",
-      "label": "Chip designers",
-      "sub": "Nvidia · AMD · Broadcom"
+      "id": "bj",
+      "name": "Beijing",
+      "lon": 116.4,
+      "lat": 39.9
      },
      {
-      "id": "e",
-      "x": 690,
-      "y": 0,
-      "w": 360,
-      "tag": "Equipment",
-      "label": "Lithography & tools",
-      "sub": "ASML (sole EUV supplier) · Applied Materials"
+      "id": "tp",
+      "name": "Taipei",
+      "lon": 121.5,
+      "lat": 25.0
      },
      {
-      "id": "f",
-      "x": 690,
-      "y": 270,
-      "w": 360,
-      "tag": "Manufacturing",
-      "label": "Foundry",
-      "sub": "TSMC · ~72% of foundry revenue*",
-      "accent": true
+      "id": "kl",
+      "name": "Kuala Lumpur",
+      "lon": 101.7,
+      "lat": 3.1,
+      "left": true
      },
      {
-      "id": "m",
-      "x": 690,
-      "y": 540,
-      "w": 360,
-      "tag": "Memory",
-      "label": "High-bandwidth memory",
-      "sub": "SK hynix · Samsung · Micron"
-     },
-     {
-      "id": "p",
-      "x": 1340,
-      "y": 270,
-      "w": 360,
-      "tag": "Assembly",
-      "label": "Advanced packaging",
-      "sub": "TSMC CoWoS · expanding"
-     },
-     {
-      "id": "o",
-      "x": 1340,
-      "y": 540,
-      "w": 360,
-      "tag": "Buyers",
-      "label": "AI accelerators",
-      "sub": "→ hyperscaler data centres"
+      "id": "sg",
+      "name": "Singapore",
+      "lon": 103.8,
+      "lat": 1.35,
+      "hot": true
      }
     ],
-    "edges": [
+    "links": [
      {
-      "from": "d",
-      "to": "f",
-      "label": "designs"
-     },
-     {
-      "from": "e",
-      "to": "f",
-      "label": "machines"
-     },
-     {
-      "from": "f",
-      "to": "p"
-     },
-     {
-      "from": "m",
-      "to": "p"
-     },
-     {
-      "from": "p",
-      "to": "o"
+      "from": "sg",
+      "to": "bj",
+      "label": "investigators asked",
+      "dashed": true
      }
+    ],
+    "bbox": [
+     94,
+     -4,
+     128,
+     44
     ]
    },
    "xfade": 0
   },
   {
    "id": "S05_06",
-   "type": "footage",
-   "from": 3846,
-   "dur": 117,
-   "src": "footage/SEM-045.mp4",
-   "startFrom": 0,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
+   "type": "graphic",
+   "from": 7602,
+   "dur": 125,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "JUNE 2025.",
+     "NVIDIA STOPS SELLING",
+     "TO MEGASPEED."
+    ],
+    "accent": "JUNE 2025."
+   },
+   "xfade": 0
   },
   {
    "id": "S05_07",
    "type": "footage",
-   "from": 3963,
-   "dur": 298,
-   "src": "footage/DC-010.mp4",
-   "startFrom": 4700,
+   "from": 7727,
+   "dur": 185,
+   "src": "footage/E2-BIZ-014.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -513,10 +818,10 @@
   {
    "id": "S05_08",
    "type": "footage",
-   "from": 4261,
-   "dur": 129,
-   "src": "footage/SEM-001.mp4",
-   "startFrom": 225,
+   "from": 7912,
+   "dur": 130,
+   "src": "footage/E2-MOOD-003.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -524,11 +829,26 @@
   },
   {
    "id": "S05_09",
+   "type": "graphic",
+   "from": 8042,
+   "dur": 159,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "A CRIMINAL CASE.",
+     "LED BY THE U.S. JUSTICE DEPARTMENT"
+    ],
+    "accent": "A CRIMINAL CASE."
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S05_10",
    "type": "footage",
-   "from": 4390,
-   "dur": 130,
-   "src": "footage/SEM-042.mp4",
-   "startFrom": 100,
+   "from": 8201,
+   "dur": 173,
+   "src": "footage/E2-BIZ-092.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -537,57 +857,500 @@
   {
    "id": "S06_01",
    "type": "graphic",
-   "from": 4512,
-   "dur": 266,
-   "component": "BarChart",
+   "from": 8366,
+   "dur": 174,
+   "component": "CaseTimeline",
    "props": {
-    "kicker": "Where value is captured",
-    "title": "Gross margin, latest quarter",
-    "unit": "%",
-    "source": "Gross margin, GAAP / IFRS. Nvidia: quarter to 25 Oct 2026. TSMC, ASML: quarter to 30 Sep 2026. Company reports.",
-    "bars": [
+    "entries": [
      {
-      "label": "Nvidia",
-      "note": "chip design",
-      "value": 74.8,
-      "display": "74.8%",
-      "highlight": true
+      "date": "29 OCT",
+      "text": "NYT: US officials suspected an intelligence link"
      },
      {
-      "label": "TSMC",
-      "note": "foundry",
-      "value": 66.4,
-      "display": "66.4%"
+      "date": "29 OCT",
+      "text": "Nvidia: allegations 'debunked last year'"
      },
      {
-      "label": "ASML",
-      "note": "equipment",
-      "value": 57.5,
-      "display": "57.5%"
+      "date": "30 OCT",
+      "text": "WSJ follow-up · Singapore denies its claims"
+     },
+     {
+      "date": "04 NOV",
+      "text": "Three House committees write to Huang"
+     },
+     {
+      "date": "08 NOV",
+      "text": "The email · board opens an investigation"
+     },
+     {
+      "date": "09 NOV",
+      "text": "China: 'groundless' · shareholder lawsuit"
+     },
+     {
+      "date": "11 NOV",
+      "text": "Another relationship reported · resignation accepted"
+     },
+     {
+      "date": "12 NOV",
+      "text": "Nvidia announces: Huang is out"
      }
-    ]
+    ],
+    "upTo": 0
    },
    "xfade": 8
   },
   {
    "id": "S06_02",
    "type": "footage",
-   "from": 4778,
-   "dur": 174,
-   "src": "footage/IA-QTS.mp4",
-   "startFrom": 650,
+   "from": 8540,
+   "dur": 198,
+   "src": "footage/E2-BIZ-014.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 0,
-   "letterbox": true,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S06_03",
+   "type": "graphic",
+   "from": 8738,
+   "dur": 185,
+   "component": "CaseTimeline",
+   "props": {
+    "entries": [
+     {
+      "date": "29 OCT",
+      "text": "NYT: US officials suspected an intelligence link"
+     },
+     {
+      "date": "29 OCT",
+      "text": "Nvidia: allegations 'debunked last year'"
+     },
+     {
+      "date": "30 OCT",
+      "text": "WSJ follow-up · Singapore denies its claims"
+     },
+     {
+      "date": "04 NOV",
+      "text": "Three House committees write to Huang"
+     },
+     {
+      "date": "08 NOV",
+      "text": "The email · board opens an investigation"
+     },
+     {
+      "date": "09 NOV",
+      "text": "China: 'groundless' · shareholder lawsuit"
+     },
+     {
+      "date": "11 NOV",
+      "text": "Another relationship reported · resignation accepted"
+     },
+     {
+      "date": "12 NOV",
+      "text": "Nvidia announces: Huang is out"
+     }
+    ],
+    "upTo": 1
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S06_04",
+   "type": "footage",
+   "from": 8923,
+   "dur": 148,
+   "src": "footage/BIZ-043.mp4",
+   "startFrom": 350,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S06_05",
+   "type": "graphic",
+   "from": 9071,
+   "dur": 268,
+   "component": "CaseTimeline",
+   "props": {
+    "entries": [
+     {
+      "date": "29 OCT",
+      "text": "NYT: US officials suspected an intelligence link"
+     },
+     {
+      "date": "29 OCT",
+      "text": "Nvidia: allegations 'debunked last year'"
+     },
+     {
+      "date": "30 OCT",
+      "text": "WSJ follow-up · Singapore denies its claims"
+     },
+     {
+      "date": "04 NOV",
+      "text": "Three House committees write to Huang"
+     },
+     {
+      "date": "08 NOV",
+      "text": "The email · board opens an investigation"
+     },
+     {
+      "date": "09 NOV",
+      "text": "China: 'groundless' · shareholder lawsuit"
+     },
+     {
+      "date": "11 NOV",
+      "text": "Another relationship reported · resignation accepted"
+     },
+     {
+      "date": "12 NOV",
+      "text": "Nvidia announces: Huang is out"
+     }
+    ],
+    "upTo": 2
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S06_06",
+   "type": "footage",
+   "from": 9339,
+   "dur": 64,
+   "src": "footage/E2-BIZ-084.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S06_07",
+   "type": "graphic",
+   "from": 9403,
+   "dur": 216,
+   "component": "CaseTimeline",
+   "props": {
+    "entries": [
+     {
+      "date": "29 OCT",
+      "text": "NYT: US officials suspected an intelligence link"
+     },
+     {
+      "date": "29 OCT",
+      "text": "Nvidia: allegations 'debunked last year'"
+     },
+     {
+      "date": "30 OCT",
+      "text": "WSJ follow-up · Singapore denies its claims"
+     },
+     {
+      "date": "04 NOV",
+      "text": "Three House committees write to Huang"
+     },
+     {
+      "date": "08 NOV",
+      "text": "The email · board opens an investigation"
+     },
+     {
+      "date": "09 NOV",
+      "text": "China: 'groundless' · shareholder lawsuit"
+     },
+     {
+      "date": "11 NOV",
+      "text": "Another relationship reported · resignation accepted"
+     },
+     {
+      "date": "12 NOV",
+      "text": "Nvidia announces: Huang is out"
+     }
+    ],
+    "upTo": 3
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S06_08",
+   "type": "graphic",
+   "from": 9619,
+   "dur": 67,
+   "component": "CaseTimeline",
+   "props": {
+    "entries": [
+     {
+      "date": "29 OCT",
+      "text": "NYT: US officials suspected an intelligence link"
+     },
+     {
+      "date": "29 OCT",
+      "text": "Nvidia: allegations 'debunked last year'"
+     },
+     {
+      "date": "30 OCT",
+      "text": "WSJ follow-up · Singapore denies its claims"
+     },
+     {
+      "date": "04 NOV",
+      "text": "Three House committees write to Huang"
+     },
+     {
+      "date": "08 NOV",
+      "text": "The email · board opens an investigation"
+     },
+     {
+      "date": "09 NOV",
+      "text": "China: 'groundless' · shareholder lawsuit"
+     },
+     {
+      "date": "11 NOV",
+      "text": "Another relationship reported · resignation accepted"
+     },
+     {
+      "date": "12 NOV",
+      "text": "Nvidia announces: Huang is out"
+     }
+    ],
+    "upTo": 4
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S06_09",
+   "type": "graphic",
+   "from": 9686,
+   "dur": 83,
+   "component": "EmailReveal",
+   "props": {
+    "from": "Jensen Huang",
+    "to": "All NVIDIA employees",
+    "subject": "A Message to Our Company",
+    "date": "Sunday, 8 November 2026",
+    "lines": [
+     "I owe my family and all of you an apology.",
+     "I was unfaithful to my wife."
+    ],
+    "highlight": 1
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S06_10",
+   "type": "footage",
+   "from": 9769,
+   "dur": 219,
+   "src": "footage/E2-MOOD-003.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S06_11",
+   "type": "footage",
+   "from": 9988,
+   "dur": 220,
+   "src": "footage/E2-BIZ-092.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S06_12",
+   "type": "graphic",
+   "from": 10208,
+   "dur": 232,
+   "component": "CaseTimeline",
+   "props": {
+    "entries": [
+     {
+      "date": "29 OCT",
+      "text": "NYT: US officials suspected an intelligence link"
+     },
+     {
+      "date": "29 OCT",
+      "text": "Nvidia: allegations 'debunked last year'"
+     },
+     {
+      "date": "30 OCT",
+      "text": "WSJ follow-up · Singapore denies its claims"
+     },
+     {
+      "date": "04 NOV",
+      "text": "Three House committees write to Huang"
+     },
+     {
+      "date": "08 NOV",
+      "text": "The email · board opens an investigation"
+     },
+     {
+      "date": "09 NOV",
+      "text": "China: 'groundless' · shareholder lawsuit"
+     },
+     {
+      "date": "11 NOV",
+      "text": "Another relationship reported · resignation accepted"
+     },
+     {
+      "date": "12 NOV",
+      "text": "Nvidia announces: Huang is out"
+     }
+    ],
+    "upTo": 5
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S06_13",
+   "type": "footage",
+   "from": 10440,
+   "dur": 232,
+   "src": "footage/E2-BIZ-102.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S06_14",
+   "type": "graphic",
+   "from": 10672,
+   "dur": 269,
+   "component": "CaseTimeline",
+   "props": {
+    "entries": [
+     {
+      "date": "29 OCT",
+      "text": "NYT: US officials suspected an intelligence link"
+     },
+     {
+      "date": "29 OCT",
+      "text": "Nvidia: allegations 'debunked last year'"
+     },
+     {
+      "date": "30 OCT",
+      "text": "WSJ follow-up · Singapore denies its claims"
+     },
+     {
+      "date": "04 NOV",
+      "text": "Three House committees write to Huang"
+     },
+     {
+      "date": "08 NOV",
+      "text": "The email · board opens an investigation"
+     },
+     {
+      "date": "09 NOV",
+      "text": "China: 'groundless' · shareholder lawsuit"
+     },
+     {
+      "date": "11 NOV",
+      "text": "Another relationship reported · resignation accepted"
+     },
+     {
+      "date": "12 NOV",
+      "text": "Nvidia announces: Huang is out"
+     }
+    ],
+    "upTo": 6
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S06_15",
+   "type": "footage",
+   "from": 10941,
+   "dur": 114,
+   "src": "footage/E2-MOOD-004.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S06_16",
+   "type": "graphic",
+   "from": 11055,
+   "dur": 125,
+   "component": "CaseTimeline",
+   "props": {
+    "entries": [
+     {
+      "date": "29 OCT",
+      "text": "NYT: US officials suspected an intelligence link"
+     },
+     {
+      "date": "29 OCT",
+      "text": "Nvidia: allegations 'debunked last year'"
+     },
+     {
+      "date": "30 OCT",
+      "text": "WSJ follow-up · Singapore denies its claims"
+     },
+     {
+      "date": "04 NOV",
+      "text": "Three House committees write to Huang"
+     },
+     {
+      "date": "08 NOV",
+      "text": "The email · board opens an investigation"
+     },
+     {
+      "date": "09 NOV",
+      "text": "China: 'groundless' · shareholder lawsuit"
+     },
+     {
+      "date": "11 NOV",
+      "text": "Another relationship reported · resignation accepted"
+     },
+     {
+      "date": "12 NOV",
+      "text": "Nvidia announces: Huang is out"
+     }
+    ],
+    "upTo": 7
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S06_17",
+   "type": "graphic",
+   "from": 11180,
+   "dur": 118,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "33 YEARS.",
+     "GONE."
+    ],
+    "accent": "GONE."
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S06_18",
+   "type": "footage",
+   "from": 11298,
+   "dur": 248,
+   "src": "footage/E2-MOOD-097.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
    "dim": 0.0
   },
   {
    "id": "S07_01",
    "type": "footage",
-   "from": 4944,
-   "dur": 131,
-   "src": "footage/DC-010.mp4",
-   "startFrom": 3050,
+   "from": 11538,
+   "dur": 38,
+   "src": "footage/E2-MOOD-003.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 8,
    "letterbox": false,
@@ -595,50 +1358,220 @@
   },
   {
    "id": "S07_02",
-   "type": "footage",
-   "from": 5075,
-   "dur": 73,
-   "src": "footage/DC-010.mp4",
-   "startFrom": 775,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S07_03",
-   "type": "footage",
-   "from": 5148,
-   "dur": 73,
-   "src": "footage/DC-010.mp4",
-   "startFrom": 2225,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S07_04",
    "type": "graphic",
-   "from": 5221,
-   "dur": 263,
-   "component": "BigStat",
+   "from": 11576,
+   "dur": 87,
+   "component": "BigWords",
    "props": {
-    "kicker": "Power density",
-    "value": 120,
-    "prefix": "~",
-    "suffix": " kW",
-    "label": "Power per rack · Nvidia GB200 NVL72",
-    "sublabel": "Vendor specifications range from about 120 to 132 kW",
-    "source": "Source: Nvidia and server-vendor specifications for GB200 NVL72 rack systems. Kilowatts per rack."
+    "lines": [
+     "A HONEY TRAP?"
+    ],
+    "accent": "A HONEY TRAP?"
    },
    "xfade": 0
   },
   {
+   "id": "S07_03",
+   "type": "graphic",
+   "from": 11663,
+   "dur": 433,
+   "component": "AllegedVsKnown",
+   "props": {
+    "kicker": "The spy question",
+    "title": "What we actually know",
+    "left": [
+     "US officials suspected an intelligence link (NYT)",
+     "Singapore and Taiwan concerns (WSJ)",
+     "Further relationships with employees (NYT, Reuters)"
+    ],
+    "right": [
+     "She has not been charged, anywhere",
+     "DOJ: “no conclusions”",
+     "China: the claims are “a smear”",
+     "Board: no reason to believe secrets were compromised"
+    ]
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S07_04",
+   "type": "footage",
+   "from": 12096,
+   "dur": 346,
+   "src": "footage/E2-BIZ-014.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
    "id": "S07_05",
    "type": "footage",
-   "from": 5484,
-   "dur": 68,
+   "from": 12442,
+   "dur": 62,
+   "src": "footage/E2-BIZ-092.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S07_06",
+   "type": "graphic",
+   "from": 12504,
+   "dur": 360,
+   "component": "AllegedVsKnown",
+   "props": {
+    "kicker": "The investigations",
+    "title": "Who is looking at what",
+    "leftTitle": "UNDER WAY",
+    "rightTitle": "NOT ESTABLISHED",
+    "left": [
+     "DOJ: criminal case into Megaspeed",
+     "SEC: inquiry (reported by WSJ)",
+     "Malaysia: chip re-export check",
+     "House: closed-door interview, 1 Dec"
+    ],
+    "right": [
+     "Any charge against Nvidia",
+     "Any charge against Huang",
+     "That she is a spy"
+    ]
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S07_07",
+   "type": "footage",
+   "from": 12864,
+   "dur": 292,
+   "src": "footage/BIZ-043.mp4",
+   "startFrom": 375,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S07_08",
+   "type": "graphic",
+   "from": 13156,
+   "dur": 204,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "DECEMBER 1.",
+     "BEHIND CLOSED DOORS."
+    ],
+    "accent": "DECEMBER 1."
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S07_09",
+   "type": "footage",
+   "from": 13360,
+   "dur": 119,
+   "src": "footage/E2-MOOD-087.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S07_10",
+   "type": "graphic",
+   "from": 13479,
+   "dur": 125,
+   "component": "Quote",
+   "props": {
+    "kicker": "Nvidia's board",
+    "quote": "The Nvidia board unanimously accepted his resignation and does not intend to reinstate Jensen as CEO.",
+    "who": "Harvey Jones",
+    "role": "Chair · earnings call, 17 November 2026"
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S08_01",
+   "type": "footage",
+   "from": 13596,
+   "dur": 128,
+   "src": "footage/DC-010.mp4",
+   "startFrom": 3100,
+   "motion": "none",
+   "xfade": 8,
+   "letterbox": false,
+   "dim": 0.25
+  },
+  {
+   "id": "S08_02",
+   "type": "graphic",
+   "from": 13724,
+   "dur": 167,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "COLETTE KRESS",
+     "INTERIM CEO + CFO"
+    ],
+    "accent": "COLETTE KRESS"
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S08_03",
+   "type": "graphic",
+   "from": 13891,
+   "dur": 272,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "HARVEY JONES",
+     "ON THE BOARD SINCE 1993",
+     "FIRST-EVER CHAIR"
+    ],
+    "accent": "HARVEY JONES"
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S08_04",
+   "type": "footage",
+   "from": 14163,
+   "dur": 129,
+   "src": "footage/E2-MOOD-004.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S08_05",
+   "type": "graphic",
+   "from": 14292,
+   "dur": 242,
+   "component": "BigStat",
+   "props": {
+    "kicker": "Reported 17 Nov 2026",
+    "value": 115.8,
+    "decimals": 1,
+    "prefix": "$",
+    "suffix": "bn",
+    "label": "The biggest quarter in Nvidia's history",
+    "sublabel": "“Our momentum is real.” Colette Kress"
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S08_06",
+   "type": "footage",
+   "from": 14534,
+   "dur": 124,
    "src": "footage/DC-010.mp4",
    "startFrom": 4650,
    "motion": "none",
@@ -647,142 +1580,96 @@
    "dim": 0.0
   },
   {
-   "id": "S07_06",
-   "type": "footage",
-   "from": 5552,
-   "dur": 68,
-   "src": "footage/DC-010.mp4",
-   "startFrom": 2600,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S08_01",
+   "id": "S08_07",
    "type": "graphic",
-   "from": 5612,
-   "dur": 182,
-   "component": "DataCentre",
+   "from": 14658,
+   "dur": 360,
+   "component": "EventLine",
    "props": {
-    "kicker": "Inside an AI data centre",
-    "title": "Power in, heat out",
-    "source": "Simplified schematic. Supplier names are examples of companies active in each system, not a market-share ranking.",
-    "callouts": [
+    "kicker": "Nvidia shares",
+    "title": "Closing price through the scandal",
+    "unit": "$",
+    "min": 140,
+    "max": 270,
+    "note": "US$ per share, closing prices · 5 Nov includes a market-wide sell-off",
+    "points": [
      {
-      "x": 0,
-      "y": 290,
-      "label": "Grid connection",
-      "who": "Utilities · grid operators",
-      "at": 20
+      "label": "6 Oct",
+      "value": 239.24
      },
      {
-      "x": 170,
-      "y": 405,
-      "label": "Transformers & switchgear",
-      "who": "Siemens Energy · Hitachi Energy · Eaton",
-      "at": 30
+      "label": "28 Oct",
+      "value": 215.38
      },
      {
-      "x": 545,
-      "y": 405,
-      "label": "UPS & power",
-      "who": "Vertiv · Schneider · Eaton",
-      "at": 44
+      "label": "30 Oct",
+      "value": 204.64
      },
      {
-      "x": 900,
-      "y": 318,
-      "label": "Compute & network",
-      "who": "Nvidia · AMD · Arista",
-      "at": 56
+      "label": "4 Nov",
+      "value": 200.13
      },
      {
-      "x": 1180,
-      "y": 40,
-      "label": "Cooling",
-      "who": "Vertiv · Schneider · Trane",
-      "at": 68
+      "label": "5 Nov",
+      "value": 181.5
+     },
+     {
+      "label": "9 Nov",
+      "value": 178.67
+     },
+     {
+      "label": "10 Nov",
+      "value": 168.89
+     },
+     {
+      "label": "12 Nov",
+      "value": 166.19
+     },
+     {
+      "label": "13 Nov",
+      "value": 162.85
+     },
+     {
+      "label": "16 Nov",
+      "value": 156.14
+     },
+     {
+      "label": "17 Nov",
+      "value": 155.46
      }
-    ]
-   },
-   "xfade": 8
-  },
-  {
-   "id": "S08_02",
-   "type": "footage",
-   "from": 5794,
-   "dur": 135,
-   "src": "footage/DC-010.mp4",
-   "startFrom": 4075,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S08_03",
-   "type": "footage",
-   "from": 5929,
-   "dur": 177,
-   "src": "footage/DC-010.mp4",
-   "startFrom": 2650,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S08_04",
-   "type": "graphic",
-   "from": 6106,
-   "dur": 305,
-   "component": "BarChart",
-   "props": {
-    "kicker": "Where the data centre dollar goes",
-    "title": "Estimated split of AI data centre capex to 2030",
-    "unit": "%",
-    "source": "Industry estimate: McKinsey & Company, 'The cost of compute' (2025). Share of cumulative AI data centre capex to 2030. Approximate.",
-    "bars": [
+    ],
+    "events": [
      {
-      "label": "Chips & IT hardware",
-      "value": 60,
-      "display": "~60%",
-      "highlight": true
+      "index": 0,
+      "text": "Record close"
      },
      {
-      "label": "Power, cooling & electrical",
-      "value": 25,
-      "display": "~25%"
+      "index": 2,
+      "text": "First reports"
      },
      {
-      "label": "Land & buildings",
-      "value": 15,
-      "display": "~15%"
+      "index": 4,
+      "text": "Market sell-off"
+     },
+     {
+      "index": 5,
+      "text": "After the email"
+     },
+     {
+      "index": 7,
+      "text": "Resignation"
      }
     ]
    },
    "xfade": 0
   },
   {
-   "id": "S08_05",
+   "id": "S08_08",
    "type": "footage",
-   "from": 6411,
-   "dur": 257,
-   "src": "footage/IA-QTS.mp4",
-   "startFrom": 3350,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S08_06",
-   "type": "footage",
-   "from": 6668,
-   "dur": 338,
-   "src": "footage/BIZ-043.mp4",
-   "startFrom": 329,
+   "from": 15018,
+   "dur": 204,
+   "src": "footage/SEM-042.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -790,35 +1677,64 @@
   },
   {
    "id": "S09_01",
-   "type": "footage",
-   "from": 6998,
-   "dur": 126,
-   "src": "footage/BIZ-042.mp4",
-   "startFrom": 0,
-   "motion": "none",
-   "xfade": 8,
-   "letterbox": false,
-   "dim": 0.2
+   "type": "graphic",
+   "from": 15214,
+   "dur": 111,
+   "component": "ScenarioTree",
+   "props": {
+    "kicker": "What happens next",
+    "title": "Three ways this could play out",
+    "paths": [
+     {
+      "name": "Business as usual",
+      "line": "Roadmap to 2028 · a strong new CEO · the machine keeps running"
+     },
+     {
+      "name": "The slow squeeze",
+      "line": "Customers build their own chips · China stays shut · the edge wears down"
+     },
+     {
+      "name": "The investigations go deeper",
+      "line": "Megaspeed · export controls · what investors were told"
+     }
+    ]
+   },
+   "xfade": 8
   },
   {
    "id": "S09_02",
-   "type": "footage",
-   "from": 7124,
-   "dur": 42,
-   "src": "footage/EL-008.mp4",
-   "startFrom": 300,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": true,
-   "dim": 0.0
+   "type": "graphic",
+   "from": 15325,
+   "dur": 241,
+   "component": "ScenarioTree",
+   "props": {
+    "kicker": "Scenario 1",
+    "title": "Three ways this could play out",
+    "paths": [
+     {
+      "name": "Business as usual",
+      "line": "Roadmap to 2028 · a strong new CEO · the machine keeps running"
+     },
+     {
+      "name": "The slow squeeze",
+      "line": "Customers build their own chips · China stays shut · the edge wears down"
+     },
+     {
+      "name": "The investigations go deeper",
+      "line": "Megaspeed · export controls · what investors were told"
+     }
+    ],
+    "focus": 0
+   },
+   "xfade": 0
   },
   {
    "id": "S09_03",
    "type": "footage",
-   "from": 7166,
-   "dur": 50,
-   "src": "footage/MOOD-113.mp4",
-   "startFrom": 1000,
+   "from": 15566,
+   "dur": 240,
+   "src": "footage/DC-010.mp4",
+   "startFrom": 1750,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -827,50 +1743,104 @@
   {
    "id": "S09_04",
    "type": "graphic",
-   "from": 7216,
-   "dur": 329,
-   "component": "ColumnChart",
+   "from": 15806,
+   "dur": 245,
+   "component": "ScenarioTree",
    "props": {
-    "kicker": "Data centre electricity use",
-    "title": "Global consumption, terawatt-hours per year",
-    "unit": " TWh",
-    "source": "IEA, Energy and AI (April 2025). 2024 estimate; 2030 is the IEA Base Case projection. TWh per year.",
-    "cols": [
+    "kicker": "Scenario 2",
+    "title": "Three ways this could play out",
+    "paths": [
      {
-      "label": "2024",
-      "value": 415,
-      "display": "415"
+      "name": "Business as usual",
+      "line": "Roadmap to 2028 · a strong new CEO · the machine keeps running"
      },
      {
-      "label": "2030",
-      "value": 945,
-      "display": "~945",
-      "projection": true,
-      "highlight": true
+      "name": "The slow squeeze",
+      "line": "Customers build their own chips · China stays shut · the edge wears down"
+     },
+     {
+      "name": "The investigations go deeper",
+      "line": "Megaspeed · export controls · what investors were told"
      }
-    ]
+    ],
+    "focus": 1
    },
    "xfade": 0
   },
   {
    "id": "S09_05",
    "type": "footage",
-   "from": 7545,
-   "dur": 196,
-   "src": "footage/BIZ-085.mp4",
-   "startFrom": 50,
+   "from": 16051,
+   "dur": 245,
+   "src": "footage/E2-BIZ-106.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
    "dim": 0.0
   },
   {
+   "id": "S09_06",
+   "type": "graphic",
+   "from": 16296,
+   "dur": 348,
+   "component": "ScenarioTree",
+   "props": {
+    "kicker": "Scenario 3",
+    "title": "Three ways this could play out",
+    "paths": [
+     {
+      "name": "Business as usual",
+      "line": "Roadmap to 2028 · a strong new CEO · the machine keeps running"
+     },
+     {
+      "name": "The slow squeeze",
+      "line": "Customers build their own chips · China stays shut · the edge wears down"
+     },
+     {
+      "name": "The investigations go deeper",
+      "line": "Megaspeed · export controls · what investors were told"
+     }
+    ],
+    "focus": 2
+   },
+   "xfade": 0
+  },
+  {
+   "id": "S09_07",
+   "type": "footage",
+   "from": 16644,
+   "dur": 200,
+   "src": "footage/E2-BIZ-102.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S09_08",
+   "type": "graphic",
+   "from": 16844,
+   "dur": 226,
+   "component": "BigWords",
+   "props": {
+    "lines": [
+     "WHO THEY PICK.",
+     "DECEMBER 1.",
+     "THE ORDERS."
+    ],
+    "accent": "DECEMBER 1."
+   },
+   "xfade": 0
+  },
+  {
    "id": "S10_01",
    "type": "footage",
-   "from": 7733,
-   "dur": 175,
-   "src": "footage/EL-012.mp4",
-   "startFrom": 75,
+   "from": 17062,
+   "dur": 227,
+   "src": "footage/E2-BIZ-092.mp4",
+   "startFrom": 0,
    "motion": "none",
    "xfade": 8,
    "letterbox": false,
@@ -879,563 +1849,31 @@
   {
    "id": "S10_02",
    "type": "footage",
-   "from": 7908,
-   "dur": 182,
-   "src": "footage/EL-008.mp4",
-   "startFrom": 500,
-   "motion": "none",
+   "from": 17289,
+   "dur": 102,
+   "src": "footage/MOOD-113.mp4",
+   "startFrom": 600,
+   "motion": "push",
    "xfade": 0,
-   "letterbox": false,
+   "letterbox": true,
    "dim": 0.0
   },
   {
    "id": "S10_03",
    "type": "footage",
-   "from": 8090,
-   "dur": 246,
-   "src": "footage/EL-007.mp4",
-   "startFrom": 35,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S10_04",
-   "type": "graphic",
-   "from": 8336,
-   "dur": 169,
-   "component": "PowerChain",
-   "props": {
-    "kicker": "The electricity value chain",
-    "title": "From power station to server rack",
-    "flowLabel": "POWER FLOW →",
-    "source": "Simplified. Bottlenecks: GE Vernova Q3 2026 results; Wood Mackenzie (2024); Berkeley Lab, Queued Up (2026 ed.).",
-    "stages": [
-     {
-      "icon": "plant",
-      "label": "Generation",
-      "who": "Gas turbines · nuclear · renewables",
-      "tag": "122 GW gas backlog + slots*"
-     },
-     {
-      "icon": "transformer",
-      "label": "Step-up transformer",
-      "who": "Siemens Energy · Hitachi Energy · GE Vernova"
-     },
-     {
-      "icon": "pylon",
-      "label": "Transmission",
-      "who": "Utilities · Quanta Services · cable makers",
-      "tag": "~5 yrs to connect"
-     },
-     {
-      "icon": "substation",
-      "label": "Substation",
-      "who": "Transformers · switchgear",
-      "tag": "2–4 yr transformer waits"
-     },
-     {
-      "icon": "switchgear",
-      "label": "Switchgear & UPS",
-      "who": "Eaton · Schneider · Vertiv"
-     },
-     {
-      "icon": "datacentre",
-      "label": "Data centre",
-      "who": "Hyperscalers · colocation · neoclouds"
-     }
-    ]
-   },
-   "xfade": 0
-  },
-  {
-   "id": "S10_05",
-   "type": "graphic",
-   "from": 8505,
-   "dur": 149,
-   "component": "RangeBars",
-   "props": {
-    "kicker": "The waiting game",
-    "title": "How long the physical grid takes",
-    "unit": "years",
-    "max": 6,
-    "source": "Grid connection: Berkeley Lab, Queued Up (2026 ed.), typical US project reaching operation in 2025. Transformers: Wood Mackenzie (2024), average ~120 weeks, longer for large units. Years.",
-    "rows": [
-     {
-      "label": "Grid connection",
-      "min": 5,
-      "max": 5,
-      "display": "~5 yrs",
-      "highlight": true
-     },
-     {
-      "label": "Large power transformer",
-      "min": 2.3,
-      "max": 4,
-      "display": "2–4 yrs"
-     }
-    ]
-   },
-   "xfade": 0
-  },
-  {
-   "id": "S10_06",
-   "type": "still",
-   "from": 8654,
-   "dur": 143,
-   "src": "stills/EL-080.jpg",
+   "from": 17391,
+   "dur": 153,
+   "src": "footage/E2-MOOD-004.mp4",
    "startFrom": 0,
-   "motion": "pull",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S10_07",
-   "type": "footage",
-   "from": 8797,
-   "dur": 144,
-   "src": "footage/BIZ-008.mp4",
-   "startFrom": 250,
    "motion": "none",
    "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S10_08",
-   "type": "footage",
-   "from": 8941,
-   "dur": 88,
-   "src": "footage/BIZ-057.mp4",
-   "startFrom": 150,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S10_09",
-   "type": "footage",
-   "from": 9029,
-   "dur": 88,
-   "src": "footage/EL-006.mp4",
-   "startFrom": 25,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
+   "letterbox": true,
    "dim": 0.0
   },
   {
    "id": "S11_01",
-   "type": "footage",
-   "from": 9109,
-   "dur": 89,
-   "src": "footage/BIZ-055.mp4",
-   "startFrom": 75,
-   "motion": "none",
-   "xfade": 8,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S11_02",
    "type": "graphic",
-   "from": 9198,
-   "dur": 277,
-   "component": "BarChart",
-   "props": {
-    "kicker": "The order books",
-    "title": "Backlog at the grid's equipment makers",
-    "unit": "",
-    "source": "Reported order backlogs. GE Vernova and Quanta Services: 30 Sep 2026 (USD). Siemens Energy: 30 Sep 2026, fiscal year-end (EUR). Company results.",
-    "bars": [
-     {
-      "label": "GE Vernova",
-      "value": 197,
-      "display": "$197bn",
-      "highlight": true
-     },
-     {
-      "label": "Siemens Energy",
-      "value": 164,
-      "display": "€164bn"
-     },
-     {
-      "label": "Quanta Services",
-      "value": 63.7,
-      "display": "$63.7bn"
-     }
-    ]
-   },
-   "xfade": 0
-  },
-  {
-   "id": "S11_03",
-   "type": "footage",
-   "from": 9475,
-   "dur": 158,
-   "src": "footage/EL-020.mp4",
-   "startFrom": 75,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S11_04",
-   "type": "footage",
-   "from": 9633,
-   "dur": 157,
-   "src": "footage/BIZ-057.mp4",
-   "startFrom": 450,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S11_05",
-   "type": "footage",
-   "from": 9790,
-   "dur": 171,
-   "src": "footage/EL-030.mp4",
-   "startFrom": 0,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": true,
-   "dim": 0.0
-  },
-  {
-   "id": "S12_01",
-   "type": "footage",
-   "from": 9953,
-   "dur": 67,
-   "src": "footage/BIZ-043.mp4",
-   "startFrom": 400,
-   "motion": "none",
-   "xfade": 8,
-   "letterbox": false,
-   "dim": 0.2
-  },
-  {
-   "id": "S12_02",
-   "type": "graphic",
-   "from": 10020,
-   "dur": 518,
-   "component": "Matrix",
-   "props": {
-    "kicker": "Who captures the value?",
-    "title": "The AI value chain, scored",
-    "source": "THE BIG PICTURE editorial assessment based on company reports (latest quarter, 2026). Not investment advice.",
-    "cols": [
-     "Margins",
-     "Capital needs",
-     "Pricing power",
-     "Key risk"
-    ],
-    "rows": [
-     {
-      "name": "Chip designers",
-      "sub": "e.g. Nvidia",
-      "cells": [
-       {
-        "rating": 3
-       },
-       {
-        "text": "Low",
-        "tone": "good"
-       },
-       {
-        "rating": 3
-       },
-       {
-        "text": "Few buyers"
-       }
-      ]
-     },
-     {
-      "name": "Foundry & tools",
-      "sub": "e.g. TSMC, ASML",
-      "cells": [
-       {
-        "rating": 2
-       },
-       {
-        "text": "Very high",
-        "tone": "bad"
-       },
-       {
-        "rating": 3
-       },
-       {
-        "text": "Geopolitics"
-       }
-      ]
-     },
-     {
-      "name": "Cloud giants",
-      "sub": "hyperscalers",
-      "cells": [
-       {
-        "rating": 2
-       },
-       {
-        "text": "Extreme",
-        "tone": "bad"
-       },
-       {
-        "rating": 2
-       },
-       {
-        "text": "Returns"
-       }
-      ]
-     },
-     {
-      "name": "Neoclouds",
-      "sub": "e.g. CoreWeave",
-      "cells": [
-       {
-        "rating": 1
-       },
-       {
-        "text": "Debt-funded",
-        "tone": "bad"
-       },
-       {
-        "rating": 1
-       },
-       {
-        "text": "Leverage"
-       }
-      ]
-     },
-     {
-      "name": "Power & cooling kit",
-      "sub": "e.g. Vertiv, Eaton",
-      "cells": [
-       {
-        "rating": 2
-       },
-       {
-        "text": "Moderate"
-       },
-       {
-        "rating": 2
-       },
-       {
-        "text": "Cycle"
-       }
-      ]
-     },
-     {
-      "name": "Grid equipment",
-      "sub": "e.g. GE Vernova, Siemens Energy",
-      "cells": [
-       {
-        "rating": 2
-       },
-       {
-        "text": "Moderate"
-       },
-       {
-        "rating": 3
-       },
-       {
-        "text": "Execution"
-       }
-      ]
-     }
-    ]
-   },
-   "xfade": 0
-  },
-  {
-   "id": "S12_03",
-   "type": "footage",
-   "from": 10538,
-   "dur": 176,
-   "src": "footage/BIZ-043.mp4",
-   "startFrom": 491,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S12_04",
-   "type": "footage",
-   "from": 10714,
-   "dur": 170,
-   "src": "footage/BIZ-008.mp4",
-   "startFrom": 300,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S12_05",
-   "type": "footage",
-   "from": 10884,
-   "dur": 75,
-   "src": "footage/BIZ-085.mp4",
-   "startFrom": 200,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S12_06",
-   "type": "graphic",
-   "from": 10959,
-   "dur": 448,
-   "component": "ColumnChart",
-   "props": {
-    "kicker": "Who pays",
-    "title": "PJM capacity price, $ per MW-day",
-    "source": "PJM Base Residual Auction results, RTO clearing price, $/MW-day. 2026/27 and 2027/28 cleared at the agreed price cap.",
-    "cols": [
-     {
-      "label": "2024/25",
-      "value": 28.92,
-      "display": "$29"
-     },
-     {
-      "label": "2025/26",
-      "value": 269.92,
-      "display": "$270"
-     },
-     {
-      "label": "2026/27",
-      "value": 329.17,
-      "display": "$329"
-     },
-     {
-      "label": "2027/28",
-      "value": 333.44,
-      "display": "$333",
-      "highlight": true
-     }
-    ]
-   },
-   "xfade": 0
-  },
-  {
-   "id": "S12_07",
-   "type": "footage",
-   "from": 11407,
-   "dur": 247,
-   "src": "footage/BIZ-033.mp4",
-   "startFrom": 50,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S13_01",
-   "type": "footage",
-   "from": 11646,
-   "dur": 140,
-   "src": "footage/MOOD-049.mp4",
-   "startFrom": 50,
-   "motion": "none",
-   "xfade": 8,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S13_02",
-   "type": "footage",
-   "from": 11786,
-   "dur": 90,
-   "src": "footage/SEM-042.mp4",
-   "startFrom": 50,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S13_03",
-   "type": "footage",
-   "from": 11876,
-   "dur": 72,
-   "src": "footage/BIZ-057.mp4",
-   "startFrom": 250,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S13_04",
-   "type": "footage",
-   "from": 11948,
-   "dur": 45,
-   "src": "footage/DC-010.mp4",
-   "startFrom": 4650,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S13_05",
-   "type": "footage",
-   "from": 11993,
-   "dur": 46,
-   "src": "footage/EL-007.mp4",
-   "startFrom": 125,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S13_06",
-   "type": "footage",
-   "from": 12039,
-   "dur": 46,
-   "src": "footage/EL-008.mp4",
-   "startFrom": 550,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": false,
-   "dim": 0.0
-  },
-  {
-   "id": "S13_07",
-   "type": "footage",
-   "from": 12085,
-   "dur": 119,
-   "src": "footage/MOOD-113.mp4",
-   "startFrom": 1075,
-   "motion": "pull",
-   "xfade": 0,
-   "letterbox": true,
-   "dim": 0.0
-  },
-  {
-   "id": "S13_08",
-   "type": "footage",
-   "from": 12204,
-   "dur": 171,
-   "src": "footage/IA-QTS.mp4",
-   "startFrom": 125,
-   "motion": "none",
-   "xfade": 0,
-   "letterbox": true,
-   "dim": 0.0
-  },
-  {
-   "id": "S14_01",
-   "type": "graphic",
-   "from": 12367,
+   "from": 17536,
    "dur": 183,
    "component": "EndCard",
    "props": {},
@@ -1444,833 +1882,870 @@
  ],
  "overlays": [
   {
-   "id": "S00_ov1",
-   "from": 161,
-   "dur": 90,
-   "component": "SourceTag",
-   "props": {
-    "text": "QTS data centre, Aurora, Colorado · F. Soto (public domain)"
-   }
-  },
-  {
-   "id": "S00_ov2",
-   "from": 251,
-   "dur": 90,
-   "component": "SourceTag",
-   "props": {
-    "text": "NASA Ames supercomputing facility · NASA"
-   }
-  },
-  {
    "id": "S01_ov1",
-   "from": 868,
+   "from": 1559,
    "dur": 115,
    "component": "TitleCard",
    "props": {
-    "title": "THE HIDDEN WINNERS|OF THE AI BOOM"
+    "title": "NVIDIA|AFTER JENSEN"
    }
   },
   {
    "id": "S02_ov1",
-   "from": 988,
-   "dur": 85,
+   "from": 1681,
+   "dur": 80,
    "component": "ChapterCard",
    "props": {
-    "act": "PART 01",
-    "title": "THE GOLD RUSH"
+    "act": "CHAPTER 1",
+    "title": "THE DINER"
    }
   },
   {
-   "id": "S02_ov2",
-   "from": 1505,
-   "dur": 90,
-   "component": "SourceTag",
+   "id": "S03_ov1",
+   "from": 3771,
+   "dur": 80,
+   "component": "ChapterCard",
    "props": {
-    "text": "QTS data centre, Aurora, Colorado · F. Soto (public domain)"
-   }
-  },
-  {
-   "id": "S02_ov3",
-   "from": 1078,
-   "dur": 70,
-   "component": "SourceTag",
-   "props": {
-    "text": "Microsoft data centre, Middenmeer, NL · CC BY 4.0"
+    "act": "CHAPTER 2",
+    "title": "THE BET"
    }
   },
   {
    "id": "S04_ov1",
-   "from": 2376,
-   "dur": 85,
+   "from": 5542,
+   "dur": 80,
    "component": "ChapterCard",
    "props": {
-    "act": "PART 02",
-    "title": "THE CHIP ECONOMY"
+    "act": "CHAPTER 3",
+    "title": "THE EMPIRE"
+   }
+  },
+  {
+   "id": "S04_ov2",
+   "from": 6586,
+   "dur": 112,
+   "component": "CornerStat",
+   "props": {
+    "value": "$0",
+    "label": "China data-centre chip sales in Nvidia's outlook"
    }
   },
   {
    "id": "S05_ov1",
-   "from": 3297,
-   "dur": 100,
-   "component": "LowerThird",
+   "from": 6895,
+   "dur": 80,
+   "component": "ChapterCard",
    "props": {
-    "title": "TSMC",
-    "sub": "Contract chipmaker · Hsinchu, Taiwan"
+    "act": "CHAPTER 4",
+    "title": "THE SINGAPORE CONNECTION"
    }
   },
   {
-   "id": "S05_ov2",
-   "from": 4023,
-   "dur": 115,
-   "component": "CornerStat",
+   "id": "S06_ov1",
+   "from": 8374,
+   "dur": 80,
+   "component": "ChapterCard",
    "props": {
-    "value": "~80%",
-    "label": "SK hynix operating margin",
-    "source": "Q3 2026 · KRW 83.3tn on KRW 104.6tn revenue"
-   }
-  },
-  {
-   "id": "S05_ov3",
-   "from": 3399,
-   "dur": 110,
-   "component": "CornerStat",
-   "props": {
-    "value": "up to $64bn",
-    "label": "TSMC 2026 capital spending plan",
-    "source": "Management guidance, Q3 2026 call"
-   }
-  },
-  {
-   "id": "S05_ov4",
-   "from": 2946,
-   "dur": 85,
-   "component": "SourceTag",
-   "props": {
-    "text": "Semiconductor cleanroom · U.S. Dept. of Energy (public domain)"
+    "act": "CHAPTER 5",
+    "title": "FIFTEEN DAYS"
    }
   },
   {
    "id": "S07_ov1",
-   "from": 4952,
-   "dur": 85,
+   "from": 11546,
+   "dur": 80,
    "component": "ChapterCard",
    "props": {
-    "act": "PART 03",
-    "title": "THE DATA CENTRE ECONOMY"
-   }
-  },
-  {
-   "id": "S07_ov2",
-   "from": 5083,
-   "dur": 90,
-   "component": "SourceTag",
-   "props": {
-    "text": "NASA Ames supercomputing facility · NASA"
+    "act": "CHAPTER 6",
+    "title": "WHAT WE ACTUALLY KNOW"
    }
   },
   {
    "id": "S08_ov1",
-   "from": 5804,
-   "dur": 120,
-   "component": "CornerStat",
+   "from": 13604,
+   "dur": 80,
+   "component": "ChapterCard",
    "props": {
-    "value": "+61%",
-    "label": "Vertiv net sales, Q3 2026 y/y",
-    "source": "Company results, Oct 2026"
+    "act": "CHAPTER 7",
+    "title": "THE EMPTY CHAIR"
    }
   },
   {
    "id": "S08_ov2",
-   "from": 6466,
-   "dur": 115,
+   "from": 14547,
+   "dur": 112,
    "component": "CornerStat",
    "props": {
-    "value": "1.4%",
-    "label": "Vacancy, N. American primary markets",
-    "source": "CBRE, H1 2026 report · record low",
-    "side": "left"
-   }
-  },
-  {
-   "id": "S08_ov3",
-   "from": 6733,
-   "dur": 125,
-   "component": "CornerStat",
-   "props": {
-    "value": "$132.5bn",
-    "label": "CoreWeave contract backlog",
-    "source": "30 Sep 2026 · debt ~$47bn · company filing"
-   }
-  },
-  {
-   "id": "S08_ov4",
-   "from": 6416,
-   "dur": 90,
-   "component": "SourceTag",
-   "props": {
-    "text": "QTS data centre, Aurora, Colorado · F. Soto (public domain)"
+    "value": "~$130bn",
+    "label": "Nvidia's forecast for next quarter"
    }
   },
   {
    "id": "S09_ov1",
-   "from": 7117,
-   "dur": 75,
+   "from": 15222,
+   "dur": 80,
    "component": "ChapterCard",
    "props": {
-    "act": "PART 04",
-    "title": "THE ELECTRICITY BOTTLENECK"
+    "act": "CHAPTER 8",
+    "title": "WHAT HAPPENS NEXT"
    }
-  },
-  {
-   "id": "S10_ov1",
-   "from": 8105,
-   "dur": 115,
-   "component": "CornerStat",
-   "props": {
-    "value": "122 GW",
-    "label": "GE Vernova gas backlog + slot reservations",
-    "source": "30 Sep 2026 · company results"
-   }
-  },
-  {
-   "id": "S10_ov2",
-   "from": 8951,
-   "dur": 115,
-   "component": "CornerStat",
-   "props": {
-    "value": "60–80%",
-    "label": "Transformer price rise since Jan 2020",
-    "source": "Industry estimate · Wood Mackenzie",
-    "side": "left"
-   }
-  },
-  {
-   "id": "S10_ov3",
-   "from": 8659,
-   "dur": 85,
-   "component": "SourceTag",
-   "props": {
-    "text": "750 kV power transformer · Wikimedia Commons (CC0)"
-   }
-  },
-  {
-   "id": "S12_ov1",
-   "from": 9961,
-   "dur": 75,
-   "component": "ChapterCard",
-   "props": {
-    "act": "PART 05",
-    "title": "WHO ACTUALLY WINS?"
-   }
-  },
-  {
-   "id": "bug",
-   "from": 1078,
-   "dur": 11297,
-   "component": "Bug",
-   "props": {}
   }
  ],
  "captions": [
   {
-   "from": 30,
-   "dur": 105,
-   "text": "Every time you ask a chatbot a question, something happens that you never see."
+   "from": 25,
+   "dur": 152,
+   "text": "On Sunday, November the eighth, Jensen Huang sent an email to everyone at Nvidia."
   },
   {
-   "from": 146,
-   "dur": 81,
-   "text": "Somewhere, in a building the size of several football pitches,"
+   "from": 190,
+   "dur": 46,
+   "text": "It started with an apology."
   },
   {
-   "from": 228,
-   "dur": 51,
-   "text": "thousands of chips run a little hotter."
-  },
-  {
-   "from": 288,
-   "dur": 52,
-   "text": "Pumps push coolant through the racks."
-  },
-  {
-   "from": 340,
-   "dur": 84,
-   "text": "And beyond the fence line, a power grid strains to keep up."
-  },
-  {
-   "from": 439,
-   "dur": 96,
-   "text": "We talk about artificial intelligence as if it were weightless."
-  },
-  {
-   "from": 535,
-   "dur": 40,
-   "text": "Software. Code. The cloud."
-  },
-  {
-   "from": 587,
-   "dur": 108,
-   "text": "But the AI boom runs on concrete, copper, steel and electricity."
-  },
-  {
-   "from": 708,
-   "dur": 57,
-   "text": "And some of its biggest winners make nothing"
-  },
-  {
-   "from": 765,
-   "dur": 57,
-   "text": "you would ever call artificial intelligence."
-  },
-  {
-   "from": 998,
-   "dur": 65,
-   "text": "Follow the money, and it starts with four companies."
-  },
-  {
-   "from": 1073,
-   "dur": 107,
-   "text": "In their latest financial years, Microsoft, Alphabet, Amazon and Meta"
-  },
-  {
-   "from": 1180,
-   "dur": 119,
-   "text": "together spent more than four hundred billion dollars on capital expenditure."
-  },
-  {
-   "from": 1308,
-   "dur": 93,
-   "text": "And they are accelerating. Amazon alone expects to spend"
-  },
-  {
-   "from": 1401,
-   "dur": 89,
-   "text": "around two hundred and twenty billion dollars in 2026."
-  },
-  {
-   "from": 1500,
-   "dur": 116,
-   "text": "Most of that money pays for one thing: data centres, filled with AI chips."
-  },
-  {
-   "from": 1646,
-   "dur": 84,
-   "text": "To see who captures that money, picture AI as a stack."
-  },
-  {
-   "from": 1740,
-   "dur": 77,
-   "text": "At the top, the applications and models. Below them,"
-  },
-  {
-   "from": 1817,
-   "dur": 74,
-   "text": "the chips. Then the factories that make the chips."
-  },
-  {
-   "from": 1899,
-   "dur": 100,
-   "text": "The data centres that house them. The power stations that feed them."
-  },
-  {
-   "from": 1999,
-   "dur": 74,
-   "text": "The lines and substations that deliver that power."
-  },
-  {
-   "from": 2081,
-   "dur": 55,
-   "text": "And at the very bottom, the transformers,"
-  },
-  {
-   "from": 2136,
-   "dur": 84,
-   "text": "switchgear and cables that make all of it physically possible."
-  },
-  {
-   "from": 2233,
-   "dur": 103,
-   "text": "Most of the attention sits at the top. This story goes all the way down."
-  },
-  {
-   "from": 2386,
-   "dur": 51,
-   "text": "The most visible winner is Nvidia."
-  },
-  {
-   "from": 2445,
-   "dur": 64,
-   "text": "In the three months to October 2026,"
-  },
-  {
-   "from": 2509,
-   "dur": 124,
-   "text": "it reported revenue of almost one hundred and sixteen billion dollars."
-  },
-  {
-   "from": 2641,
-   "dur": 80,
-   "text": "More than ninety percent of it came from data centres."
-  },
-  {
-   "from": 2721,
-   "dur": 106,
-   "text": "And it kept roughly seventy-five cents of every dollar as gross profit."
-  },
-  {
-   "from": 2839,
-   "dur": 83,
-   "text": "But Nvidia does not make its own chips. It designs them."
-  },
-  {
-   "from": 2941,
-   "dur": 136,
-   "text": "Manufacturing goes to Taiwan Semiconductor Manufacturing Company, or TSMC."
-  },
-  {
-   "from": 3085,
-   "dur": 101,
-   "text": "By one industry estimate, it took nearly three-quarters of all"
-  },
-  {
-   "from": 3187,
-   "dur": 95,
-   "text": "contract chipmaking revenue in the second quarter of 2026."
-  },
-  {
-   "from": 3289,
-   "dur": 107,
-   "text": "High-performance computing now makes up about two-thirds of its sales."
-  },
-  {
-   "from": 3396,
-   "dur": 75,
-   "text": "And it has told investors it plans to spend up to"
-  },
-  {
-   "from": 3470,
-   "dur": 81,
-   "text": "sixty-four billion dollars on new capacity this year."
-  },
-  {
-   "from": 3564,
-   "dur": 85,
-   "text": "TSMC, in turn, relies on a single Dutch company."
-  },
-  {
-   "from": 3656,
-   "dur": 90,
-   "text": "ASML is the world's only maker of the extreme ultraviolet"
-  },
-  {
-   "from": 3746,
-   "dur": 93,
-   "text": "lithography machines used to print the most advanced chips."
-  },
-  {
-   "from": 3846,
-   "dur": 104,
-   "text": "The newest models are reported to cost hundreds of millions of dollars each."
-  },
-  {
-   "from": 3963,
-   "dur": 102,
-   "text": "Then there is memory. SK hynix makes the high-bandwidth memory"
-  },
-  {
-   "from": 4065,
-   "dur": 92,
-   "text": "stacked beside each AI processor. In its latest quarter,"
-  },
-  {
-   "from": 4157,
-   "dur": 94,
-   "text": "it reported an operating margin of around eighty percent."
-  },
-  {
-   "from": 4261,
-   "dur": 122,
-   "text": "And the finished pieces must be bonded together, in a process called advanced"
-  },
-  {
-   "from": 4383,
-   "dur": 112,
-   "text": "packaging. Another bottleneck, and another place TSMC is pouring money."
-  },
-  {
-   "from": 4520,
-   "dur": 50,
-   "text": "Each link captures value differently."
-  },
-  {
-   "from": 4578,
-   "dur": 61,
-   "text": "The designer earns the richest margins."
-  },
-  {
-   "from": 4639,
-   "dur": 130,
-   "text": "The manufacturer carries the heaviest capital bill. The toolmaker holds a monopoly."
-  },
-  {
-   "from": 4778,
-   "dur": 65,
-   "text": "But all of them depend on the same customers,"
-  },
-  {
-   "from": 4844,
-   "dur": 76,
-   "text": "and those customers are building something enormous."
-  },
-  {
-   "from": 4962,
-   "dur": 104,
-   "text": "A chip is only useful inside a building that can power it and cool it."
-  },
-  {
-   "from": 5075,
-   "dur": 135,
-   "text": "And an AI data centre is not a warehouse of computers. It is an industrial machine."
-  },
-  {
-   "from": 5221,
-   "dur": 129,
-   "text": "Nvidia's latest rack-scale systems are specified at around one hundred and twenty"
-  },
-  {
-   "from": 5350,
-   "dur": 126,
-   "text": "kilowatts per rack. That's many times what a typical server rack was built for."
-  },
-  {
-   "from": 5484,
-   "dur": 60,
-   "text": "Air can no longer carry that much heat away."
-  },
-  {
-   "from": 5544,
-   "dur": 56,
-   "text": "So liquid is piped straight to the chips."
-  },
-  {
-   "from": 5620,
-   "dur": 92,
-   "text": "That has turned cooling and power equipment into a growth industry."
-  },
-  {
-   "from": 5720,
-   "dur": 103,
-   "text": "Vertiv, which makes both, reported a sixty-one percent jump in sales"
-  },
-  {
-   "from": 5823,
-   "dur": 99,
-   "text": "in its latest quarter, and said organic orders more than doubled."
-  },
-  {
-   "from": 5929,
-   "dur": 61,
-   "text": "Eaton, which makes electrical equipment,"
-  },
-  {
-   "from": 5990,
-   "dur": 104,
-   "text": "says the backlog in its electrical business is up forty-six percent."
-  },
-  {
-   "from": 6106,
-   "dur": 120,
-   "text": "McKinsey estimates that of the money going into AI data centres this decade,"
-  },
-  {
-   "from": 6226,
-   "dur": 74,
-   "text": "about sixty percent goes on chips and hardware,"
-  },
-  {
-   "from": 6300,
-   "dur": 99,
-   "text": "and about a quarter on power, cooling and electrical equipment."
-  },
-  {
-   "from": 6411,
-   "dur": 117,
-   "text": "And space is still scarce. In North America's main markets,"
-  },
-  {
-   "from": 6528,
-   "dur": 132,
-   "text": "the property firm CBRE puts vacancy at a record low of 1.4 percent."
-  },
-  {
-   "from": 6668,
-   "dur": 85,
-   "text": "Some of it is being built on borrowed money. CoreWeave,"
-  },
-  {
-   "from": 6753,
-   "dur": 113,
-   "text": "which rents out Nvidia chips, reports a contract backlog of more than one"
-  },
-  {
-   "from": 6865,
-   "dur": 116,
-   "text": "hundred and thirty billion dollars, and debt of around forty-seven billion."
-  },
-  {
-   "from": 7021,
-   "dur": 88,
-   "text": "Which brings us to the problem that no one can code their way around."
-  },
-  {
-   "from": 7124,
-   "dur": 22,
-   "text": "Electricity."
-  },
-  {
-   "from": 7166,
-   "dur": 116,
-   "text": "In 2024, the world's data centres used around four hundred and fifteen"
-  },
-  {
-   "from": 7282,
-   "dur": 128,
-   "text": "terawatt-hours of electricity. About one and a half percent of global demand."
-  },
-  {
-   "from": 7418,
-   "dur": 120,
-   "text": "The International Energy Agency expects that to more than double by 2030."
-  },
-  {
-   "from": 7545,
-   "dur": 86,
-   "text": "In the United States, data centres are set to account for"
-  },
-  {
-   "from": 7631,
-   "dur": 90,
-   "text": "nearly half of all growth in electricity demand this decade."
-  },
-  {
-   "from": 7741,
-   "dur": 62,
-   "text": "First, the power has to be generated."
-  },
-  {
-   "from": 7803,
-   "dur": 97,
-   "text": "Big Tech is now signing deals to restart nuclear reactors."
-  },
-  {
-   "from": 7908,
-   "dur": 91,
-   "text": "Microsoft agreed to buy the output of Three Mile Island's"
-  },
-  {
-   "from": 7999,
-   "dur": 81,
-   "text": "Unit One for twenty years, if it comes back online."
-  },
-  {
-   "from": 8090,
-   "dur": 123,
-   "text": "Gas turbines are in such demand that GE Vernova's gas backlog and reserved"
-  },
-  {
-   "from": 8213,
-   "dur": 111,
-   "text": "production slots have reached one hundred and twenty-two gigawatts."
-  },
-  {
-   "from": 8336,
-   "dur": 104,
-   "text": "Then the power has to be delivered. And here, the bottleneck is physical."
-  },
-  {
-   "from": 8450,
-   "dur": 94,
-   "text": "Berkeley Lab found that the typical American power project"
-  },
-  {
-   "from": 8544,
-   "dur": 100,
-   "text": "built in 2025 waited around five years to connect to the grid."
-  },
-  {
-   "from": 8654,
-   "dur": 62,
-   "text": "And every connection needs transformers."
-  },
-  {
-   "from": 8716,
-   "dur": 111,
-   "text": "A large power transformer can weigh hundreds of tonnes, and the wait for"
-  },
-  {
-   "from": 8827,
-   "dur": 106,
-   "text": "one is commonly two years or more. For the largest units, up to four."
-  },
-  {
-   "from": 8941,
-   "dur": 105,
-   "text": "Prices have climbed too: up sixty to eighty percent since 2020,"
-  },
-  {
-   "from": 9046,
+   "from": 253,
    "dur": 47,
-   "text": "according to Wood Mackenzie."
+   "text": "“I was unfaithful to my wife.”"
   },
   {
-   "from": 9117,
-   "dur": 70,
-   "text": "This is where some of the quietest fortunes are being made."
+   "from": 325,
+   "dur": 98,
+   "text": "Four days later, Nvidia told the world he was gone."
   },
   {
-   "from": 9198,
-   "dur": 141,
-   "text": "GE Vernova's order backlog has reached one hundred and ninety-seven billion dollars."
+   "from": 424,
+   "dur": 112,
+   "text": "Not just as CEO. Off the board too. Effective immediately."
   },
   {
-   "from": 9338,
+   "from": 550,
+   "dur": 107,
+   "text": "Think about that. For thirty-three years, Nvidia had one boss."
+  },
+  {
+   "from": 667,
+   "dur": 132,
+   "text": "The guy who started it in a Denny's booth. Who once had it thirty days from going"
+  },
+  {
+   "from": 799,
+   "dur": 135,
+   "text": "under… and turned it into the first company in history worth five trillion dollars."
+  },
+  {
+   "from": 947,
+   "dur": 42,
+   "text": "Gone. In less than a week."
+  },
+  {
+   "from": 1016,
+   "dur": 59,
+   "text": "But the affair… wasn't really the story."
+  },
+  {
+   "from": 1090,
+   "dur": 102,
+   "text": "Behind it was a businesswoman, a company in Singapore,"
+  },
+  {
+   "from": 1191,
+   "dur": 104,
+   "text": "billions of dollars of AI chips… and questions that now"
+  },
+  {
+   "from": 1295,
+   "dur": 113,
+   "text": "reach all the way to the US Justice Department and Congress."
+  },
+  {
+   "from": 1423,
+   "dur": 40,
+   "text": "So what actually happened?"
+  },
+  {
+   "from": 1472,
+   "dur": 49,
+   "text": "And what happens to Nvidia now?"
+  },
+  {
+   "from": 1691,
+   "dur": 100,
+   "text": "To understand what Nvidia just lost, you have to go back."
+  },
+  {
+   "from": 1800,
+   "dur": 81,
+   "text": "He was nine when his family sent him to America."
+  },
+  {
+   "from": 1881,
    "dur": 129,
-   "text": "Siemens Energy's stands at a record one hundred and sixty-four billion euros."
+   "text": "His relatives thought they'd found him a good boarding school in Kentucky. It"
   },
   {
-   "from": 9475,
-   "dur": 103,
-   "text": "Quanta Services, which builds power lines and substations,"
+   "from": 2010,
+   "dur": 139,
+   "text": "turned out to be a school for troubled kids. One of his jobs? Cleaning the toilets."
   },
   {
-   "from": 9578,
-   "dur": 103,
-   "text": "has a record backlog of nearly sixty-four billion dollars."
+   "from": 2158,
+   "dur": 81,
+   "text": "A few years later, he was washing dishes at Denny's."
   },
   {
-   "from": 9681,
-   "dur": 99,
-   "text": "And cable maker Prysmian posted record earnings in 2025."
+   "from": 2247,
+   "dur": 96,
+   "text": "And in 1993, in a Denny's booth in East San Jose,"
   },
   {
-   "from": 9790,
-   "dur": 45,
-   "text": "They do not sell intelligence."
+   "from": 2344,
+   "dur": 126,
+   "text": "he and two engineer friends, Chris Malachowsky and Curtis Priem,"
   },
   {
-   "from": 9835,
-   "dur": 91,
-   "text": "They sell the physical capacity that intelligence depends on."
+   "from": 2470,
+   "dur": 108,
+   "text": "sketched out a company that would build graphics chips."
   },
   {
-   "from": 9971,
-   "dur": 34,
-   "text": "So who actually wins?"
+   "from": 2593,
+   "dur": 42,
+   "text": "It almost died straight away."
   },
   {
-   "from": 10020,
-   "dur": 80,
-   "text": "The chip designers capture the richest margins today,"
+   "from": 2648,
+   "dur": 149,
+   "text": "Their first chip bet on the wrong technology. The whole industry went one way;"
   },
   {
-   "from": 10100,
-   "dur": 88,
-   "text": "but they depend on a handful of buyers. Earlier this year,"
+   "from": 2797,
+   "dur": 140,
+   "text": "Nvidia went the other. By 1996, more than half the staff had been let go."
   },
   {
-   "from": 10188,
+   "from": 2946,
+   "dur": 119,
+   "text": "One customer, Sega, dropped Nvidia's chip… and then invested five"
+  },
+  {
+   "from": 3064,
+   "dur": 128,
+   "text": "million dollars anyway. Jensen says that gave them six months to live."
+  },
+  {
+   "from": 3201,
+   "dur": 69,
+   "text": "The company even had an unofficial motto:"
+  },
+  {
+   "from": 3270,
+   "dur": 94,
+   "text": "“Our company is thirty days from going out of business.”"
+  },
+  {
+   "from": 3384,
+   "dur": 149,
+   "text": "They survived. In 1999, Nvidia went public at twelve dollars a share."
+  },
+  {
+   "from": 3542,
+   "dur": 66,
+   "text": "And sitting on its board that year was a"
+  },
+  {
+   "from": 3608,
+   "dur": 81,
+   "text": "forty-five-year-old director called Harvey Jones."
+  },
+  {
+   "from": 3704,
+   "dur": 30,
+   "text": "Remember that name."
+  },
+  {
+   "from": 3781,
+   "dur": 66,
+   "text": "Then Jensen made the bet that defined him."
+  },
+  {
+   "from": 3855,
+   "dur": 122,
+   "text": "In 2006, Nvidia launched CUDA, software that turned its gaming"
+  },
+  {
+   "from": 3977,
+   "dur": 116,
+   "text": "chips into machines that could do almost any kind of maths."
+  },
+  {
+   "from": 4101,
+   "dur": 113,
+   "text": "It cost a fortune. Wall Street didn't get it. By late 2008,"
+  },
+  {
+   "from": 4215,
+   "dur": 113,
+   "text": "the whole company was worth less than four billion dollars."
+  },
+  {
+   "from": 4343,
    "dur": 109,
-   "text": "three direct customers accounted for more than half of Nvidia's revenue."
+   "text": "And then, in 2012, a grad student trained an AI program"
   },
   {
-   "from": 10306,
-   "dur": 123,
-   "text": "The foundries and toolmakers hold positions that are almost impossible to copy,"
+   "from": 4452,
+   "dur": 83,
+   "text": "called AlexNet on two Nvidia gaming cards."
   },
   {
-   "from": 10428,
+   "from": 4535,
+   "dur": 141,
+   "text": "About five hundred dollars each. In his bedroom, at his parents' house."
+  },
+  {
+   "from": 4685,
+   "dur": 54,
+   "text": "It blew away the competition."
+  },
+  {
+   "from": 4739,
+   "dur": 113,
+   "text": "Nvidia's own annual report calls that moment AI's “Big Bang”."
+  },
+  {
+   "from": 4867,
+   "dur": 110,
+   "text": "In 2016, Jensen personally delivered Nvidia's first"
+  },
+  {
+   "from": 4977,
+   "dur": 115,
+   "text": "AI supercomputer to a small non-profit called OpenAI."
+  },
+  {
+   "from": 5101,
+   "dur": 94,
+   "text": "Six years later, OpenAI released ChatGPT."
+  },
+  {
+   "from": 5205,
+   "dur": 68,
+   "text": "And suddenly, everyone needed Nvidia."
+  },
+  {
+   "from": 5285,
+   "dur": 77,
+   "text": "It touched a trillion dollars in 2023."
+  },
+  {
+   "from": 5362,
+   "dur": 148,
+   "text": "And in October 2025 it became the first company ever worth five trillion."
+  },
+  {
+   "from": 5552,
+   "dur": 37,
+   "text": "Here's how big it got."
+  },
+  {
+   "from": 5597,
+   "dur": 64,
+   "text": "In the three months to late October,"
+  },
+  {
+   "from": 5661,
+   "dur": 135,
+   "text": "Nvidia sold almost a hundred and sixteen billion dollars' worth of products."
+  },
+  {
+   "from": 5796,
+   "dur": 116,
+   "text": "Around nine in every ten of those dollars came from data centres."
+  },
+  {
+   "from": 5920,
+   "dur": 102,
+   "text": "And it kept sixty-five billion of it as profit. In one quarter."
+  },
+  {
+   "from": 6037,
+   "dur": 80,
+   "text": "Jensen ran the whole thing like nobody else."
+  },
+  {
+   "from": 6117,
+   "dur": 151,
+   "text": "Dozens of people reporting straight to him. The same leather jacket on every stage."
+  },
+  {
+   "from": 6283,
    "dur": 101,
-   "text": "but they must keep investing tens of billions just to stay ahead."
+   "text": "But there was one market Nvidia could never fully have. China."
+  },
+  {
+   "from": 6399,
+   "dur": 136,
+   "text": "Not long ago, China was about one dollar in every five Nvidia made."
+  },
+  {
+   "from": 6535,
+   "dur": 122,
+   "text": "Then US export rules cut off its most powerful chips. Today,"
+  },
+  {
+   "from": 6658,
+   "dur": 130,
+   "text": "Nvidia's own forecast assumes zero data-centre chip sales there."
+  },
+  {
+   "from": 6797,
+   "dur": 66,
+   "text": "And that's exactly where this story takes a turn."
+  },
+  {
+   "from": 6905,
+   "dur": 106,
+   "text": "Meet Megaspeed. A data-centre company based in Singapore."
+  },
+  {
+   "from": 7019,
+   "dur": 114,
+   "text": "According to reports, it became one of Nvidia's biggest customers"
+  },
+  {
+   "from": 7133,
+   "dur": 117,
+   "text": "in South-East Asia, buying billions of dollars' worth of its chips."
+  },
+  {
+   "from": 7259,
+   "dur": 114,
+   "text": "In 2024, investigators at the US Commerce Department noticed what"
+  },
+  {
+   "from": 7373,
+   "dur": 70,
+   "text": "they later called “suspicious activity”."
+  },
+  {
+   "from": 7443,
+   "dur": 144,
+   "text": "They started looking at whether chips bought by Megaspeed were ending up in China."
+  },
+  {
+   "from": 7602,
+   "dur": 113,
+   "text": "By mid-2025, Nvidia had stopped selling to Megaspeed."
+  },
+  {
+   "from": 7727,
+   "dur": 151,
+   "text": "That June, US and Singapore officials visited the company and interviewed its boss:"
+  },
+  {
+   "from": 7878,
+   "dur": 144,
+   "text": "a businesswoman who, according to Bloomberg, had spent years in Nvidia's orbit."
+  },
+  {
+   "from": 8042,
+   "dur": 146,
+   "text": "Today, that investigation is a criminal case, led by the US Justice Department."
+  },
+  {
+   "from": 8201,
+   "dur": 141,
+   "text": "Megaspeed says it does legitimate, lawful business, and denies any wrongdoing."
+  },
+  {
+   "from": 8384,
+   "dur": 69,
+   "text": "October the twenty-ninth, 2026."
+  },
+  {
+   "from": 8465,
+   "dur": 142,
+   "text": "The New York Times reports that, according to US officials, American intelligence"
+  },
+  {
+   "from": 8607,
+   "dur": 122,
+   "text": "suspected that same businesswoman of working for Chinese intelligence."
+  },
+  {
+   "from": 8738,
+   "dur": 110,
+   "text": "Nvidia hits back the same day. It says the allegations about"
+  },
+  {
+   "from": 8848,
+   "dur": 113,
+   "text": "chips reaching China were investigated and debunked last year,"
+  },
+  {
+   "from": 8961,
+   "dur": 101,
+   "text": "and that meeting customers is just part of a CEO's job."
+  },
+  {
+   "from": 9071,
+   "dur": 130,
+   "text": "The next day, the Wall Street Journal reports that Singapore and Taiwan had"
+  },
+  {
+   "from": 9201,
+   "dur": 130,
+   "text": "concerns about her too. Singapore's government publicly denies saying that."
+  },
+  {
+   "from": 9339,
+   "dur": 51,
+   "text": "Nvidia's shares start to slide."
+  },
+  {
+   "from": 9403,
+   "dur": 99,
+   "text": "November the fourth. Three committees of the US House of"
+  },
+  {
+   "from": 9502,
+   "dur": 101,
+   "text": "Representatives write to Jensen Huang. They want answers."
+  },
+  {
+   "from": 9619,
+   "dur": 68,
+   "text": "November the eighth. A Sunday. The email."
+  },
+  {
+   "from": 9702,
+   "dur": 47,
+   "text": "“I was unfaithful to my wife.”"
+  },
+  {
+   "from": 9769,
+   "dur": 146,
+   "text": "The same day, Nvidia's board opens an independent investigation after reports that"
+  },
+  {
+   "from": 9914,
+   "dur": 144,
+   "text": "Huang had been the target of a foreign intelligence effort. The board says it has"
+  },
+  {
+   "from": 10058,
+   "dur": 137,
+   "text": "“no reason to believe” national security or company secrets were compromised."
+  },
+  {
+   "from": 10208,
+   "dur": 114,
+   "text": "November the ninth. China's foreign ministry calls the spy claim"
+  },
+  {
+   "from": 10322,
+   "dur": 136,
+   "text": "“completely groundless”. President Trump says Huang told him he had no idea,"
+  },
+  {
+   "from": 10458,
+   "dur": 80,
+   "text": "and that he believes him. A shareholder sues,"
   },
   {
    "from": 10538,
-   "dur": 66,
-   "text": "The cloud giants carry the biggest bill of all,"
+   "dur": 121,
+   "text": "claiming investors were misled. Those are allegations, not findings."
   },
   {
-   "from": 10605,
-   "dur": 100,
-   "text": "and investors are watching how much of that spending turns into profit."
-  },
-  {
-   "from": 10714,
-   "dur": 68,
-   "text": "The grid's equipment makers have something rarer:"
-  },
-  {
-   "from": 10781,
-   "dur": 93,
-   "text": "order books that stretch for years, from customers who cannot wait."
-  },
-  {
-   "from": 10884,
-   "dur": 104,
-   "text": "And someone has to pay. On America's largest grid, run by PJM,"
-  },
-  {
-   "from": 10988,
-   "dur": 138,
-   "text": "the price of capacity has jumped more than tenfold in three years. Its independent"
-  },
-  {
-   "from": 11125,
-   "dur": 138,
-   "text": "market monitor attributes more than twenty-three billion dollars of added capacity"
-  },
-  {
-   "from": 11263,
-   "dur": 133,
-   "text": "costs to data centre demand. Costs that are passed on to electricity customers."
-  },
-  {
-   "from": 11407,
+   "from": 10672,
    "dur": 128,
-   "text": "None of this guarantees the future. Backlogs can shrink. Forecasts can be wrong."
+   "text": "November the eleventh. The New York Times reports that Huang also had"
   },
   {
-   "from": 11535,
-   "dur": 91,
-   "text": "And capacity built for a boom can sit idle in a downturn."
+   "from": 10801,
+   "dur": 130,
+   "text": "a relationship with a senior Nvidia executive. Nvidia doesn't comment."
   },
   {
-   "from": 11674,
-   "dur": 101,
-   "text": "The AI revolution is usually told as a story about software."
+   "from": 10941,
+   "dur": 79,
+   "text": "That same day, the board accepts his resignation."
   },
   {
-   "from": 11786,
-   "dur": 68,
-   "text": "But follow the money, and it leads somewhere else."
+   "from": 11055,
+   "dur": 60,
+   "text": "November the twelfth. The announcement."
   },
   {
-   "from": 11854,
+   "from": 11130,
+   "dur": 139,
+   "text": "After thirty-three years… the only CEO Nvidia had ever had… was gone."
+  },
+  {
+   "from": 11298,
+   "dur": 149,
+   "text": "Days later, Reuters reported a relationship with yet another Nvidia employee."
+  },
+  {
+   "from": 11448,
+   "dur": 66,
+   "text": "Again, Nvidia declined to comment."
+  },
+  {
+   "from": 11556,
+   "dur": 92,
+   "text": "So… was this a honey trap? That's what everyone's asking."
+  },
+  {
+   "from": 11663,
+   "dur": 39,
+   "text": "Here's what we actually know."
+  },
+  {
+   "from": 11712,
+   "dur": 140,
+   "text": "She hasn't been charged with anything, anywhere. She hasn't said a word in public."
+  },
+  {
+   "from": 11852,
+   "dur": 135,
+   "text": "Bloomberg reports she's living in Beijing. China calls the whole thing a smear."
+  },
+  {
+   "from": 11996,
+   "dur": 94,
+   "text": "The US Attorney General says the Justice Department has"
+  },
+  {
+   "from": 12090,
+   "dur": 72,
+   "text": "reached “no conclusions” about who she is."
+  },
+  {
+   "from": 12162,
+   "dur": 122,
+   "text": "And President Trump put it bluntly: “nobody's proven that she's a spy.”"
+  },
+  {
+   "from": 12293,
+   "dur": 132,
+   "text": "Nvidia's board says it has no reason to believe any secrets were compromised."
+  },
+  {
+   "from": 12442,
+   "dur": 52,
+   "text": "But the investigations keep coming."
+  },
+  {
+   "from": 12504,
+   "dur": 98,
+   "text": "The Justice Department's criminal case into Megaspeed."
+  },
+  {
+   "from": 12602,
+   "dur": 134,
+   "text": "A reported SEC inquiry into whether Nvidia's disclosures misled investors."
+  },
+  {
+   "from": 12736,
+   "dur": 119,
+   "text": "Malaysia checking whether chips were shipped on to somewhere else."
+  },
+  {
+   "from": 12864,
+   "dur": 142,
+   "text": "And the Treasury Secretary went on TV and asked whether Nvidia had made “seemingly"
+  },
+  {
+   "from": 13006,
+   "dur": 135,
+   "text": "illicit sales” to boost its numbers. Nvidia hasn't been charged with anything."
+  },
+  {
+   "from": 13156,
+   "dur": 103,
+   "text": "On December the first, Jensen Huang has agreed to sit down,"
+  },
+  {
+   "from": 13259,
    "dur": 86,
-   "text": "To chip plants in Taiwan and machine makers in the Netherlands."
+   "text": "behind closed doors, with three House committees."
   },
   {
-   "from": 11948,
-   "dur": 125,
-   "text": "To cooling plants and cable mills. To turbines, transformers and power lines."
+   "from": 13360,
+   "dur": 106,
+   "text": "And Jensen himself? He's posted that he'd be “honored” to come back."
   },
   {
-   "from": 12085,
-   "dur": 104,
-   "text": "The intelligence may be artificial. The infrastructure is very real."
+   "from": 13479,
+   "dur": 91,
+   "text": "The board's answer: it does “not intend to reinstate” him."
   },
   {
-   "from": 12204,
+   "from": 13614,
+   "dur": 97,
+   "text": "So who's running the most important company in AI right now?"
+  },
+  {
+   "from": 13724,
+   "dur": 155,
+   "text": "Its finance chief, Colette Kress, is doing two jobs: interim CEO and CFO."
+  },
+  {
+   "from": 13891,
+   "dur": 110,
+   "text": "And remember Harvey Jones? The director from 1999?"
+  },
+  {
+   "from": 14001,
+   "dur": 154,
+   "text": "He's been on the board since 1993. He's now Nvidia's first-ever chair."
+  },
+  {
+   "from": 14163,
+   "dur": 114,
+   "text": "The man who watched Nvidia grow up is now picking who runs it next."
+  },
+  {
+   "from": 14292,
+   "dur": 120,
+   "text": "The business? On November the seventeenth, Nvidia posted the biggest"
+  },
+  {
+   "from": 14412,
+   "dur": 113,
+   "text": "quarter in its history. Kress's message: “Our momentum is real.”"
+  },
+  {
+   "from": 14534,
    "dur": 111,
-   "text": "And the companies building it may turn out to be the hidden winners of the AI boom."
+   "text": "It's forecasting about a hundred and thirty billion dollars next quarter."
+  },
+  {
+   "from": 14658,
+   "dur": 103,
+   "text": "But the stock tells a different story. At its October peak,"
+  },
+  {
+   "from": 14761,
+   "dur": 108,
+   "text": "Nvidia was worth nearly six trillion dollars. On earnings day,"
+  },
+  {
+   "from": 14869,
+   "dur": 141,
+   "text": "it was under four trillion, though part of that slide was a market-wide sell-off."
+  },
+  {
+   "from": 15018,
+   "dur": 74,
+   "text": "And its biggest customers? Google, Amazon,"
+  },
+  {
+   "from": 15092,
+   "dur": 97,
+   "text": "Microsoft and Meta are all building chips of their own."
+  },
+  {
+   "from": 15232,
+   "dur": 80,
+   "text": "So how does this end? Three ways it could play out."
+  },
+  {
+   "from": 15325,
+   "dur": 125,
+   "text": "One: business as usual. Nvidia designs its chips years ahead."
+  },
+  {
+   "from": 15450,
+   "dur": 154,
+   "text": "The roadmap already runs to 2028. A strong new CEO steps in and the machine"
+  },
+  {
+   "from": 15604,
+   "dur": 66,
+   "text": "keeps running. After Steve Jobs,"
+  },
+  {
+   "from": 15670,
+   "dur": 121,
+   "text": "Apple became the first US company worth a trillion dollars."
+  },
+  {
+   "from": 15806,
+   "dur": 118,
+   "text": "Two: the slow squeeze. Customers keep building their own chips,"
+  },
+  {
+   "from": 15924,
+   "dur": 94,
+   "text": "China stays shut, and without its founder pushing,"
+  },
+  {
+   "from": 16017,
+   "dur": 138,
+   "text": "Nvidia's edge slowly wears down. After Bill Gates handed over the CEO job,"
+  },
+  {
+   "from": 16156,
+   "dur": 125,
+   "text": "Microsoft's stock took nearly seventeen years to beat its old high."
+  },
+  {
+   "from": 16296,
+   "dur": 68,
+   "text": "Three: the investigations go deeper."
+  },
+  {
+   "from": 16364,
+   "dur": 134,
+   "text": "If they find something serious about Megaspeed, export controls or what"
+  },
+  {
+   "from": 16498,
+   "dur": 134,
+   "text": "investors were told, that could hurt Nvidia far more than losing a CEO."
+  },
+  {
+   "from": 16644,
+   "dur": 89,
+   "text": "If they find nothing, this becomes the story of one"
+  },
+  {
+   "from": 16733,
+   "dur": 91,
+   "text": "man's private life… and an empire that outlived him."
+  },
+  {
+   "from": 16844,
+   "dur": 120,
+   "text": "Watch three things: who the board picks, what happens on December the first,"
+  },
+  {
+   "from": 16964,
+   "dur": 71,
+   "text": "and whether the biggest buyers keep ordering."
+  },
+  {
+   "from": 17085,
+   "dur": 93,
+   "text": "Thirty-three years ago, three engineers sat in a diner"
+  },
+  {
+   "from": 17178,
+   "dur": 95,
+   "text": "and bet everything on chips nobody thought they needed."
+  },
+  {
+   "from": 17289,
+   "dur": 87,
+   "text": "One of them built the most valuable company in the world."
+  },
+  {
+   "from": 17391,
+   "dur": 88,
+   "text": "Now that company has to prove it can survive without him."
   }
  ],
  "showCaptions": false

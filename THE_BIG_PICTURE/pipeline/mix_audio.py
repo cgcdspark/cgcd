@@ -131,6 +131,16 @@ def main() -> int:
         bed = fit(src, n1 - n0)
         bed = fade(bed, cue.get("fade_in", 2), cue.get("fade_out", 3)) * db(cue.get("gain_db", -20))
         music[n0:n1] += bed
+    # deliberate silences: music drops out just before key lines (storyboard meta.music_cuts)
+    cut = np.ones(total, np.float32)
+    for c in sb["meta"].get("music_cuts", []):
+        t0 = lines[c["at"]]["start"] + float(c.get("offset", 0))
+        a, b = int(max(0, t0) * SR), int(min(total / SR, t0 + float(c["dur"])) * SR)
+        r = int(0.35 * SR)  # quick fade out, slower fade back in
+        cut[a:b] = 0
+        cut[max(0, a - r):a] = np.minimum(cut[max(0, a - r):a], np.linspace(1, 0, a - max(0, a - r)))
+        cut[b:b + 3 * r] = np.minimum(cut[b:b + 3 * r], np.linspace(0, 1, len(cut[b:b + 3 * r])))
+    music *= cut[:, None]
     env = envelope(voice)
     duck = 1.0 - 0.55 * env  # ~ -7 dB under speech, recovers in gaps
     music *= duck[:, None]

@@ -5,6 +5,7 @@ import type {Timeline, Shot, Overlay} from './types';
 import {Finish, MediaLayer, XFade} from './components/Media';
 import {Bug, CaptionLine, ChapterCard, CornerStat, LowerThird, SourceTag} from './components/Overlays';
 import {DataCentre, PowerChain} from './graphics/Infra';
+import {AllegedVsKnown, BigWords, CaseTimeline, DocumentCard, EmailReveal, EventLine, HistoryTimeline, RegionMap, ScenarioTree} from './graphics/Thriller';
 import {BarChart, BigStat, ColumnChart, Matrix, Quote, RangeBars} from './graphics/Charts';
 import {EndCard, Flow, TitleCard, ValueChain} from './graphics/Diagrams';
 
@@ -28,6 +29,15 @@ const REG: Record<string, React.FC<any>> = {
   SourceTag,
   DataCentre,
   PowerChain,
+  BigWords,
+  EmailReveal,
+  DocumentCard,
+  CaseTimeline,
+  HistoryTimeline,
+  RegionMap,
+  AllegedVsKnown,
+  ScenarioTree,
+  EventLine,
 };
 
 const ShotView: React.FC<{s: Shot}> = ({s}) => {

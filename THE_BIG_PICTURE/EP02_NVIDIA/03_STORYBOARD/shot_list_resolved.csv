@@ -1,0 +1,102 @@
+shot_id,act,start_s,end_s,type,asset_or_component,description
+S00_01,COLD,0.00,2.20,footage,E2-MOOD-097,Black phone on laptop
+S00_02,COLD,2.20,13.01,graphic,EmailReveal,
+S00_03,COLD,13.01,22.01,graphic,DocumentCard,
+S00_04,COLD,22.01,26.70,graphic,BigWords,
+S00_05,COLD,26.70,30.23,footage,SEM-042,Motherboard resembling an urban landscape
+S00_06,COLD,30.23,33.75,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
+S00_07,COLD,33.75,37.87,footage,BIZ-085,Aerial shot of a city at night
+S00_08,COLD,37.87,40.63,graphic,BigWords,
+S00_09,COLD,40.63,43.58,footage,E2-MOOD-003,Person in the dark observing a lights image
+S00_10,COLD,43.58,48.91,footage,E2-BIZ-014,Reflection of a screen in glasses
+S00_11,COLD,48.91,52.92,footage,E2-BIZ-106,"Touring the city at night, timelapse"
+S00_12,COLD,52.92,56.92,footage,SEM-045,Chipset with blue and red details
+S00_13,COLD,56.92,62.26,footage,E2-MOOD-004,Digital clock in the dark marking midnight
+S01_01,COLD,62.26,67.26,footage,E2-BIZ-106,"Touring the city at night, timelapse"
+S02_01,CH1,67.26,72.00,footage,E2-BIZ-092,Streets of a big city at night
+S02_02,CH1,72.00,86.32,graphic,DocumentCard,
+S02_03,CH1,86.32,89.89,graphic,DocumentCard,
+S02_04,CH1,89.89,103.71,graphic,HistoryTimeline,From a diner booth to the top
+S02_05,CH1,103.71,108.40,footage,SEM-037,Chipset close-up view
+S02_06,CH1,108.40,117.83,graphic,BigWords,
+S02_07,CH1,117.83,125.21,footage,E2-BIZ-111,Banknotes falling on a dark background
+S02_08,CH1,125.21,129.64,footage,SEM-044,Motherboard resembling a city from above
+S02_09,CH1,129.64,135.38,graphic,BigWords,
+S02_10,CH1,135.38,141.67,footage,BIZ-043,Floor of London's financial district
+S02_11,CH1,141.67,150.83,graphic,DocumentCard,
+S03_01,CH2,150.83,154.20,footage,MOOD-053,"Software developer working on code, screen close up"
+S03_02,CH2,154.20,166.26,footage,SEM-041,Chipset closeup
+S03_03,CH2,166.26,173.73,graphic,BigStat,
+S03_04,CH2,173.73,182.71,footage,SEM-001,Engineer repairing a circuit board in his workshop
+S03_05,CH2,182.71,188.99,footage,MOOD-015,Hands of a man typing on a laptop
+S03_06,CH2,188.99,194.69,graphic,BigWords,
+S03_07,CH2,194.69,204.03,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
+S03_08,CH2,204.03,208.18,footage,MOOD-049,Close up shot of a person typing on a laptop
+S03_09,CH2,208.18,211.39,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
+S03_10,CH2,211.39,221.67,graphic,ColumnChart,From under $4bn to $5tn
+S04_01,CH3,221.67,223.88,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
+S04_02,CH3,223.88,236.82,graphic,BigStat,
+S04_03,CH3,236.82,241.48,graphic,BigStat,
+S04_04,CH3,241.48,248.27,footage,E2-BIZ-024,Silhouettes of a woman and a man shaking hands
+S04_05,CH3,248.27,253.71,footage,E2-MOOD-003,Person in the dark observing a lights image
+S04_06,CH3,253.71,255.95,graphic,BigWords,
+S04_07,CH3,255.95,271.87,graphic,ColumnChart,"Share of total revenue, by customer headquarters"
+S04_08,CH3,271.87,275.79,footage,E2-BIZ-102,View from inside a car in night traffic
+S05_01,CH4,275.79,277.19,footage,E2-BIZ-106,"Touring the city at night, timelapse"
+S05_02,CH4,277.19,280.77,graphic,RegionMap,Where the chips went
+S05_03,CH4,280.77,285.89,footage,SEM-045,Chipset with blue and red details
+S05_04,CH4,285.89,290.37,footage,E2-BIZ-024,Silhouettes of a woman and a man shaking hands
+S05_05,CH4,290.37,304.06,graphic,RegionMap,Did the chips reach China?
+S05_06,CH4,304.06,309.07,graphic,BigWords,
+S05_07,CH4,309.07,316.49,footage,E2-BIZ-014,Reflection of a screen in glasses
+S05_08,CH4,316.49,321.68,footage,E2-MOOD-003,Person in the dark observing a lights image
+S05_09,CH4,321.68,328.03,graphic,BigWords,
+S05_10,CH4,328.03,334.97,footage,E2-BIZ-092,Streets of a big city at night
+S06_01,CH5,334.97,341.61,graphic,CaseTimeline,
+S06_02,CH5,341.61,349.52,footage,E2-BIZ-014,Reflection of a screen in glasses
+S06_03,CH5,349.52,356.91,graphic,CaseTimeline,
+S06_04,CH5,356.91,362.82,footage,BIZ-043,Floor of London's financial district
+S06_05,CH5,362.82,373.57,graphic,CaseTimeline,
+S06_06,CH5,373.57,376.12,footage,E2-BIZ-084,Business man exposing graphs
+S06_07,CH5,376.12,384.74,graphic,CaseTimeline,
+S06_08,CH5,384.74,387.46,graphic,CaseTimeline,
+S06_09,CH5,387.46,390.75,graphic,EmailReveal,
+S06_10,CH5,390.75,399.53,footage,E2-MOOD-003,Person in the dark observing a lights image
+S06_11,CH5,399.53,408.31,footage,E2-BIZ-092,Streets of a big city at night
+S06_12,CH5,408.31,417.61,graphic,CaseTimeline,
+S06_13,CH5,417.61,426.90,footage,E2-BIZ-102,View from inside a car in night traffic
+S06_14,CH5,426.90,437.63,graphic,CaseTimeline,
+S06_15,CH5,437.63,442.21,footage,E2-MOOD-004,Digital clock in the dark marking midnight
+S06_16,CH5,442.21,447.20,graphic,CaseTimeline,
+S06_17,CH5,447.20,451.94,graphic,BigWords,
+S06_18,CH5,451.94,461.84,footage,E2-MOOD-097,Black phone on laptop
+S07_01,CH6,461.84,463.04,footage,E2-MOOD-003,Person in the dark observing a lights image
+S07_02,CH6,463.04,466.51,graphic,BigWords,
+S07_03,CH6,466.51,483.84,graphic,AllegedVsKnown,What we actually know
+S07_04,CH6,483.84,497.67,footage,E2-BIZ-014,Reflection of a screen in glasses
+S07_05,CH6,497.67,500.17,footage,E2-BIZ-092,Streets of a big city at night
+S07_06,CH6,500.17,514.54,graphic,AllegedVsKnown,Who is looking at what
+S07_07,CH6,514.54,526.24,footage,BIZ-043,Floor of London's financial district
+S07_08,CH6,526.24,534.41,graphic,BigWords,
+S07_09,CH6,534.41,539.15,footage,E2-MOOD-087,Hands shown texting on a smartphone
+S07_10,CH6,539.15,544.17,graphic,Quote,
+S08_01,CH7,544.17,548.94,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
+S08_02,CH7,548.94,555.64,graphic,BigWords,
+S08_03,CH7,555.64,566.52,graphic,BigWords,
+S08_04,CH7,566.52,571.68,footage,E2-MOOD-004,Digital clock in the dark marking midnight
+S08_05,CH7,571.68,581.37,graphic,BigStat,
+S08_06,CH7,581.37,586.33,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
+S08_07,CH7,586.33,600.72,graphic,EventLine,Closing price through the scandal
+S08_08,CH7,600.72,608.88,footage,SEM-042,Motherboard resembling an urban landscape
+S09_01,CH8,608.88,613.00,graphic,ScenarioTree,Three ways this could play out
+S09_02,CH8,613.00,622.62,graphic,ScenarioTree,Three ways this could play out
+S09_03,CH8,622.62,632.25,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
+S09_04,CH8,632.25,642.05,graphic,ScenarioTree,Three ways this could play out
+S09_05,CH8,642.05,651.85,footage,E2-BIZ-106,"Touring the city at night, timelapse"
+S09_06,CH8,651.85,665.77,graphic,ScenarioTree,Three ways this could play out
+S09_07,CH8,665.77,673.78,footage,E2-BIZ-102,View from inside a car in night traffic
+S09_08,CH8,673.78,682.81,graphic,BigWords,
+S10_01,CLOSE,682.81,691.54,footage,E2-BIZ-092,Streets of a big city at night
+S10_02,CLOSE,691.54,695.64,footage,MOOD-113,Lights of Human Activity Shine in NASA's Image of Earth at Night
+S10_03,CLOSE,695.64,701.75,footage,E2-MOOD-004,Digital clock in the dark marking midnight
+S11_01,CLOSE,701.75,708.75,graphic,EndCard,

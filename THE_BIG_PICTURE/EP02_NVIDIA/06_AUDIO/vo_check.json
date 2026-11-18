@@ -1,0 +1,530 @@
+[
+ {
+  "id": "L001",
+  "ratio": 0.929,
+  "said": "On Sunday, November the eighth, Jensen Huang sent an email to everyone at Nvidia.",
+  "heard": "On Sunday, November the 8th, Jensen Huang sent an email to everyone at NVIDIA."
+ },
+ {
+  "id": "L002",
+  "ratio": 1.0,
+  "said": "It started with an apology.",
+  "heard": "It started with an apology."
+ },
+ {
+  "id": "L003",
+  "ratio": 1.0,
+  "said": "I was unfaithful to my wife.",
+  "heard": "I was unfaithful to my wife."
+ },
+ {
+  "id": "L004",
+  "ratio": 1.0,
+  "said": "Four days later, Nvidia told the world he was gone. Not just as CEO. Off the board too. Effective immediately.",
+  "heard": "Four days later, NVIDIA told the world he was gone, not just as CEO, off the board too, effective immediately."
+ },
+ {
+  "id": "L005",
+  "ratio": 0.857,
+  "said": "Think about that. For thirty-three years, Nvidia had one boss.",
+  "heard": "Think about that. For 33 years, NVIDIA had one boss."
+ },
+ {
+  "id": "L006",
+  "ratio": 0.921,
+  "said": "The guy who started it in a Denny's booth. Who once had it thirty days from going under\u2026 and turned it into the first company in history worth five trillion dollars.",
+  "heard": "the guy who started it in a Denny's booth, who once had it 30 days from going under and turned it into the first company in history worth $5 trillion."
+ },
+ {
+  "id": "L007",
+  "ratio": 1.0,
+  "said": "Gone. In less than a week.",
+  "heard": "gone in less than a week."
+ },
+ {
+  "id": "L008",
+  "ratio": 1.0,
+  "said": "But the affair\u2026 wasn't really the story.",
+  "heard": "But the affair wasn't really the story."
+ },
+ {
+  "id": "L009",
+  "ratio": 1.0,
+  "said": "Behind it was a businesswoman, a company in Singapore, billions of dollars of AI chips\u2026 and questions that now reach all the way to the US Justice Department and Congress.",
+  "heard": "Behind it was a businesswoman, a company in Singapore, billions of dollars of AI chips, and questions that now reach all the way to the US Justice Department and Congress."
+ },
+ {
+  "id": "L010",
+  "ratio": 1.0,
+  "said": "So what actually happened?",
+  "heard": "So what actually happened?"
+ },
+ {
+  "id": "L011",
+  "ratio": 1.0,
+  "said": "And what happens to Nvidia now?",
+  "heard": "and what happens to NVIDIA now."
+ },
+ {
+  "id": "L101",
+  "ratio": 1.0,
+  "said": "To understand what Nvidia just lost, you have to go back.",
+  "heard": "To understand what NVIDIA just lost, you have to go back."
+ },
+ {
+  "id": "L102",
+  "ratio": 1.0,
+  "said": "He was nine when his family sent him to America. His relatives thought they'd found him a good boarding school in Kentucky. It turned out to be a school for troubled kids. One of his jobs? Cleaning the toilets.",
+  "heard": "He was nine when his family sent him to America. His relatives thought they'd found him a good boarding school in Kentucky. It turned out to be a school for troubled kids. One of his jobs, cleaning the toilets."
+ },
+ {
+  "id": "L103",
+  "ratio": 1.0,
+  "said": "A few years later, he was washing dishes at Denny's.",
+  "heard": "A few years later, he was washing dishes at Denny's."
+ },
+ {
+  "id": "L104",
+  "ratio": 0.935,
+  "said": "And in 1993, in a Denny's booth in East San Jose, he and two engineer friends, Chris Malachowsky and Curtis Priem, sketched out a company that would build graphics chips.",
+  "heard": "And in 1993, in a Denny's booth in East San Jose, he and two engineer friends, Chris Malachowski and Curtis Preme, sketched out a company that would build graphics chips."
+ },
+ {
+  "id": "L105",
+  "ratio": 1.0,
+  "said": "It almost died straight away.",
+  "heard": "it almost died straight away."
+ },
+ {
+  "id": "L106",
+  "ratio": 1.0,
+  "said": "Their first chip bet on the wrong technology. The whole industry went one way; Nvidia went the other. By 1996, more than half the staff had been let go.",
+  "heard": "Their first chip bet on the wrong technology. The whole industry went one way, Nvidia went the other. By 1996, more than half the staff had been let go."
+ },
+ {
+  "id": "L107",
+  "ratio": 0.933,
+  "said": "One customer, Sega, dropped Nvidia's chip\u2026 and then invested five million dollars anyway. Jensen says that gave them six months to live.",
+  "heard": "One customer, Sega, dropped Nvidia's chip and then invested $5 million anyway. Jensen says that gave them six months to live."
+ },
+ {
+  "id": "L108",
+  "ratio": 0.941,
+  "said": "The company even had an unofficial motto. Our company is thirty days from going out of business.",
+  "heard": "The company even had an unofficial motto. Our company is 30 days from going out of business."
+ },
+ {
+  "id": "L109",
+  "ratio": 0.87,
+  "said": "They survived. In 1999, Nvidia went public at twelve dollars a share.",
+  "heard": "They survived. In 1999, NVIDIA went public at $12 a share."
+ },
+ {
+  "id": "L110",
+  "ratio": 0.909,
+  "said": "And sitting on its board that year was a forty-five-year-old director called Harvey Jones.",
+  "heard": "and sitting on its board that year was a 45-year-old director called Harvey Jones."
+ },
+ {
+  "id": "L111",
+  "ratio": 1.0,
+  "said": "Remember that name.",
+  "heard": "Remember that name."
+ },
+ {
+  "id": "L201",
+  "ratio": 1.0,
+  "said": "Then Jensen made the bet that defined him.",
+  "heard": "Then Jensen made the bet that defined him."
+ },
+ {
+  "id": "L202",
+  "ratio": 1.0,
+  "said": "In two thousand and six, Nvidia launched CUDA, software that turned its gaming chips into machines that could do almost any kind of maths.",
+  "heard": "In 2006, NVIDIA launched CUDA, software that turned its gaming chips into machines that could do almost any kind of maths."
+ },
+ {
+  "id": "L203",
+  "ratio": 0.933,
+  "said": "It cost a fortune. Wall Street didn't get it. By late two thousand and eight, the whole company was worth less than four billion dollars.",
+  "heard": "It cost a fortune. Wall Street didn't get it. By late 2008, the whole company was worth less than $4 billion."
+ },
+ {
+  "id": "L204",
+  "ratio": 0.881,
+  "said": "And then, in twenty twelve, a grad student trained an AI program called AlexNet on two Nvidia gaming cards. About five hundred dollars each. In his bedroom, at his parents' house.",
+  "heard": "And then in 2012, a grad student trained an AI program called Alex Net on two NVIDIA gaming cards, about $500 each in his bedroom at his parents' house."
+ },
+ {
+  "id": "L205",
+  "ratio": 1.0,
+  "said": "It blew away the competition. Nvidia's own annual report calls that moment AI's Big Bang.",
+  "heard": "It blew away the competition. NVIDIA's own annual report calls that moment AI's big bang."
+ },
+ {
+  "id": "L206",
+  "ratio": 0.909,
+  "said": "In twenty sixteen, Jensen personally delivered Nvidia's first AI supercomputer to a small non-profit called OpenAI.",
+  "heard": "In 2016, Jensen personally delivered NVIDIA's first AI supercomputer to a small nonprofit called OpenAI."
+ },
+ {
+  "id": "L207",
+  "ratio": 0.769,
+  "said": "Six years later, OpenAI released ChatGPT.",
+  "heard": "Six years later, OpenAI released Chat GPT."
+ },
+ {
+  "id": "L208",
+  "ratio": 1.0,
+  "said": "And suddenly, everyone needed Nvidia.",
+  "heard": "and suddenly, everyone needed NVIDIA."
+ },
+ {
+  "id": "L209",
+  "ratio": 0.95,
+  "said": "It touched a trillion dollars in twenty twenty-three. And in October twenty twenty-five it became the first company ever worth five trillion.",
+  "heard": "It touched a trillion dollars in 2023. And in October 2025, it became the first company ever worth 5 trillion."
+ },
+ {
+  "id": "L301",
+  "ratio": 1.0,
+  "said": "Here's how big it got.",
+  "heard": "Here's how big it got."
+ },
+ {
+  "id": "L302",
+  "ratio": 0.828,
+  "said": "In the three months to late October, Nvidia sold almost a hundred and sixteen billion dollars' worth of products. Around nine in every ten of those dollars came from data centres.",
+  "heard": "In the three months to late October, NVIDIA sold almost $116 billion worth of products. Around nine in every 10 of those dollars came from data centers."
+ },
+ {
+  "id": "L303",
+  "ratio": 0.88,
+  "said": "And it kept sixty-five billion of it as profit. In one quarter.",
+  "heard": "and it kept 65 billion of it as profit in one quarter."
+ },
+ {
+  "id": "L304",
+  "ratio": 1.0,
+  "said": "Jensen ran the whole thing like nobody else. Dozens of people reporting straight to him. The same leather jacket on every stage.",
+  "heard": "Jensen ran the whole thing like nobody else, dozens of people reporting straight to him, the same leather jacket on every stage."
+ },
+ {
+  "id": "L305",
+  "ratio": 1.0,
+  "said": "But there was one market Nvidia could never fully have. China.",
+  "heard": "But there was one market Nvidia could never fully have. China."
+ },
+ {
+  "id": "L306",
+  "ratio": 0.928,
+  "said": "Not long ago, China was about one dollar in every five Nvidia made. Then US export rules cut off its most powerful chips. Today, Nvidia's own forecast assumes zero data-centre chip sales there.",
+  "heard": "Not long ago, China was about $1 in every five Nvidia made. Then US export rules cut off its most powerful chips. Today, Nvidia's own forecast assumes zero data center chip sales there."
+ },
+ {
+  "id": "L307",
+  "ratio": 1.0,
+  "said": "And that's exactly where this story takes a turn.",
+  "heard": "And that's exactly where this story takes a turn."
+ },
+ {
+  "id": "L401",
+  "ratio": 0.889,
+  "said": "Meet Megaspeed. A data-centre company based in Singapore.",
+  "heard": "Meet Megaspeed, a data center company based in Singapore."
+ },
+ {
+  "id": "L402",
+  "ratio": 0.933,
+  "said": "According to reports, it became one of Nvidia's biggest customers in South-East Asia, buying billions of dollars' worth of its chips.",
+  "heard": "According to reports, it became one of NVIDIA's biggest customers in Southeast Asia, buying billions of dollars worth of its chips."
+ },
+ {
+  "id": "L403",
+  "ratio": 0.9,
+  "said": "In twenty twenty-four, investigators at the US Commerce Department noticed what they later called suspicious activity. They started looking at whether chips bought by Megaspeed were ending up in China.",
+  "heard": "In 2024, investigators at the U.S. Commerce Department noticed what they later called suspicious activity. They started looking at whether chips bought by mega speed were ending up in China."
+ },
+ {
+  "id": "L404",
+  "ratio": 1.0,
+  "said": "By mid twenty twenty-five, Nvidia had stopped selling to Megaspeed.",
+  "heard": "By mid-2025, NVIDIA had stopped selling to MegaSpeed."
+ },
+ {
+  "id": "L405",
+  "ratio": 0.943,
+  "said": "That June, US and Singapore officials visited the company and interviewed its boss: a businesswoman who, according to Bloomberg, had spent years in Nvidia's orbit.",
+  "heard": "That June, U.S. and Singapore officials visited the company and interviewed its boss, a businesswoman who, according to Bloomberg, had spent years in NVIDIA's orbit."
+ },
+ {
+  "id": "L406",
+  "ratio": 0.889,
+  "said": "Today, that investigation is a criminal case, led by the US Justice Department.",
+  "heard": "Today, that investigation is a criminal case led by the U.S. Justice Department."
+ },
+ {
+  "id": "L407",
+  "ratio": 1.0,
+  "said": "Megaspeed says it does legitimate, lawful business, and denies any wrongdoing.",
+  "heard": "Megaspeed says it does legitimate, lawful business and denies any wrongdoing."
+ },
+ {
+  "id": "L501",
+  "ratio": 0.5,
+  "said": "October the twenty-ninth, twenty twenty-six.",
+  "heard": "October 29, 2026."
+ },
+ {
+  "id": "L502",
+  "ratio": 0.93,
+  "said": "The New York Times reports that, according to US officials, American intelligence suspected that same businesswoman of working for Chinese intelligence.",
+  "heard": "The New York Times reports that, according to U.S. officials, American intelligence suspected that same businesswoman of working for Chinese intelligence."
+ },
+ {
+  "id": "L503",
+  "ratio": 1.0,
+  "said": "Nvidia hits back the same day. It says the allegations about chips reaching China were investigated and debunked last year, and that meeting customers is just part of a CEO's job.",
+  "heard": "NVIDIA hits back the same day. It says the allegations about chips reaching China were investigated and debunked last year, and that meeting customers is just part of a CEO's job."
+ },
+ {
+  "id": "L504",
+  "ratio": 1.0,
+  "said": "The next day, the Wall Street Journal reports that Singapore and Taiwan had concerns about her too. Singapore's government publicly denies saying that.",
+  "heard": "The next day, the Wall Street Journal reports that Singapore and Taiwan had concerns about her too. Singapore's government publicly denies saying that."
+ },
+ {
+  "id": "L505",
+  "ratio": 1.0,
+  "said": "Nvidia's shares start to slide.",
+  "heard": "NVIDIA's shares start to slide."
+ },
+ {
+  "id": "L506",
+  "ratio": 0.811,
+  "said": "November the fourth. Three committees of the US House of Representatives write to Jensen Huang. They want answers.",
+  "heard": "November the 4th, three committees of the U.S. House of Representatives write to Jensen Hwang. They want answers."
+ },
+ {
+  "id": "L507",
+  "ratio": 0.857,
+  "said": "November the eighth. A Sunday. The email.",
+  "heard": "November the 8th, a Sunday, the email."
+ },
+ {
+  "id": "L508",
+  "ratio": 1.0,
+  "said": "I was unfaithful to my wife.",
+  "heard": "I was unfaithful to my wife."
+ },
+ {
+  "id": "L509",
+  "ratio": 1.0,
+  "said": "The same day, Nvidia's board opens an independent investigation after reports that Huang had been the target of a foreign intelligence effort. The board says it has no reason to believe national security or company secrets were compromised.",
+  "heard": "The same day, NVIDIA's board opens an independent investigation after reports that Huang had been the target of a foreign intelligence effort. The board says it has no reason to believe national security or company secrets were compromised."
+ },
+ {
+  "id": "L510",
+  "ratio": 0.975,
+  "said": "November the ninth. China's foreign ministry calls the spy claim completely groundless. President Trump says Huang told him he had no idea, and that he believes him. A shareholder sues, claiming investors were misled. Those are allegations, not findings.",
+  "heard": "November the 9th. China's foreign ministry calls the spy claim completely groundless. President Trump says Huang told him he had no idea and that he believes him. A shareholder sues, claiming investors were misled. Those are allegations, not findings."
+ },
+ {
+  "id": "L511",
+  "ratio": 0.933,
+  "said": "November the eleventh. The New York Times reports that Huang also had a relationship with a senior Nvidia executive. Nvidia doesn't comment.",
+  "heard": "November 11. The New York Times reports that Huang also had a relationship with a senior NVIDIA executive. NVIDIA doesn't comment."
+ },
+ {
+  "id": "L512",
+  "ratio": 1.0,
+  "said": "That same day, the board accepts his resignation.",
+  "heard": "That same day, the board accepts his resignation."
+ },
+ {
+  "id": "L513",
+  "ratio": 0.8,
+  "said": "November the twelfth. The announcement.",
+  "heard": "November the 12th, the announcement."
+ },
+ {
+  "id": "L514",
+  "ratio": 0.88,
+  "said": "After thirty-three years\u2026 the only CEO Nvidia had ever had\u2026 was gone.",
+  "heard": "After 33 years, the only CEO NVIDIA had ever had was gone."
+ },
+ {
+  "id": "L515",
+  "ratio": 1.0,
+  "said": "Days later, Reuters reported a relationship with yet another Nvidia employee. Again, Nvidia declined to comment.",
+  "heard": "Days later, Reuters reported a relationship with yet another NVIDIA employee. Again, NVIDIA declined to comment."
+ },
+ {
+  "id": "L601",
+  "ratio": 1.0,
+  "said": "So\u2026 was this a honey trap? That's what everyone's asking.",
+  "heard": "So was this a honey trap? That's what everyone's asking."
+ },
+ {
+  "id": "L602",
+  "ratio": 1.0,
+  "said": "Here's what we actually know.",
+  "heard": "Here's what we actually know."
+ },
+ {
+  "id": "L603",
+  "ratio": 1.0,
+  "said": "She hasn't been charged with anything, anywhere. She hasn't said a word in public. Bloomberg reports she's living in Beijing. China calls the whole thing a smear.",
+  "heard": "She hasn't been charged with anything anywhere. She hasn't said a word in public. Bloomberg reports she's living in Beijing. China calls the whole thing a smear."
+ },
+ {
+  "id": "L604",
+  "ratio": 0.951,
+  "said": "The US Attorney General says the Justice Department has reached no conclusions about who she is. And President Trump put it bluntly. Nobody's proven that she's a spy.",
+  "heard": "The U.S. Attorney General says the Justice Department has reached no conclusions about who she is, and President Trump put it bluntly, nobody's proven that she's a spy."
+ },
+ {
+  "id": "L605",
+  "ratio": 1.0,
+  "said": "Nvidia's board says it has no reason to believe any secrets were compromised.",
+  "heard": "NVIDIA's board says it has no reason to believe any secrets were compromised."
+ },
+ {
+  "id": "L606",
+  "ratio": 1.0,
+  "said": "But the investigations keep coming.",
+  "heard": "but the investigations keep coming."
+ },
+ {
+  "id": "L607",
+  "ratio": 1.0,
+  "said": "The Justice Department's criminal case into Megaspeed. A reported SEC inquiry into whether Nvidia's disclosures misled investors. Malaysia checking whether chips were shipped on to somewhere else.",
+  "heard": "The Justice Department's criminal case into megaspeed, a reported SEC inquiry into whether NVIDIA's disclosures misled investors. Malaysia checking whether chips were shipped on to somewhere else."
+ },
+ {
+  "id": "L608",
+  "ratio": 1.0,
+  "said": "And the Treasury Secretary went on TV and asked whether Nvidia had made seemingly illicit sales to boost its numbers. Nvidia hasn't been charged with anything.",
+  "heard": "And the Treasury Secretary went on TV and asked whether NVIDIA had made seemingly illicit sales to boost its numbers. NVIDIA hasn't been charged with anything."
+ },
+ {
+  "id": "L609",
+  "ratio": 0.944,
+  "said": "On December the first, Jensen Huang has agreed to sit down, behind closed doors, with three House committees.",
+  "heard": "On December the 1st, Jensen Huang has agreed to sit down behind closed doors with three House committees."
+ },
+ {
+  "id": "L610",
+  "ratio": 1.0,
+  "said": "And Jensen himself? He's posted that he'd be honored to come back.",
+  "heard": "and Jensen himself, he's posted that he'd be honored to come back."
+ },
+ {
+  "id": "L611",
+  "ratio": 0.857,
+  "said": "The board's answer. It does not intend to reinstate him.",
+  "heard": "The boards answer. It does not intend to reinstate him."
+ },
+ {
+  "id": "L701",
+  "ratio": 1.0,
+  "said": "So who's running the most important company in AI right now?",
+  "heard": "So who's running the most important company in AI right now?"
+ },
+ {
+  "id": "L702",
+  "ratio": 1.0,
+  "said": "Its finance chief, Colette Kress, is doing two jobs: interim CEO and CFO.",
+  "heard": "Its Finance Chief, Colette Kress, is doing two jobs, Interim CEO and CFO."
+ },
+ {
+  "id": "L703",
+  "ratio": 1.0,
+  "said": "And remember Harvey Jones? The director from nineteen ninety-nine? He's been on the board since nineteen ninety-three. He's now Nvidia's first-ever chair.",
+  "heard": "and remember Harvey Jones, the director from 1999. He's been on the board since 1993. He's now NVIDIA's first ever chair."
+ },
+ {
+  "id": "L704",
+  "ratio": 1.0,
+  "said": "The man who watched Nvidia grow up is now picking who runs it next.",
+  "heard": "The man who watched Nvidia grow up is now picking who runs it next."
+ },
+ {
+  "id": "L705",
+  "ratio": 0.952,
+  "said": "The business? On November the seventeenth, Nvidia posted the biggest quarter in its history. Kress's message. Our momentum is real.",
+  "heard": "The business, on November the 17th, NVIDIA posted the biggest quarter in its history. Kress's message, our momentum is real."
+ },
+ {
+  "id": "L706",
+  "ratio": 0.7,
+  "said": "It's forecasting about a hundred and thirty billion dollars next quarter.",
+  "heard": "It's forecasting about $130 billion next quarter."
+ },
+ {
+  "id": "L707",
+  "ratio": 0.932,
+  "said": "But the stock tells a different story. At its October peak, Nvidia was worth nearly six trillion dollars. On earnings day, it was under four trillion, though part of that slide was a market-wide sell-off.",
+  "heard": "But the stock tells a different story. At its October peak, Nvidia was worth nearly $6 trillion. On earnings day, it was under $4 trillion, though part of that slide was a market-wide sell-off."
+ },
+ {
+  "id": "L708",
+  "ratio": 1.0,
+  "said": "And its biggest customers? Google, Amazon, Microsoft and Meta are all building chips of their own.",
+  "heard": "and its biggest customers. Google, Amazon, Microsoft, and Meta are all building chips of their own."
+ },
+ {
+  "id": "L801",
+  "ratio": 1.0,
+  "said": "So how does this end? Three ways it could play out.",
+  "heard": "So how does this end? Three ways it could play out."
+ },
+ {
+  "id": "L802",
+  "ratio": 1.0,
+  "said": "One. Business as usual. Nvidia designs its chips years ahead. The roadmap already runs to twenty twenty-eight. A strong new CEO steps in and the machine keeps running. After Steve Jobs, Apple became the first US company worth a trillion dollars.",
+  "heard": "One business as usual. Nvidia designs its chips years ahead. The roadmap already runs to 2028. A strong new CEO steps in and the machine keeps running. After Steve Jobs, Apple became the first US company worth a trillion dollars."
+ },
+ {
+  "id": "L803",
+  "ratio": 0.966,
+  "said": "Two. The slow squeeze. Customers keep building their own chips, China stays shut, and without its founder pushing, Nvidia's edge slowly wears down. After Bill Gates handed over the CEO job, Microsoft's stock took nearly seventeen years to beat its old high.",
+  "heard": "Two, the slow squeeze. Customers keep building their own chips, China stays shut, and without its founder pushing, Nvidia's edge slowly wears down. After Bill Gates handed over the CEO job, Microsoft stock took nearly 17 years to beat its old high."
+ },
+ {
+  "id": "L804",
+  "ratio": 0.949,
+  "said": "Three. The investigations go deeper. If they find something serious about Megaspeed, export controls or what investors were told, that could hurt Nvidia far more than losing a CEO.",
+  "heard": "Three, the investigations go deeper. If they find something serious about mega speed, export controls, or what investors were told, that could hurt NVIDIA far more than losing a CEO."
+ },
+ {
+  "id": "L805",
+  "ratio": 1.0,
+  "said": "If they find nothing, this becomes the story of one man's private life\u2026 and an empire that outlived him.",
+  "heard": "If they find nothing, this becomes the story of one man's private life and an empire that outlived him."
+ },
+ {
+  "id": "L806",
+  "ratio": 0.95,
+  "said": "Watch three things: who the board picks, what happens on December the first, and whether the biggest buyers keep ordering.",
+  "heard": "Watch three things, who the board picks, what happens on December the 1st, and whether the biggest buyers keep ordering."
+ },
+ {
+  "id": "L901",
+  "ratio": 0.919,
+  "said": "Thirty-three years ago, three engineers sat in a diner and bet everything on chips nobody thought they needed.",
+  "heard": "33 years ago, three engineers sat in a diner and bet everything on chips nobody thought they needed."
+ },
+ {
+  "id": "L902",
+  "ratio": 1.0,
+  "said": "One of them built the most valuable company in the world.",
+  "heard": "one of them built the most valuable company in the world."
+ },
+ {
+  "id": "L903",
+  "ratio": 1.0,
+  "said": "Now that company has to prove it can survive without him.",
+  "heard": "Now that company has to prove it can survive without him."
+ }
+]
