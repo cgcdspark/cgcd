@@ -62,6 +62,9 @@ def conform(row: dict, raw: Path, force: bool) -> str:
     w, h = int(vs[0].get("width", 0)), int(vs[0].get("height", 0))
     note = "" if min(w, h) >= 1080 or is_img else f" (upscaled from {w}x{h})"
     vf = f"scale=1920:1080:force_original_aspect_ratio=increase:flags=lanczos,crop=1920:1080,{GRADE}"
+    c = float(row.get("crop") or 0)
+    if 0 < c < 1:  # centre crop (e.g. to remove a burned-in logo) before scaling
+        vf = f"crop=iw*{c}:ih*{c}," + vf
     if is_img:
         run([ffmpeg(), "-y", "-v", "error", "-i", str(raw), "-vf", vf.replace(",unsharp=5:5:0.35", ""), "-q:v", "2", str(out)])
         return f"{aid}: still OK {w}x{h}"

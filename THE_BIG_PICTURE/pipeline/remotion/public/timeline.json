@@ -671,28 +671,28 @@
     "callouts": [
      {
       "x": 0,
-      "y": 360,
+      "y": 290,
       "label": "Grid connection",
       "who": "Utilities · grid operators",
       "at": 20
      },
      {
-      "x": 180,
-      "y": 460,
+      "x": 170,
+      "y": 405,
       "label": "Transformers & switchgear",
       "who": "Siemens Energy · Hitachi Energy · Eaton",
       "at": 30
      },
      {
-      "x": 560,
-      "y": 330,
+      "x": 545,
+      "y": 405,
       "label": "UPS & power",
       "who": "Vertiv · Schneider · Eaton",
       "at": 44
      },
      {
       "x": 900,
-      "y": 290,
+      "y": 318,
       "label": "Compute & network",
       "who": "Nvidia · AMD · Arista",
       "at": 56
