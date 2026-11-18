@@ -199,7 +199,7 @@ Legal guardrails (applied throughout):
 ---
 
 ### Production notes
-- **~1,720 words**, about 12 minutes at the narrator's pace with pauses.
+- **~1,500 narration words**, about 11.5–12 minutes with pauses, title and end card.
 - **Shorts:** 9 segments, each 30–60 s, ending on a line that lands alone. Scandal shorts (1, 6, 7) carry the "not charged / denies / no conclusions" lines inside the short.
 - **Day-before-render recheck:**
   - every scandal fact
