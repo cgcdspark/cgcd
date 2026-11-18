@@ -1,35 +1,35 @@
 shot_id,act,start_s,end_s,type,asset_or_component,description
-S00_01,ACT1,0.00,5.85,footage,MOOD-015,Woman typing on her laptop in a coffee shop
+S00_01,ACT1,0.00,5.85,footage,MOOD-015,Hands of a man typing on a laptop
 S00_02,ACT1,5.85,8.94,footage,IA-QTS,"QTS Data Center in Aurora, Colorado (exterior walk-by)"
 S00_03,ACT1,8.94,11.50,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
 S00_04,ACT1,11.50,14.25,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
-S00_05,ACT1,14.25,17.55,footage,EL-008,Snowy hill in a forest full of skiers
-S00_06,ACT1,17.55,20.85,footage,MOOD-053,Woman playing online with her friends
-S00_07,ACT1,20.85,23.48,footage,BIZ-033,Hands in a handshake with a person in a suit in the background
-S00_08,ACT1,23.48,25.02,footage,BIZ-035,Vintage Telephone Booth on a Rainy Night
-S00_09,ACT1,25.02,26.56,footage,BIZ-008,Girl dancing happily in a field of flowers
-S00_10,ACT1,26.56,28.32,footage,EL-052,The camera zooms on a couple walking over a metal pier
+S00_05,ACT1,14.25,17.55,footage,EL-008,Smoke from power plant (industrial silhouette)
+S00_06,ACT1,17.55,20.85,footage,MOOD-053,"Software developer working on code, screen close up"
+S00_07,ACT1,20.85,23.48,footage,BIZ-033,Clouds covering the mountains
+S00_08,ACT1,23.48,25.02,footage,BIZ-035,"Buildings under construction, aerial view"
+S00_09,ACT1,25.02,26.56,footage,BIZ-008,Industrial machine working
+S00_10,ACT1,26.56,28.32,footage,EL-052,Industrial facility made of metal beams
 S00_11,ACT1,28.32,34.51,footage,MOOD-113,Lights of Human Activity Shine in NASA's Image of Earth at Night
-S01_01,ACT1,34.51,39.51,footage,BIZ-053,Valley time lapse
-S02_01,ACT2,39.51,41.48,footage,BIZ-043,Tour high above a city at dusk
-S02_02,ACT2,41.48,42.92,footage,EL-016,Aerial view of a power plant in a big city
-S02_03,ACT2,42.92,60.01,graphic,BarChart,"Capital expenditure: latest year, and what comes next"
+S01_01,ACT1,34.51,39.51,footage,BIZ-053,Top aerial view of a factory during night time
+S02_01,ACT2,39.51,42.92,footage,BIZ-043,Floor of London's financial district
+S02_02,ACT2,42.92,46.12,still,DC-016,"Microsoft Data Center Middenmeer, the Netherlands - 2.jpg"
+S02_03,ACT2,46.12,60.01,graphic,BarChart,"Capital expenditure: latest year, and what comes next"
 S02_04,ACT2,60.01,62.83,footage,IA-QTS,"QTS Data Center in Aurora, Colorado (exterior walk-by)"
 S02_05,ACT2,62.83,65.65,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
 S03_01,ACT2,65.65,95.04,graphic,ValueChain,Follow the money down the stack
-S04_01,ACT3,95.04,97.82,footage,SEM-042,Man throwing dice at a gaming table
-S04_02,ACT3,97.82,99.02,footage,SEM-041,Placing Poker Cards on a Gaming Table by a Dealer
+S04_01,ACT3,95.04,97.82,footage,SEM-042,Motherboard resembling an urban landscape
+S04_02,ACT3,97.82,99.02,footage,SEM-041,Chipset closeup
 S04_03,ACT3,99.02,113.54,graphic,BigStat,
-S04_04,ACT3,113.54,117.66,footage,SEM-001,Chipset Close up View
-S05_01,ACT3,117.66,123.41,footage,SEM-040,Taking down a tower of poker chips
+S04_04,ACT3,113.54,117.66,footage,SEM-001,Engineer repairing a circuit board in his workshop
+S05_01,ACT3,117.66,123.41,still,SEM-054,Silicon wafer researcher.jpg
 S05_02,ACT3,123.41,131.56,graphic,BigStat,
-S05_03,ACT3,131.56,137.05,footage,SEM-044,Poker player lighting a cigar
-S05_04,ACT3,137.05,142.54,footage,SEM-037,Poker chips falling on a gaming table
+S05_03,ACT3,131.56,137.05,footage,SEM-044,Motherboard resembling a city from above
+S05_04,ACT3,137.05,142.54,footage,SEM-037,Chipset close-up view
 S05_05,ACT3,142.54,153.85,graphic,Flow,Who makes an AI chip?
-S05_06,ACT3,153.85,158.51,footage,SEM-045,Person betting on a poker game
+S05_06,ACT3,153.85,158.51,footage,SEM-045,Chipset with blue and red details
 S05_07,ACT3,158.51,170.44,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
-S05_08,ACT3,170.44,175.61,footage,SEM-001,Chipset Close up View
-S05_09,ACT3,175.61,180.79,footage,SEM-042,Man throwing dice at a gaming table
+S05_08,ACT3,170.44,175.61,footage,SEM-001,Engineer repairing a circuit board in his workshop
+S05_09,ACT3,175.61,180.79,footage,SEM-042,Motherboard resembling an urban landscape
 S06_01,ACT3,180.79,191.13,graphic,BarChart,"Gross margin, latest quarter"
 S06_02,ACT3,191.13,198.08,footage,IA-QTS,"QTS Data Center in Aurora, Colorado (exterior walk-by)"
 S07_01,ACT4,198.08,203.01,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
@@ -43,39 +43,39 @@ S08_02,ACT4,231.78,237.16,footage,DC-010,Ames Research Center Unveils New Modula
 S08_03,ACT4,237.16,244.24,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
 S08_04,ACT4,244.24,256.45,graphic,BarChart,Estimated split of AI data centre capex to 2030
 S08_05,ACT4,256.45,266.71,footage,IA-QTS,"QTS Data Center in Aurora, Colorado (exterior walk-by)"
-S08_06,ACT4,266.71,280.24,footage,BIZ-043,Tour high above a city at dusk
-S09_01,ACT5,280.24,284.96,footage,BIZ-042,Countryside meadow
-S09_02,ACT5,284.96,286.64,footage,EL-008,Snowy hill in a forest full of skiers
+S08_06,ACT4,266.71,280.24,footage,BIZ-043,Floor of London's financial district
+S09_01,ACT5,280.24,284.96,footage,BIZ-042,Electric storm over the ocean
+S09_02,ACT5,284.96,286.64,footage,EL-008,Smoke from power plant (industrial silhouette)
 S09_03,ACT5,286.64,288.64,footage,MOOD-113,Lights of Human Activity Shine in NASA's Image of Earth at Night
 S09_04,ACT5,288.64,301.81,graphic,ColumnChart,"Global consumption, terawatt-hours per year"
-S09_05,ACT5,301.81,309.64,footage,BIZ-085,Presentation during a work team meeting
-S10_01,ACT5,309.64,316.33,footage,EL-012,Metal structures of an electric power plant
-S10_02,ACT5,316.33,323.61,footage,EL-008,Snowy hill in a forest full of skiers
-S10_03,ACT5,323.61,333.46,footage,EL-007,Children skiing on the plain of a pine forest
+S09_05,ACT5,301.81,309.64,footage,BIZ-085,Aerial shot of a city at night
+S10_01,ACT5,309.64,316.33,footage,EL-012,An industrial power plant with smoke towers
+S10_02,ACT5,316.33,323.61,footage,EL-008,Smoke from power plant (industrial silhouette)
+S10_03,ACT5,323.61,333.46,footage,EL-007,Power plant seen from afar (industrial plant)
 S10_04,ACT5,333.46,340.21,graphic,PowerChain,From power station to server rack
 S10_05,ACT5,340.21,346.16,graphic,RangeBars,How long the physical grid takes
-S10_06,ACT5,346.16,351.89,footage,EL-052,The camera zooms on a couple walking over a metal pier
-S10_07,ACT5,351.89,357.63,footage,BIZ-008,Girl dancing happily in a field of flowers
-S10_08,ACT5,357.63,361.16,footage,BIZ-057,City full of buildings
-S10_09,ACT5,361.16,364.70,footage,EL-006,Taking a wire from a tool wall
-S11_01,ACT5,364.70,367.91,footage,BIZ-055,Electric storm over the ocean
+S10_06,ACT5,346.16,351.89,still,EL-080,High-voltage transformer 750 kV Трансформатор 750 кВ.jpg
+S10_07,ACT5,351.89,357.63,footage,BIZ-008,Industrial machine working
+S10_08,ACT5,357.63,361.16,footage,BIZ-057,Cranes working on unloading dock
+S10_09,ACT5,361.16,364.70,footage,EL-006,Power plant working (industrial plant)
+S11_01,ACT5,364.70,367.91,footage,BIZ-055,Workers moving containers from a cargo ship
 S11_02,ACT5,367.91,379.00,graphic,BarChart,Backlog at the grid's equipment makers
-S11_03,ACT5,379.00,385.30,footage,EL-020,Aerial view around a power plant in a big city
-S11_04,ACT5,385.30,391.60,footage,BIZ-057,City full of buildings
-S11_05,ACT5,391.60,398.46,footage,EL-030,A skillful makeup artist working on a young woman's  makeup in a softly lit studio
-S12_01,ACT6,398.46,400.80,footage,BIZ-043,Tour high above a city at dusk
+S11_03,ACT5,379.00,385.30,footage,EL-020,Aerial view of many wind energy mills
+S11_04,ACT5,385.30,391.60,footage,BIZ-057,Cranes working on unloading dock
+S11_05,ACT5,391.60,398.46,footage,EL-030,Wind farms out at sea
+S12_01,ACT6,398.46,400.80,footage,BIZ-043,Floor of London's financial district
 S12_02,ACT6,400.80,421.52,graphic,Matrix,"The AI value chain, scored"
-S12_03,ACT6,421.52,428.54,footage,EL-016,Aerial view of a power plant in a big city
-S12_04,ACT6,428.54,435.35,footage,BIZ-008,Girl dancing happily in a field of flowers
-S12_05,ACT6,435.35,438.35,footage,BIZ-085,Presentation during a work team meeting
+S12_03,ACT6,421.52,428.54,footage,BIZ-043,Floor of London's financial district
+S12_04,ACT6,428.54,435.35,footage,BIZ-008,Industrial machine working
+S12_05,ACT6,435.35,438.35,footage,BIZ-085,Aerial shot of a city at night
 S12_06,ACT6,438.35,456.28,graphic,ColumnChart,"PJM capacity price, $ per MW-day"
-S12_07,ACT6,456.28,466.14,footage,BIZ-033,Hands in a handshake with a person in a suit in the background
-S13_01,ACT7,466.14,471.44,footage,MOOD-049,Analyzing the graphics of a video on YouTube
-S13_02,ACT7,471.44,475.03,footage,SEM-042,Man throwing dice at a gaming table
-S13_03,ACT7,475.03,477.90,footage,BIZ-057,City full of buildings
+S12_07,ACT6,456.28,466.14,footage,BIZ-033,Clouds covering the mountains
+S13_01,ACT7,466.14,471.44,footage,MOOD-049,Close up shot of a person typing on a laptop
+S13_02,ACT7,471.44,475.03,footage,SEM-042,Motherboard resembling an urban landscape
+S13_03,ACT7,475.03,477.90,footage,BIZ-057,Cranes working on unloading dock
 S13_04,ACT7,477.90,479.73,footage,DC-010,Ames Research Center Unveils New Modular Supercomputing Facility
-S13_05,ACT7,479.73,481.56,footage,EL-007,Children skiing on the plain of a pine forest
-S13_06,ACT7,481.56,483.39,footage,EL-008,Snowy hill in a forest full of skiers
+S13_05,ACT7,479.73,481.56,footage,EL-007,Power plant seen from afar (industrial plant)
+S13_06,ACT7,481.56,483.39,footage,EL-008,Smoke from power plant (industrial silhouette)
 S13_07,ACT7,483.39,488.15,footage,MOOD-113,Lights of Human Activity Shine in NASA's Image of Earth at Night
 S13_08,ACT7,488.15,495.00,footage,IA-QTS,"QTS Data Center in Aurora, Colorado (exterior walk-by)"
 S14_01,ACT7,495.00,502.00,graphic,EndCard,

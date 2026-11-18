@@ -24,6 +24,11 @@ def main() -> int:
             return 2
         aid, _, t = spec.partition("@")
         src = PUBLIC / "footage" / f"{aid}.mp4"
+        if t == "still":
+            src = PUBLIC / "stills" / f"{aid}.jpg"
+            if src.exists():
+                run([ffmpeg(), "-y", "-v", "error", "-i", str(src), "-q:v", "2", str(PUBLIC / "thumbs" / f"{side}.jpg")])
+                continue
         if not src.exists():
             log(f"thumbnail source {src} missing", "error")
             return 2

@@ -63,6 +63,9 @@ FOOTAGE & MUSIC
 • Ames Research Center Unveils New Modular Supercomputing Facility — Footage: NASA — Public domain (NASA media guidelines; no endorsement implied) — https://images.nasa.gov/details/ARC-20190821-AAV3214-ModularSupercomputer-BRollResource-NASAWeb
 • QTS Data Center in Aurora, Colorado (exterior walk-by) — Footage: Francisco Soto (public domain) via Internet Archive — Public Domain Mark 1.0 (applied by creator) — https://archive.org/details/QTS-Data-Center-In-Aurora-Colorado-USA-Massive-Data-Center-160-mega-watts
 • Lights of Human Activity Shine in NASA's Image of Earth at Night — Footage: NASA — Public domain (NASA media guidelines; no endorsement implied) — https://images.nasa.gov/details/GSFC_20170412_Lights_m12573_EarthAtNight
+• Silicon wafer researcher.jpg — "Silicon wafer researcher.jpg" by U.S. Department of Energy, Public domain, via Wikimedia Commons — Public domain — https://commons.wikimedia.org/wiki/File:Silicon_wafer_researcher.jpg
+• Microsoft Data Center Middenmeer, the Netherlands - 2.jpg — "Microsoft Data Center Middenmeer, the Netherlands - 2.jpg" by Hay Kranen, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0), via Wikimedia Commons — CC BY 4.0 — https://commons.wikimedia.org/wiki/File:Microsoft_Data_Center_Middenmeer,_the_Netherlands_-_2.jpg
+• High-voltage transformer 750 kV Трансформатор 750 кВ.jpg — "High-voltage transformer 750 kV Трансформатор 750 кВ.jpg" by Novoklimov, CC0 (http://creativecommons.org/publicdomain/zero/1.0/deed.en), via Wikimedia Commons — CC0 — https://commons.wikimedia.org/wiki/File:High-voltage_transformer_750_kV_%D0%A2%D1%80%D0%B0%D0%BD%D1%81%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%BE%D1%80_750_%D0%BA%D0%92.jpg
 • Additional footage: Mixkit (free licence)
 • "Fallen (Asper) - Eugenio Mininni" (Mixkit, free licence)
 • "Xceed Thru Johann - Eugenio Mininni" (Mixkit, free licence)

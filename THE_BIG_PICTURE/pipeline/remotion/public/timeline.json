@@ -130,7 +130,7 @@
    "from": 708,
    "dur": 155,
    "src": "footage/MOOD-113.mp4",
-   "startFrom": 750,
+   "startFrom": 550,
    "motion": "push",
    "xfade": 0,
    "letterbox": false,
@@ -152,7 +152,7 @@
    "id": "S02_01",
    "type": "footage",
    "from": 980,
-   "dur": 57,
+   "dur": 93,
    "src": "footage/BIZ-043.mp4",
    "startFrom": 50,
    "motion": "none",
@@ -162,12 +162,12 @@
   },
   {
    "id": "S02_02",
-   "type": "footage",
-   "from": 1037,
-   "dur": 36,
-   "src": "footage/EL-016.mp4",
-   "startFrom": 125,
-   "motion": "none",
+   "type": "still",
+   "from": 1073,
+   "dur": 80,
+   "src": "stills/DC-016.jpg",
+   "startFrom": 0,
+   "motion": "driftR",
    "xfade": 0,
    "letterbox": false,
    "dim": 0.0
@@ -175,8 +175,8 @@
   {
    "id": "S02_03",
    "type": "graphic",
-   "from": 1073,
-   "dur": 427,
+   "from": 1153,
+   "dur": 347,
    "component": "BarChart",
    "props": {
     "kicker": "The spending wave",
@@ -341,12 +341,12 @@
   },
   {
    "id": "S05_01",
-   "type": "footage",
+   "type": "still",
    "from": 2933,
    "dur": 152,
-   "src": "footage/SEM-040.mp4",
+   "src": "stills/SEM-054.jpg",
    "startFrom": 0,
-   "motion": "none",
+   "motion": "push",
    "xfade": 8,
    "letterbox": false,
    "dim": 0.0
@@ -818,7 +818,7 @@
    "from": 7166,
    "dur": 50,
    "src": "footage/MOOD-113.mp4",
-   "startFrom": 1250,
+   "startFrom": 1000,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -981,12 +981,12 @@
   },
   {
    "id": "S10_06",
-   "type": "footage",
+   "type": "still",
    "from": 8654,
    "dur": 143,
-   "src": "footage/EL-052.mp4",
-   "startFrom": 50,
-   "motion": "none",
+   "src": "stills/EL-080.jpg",
+   "startFrom": 0,
+   "motion": "pull",
    "xfade": 0,
    "letterbox": false,
    "dim": 0.0
@@ -1257,8 +1257,8 @@
    "type": "footage",
    "from": 10538,
    "dur": 176,
-   "src": "footage/EL-016.mp4",
-   "startFrom": 375,
+   "src": "footage/BIZ-043.mp4",
+   "startFrom": 491,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -1330,7 +1330,7 @@
    "from": 11407,
    "dur": 247,
    "src": "footage/BIZ-033.mp4",
-   "startFrom": 250,
+   "startFrom": 50,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -1414,7 +1414,7 @@
    "from": 12085,
    "dur": 119,
    "src": "footage/MOOD-113.mp4",
-   "startFrom": 1550,
+   "startFrom": 1075,
    "motion": "pull",
    "xfade": 0,
    "letterbox": true,
@@ -1490,6 +1490,15 @@
    }
   },
   {
+   "id": "S02_ov3",
+   "from": 1078,
+   "dur": 70,
+   "component": "SourceTag",
+   "props": {
+    "text": "Microsoft data centre, Middenmeer, NL · CC BY 4.0"
+   }
+  },
+  {
    "id": "S04_ov1",
    "from": 2376,
    "dur": 85,
@@ -1501,7 +1510,7 @@
   },
   {
    "id": "S05_ov1",
-   "from": 2951,
+   "from": 3297,
    "dur": 100,
    "component": "LowerThird",
    "props": {
@@ -1522,13 +1531,22 @@
   },
   {
    "id": "S05_ov3",
-   "from": 3354,
+   "from": 3399,
    "dur": 110,
    "component": "CornerStat",
    "props": {
     "value": "up to $64bn",
     "label": "TSMC 2026 capital spending plan",
     "source": "Management guidance, Q3 2026 call"
+   }
+  },
+  {
+   "id": "S05_ov4",
+   "from": 2946,
+   "dur": 85,
+   "component": "SourceTag",
+   "props": {
+    "text": "Semiconductor cleanroom · U.S. Dept. of Energy (public domain)"
    }
   },
   {
@@ -1624,6 +1642,15 @@
     "label": "Transformer price rise since Jan 2020",
     "source": "Industry estimate · Wood Mackenzie",
     "side": "left"
+   }
+  },
+  {
+   "id": "S10_ov3",
+   "from": 8659,
+   "dur": 85,
+   "component": "SourceTag",
+   "props": {
+    "text": "750 kV power transformer · Wikimedia Commons (CC0)"
    }
   },
   {

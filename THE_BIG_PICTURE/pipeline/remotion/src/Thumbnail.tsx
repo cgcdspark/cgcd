@@ -19,24 +19,24 @@ export const Thumbnail: React.FC<{variant: number}> = ({variant}) => {
       {v.layout === 'split' ? (
         <AbsoluteFill style={{flexDirection: 'row'}}>
           <div style={{width: '50%', height: '100%', overflow: 'hidden'}}>
-            <Img src={staticFile('thumbs/left.jpg')} style={{...img, filter: 'saturate(0.8) contrast(1.15) brightness(0.8)'}} />
+            <Img src={staticFile('thumbs/left.jpg')} style={{...img, filter: 'saturate(1.05) contrast(1.2) brightness(0.95)'}} />
           </div>
           <div style={{width: 6, background: goldGradient}} />
           <div style={{flex: 1, height: '100%', overflow: 'hidden'}}>
-            <Img src={staticFile('thumbs/right.jpg')} style={{...img, filter: 'saturate(0.8) contrast(1.15) brightness(0.8)'}} />
+            <Img src={staticFile('thumbs/right.jpg')} style={{...img, filter: 'saturate(1.05) contrast(1.2) brightness(0.95)'}} />
           </div>
         </AbsoluteFill>
       ) : v.layout === 'full' ? (
-        <Img src={staticFile('thumbs/right.jpg')} style={{...img, filter: 'contrast(1.2) brightness(0.75)'}} />
+        <Img src={staticFile('thumbs/right.jpg')} style={{...img, filter: 'saturate(1.05) contrast(1.2) brightness(0.92)'}} />
       ) : (
         <AbsoluteFill>
-          <Img src={staticFile('thumbs/left.jpg')} style={{...img, filter: 'contrast(1.2) brightness(0.7)'}} />
+          <Img src={staticFile('thumbs/left.jpg')} style={{...img, filter: 'saturate(1.05) contrast(1.2) brightness(0.9)'}} />
           <AbsoluteFill style={{clipPath: 'polygon(58% 0, 100% 0, 100% 100%, 38% 100%)'}}>
-            <Img src={staticFile('thumbs/right.jpg')} style={{...img, filter: 'contrast(1.2) brightness(0.75)'}} />
+            <Img src={staticFile('thumbs/right.jpg')} style={{...img, filter: 'saturate(1.05) contrast(1.2) brightness(0.92)'}} />
           </AbsoluteFill>
         </AbsoluteFill>
       )}
-      <AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(5,7,10,0.88) 0%, rgba(5,7,10,0.35) 55%, rgba(5,7,10,0) 100%)'}} />
+      <AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(5,7,10,0.9) 0%, rgba(5,7,10,0.55) 42%, rgba(5,7,10,0.1) 70%, rgba(5,7,10,0) 100%)'}} />
       <AbsoluteFill style={{padding: '70px 70px', justifyContent: 'center'}}>
         <div style={{fontFamily: F.head, fontWeight: 800, fontSize: 54, color: C.goldHi, letterSpacing: '0.02em'}}>{v.top}</div>
         {lines.map((l, i) => (

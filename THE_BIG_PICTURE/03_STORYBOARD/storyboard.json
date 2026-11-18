@@ -44,7 +44,7 @@
   ],
   "thumbnail": {
    "left": "DC-010@70",
-   "right": "EL-008@14"
+   "right": "EL-080@still"
   }
  },
  "scenes": [
@@ -149,7 +149,7 @@
     },
     {
      "asset": "MOOD-113",
-     "in": 30,
+     "in": 22,
      "need": "Earth at night from orbit (NASA)",
      "at": "L006",
      "motion": "push"
@@ -281,10 +281,12 @@
      "dim": 0.2
     },
     {
-     "asset": "EL-016",
-     "in": 5,
-     "need": "City skyline and glass towers",
-     "w": 0.8
+     "asset": "DC-016",
+     "need": "Microsoft data centre, Middenmeer (still)",
+     "w": 0.8,
+     "motion": "driftR",
+     "at": "L011",
+     "offset": 0.0
     },
     {
      "graphic": "BarChart",
@@ -327,7 +329,8 @@
         "highlight": true
        }
       ]
-     }
+     },
+     "offset": 3.2
     },
     {
      "asset": "IA-QTS",
@@ -359,6 +362,15 @@
      },
      "at": "L013",
      "offset": 0.2
+    },
+    {
+     "component": "SourceTag",
+     "at": "L011",
+     "offset": 0.2,
+     "dur": 2.8,
+     "props": {
+      "text": "Microsoft data centre, Middenmeer, NL · CC BY 4.0"
+     }
     }
    ],
    "sfx": [
@@ -592,8 +604,9 @@
    ],
    "shots": [
     {
-     "asset": "SEM-040",
-     "need": "Circuit board macro"
+     "asset": "SEM-054",
+     "need": "Semiconductor cleanroom, researcher with wafer (DOE)",
+     "motion": "push"
     },
     {
      "graphic": "BigStat",
@@ -736,8 +749,8 @@
    "overlays": [
     {
      "component": "LowerThird",
-     "at": "L040",
-     "offset": 0.4,
+     "at": "L042",
+     "offset": 0.3,
      "dur": 4.0,
      "props": {
       "title": "TSMC",
@@ -758,12 +771,21 @@
     {
      "component": "CornerStat",
      "at": "L042",
-     "offset": 2.6,
+     "offset": 4.4,
      "dur": 4.4,
      "props": {
       "value": "up to $64bn",
       "label": "TSMC 2026 capital spending plan",
       "source": "Management guidance, Q3 2026 call"
+     }
+    },
+    {
+     "component": "SourceTag",
+     "at": "L040",
+     "offset": 0.2,
+     "dur": 3.4,
+     "props": {
+      "text": "Semiconductor cleanroom · U.S. Dept. of Energy (public domain)"
      }
     }
    ],
@@ -1208,7 +1230,7 @@
     },
     {
      "asset": "MOOD-113",
-     "in": 50,
+     "in": 40,
      "need": "Earth at night from orbit (NASA)",
      "at": "L082"
     },
@@ -1412,10 +1434,10 @@
      "offset": 2.2
     },
     {
-     "asset": "EL-052",
-     "in": 2,
-     "need": "Steel structure of a power installation",
-     "at": "L095"
+     "asset": "EL-080",
+     "need": "750 kV power transformer (still)",
+     "at": "L095",
+     "motion": "pull"
     },
     {
      "asset": "BIZ-008",
@@ -1456,6 +1478,15 @@
       "label": "Transformer price rise since Jan 2020",
       "source": "Industry estimate · Wood Mackenzie",
       "side": "left"
+     }
+    },
+    {
+     "component": "SourceTag",
+     "at": "L095",
+     "offset": 0.2,
+     "dur": 3.4,
+     "props": {
+      "text": "750 kV power transformer · Wikimedia Commons (CC0)"
      }
     }
    ],
@@ -1755,9 +1786,9 @@
      }
     },
     {
-     "asset": "EL-016",
-     "in": 15,
-     "need": "City skyline",
+     "asset": "BIZ-043",
+     "in": 20,
+     "need": "Financial district",
      "at": "L113"
     },
     {
@@ -1808,7 +1839,7 @@
     },
     {
      "asset": "BIZ-033",
-     "in": 10,
+     "in": 2,
      "need": "Sky darkening over clouds",
      "at": "L116",
      "w": 1.2
@@ -1911,7 +1942,7 @@
     },
     {
      "asset": "MOOD-113",
-     "in": 62,
+     "in": 43,
      "need": "Earth at night from orbit (NASA)",
      "at": "L123",
      "w": 1.4,
