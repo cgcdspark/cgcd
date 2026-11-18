@@ -12,7 +12,7 @@
     "track": "M_OPEN",
     "from": "S00",
     "to": "S01",
-    "gain_db": -17,
+    "gain_db": -11,
     "fade_in": 1.5,
     "fade_out": 2.5
    },
@@ -20,7 +20,7 @@
     "track": "M_BODY_A",
     "from": "S02",
     "to": "S06",
-    "gain_db": -21,
+    "gain_db": -15,
     "fade_in": 2.0,
     "fade_out": 3.0
    },
@@ -28,19 +28,24 @@
     "track": "M_BODY_B",
     "from": "S07",
     "to": "S10",
-    "gain_db": -20,
+    "gain_db": -14,
     "fade_in": 2.0,
     "fade_out": 3.0
    },
    {
     "track": "M_CLOSE",
     "from": "S11",
-    "to": "S13",
-    "gain_db": -18,
-    "fade_in": 2.0,
-    "fade_out": 4.0
+    "to": "S14",
+    "gain_db": -12,
+    "fade_in": 3.0,
+    "fade_out": 1.0,
+    "align": "end"
    }
-  ]
+  ],
+  "thumbnail": {
+   "left": "DC-010@70",
+   "right": "EL-008@14"
+  }
  },
  "scenes": [
   {
@@ -83,70 +88,93 @@
    ],
    "shots": [
     {
-     "need": "Close-up: hands typing a question into a chatbot / laptop screen glow",
-     "asset": null,
-     "w": 1
+     "asset": "MOOD-015",
+     "need": "Hands typing on a laptop"
     },
     {
-     "need": "Aerial or exterior of a large data centre campus",
-     "asset": null,
+     "asset": "IA-QTS",
+     "in": 3,
+     "need": "Data centre exterior, wide",
      "at": "L002",
      "w": 1.2,
      "letterbox": true
     },
     {
-     "need": "Server hall, slow track along racks with blinking lights",
-     "asset": null,
-     "w": 1
+     "asset": "DC-010",
+     "in": 68,
+     "need": "Rows of supercomputer racks"
     },
     {
-     "need": "Macro: coolant pipes / liquid cooling / chiller fans",
-     "asset": null,
-     "at": "L003",
-     "w": 1
+     "asset": "DC-010",
+     "in": 184,
+     "need": "Server boards with liquid-cooling pipes",
+     "at": "L003"
     },
     {
-     "need": "Transmission towers at dusk, wide",
-     "asset": null,
+     "asset": "EL-008",
+     "in": 3,
+     "need": "Industrial stacks and steam, silhouette",
      "w": 1.2,
      "letterbox": true
     },
     {
-     "need": "Abstract digital / code on screen",
-     "asset": null,
-     "at": "L004",
-     "w": 1
+     "asset": "MOOD-053",
+     "in": 2,
+     "need": "Code on screen",
+     "at": "L004"
     },
     {
-     "need": "Clouds / sky timelapse",
-     "asset": null,
+     "asset": "BIZ-033",
+     "in": 1,
+     "need": "Clouds at sunset, aerial",
      "w": 0.8
     },
     {
-     "need": "Construction: concrete pour / steel beams / crane",
-     "asset": null,
+     "asset": "BIZ-035",
+     "in": 1,
+     "need": "City construction cranes, aerial",
      "at": "L005",
      "w": 0.7
     },
     {
-     "need": "Copper cable spools / cable factory",
-     "asset": null,
+     "asset": "BIZ-008",
+     "in": 4,
+     "need": "Heavy industrial machine",
      "w": 0.7
     },
     {
-     "need": "Power plant / substation at night",
-     "asset": null,
+     "asset": "EL-052",
+     "need": "Steel structure of an industrial plant",
      "w": 0.8
     },
     {
-     "need": "Earth at night from orbit (NASA) — city lights",
-     "asset": null,
+     "asset": "MOOD-113",
+     "in": 30,
+     "need": "Earth at night from orbit (NASA)",
      "at": "L006",
-     "w": 1,
      "motion": "push"
     }
    ],
-   "overlays": [],
+   "overlays": [
+    {
+     "component": "SourceTag",
+     "dur": 3.6,
+     "props": {
+      "text": "QTS data centre, Aurora, Colorado · F. Soto (public domain)"
+     },
+     "at": "L002",
+     "offset": 0.6
+    },
+    {
+     "component": "SourceTag",
+     "dur": 3.6,
+     "props": {
+      "text": "NASA Ames supercomputing facility · NASA"
+     },
+     "at": "L002",
+     "offset": 4.2
+    }
+   ],
    "sfx": [
     {
      "sfx": "SFX_TYPING",
@@ -186,9 +214,9 @@
    "vo": [],
    "shots": [
     {
-     "need": "Slow aerial of transmission lines or industrial skyline (under title)",
-     "asset": null,
-     "w": 1,
+     "asset": "BIZ-053",
+     "in": 3,
+     "need": "Industrial plant at night, aerial",
      "dim": 0.35
     }
    ],
@@ -246,14 +274,16 @@
    ],
    "shots": [
     {
-     "need": "Chapter card bg: financial district skyline",
-     "asset": null,
+     "asset": "BIZ-043",
+     "in": 2,
+     "need": "London's financial district at sunrise",
      "w": 1.1,
      "dim": 0.2
     },
     {
-     "need": "Corporate campus / glass office towers",
-     "asset": null,
+     "asset": "EL-016",
+     "in": 5,
+     "need": "City skyline and glass towers",
      "w": 0.8
     },
     {
@@ -262,8 +292,8 @@
      "w": 3.2,
      "props": {
       "kicker": "The spending wave",
-      "title": "Capital expenditure, latest full year",
-      "source": "Microsoft: fiscal year to June 2026, cash PP&E plus finance-lease assets (10-K). Alphabet, Amazon (cash capex), Meta (incl. finance-lease principal): calendar 2025 (company results). US$ billions.",
+      "title": "Capital expenditure: latest year, and what comes next",
+      "source": "Microsoft: fiscal year to June 2026, cash PP&E plus finance-lease assets (10-K). Alphabet, Amazon (cash capex), Meta (incl. finance-lease principal): calendar 2025 (company results). US$ billions. Amazon 2026: company outlook, Q3 2026 results (cash capex).",
       "bars": [
        {
         "label": "Microsoft",
@@ -275,8 +305,7 @@
         "label": "Amazon",
         "note": "2025",
         "value": 131.8,
-        "display": "$131.8bn",
-        "highlight": true
+        "display": "$131.8bn"
        },
        {
         "label": "Alphabet",
@@ -289,20 +318,27 @@
         "note": "2025",
         "value": 72.2,
         "display": "$72.2bn"
+       },
+       {
+        "label": "Amazon",
+        "note": "2026 outlook",
+        "value": 220,
+        "display": "~$220bn",
+        "highlight": true
        }
       ]
      }
     },
     {
-     "need": "Construction site of a large data centre / cranes",
-     "asset": null,
-     "at": "L013",
-     "w": 1
+     "asset": "IA-QTS",
+     "in": 24,
+     "need": "Data centre building",
+     "at": "L013"
     },
     {
-     "need": "Server rack with GPU modules being installed",
-     "asset": null,
-     "w": 1
+     "asset": "DC-010",
+     "in": 72,
+     "need": "Supercomputer racks"
     }
    ],
    "overlays": [
@@ -316,15 +352,13 @@
      }
     },
     {
-     "component": "CornerStat",
-     "at": "L012",
-     "offset": 0.8,
-     "dur": 4.6,
+     "component": "SourceTag",
+     "dur": 3.6,
      "props": {
-      "value": "~$220bn",
-      "label": "Amazon 2026 capex outlook",
-      "source": "Q3 2026 results · cash capex"
-     }
+      "text": "QTS data centre, Aurora, Colorado · F. Soto (public domain)"
+     },
+     "at": "L013",
+     "offset": 0.2
     }
    ],
    "sfx": [
@@ -449,16 +483,15 @@
    ],
    "shots": [
     {
-     "need": "Chapter card bg: silicon wafer macro",
-     "asset": null,
-     "w": 1.0,
+     "asset": "SEM-042",
+     "need": "Motherboard and processor socket, macro",
      "dim": 0.2
     },
     {
-     "need": "GPU / circuit board macro, slow move",
-     "asset": null,
-     "at": "L031",
-     "w": 1
+     "asset": "SEM-041",
+     "in": 2,
+     "need": "Circuit board macro",
+     "at": "L031"
     },
     {
      "graphic": "BigStat",
@@ -477,10 +510,10 @@
      }
     },
     {
-     "need": "Chip design: engineer at screen with circuit layout / CAD",
-     "asset": null,
-     "at": "L033",
-     "w": 1
+     "asset": "SEM-001",
+     "in": 6,
+     "need": "Engineer working on a circuit board",
+     "at": "L033"
     }
    ],
    "overlays": [
@@ -559,31 +592,32 @@
    ],
    "shots": [
     {
-     "need": "Cleanroom: workers in bunny suits",
-     "asset": null,
-     "w": 1
+     "asset": "SEM-040",
+     "need": "Circuit board macro"
     },
     {
-     "need": "Wafer handling robot / fab automation",
-     "asset": null,
+     "graphic": "BigStat",
      "at": "L041",
-     "w": 1
+     "w": 2.2,
+     "props": {
+      "kicker": "TSMC · foundry market share",
+      "value": 72.5,
+      "decimals": 1,
+      "suffix": "%",
+      "label": "Share of global contract-chipmaking revenue",
+      "sublabel": "Second quarter of 2026",
+      "source": "Industry estimate: TrendForce, top-10 foundry ranking, Q2 2026."
+     }
     },
     {
-     "need": "Silicon wafer close-up, rainbow sheen",
-     "asset": null,
-     "w": 1
+     "asset": "SEM-044",
+     "need": "Server motherboard, macro",
+     "at": "L042"
     },
     {
-     "need": "Fab interior / overhead wafer transport",
-     "asset": null,
-     "at": "L042",
-     "w": 1
-    },
-    {
-     "need": "Container ship / port cranes (Netherlands/Taiwan context generic)",
-     "asset": null,
-     "w": 1
+     "asset": "SEM-037",
+     "in": 1,
+     "need": "Chipset close-up"
     },
     {
      "graphic": "Flow",
@@ -677,27 +711,26 @@
      }
     },
     {
-     "need": "ASML lithography machine / EUV system (only if licensed & confirmed ASML) else generic lithography/laser optics",
-     "asset": null,
-     "at": "L045",
-     "w": 1
+     "asset": "SEM-045",
+     "need": "Chipset with blue and red detail",
+     "at": "L045"
     },
     {
-     "need": "Memory chips / RAM modules macro",
-     "asset": null,
-     "at": "L046",
-     "w": 1
+     "asset": "DC-010",
+     "in": 188,
+     "need": "Server boards with memory modules",
+     "at": "L046"
     },
     {
-     "need": "Microchip being placed / die bonding / tweezers on chip",
-     "asset": null,
-     "at": "L047",
-     "w": 1
+     "asset": "SEM-001",
+     "in": 9,
+     "need": "Hands working on a chip",
+     "at": "L047"
     },
     {
-     "need": "Circuit board macro with chips",
-     "asset": null,
-     "w": 0.8
+     "asset": "SEM-042",
+     "in": 4,
+     "need": "Processor socket, macro"
     }
    ],
    "overlays": [
@@ -712,16 +745,6 @@
      }
     },
     {
-     "component": "LowerThird",
-     "at": "L044",
-     "offset": 0.2,
-     "dur": 4.0,
-     "props": {
-      "title": "ASML",
-      "sub": "Lithography systems · Veldhoven, Netherlands"
-     }
-    },
-    {
      "component": "CornerStat",
      "at": "L046",
      "offset": 2.4,
@@ -730,6 +753,17 @@
       "value": "~80%",
       "label": "SK hynix operating margin",
       "source": "Q3 2026 · KRW 83.3tn on KRW 104.6tn revenue"
+     }
+    },
+    {
+     "component": "CornerStat",
+     "at": "L042",
+     "offset": 2.6,
+     "dur": 4.4,
+     "props": {
+      "value": "up to $64bn",
+      "label": "TSMC 2026 capital spending plan",
+      "source": "Management guidance, Q3 2026 call"
      }
     }
    ],
@@ -804,10 +838,10 @@
      }
     },
     {
-     "need": "Data centre exterior at dusk / under construction, wide",
-     "asset": null,
+     "asset": "IA-QTS",
+     "in": 26,
+     "need": "Data centre building",
      "at": "L052",
-     "w": 1,
      "letterbox": true
     }
    ],
@@ -844,21 +878,21 @@
    ],
    "shots": [
     {
-     "need": "Chapter card bg: long server aisle",
-     "asset": null,
-     "w": 1.0,
+     "asset": "DC-010",
+     "in": 122,
+     "need": "Long aisle of supercomputer racks",
      "dim": 0.2
     },
     {
-     "need": "Data centre exterior / mechanical plant on roof",
-     "asset": null,
-     "at": "L061",
-     "w": 1
+     "asset": "DC-010",
+     "in": 31,
+     "need": "Modular supercomputing facility exterior",
+     "at": "L061"
     },
     {
-     "need": "Engineer walking server aisle",
-     "asset": null,
-     "w": 1
+     "asset": "DC-010",
+     "in": 89,
+     "need": "Engineer in a hi-vis vest walking the racks"
     },
     {
      "graphic": "BigStat",
@@ -875,15 +909,15 @@
      }
     },
     {
-     "need": "Liquid cooling pipes / cold plates / coolant manifold close-up",
-     "asset": null,
-     "at": "L063",
-     "w": 1.2
+     "asset": "DC-010",
+     "in": 186,
+     "need": "Server boards with cooling pipes",
+     "at": "L063"
     },
     {
-     "need": "Chiller / cooling towers / big fans",
-     "asset": null,
-     "w": 1
+     "asset": "DC-010",
+     "in": 104,
+     "need": "Dense cable trays"
     }
    ],
    "overlays": [
@@ -895,6 +929,15 @@
       "act": "PART 03",
       "title": "THE DATA CENTRE ECONOMY"
      }
+    },
+    {
+     "component": "SourceTag",
+     "dur": 3.6,
+     "props": {
+      "text": "NASA Ames supercomputing facility · NASA"
+     },
+     "at": "L061",
+     "offset": 0.3
     }
    ],
    "sfx": [
@@ -953,26 +996,63 @@
    ],
    "shots": [
     {
-     "need": "Industrial cooling units / CRAH / data centre mechanical gallery",
-     "asset": null,
-     "w": 1
+     "graphic": "DataCentre",
+     "w": 2.3,
+     "props": {
+      "kicker": "Inside an AI data centre",
+      "title": "Power in, heat out",
+      "source": "Simplified schematic. Supplier names are examples of companies active in each system, not a market-share ranking.",
+      "callouts": [
+       {
+        "x": 0,
+        "y": 290,
+        "label": "Grid connection",
+        "who": "Utilities · grid operators",
+        "at": 20
+       },
+       {
+        "x": 170,
+        "y": 405,
+        "label": "Transformers & switchgear",
+        "who": "Siemens Energy · Hitachi Energy · Eaton",
+        "at": 30
+       },
+       {
+        "x": 545,
+        "y": 405,
+        "label": "UPS & power",
+        "who": "Vertiv · Schneider · Eaton",
+        "at": 44
+       },
+       {
+        "x": 900,
+        "y": 318,
+        "label": "Compute & network",
+        "who": "Nvidia · AMD · Arista",
+        "at": 56
+       },
+       {
+        "x": 1180,
+        "y": 40,
+        "label": "Cooling",
+        "who": "Vertiv · Schneider · Trane",
+        "at": 68
+       }
+      ]
+     }
     },
     {
-     "need": "Electrical room: UPS / battery cabinets / switchboards",
-     "asset": null,
+     "asset": "DC-010",
+     "in": 163,
+     "need": "Technician working at an open rack",
      "at": "L071",
-     "w": 1
+     "offset": 3.0
     },
     {
-     "need": "Technician working on electrical panel",
-     "asset": null,
-     "w": 1
-    },
-    {
-     "need": "Fans spinning / HVAC close-up",
-     "asset": null,
-     "at": "L072",
-     "w": 1
+     "asset": "DC-010",
+     "in": 106,
+     "need": "Cable trays above racks",
+     "at": "L072"
     },
     {
      "graphic": "BarChart",
@@ -1004,20 +1084,16 @@
      }
     },
     {
-     "need": "Data centre construction site / steel frame / cranes",
-     "asset": null,
-     "at": "L074",
-     "w": 1
+     "asset": "IA-QTS",
+     "in": 134,
+     "need": "Data centre building",
+     "at": "L074"
     },
     {
-     "need": "Server racks close-up, blinking lights",
-     "asset": null,
+     "asset": "BIZ-043",
+     "in": 14,
+     "need": "Financial district, silhouettes",
      "at": "L075",
-     "w": 1
-    },
-    {
-     "need": "Financial: stock ticker / trading screens",
-     "asset": null,
      "w": 1
     }
    ],
@@ -1025,7 +1101,7 @@
     {
      "component": "CornerStat",
      "at": "L071",
-     "offset": 0.5,
+     "offset": 3.4,
      "dur": 4.8,
      "props": {
       "value": "+61%",
@@ -1055,6 +1131,15 @@
       "label": "CoreWeave contract backlog",
       "source": "30 Sep 2026 · debt ~$47bn · company filing"
      }
+    },
+    {
+     "component": "SourceTag",
+     "dur": 3.6,
+     "props": {
+      "text": "QTS data centre, Aurora, Colorado · F. Soto (public domain)"
+     },
+     "at": "L074",
+     "offset": 0.2
     }
    ],
    "sfx": [
@@ -1109,23 +1194,23 @@
    ],
    "shots": [
     {
-     "need": "Chapter card bg: transmission towers at night / grid",
-     "asset": null,
+     "asset": "BIZ-042",
+     "need": "Storm clouds and lightning at sea",
      "w": 1.2,
      "dim": 0.2
     },
     {
-     "need": "Power plant chimney / steam at dusk",
-     "asset": null,
+     "asset": "EL-008",
+     "in": 12,
+     "need": "Industrial stacks and steam, silhouette",
      "at": "L081",
-     "w": 1,
      "letterbox": true
     },
     {
+     "asset": "MOOD-113",
+     "in": 50,
      "need": "Earth at night from orbit (NASA)",
-     "asset": null,
-     "at": "L082",
-     "w": 1
+     "at": "L082"
     },
     {
      "graphic": "ColumnChart",
@@ -1154,10 +1239,10 @@
      }
     },
     {
-     "need": "US city skyline at night / suburbs lights",
-     "asset": null,
-     "at": "L084",
-     "w": 1
+     "asset": "BIZ-085",
+     "in": 2,
+     "need": "American city at night, aerial",
+     "at": "L084"
     }
    ],
    "overlays": [
@@ -1235,33 +1320,68 @@
    ],
    "shots": [
     {
-     "need": "Nuclear plant cooling towers",
-     "asset": null,
-     "w": 1
+     "asset": "EL-012",
+     "in": 3,
+     "need": "Industrial plant with stacks"
     },
     {
-     "need": "Nuclear / Three Mile Island (only if licensed & confirmed) else generic cooling tower steam",
-     "asset": null,
+     "asset": "EL-008",
+     "in": 20,
+     "need": "Steam over industrial stacks (placeholder until TMI image)",
      "at": "L091",
-     "w": 1
+     "need_upgrade": "Three Mile Island photo (Commons/NRC, public domain)"
     },
     {
-     "need": "Gas turbine / power plant interior / turbine hall",
-     "asset": null,
-     "at": "L092",
-     "w": 1
+     "asset": "EL-007",
+     "in": 2,
+     "need": "Industrial skyline",
+     "at": "L092"
     },
     {
-     "need": "Transmission towers aerial, lines receding",
-     "asset": null,
+     "graphic": "PowerChain",
      "at": "L093",
-     "w": 1,
-     "letterbox": true
-    },
-    {
-     "need": "Lineman / workers on pylon",
-     "asset": null,
-     "w": 0.8
+     "w": 3.2,
+     "props": {
+      "kicker": "The electricity value chain",
+      "title": "From power station to server rack",
+      "flowLabel": "POWER FLOW →",
+      "source": "Simplified. Bottlenecks: GE Vernova Q3 2026 results; Wood Mackenzie (2024); Berkeley Lab, Queued Up (2026 ed.).",
+      "stages": [
+       {
+        "icon": "plant",
+        "label": "Generation",
+        "who": "Gas turbines · nuclear · renewables",
+        "tag": "122 GW gas backlog + slots*"
+       },
+       {
+        "icon": "transformer",
+        "label": "Step-up transformer",
+        "who": "Siemens Energy · Hitachi Energy · GE Vernova"
+       },
+       {
+        "icon": "pylon",
+        "label": "Transmission",
+        "who": "Utilities · Quanta Services · cable makers",
+        "tag": "~5 yrs to connect"
+       },
+       {
+        "icon": "substation",
+        "label": "Substation",
+        "who": "Transformers · switchgear",
+        "tag": "2–4 yr transformer waits"
+       },
+       {
+        "icon": "switchgear",
+        "label": "Switchgear & UPS",
+        "who": "Eaton · Schneider · Vertiv"
+       },
+       {
+        "icon": "datacentre",
+        "label": "Data centre",
+        "who": "Hyperscalers · colocation · neoclouds"
+       }
+      ]
+     }
     },
     {
      "graphic": "RangeBars",
@@ -1288,46 +1408,37 @@
         "display": "2–4 yrs"
        }
       ]
-     }
+     },
+     "offset": 2.2
     },
     {
-     "need": "Substation with large transformers",
-     "asset": null,
-     "at": "L095",
-     "w": 1
+     "asset": "EL-052",
+     "in": 2,
+     "need": "Steel structure of a power installation",
+     "at": "L095"
     },
     {
-     "need": "Transformer close-up / insulators / bushings",
-     "asset": null,
-     "w": 1
+     "asset": "BIZ-008",
+     "in": 10,
+     "need": "Heavy industrial machining"
     },
     {
-     "need": "Factory floor: heavy electrical equipment / transformer manufacturing",
-     "asset": null,
-     "at": "L096",
-     "w": 1
+     "asset": "BIZ-057",
+     "in": 6,
+     "need": "Container port cranes",
+     "at": "L096"
     },
     {
-     "need": "Switchgear / high-voltage equipment close-up",
-     "asset": null,
-     "w": 1
+     "asset": "EL-006",
+     "in": 1,
+     "need": "Industrial plant"
     }
    ],
    "overlays": [
     {
-     "component": "LowerThird",
-     "at": "L091",
-     "offset": 0.3,
-     "dur": 4.2,
-     "props": {
-      "title": "Crane Clean Energy Center",
-      "sub": "Formerly Three Mile Island Unit 1 · Pennsylvania"
-     }
-    },
-    {
      "component": "CornerStat",
      "at": "L092",
-     "offset": 1.2,
+     "offset": 0.6,
      "dur": 4.6,
      "props": {
       "value": "122 GW",
@@ -1401,9 +1512,9 @@
    ],
    "shots": [
     {
-     "need": "High-voltage cable reels / cable factory",
-     "asset": null,
-     "w": 1
+     "asset": "BIZ-055",
+     "in": 3,
+     "need": "Heavy cargo at a container terminal"
     },
     {
      "graphic": "BarChart",
@@ -1435,19 +1546,19 @@
      }
     },
     {
-     "need": "Cable being laid / underground cable installation / cable ship",
-     "asset": null,
-     "at": "L102",
-     "w": 1
+     "asset": "EL-020",
+     "in": 3,
+     "need": "Wind farm, aerial",
+     "at": "L102"
     },
     {
-     "need": "Workers in hard hats at substation / electrical construction",
-     "asset": null,
-     "w": 1
+     "asset": "BIZ-057",
+     "in": 18,
+     "need": "Port cranes at work"
     },
     {
-     "need": "Transmission line silhouette at sunset, slow",
-     "asset": null,
+     "asset": "EL-030",
+     "need": "Offshore wind farm",
      "at": "L103",
      "w": 1.4,
      "letterbox": true
@@ -1508,9 +1619,9 @@
    ],
    "shots": [
     {
-     "need": "Chapter card bg: city financial district at night",
-     "asset": null,
-     "w": 1.0,
+     "asset": "BIZ-043",
+     "in": 16,
+     "need": "Financial district",
      "dim": 0.2
     },
     {
@@ -1644,27 +1755,22 @@
      }
     },
     {
-     "need": "Trading floor / stock screens",
-     "asset": null,
-     "at": "L113",
-     "w": 1
+     "asset": "EL-016",
+     "in": 15,
+     "need": "City skyline",
+     "at": "L113"
     },
     {
-     "need": "Factory / heavy industrial production line",
-     "asset": null,
-     "at": "L114",
-     "w": 1
+     "asset": "BIZ-008",
+     "in": 12,
+     "need": "Industrial machine at work",
+     "at": "L114"
     },
     {
-     "need": "Electricity meter / household / suburban street at dusk",
-     "asset": null,
-     "at": "L115",
-     "w": 1
-    },
-    {
-     "need": "Power lines over houses",
-     "asset": null,
-     "w": 1
+     "asset": "BIZ-085",
+     "in": 8,
+     "need": "City lights at night, aerial",
+     "at": "L115"
     },
     {
      "graphic": "ColumnChart",
@@ -1701,8 +1807,9 @@
      }
     },
     {
-     "need": "Empty / dark industrial building or quiet data hall (downturn mood)",
-     "asset": null,
+     "asset": "BIZ-033",
+     "in": 10,
+     "need": "Sky darkening over clouds",
      "at": "L116",
      "w": 1.2
     }
@@ -1767,48 +1874,54 @@
    ],
    "shots": [
     {
-     "need": "Laptop / chatbot screen (callback to open)",
-     "asset": null,
-     "w": 1
+     "asset": "MOOD-049",
+     "in": 2,
+     "need": "Typing on a laptop (callback)"
     },
     {
-     "need": "Cleanroom / fab wide",
-     "asset": null,
-     "at": "L121",
-     "w": 1
+     "asset": "SEM-042",
+     "in": 2,
+     "need": "Processor socket, macro",
+     "at": "L121"
     },
     {
-     "need": "Container port / Netherlands industry",
-     "asset": null,
+     "asset": "BIZ-057",
+     "in": 10,
+     "need": "Container port cranes",
      "w": 0.8
     },
     {
-     "need": "Cooling towers / cable reels",
-     "asset": null,
+     "asset": "DC-010",
+     "in": 186,
+     "need": "Server boards with cooling pipes",
      "at": "L122",
      "w": 0.8
     },
     {
-     "need": "Turbine / transformer",
-     "asset": null,
+     "asset": "EL-007",
+     "in": 5,
+     "need": "Industrial skyline",
      "w": 0.8
     },
     {
-     "need": "Transmission lines at sunset",
-     "asset": null,
+     "asset": "EL-008",
+     "in": 22,
+     "need": "Steam over stacks",
      "w": 0.8
     },
     {
-     "need": "Earth at night from orbit (NASA), slow",
-     "asset": null,
+     "asset": "MOOD-113",
+     "in": 62,
+     "need": "Earth at night from orbit (NASA)",
      "at": "L123",
      "w": 1.4,
      "motion": "pull",
      "letterbox": true
     },
     {
-     "need": "Wide aerial: data centre next to substation / power lines",
-     "asset": null,
+     "asset": "IA-QTS",
+     "in": 5,
+     "need": "Data centre exterior, wide",
      "at": "L124",
      "w": 1.2,
      "letterbox": true

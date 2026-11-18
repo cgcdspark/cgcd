@@ -77,3 +77,16 @@ export const Bug: React.FC<{dur: number}> = ({dur}) => {
     </AbsoluteFill>
   );
 };
+
+/** Source tag: names what identifiable footage actually shows, and its source (honesty + attribution). */
+export const SourceTag: React.FC<{text: string; dur: number}> = ({text, dur}) => {
+  const frame = useCurrentFrame();
+  const o = Math.min(prog(frame, 0, 10), outro(frame, dur, 10));
+  return (
+    <AbsoluteFill style={{opacity: o}}>
+      <div style={{position: 'absolute', left: SAFE.x, top: 56, fontFamily: F.mono, fontSize: 19, letterSpacing: '0.1em', color: C.off, textTransform: 'uppercase', background: 'rgba(5,7,10,0.55)', padding: '6px 12px', borderLeft: `3px solid ${C.gold}`}}>
+        {text}
+      </div>
+    </AbsoluteFill>
+  );
+};

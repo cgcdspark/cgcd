@@ -3,7 +3,8 @@ import {AbsoluteFill, Sequence} from 'remotion';
 import {C} from './brand';
 import type {Timeline, Shot, Overlay} from './types';
 import {Finish, MediaLayer, XFade} from './components/Media';
-import {Bug, CaptionLine, ChapterCard, CornerStat, LowerThird} from './components/Overlays';
+import {Bug, CaptionLine, ChapterCard, CornerStat, LowerThird, SourceTag} from './components/Overlays';
+import {DataCentre, PowerChain} from './graphics/Infra';
 import {BarChart, BigStat, ColumnChart, Matrix, Quote, RangeBars} from './graphics/Charts';
 import {EndCard, Flow, TitleCard, ValueChain} from './graphics/Diagrams';
 
@@ -24,6 +25,9 @@ const REG: Record<string, React.FC<any>> = {
   ChapterCard,
   CornerStat,
   Bug,
+  SourceTag,
+  DataCentre,
+  PowerChain,
 };
 
 const ShotView: React.FC<{s: Shot}> = ({s}) => {

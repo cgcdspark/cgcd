@@ -18,8 +18,9 @@ Usage:
 
 Config format: see pipeline/footage_queries.json. Optional config keys:
   "drop_ids": ["mixkit:12345", "commons:File:Foo.webm", ...]  manual rejects
-  "drop_title_regex": {"category": "regex", ...}             per-category rejects
-  "audio_drop_ids": ["music:614", "sfx:1489"]
+  "drop_title_regex": {"category": "regex", "*": "regex"}     per-category / global rejects
+                                                            (manual title sanity check)
+  "audio_drop_ids": ["music:614", "sfx:1489"], "audio_drop_title_regex": "regex"
 """
 import argparse
 import csv
@@ -258,7 +259,8 @@ def mixkit_item(http, page_url, iid, probe=True):
                 break
             # fall back to the download confirmation page, which embeds the direct file URL
             dpage = http.get_text(f"{MIXKIT}/free-stock-video/download/{iid}/?context=sidebar&type={ty}")
-            m = re.search(r'https://assets\.mixkit\.co/videos/\d+/[^"\']+\.mp4', dpage or "")
+            # older items: assets.mixkit.co/videos/<id>/<id>-1080.mp4; newer items: opaque asset keys
+            m = re.search(r'https://assets\.mixkit\.co/(?:videos/\d+/[^"\']+\.mp4|active_storage/video_items/[^"\']+\.mp4|[a-z0-9]{20,40})(?=["\'])', dpage or "")
             if m and http.head_ok(m.group(0)):
                 dl, w, h = m.group(0), ow, oh
                 break
@@ -441,6 +443,7 @@ def mixkit_audio_cards(page, kind):
 def scout_audio(http, cfg, max_music=25, sfx_per_query=3):
     rows, seen = [], set()
     drop = set(cfg.get("audio_drop_ids", []))
+    drop_re = re.compile(cfg["audio_drop_title_regex"], re.I) if cfg.get("audio_drop_title_regex") else None
     # music
     music = []
     for q in cfg["audio"].get("music", []):
@@ -460,7 +463,7 @@ def scout_audio(http, cfg, max_music=25, sfx_per_query=3):
                         lic_by_id[mid] = el
         for c in mixkit_audio_cards(t, "music"):
             key = "music:" + c["id"]
-            if key in seen or key in drop:
+            if key in seen or key in drop or (drop_re and drop_re.search(c["title"])):
                 continue
             seen.add(key)
             el = lic_by_id.get(c["id"], {})
@@ -487,7 +490,7 @@ def scout_audio(http, cfg, max_music=25, sfx_per_query=3):
         n = 0
         for c in mixkit_audio_cards(t, "sfx"):
             key = "sfx:" + c["id"]
-            if key in seen or key in drop:
+            if key in seen or key in drop or (drop_re and drop_re.search(c["title"])):
                 continue
             if n >= sfx_per_query:
                 break
@@ -536,7 +539,9 @@ def main():
             return
         seen.add(rec["item_key"])
         st = stats.setdefault(cat, {"yes": 0, "no": 0, "dropped": 0})
-        if rec["item_key"] in drop_ids or (cat in drop_re and drop_re[cat].search(rec["title"])):
+        bad_title = any(k in drop_re and drop_re[k].search(rec["title"]) for k in (cat, "*"))
+        no_dims = rec["licence_ok"] == "yes" and not rec.get("width")
+        if rec["item_key"] in drop_ids or bad_title or no_dims:
             st["dropped"] += 1
             return
         st[rec["licence_ok"]] += 1

@@ -49,7 +49,7 @@ export const Panel: React.FC<{
         ) : null}
         <div style={{flex: 1, position: 'relative', marginTop: 24}}>{children}</div>
         {source ? (
-          <div style={{fontFamily: F.mono, fontSize: 19, color: C.muted, opacity: prog(frame, 14, 20), lineHeight: 1.4}}>
+          <div style={{fontFamily: F.mono, fontSize: 21, color: C.muted, opacity: prog(frame, 14, 20), lineHeight: 1.4}}>
             {source}
           </div>
         ) : null}

@@ -12,7 +12,12 @@
         "electronics factory",
         "laboratory technician",
         "microscope",
-        "soldering"
+        "soldering",
+        "electronics",
+        "computer chip",
+        "laboratory",
+        "clean room",
+        "technology"
       ],
       "commons_video": [
         "silicon wafer",
@@ -20,7 +25,10 @@
         "cleanroom",
         "wafer",
         "integrated circuit",
-        "photolithography"
+        "photolithography",
+        "semiconductor",
+        "chip manufacturing",
+        "wafer fab"
       ],
       "commons_photo": [
         "silicon wafer",
@@ -46,18 +54,28 @@
         "ethernet cable",
         "cooling fan",
         "hard drive",
-        "network engineer"
+        "network engineer",
+        "datacenter",
+        "servers",
+        "computer hardware",
+        "technician",
+        "network"
       ],
       "commons_video": [
         "data center",
         "server room",
-        "supercomputer"
+        "supercomputer",
+        "datacenter",
+        "server racks",
+        "Rechenzentrum"
       ],
       "commons_photo": [
         "data center",
         "server room",
         "datacenter cooling",
-        "supercomputer"
+        "supercomputer",
+        "server racks",
+        "datacenter aisle"
       ],
       "nasa": [
         "supercomputer"
@@ -84,7 +102,12 @@
         "power grid",
         "turbine",
         "dam",
-        "city power"
+        "city power",
+        "electric pylon",
+        "power tower",
+        "energy",
+        "electric cables",
+        "industrial plant"
       ],
       "commons_video": [
         "power plant",
@@ -94,7 +117,10 @@
         "cooling tower",
         "wind farm",
         "high voltage",
-        "cable factory"
+        "cable factory",
+        "power lines",
+        "electricity pylon",
+        "transformer"
       ],
       "commons_photo": [
         "electrical substation",
@@ -132,7 +158,14 @@
         "city timelapse",
         "money",
         "coins",
-        "bank"
+        "bank",
+        "port",
+        "containers",
+        "cargo",
+        "crane",
+        "skyscrapers",
+        "wall street",
+        "stock chart"
       ],
       "commons_video": [
         "container port",
@@ -162,7 +195,12 @@
         "coding",
         "smartphone",
         "phone screen",
-        "hologram"
+        "hologram",
+        "earth",
+        "space",
+        "satellite",
+        "robot",
+        "server lights"
       ],
       "commons_video": [
         "earth at night ISS",
@@ -231,8 +269,25 @@
       "typing",
       "keyboard",
       "transition",
-      "cinematic"
+      "cinematic",
+      "server room",
+      "computer fan",
+      "air conditioner",
+      "electric spark",
+      "electric arc",
+      "power down",
+      "power surge",
+      "deep boom",
+      "sub drop",
+      "metal clank",
+      "factory",
+      "data transfer",
+      "computer processing"
     ],
     "_comment": "music entries are Mixkit listing paths under /free-stock-music/ (genre, mood/<x>, tag/<x>, instrument/<x>); sfx entries are free-text searches"
-  }
+  },
+  "drop_title_regex": {
+    "*": "poker|casino|croupier|cookie|baking|monopoly|\\bdice\\b|cigar|deck of cards|virus|bacteri|blood|petri|cell wall|cellular|infected cells|bubbles|charcoal|\\bFAB\\b|FAB-\\d|bomb|Fabs Reyna|41st|sun-synchronous|syn-synchronous|sun-sunchronous|foundry|aluminium pot|Изготовление|chip pan|galaxy|IC 34\\d|star-forming|euclid|RIMFAX|Roman('s| Space)|OSIRIS|Webb|\\bAWE\\b|Landsat [24]|Hubble|ICESat|Jupiter|Northrop|Space to Ground|^KSC-|Temple and ASML|Bibliotheca|circuits on her face|hotel room|christmas|occupy|hand dancing|G-III|PACE Data|Wikimania|black hole|exoplanet|qubit|neutron star|Moon|sonification|Beyond the Data|Landsat Data|White House|President|First Lady|Obama|TDRS|Martian|Orion|Artemis|Aeronautics Research|Hurricane|Space data center|Hexagon data|End-of-life|Summit Charts|Top supercomputers|infrastructure in the United States|prosthetic|monster|VR headset|makeup|cable car|ski(ing|ers|s)?\\b|chairlift|ski lift|tool wall|snow|sargassum|gamer|gaming|underpass|headphones|champagne|train tracks|young woman|young man|young couple|knit|water valve|night walk|dusk on the streets|Europa|Pegasus|Inside KSC|cosmonaut|Space Station|Solar Array|Brandweer|Gorlovka|Abnormal Load|Deputy|Man Calls|EXPO-1520|F110|GSE2|Thermtaltake|Wind in trees?|Voltage\\. What|Atkinson|Tornado|Tower Extension|Reunion Tower|Legionell|Combined cycle animation|Okhtyrka|KSTP|CHRYSLER|AUTOMOTIVE GAS|BASELINE GAS|Austin (250hp )?gas turbine|Pasco-Kennewick|Columbi[au]s? River|Claughton|Precision in every|Hópsnes|Braithewaite|Bell Saint-Jean|KGO-AM|Wever tower|Vista aérea|Philips N4422|Bamberg|bow tie|Beach Glen|Indirectly fired|Broken Switchgear|Chapelcross|Google Earth Timelapse|Ovfv4|tropical|waves|curvy road|starry|tree-covered|couple silhouette|girl dancing|wet and green|sunflower|meadow|savanna|clouds covering|northern lights|sun flares|valley time|elephant|electric storm|aurora|trailer hook|youtuber|lake full of boats|basketball|nighttime park|telephone booth|silhouetted|hands reaching|silhouettes of couple|fountain|no longer have money|anonymous mask|burned|MLW on|BE D5|Angela Oulu|Shaq|TFAA|Off-Site Inauguration|train exchange|fishing nets|vacuum cannon|People Speak|Politics of Knowledge|What Makes Us Tick|Baxter|Malta|GO Transit|flood debris|Miniaturized Port|beach cleanup|chainsaw|ETFs|Federal Bureau|Chateau|Price Building|Human Rights|Prague|Maynilad|GCASH|Bell Ringing|Achim-Lammerts|Fourth Industrial Revolution|kid |recycling|watering|digital clock|virtual reality|VR glasses|playing|motorcycle|confetti|Kennedy Countdown|Mars|Pulsars|Observe the Moon|Safe Return|Return to Earth|Asteroids|Shoebox|Science Live|NISAR|Knowledge belongs|Wikipedia|WP25|Eclipse|typewriter|pencil|lying down|Smoke coming out of charcoal|Little girl|Mom and girl|Holding a tablet"
+  },
+  "audio_drop_title_regex": "Epical Drums 0[346]|whisk|game show|8-bit|punches|wood hard hit|helicopter|arcade|coins handling|atm cash|rocket|magic sparkle|laser gun|Digital quick tone|alarm buzzer|Data scaner|kitchen|toy|cartoon|funny|comic|horror scream|baby|animal|dog|cat\\b"
 }

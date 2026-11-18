@@ -21,7 +21,7 @@ import sys
 from common import FPS, H, PROJECT, PUBLIC, W, load_manifest, load_storyboard, log, probe
 
 COMPONENTS = {"ValueChain", "Flow", "BarChart", "ColumnChart", "BigStat", "RangeBars", "Matrix", "Quote", "TitleCard", "EndCard",
-              "LowerThird", "ChapterCard", "CornerStat", "Bug"}
+              "LowerThird", "ChapterCard", "CornerStat", "Bug", "SourceTag", "DataCentre", "PowerChain"}
 XFADE_SCENE = 8  # frames of dissolve at scene boundaries
 
 

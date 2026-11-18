@@ -6,185 +6,171 @@
  "shots": [
   {
    "id": "S00_01",
-   "type": "graphic",
+   "type": "footage",
    "from": 0,
    "dur": 146,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Close-up: hands typing a question into a chatbot / laptop screen glow",
-    "who": "S00_01",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/MOOD-015.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S00_02",
-   "type": "graphic",
+   "type": "footage",
    "from": 146,
    "dur": 77,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Aerial or exterior of a large data centre campus",
-    "who": "S00_02",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/IA-QTS.mp4",
+   "startFrom": 75,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": true,
+   "dim": 0.0
   },
   {
    "id": "S00_03",
-   "type": "graphic",
+   "type": "footage",
    "from": 223,
    "dur": 65,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Server hall, slow track along racks with blinking lights",
-    "who": "S00_03",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/DC-010.mp4",
+   "startFrom": 1700,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S00_04",
-   "type": "graphic",
+   "type": "footage",
    "from": 288,
    "dur": 68,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Macro: coolant pipes / liquid cooling / chiller fans",
-    "who": "S00_04",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/DC-010.mp4",
+   "startFrom": 4600,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S00_05",
-   "type": "graphic",
+   "type": "footage",
    "from": 356,
    "dur": 83,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Transmission towers at dusk, wide",
-    "who": "S00_05",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-008.mp4",
+   "startFrom": 75,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": true,
+   "dim": 0.0
   },
   {
    "id": "S00_06",
-   "type": "graphic",
+   "type": "footage",
    "from": 439,
    "dur": 82,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Abstract digital / code on screen",
-    "who": "S00_06",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/MOOD-053.mp4",
+   "startFrom": 50,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S00_07",
-   "type": "graphic",
+   "type": "footage",
    "from": 521,
    "dur": 66,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Clouds / sky timelapse",
-    "who": "S00_07",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/BIZ-033.mp4",
+   "startFrom": 25,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S00_08",
-   "type": "graphic",
+   "type": "footage",
    "from": 587,
    "dur": 39,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Construction: concrete pour / steel beams / crane",
-    "who": "S00_08",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/BIZ-035.mp4",
+   "startFrom": 25,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S00_09",
-   "type": "graphic",
+   "type": "footage",
    "from": 626,
    "dur": 38,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Copper cable spools / cable factory",
-    "who": "S00_09",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/BIZ-008.mp4",
+   "startFrom": 100,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S00_10",
-   "type": "graphic",
+   "type": "footage",
    "from": 664,
    "dur": 44,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Power plant / substation at night",
-    "who": "S00_10",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-052.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S00_11",
-   "type": "graphic",
+   "type": "footage",
    "from": 708,
    "dur": 155,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Earth at night from orbit (NASA) — city lights",
-    "who": "S00_11",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/MOOD-113.mp4",
+   "startFrom": 750,
+   "motion": "push",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S01_01",
-   "type": "graphic",
-   "from": 863,
-   "dur": 125,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Slow aerial of transmission lines or industrial skyline (under title)",
-    "who": "S01_01",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 855,
+   "dur": 133,
+   "src": "footage/BIZ-053.mp4",
+   "startFrom": 75,
+   "motion": "none",
+   "xfade": 8,
+   "letterbox": false,
+   "dim": 0.35
   },
   {
    "id": "S02_01",
-   "type": "graphic",
-   "from": 988,
-   "dur": 49,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Chapter card bg: financial district skyline",
-    "who": "S02_01",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 980,
+   "dur": 57,
+   "src": "footage/BIZ-043.mp4",
+   "startFrom": 50,
+   "motion": "none",
+   "xfade": 8,
+   "letterbox": false,
+   "dim": 0.2
   },
   {
    "id": "S02_02",
-   "type": "graphic",
+   "type": "footage",
    "from": 1037,
    "dur": 36,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Corporate campus / glass office towers",
-    "who": "S02_02",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-016.mp4",
+   "startFrom": 125,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S02_03",
@@ -194,8 +180,8 @@
    "component": "BarChart",
    "props": {
     "kicker": "The spending wave",
-    "title": "Capital expenditure, latest full year",
-    "source": "Microsoft: fiscal year to June 2026, cash PP&E plus finance-lease assets (10-K). Alphabet, Amazon (cash capex), Meta (incl. finance-lease principal): calendar 2025 (company results). US$ billions.",
+    "title": "Capital expenditure: latest year, and what comes next",
+    "source": "Microsoft: fiscal year to June 2026, cash PP&E plus finance-lease assets (10-K). Alphabet, Amazon (cash capex), Meta (incl. finance-lease principal): calendar 2025 (company results). US$ billions. Amazon 2026: company outlook, Q3 2026 results (cash capex).",
     "bars": [
      {
       "label": "Microsoft",
@@ -207,8 +193,7 @@
       "label": "Amazon",
       "note": "2025",
       "value": 131.8,
-      "display": "$131.8bn",
-      "highlight": true
+      "display": "$131.8bn"
      },
      {
       "label": "Alphabet",
@@ -221,6 +206,13 @@
       "note": "2025",
       "value": 72.2,
       "display": "$72.2bn"
+     },
+     {
+      "label": "Amazon",
+      "note": "2026 outlook",
+      "value": 220,
+      "display": "~$220bn",
+      "highlight": true
      }
     ]
    },
@@ -228,29 +220,27 @@
   },
   {
    "id": "S02_04",
-   "type": "graphic",
+   "type": "footage",
    "from": 1500,
    "dur": 71,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Construction site of a large data centre / cranes",
-    "who": "S02_04",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/IA-QTS.mp4",
+   "startFrom": 600,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S02_05",
-   "type": "graphic",
+   "type": "footage",
    "from": 1571,
    "dur": 70,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Server rack with GPU modules being installed",
-    "who": "S02_05",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/DC-010.mp4",
+   "startFrom": 1800,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S03_01",
@@ -297,29 +287,27 @@
   },
   {
    "id": "S04_01",
-   "type": "graphic",
-   "from": 2376,
-   "dur": 69,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Chapter card bg: silicon wafer macro",
-    "who": "S04_01",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 2368,
+   "dur": 77,
+   "src": "footage/SEM-042.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 8,
+   "letterbox": false,
+   "dim": 0.2
   },
   {
    "id": "S04_02",
-   "type": "graphic",
+   "type": "footage",
    "from": 2445,
    "dur": 30,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "GPU / circuit board macro, slow move",
-    "who": "S04_02",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/SEM-041.mp4",
+   "startFrom": 50,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S04_03",
@@ -341,84 +329,71 @@
   },
   {
    "id": "S04_04",
-   "type": "graphic",
+   "type": "footage",
    "from": 2839,
    "dur": 102,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Chip design: engineer at screen with circuit layout / CAD",
-    "who": "S04_04",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/SEM-001.mp4",
+   "startFrom": 150,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S05_01",
-   "type": "graphic",
-   "from": 2941,
-   "dur": 144,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Cleanroom: workers in bunny suits",
-    "who": "S05_01",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 2933,
+   "dur": 152,
+   "src": "footage/SEM-040.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 8,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S05_02",
    "type": "graphic",
    "from": 3085,
-   "dur": 102,
-   "component": "Quote",
+   "dur": 204,
+   "component": "BigStat",
    "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Wafer handling robot / fab automation",
-    "who": "S05_02",
-    "role": "placeholder — not for delivery"
-   }
+    "kicker": "TSMC · foundry market share",
+    "value": 72.5,
+    "decimals": 1,
+    "suffix": "%",
+    "label": "Share of global contract-chipmaking revenue",
+    "sublabel": "Second quarter of 2026",
+    "source": "Industry estimate: TrendForce, top-10 foundry ranking, Q2 2026."
+   },
+   "xfade": 0
   },
   {
    "id": "S05_03",
-   "type": "graphic",
-   "from": 3187,
-   "dur": 102,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Silicon wafer close-up, rainbow sheen",
-    "who": "S05_03",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 3289,
+   "dur": 137,
+   "src": "footage/SEM-044.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S05_04",
-   "type": "graphic",
-   "from": 3289,
-   "dur": 137,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Fab interior / overhead wafer transport",
-    "who": "S05_04",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 3426,
+   "dur": 138,
+   "src": "footage/SEM-037.mp4",
+   "startFrom": 25,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S05_05",
-   "type": "graphic",
-   "from": 3426,
-   "dur": 138,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Container ship / port cranes (Netherlands/Taiwan context generic)",
-    "who": "S05_05",
-    "role": "placeholder — not for delivery"
-   }
-  },
-  {
-   "id": "S05_06",
    "type": "graphic",
    "from": 3564,
    "dur": 282,
@@ -512,56 +487,52 @@
    "xfade": 0
   },
   {
-   "id": "S05_07",
-   "type": "graphic",
+   "id": "S05_06",
+   "type": "footage",
    "from": 3846,
    "dur": 117,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "ASML lithography machine / EUV system (only if licensed & confirmed ASML) else generic lithography/laser optics",
-    "who": "S05_07",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/SEM-045.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S05_07",
+   "type": "footage",
+   "from": 3963,
+   "dur": 298,
+   "src": "footage/DC-010.mp4",
+   "startFrom": 4700,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S05_08",
-   "type": "graphic",
-   "from": 3963,
-   "dur": 298,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Memory chips / RAM modules macro",
-    "who": "S05_08",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 4261,
+   "dur": 129,
+   "src": "footage/SEM-001.mp4",
+   "startFrom": 225,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S05_09",
-   "type": "graphic",
-   "from": 4261,
-   "dur": 144,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Microchip being placed / die bonding / tweezers on chip",
-    "who": "S05_09",
-    "role": "placeholder — not for delivery"
-   }
-  },
-  {
-   "id": "S05_10",
-   "type": "graphic",
-   "from": 4405,
-   "dur": 115,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Circuit board macro with chips",
-    "who": "S05_10",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 4390,
+   "dur": 130,
+   "src": "footage/SEM-042.mp4",
+   "startFrom": 100,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S06_01",
@@ -600,55 +571,51 @@
   },
   {
    "id": "S06_02",
-   "type": "graphic",
+   "type": "footage",
    "from": 4778,
    "dur": 174,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Data centre exterior at dusk / under construction, wide",
-    "who": "S06_02",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/IA-QTS.mp4",
+   "startFrom": 650,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": true,
+   "dim": 0.0
   },
   {
    "id": "S07_01",
-   "type": "graphic",
-   "from": 4952,
-   "dur": 123,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Chapter card bg: long server aisle",
-    "who": "S07_01",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 4944,
+   "dur": 131,
+   "src": "footage/DC-010.mp4",
+   "startFrom": 3050,
+   "motion": "none",
+   "xfade": 8,
+   "letterbox": false,
+   "dim": 0.2
   },
   {
    "id": "S07_02",
-   "type": "graphic",
+   "type": "footage",
    "from": 5075,
    "dur": 73,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Data centre exterior / mechanical plant on roof",
-    "who": "S07_02",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/DC-010.mp4",
+   "startFrom": 775,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S07_03",
-   "type": "graphic",
+   "type": "footage",
    "from": 5148,
    "dur": 73,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Engineer walking server aisle",
-    "who": "S07_03",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/DC-010.mp4",
+   "startFrom": 2225,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S07_04",
@@ -669,84 +636,104 @@
   },
   {
    "id": "S07_05",
-   "type": "graphic",
+   "type": "footage",
    "from": 5484,
-   "dur": 74,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Liquid cooling pipes / cold plates / coolant manifold close-up",
-    "who": "S07_05",
-    "role": "placeholder — not for delivery"
-   }
+   "dur": 68,
+   "src": "footage/DC-010.mp4",
+   "startFrom": 4650,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S07_06",
-   "type": "graphic",
-   "from": 5558,
-   "dur": 62,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Chiller / cooling towers / big fans",
-    "who": "S07_06",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 5552,
+   "dur": 68,
+   "src": "footage/DC-010.mp4",
+   "startFrom": 2600,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S08_01",
    "type": "graphic",
-   "from": 5620,
-   "dur": 100,
-   "component": "Quote",
+   "from": 5612,
+   "dur": 182,
+   "component": "DataCentre",
    "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Industrial cooling units / CRAH / data centre mechanical gallery",
-    "who": "S08_01",
-    "role": "placeholder — not for delivery"
-   }
+    "kicker": "Inside an AI data centre",
+    "title": "Power in, heat out",
+    "source": "Simplified schematic. Supplier names are examples of companies active in each system, not a market-share ranking.",
+    "callouts": [
+     {
+      "x": 0,
+      "y": 360,
+      "label": "Grid connection",
+      "who": "Utilities · grid operators",
+      "at": 20
+     },
+     {
+      "x": 180,
+      "y": 460,
+      "label": "Transformers & switchgear",
+      "who": "Siemens Energy · Hitachi Energy · Eaton",
+      "at": 30
+     },
+     {
+      "x": 560,
+      "y": 330,
+      "label": "UPS & power",
+      "who": "Vertiv · Schneider · Eaton",
+      "at": 44
+     },
+     {
+      "x": 900,
+      "y": 290,
+      "label": "Compute & network",
+      "who": "Nvidia · AMD · Arista",
+      "at": 56
+     },
+     {
+      "x": 1180,
+      "y": 40,
+      "label": "Cooling",
+      "who": "Vertiv · Schneider · Trane",
+      "at": 68
+     }
+    ]
+   },
+   "xfade": 8
   },
   {
    "id": "S08_02",
-   "type": "graphic",
-   "from": 5720,
-   "dur": 104,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Electrical room: UPS / battery cabinets / switchboards",
-    "who": "S08_02",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 5794,
+   "dur": 135,
+   "src": "footage/DC-010.mp4",
+   "startFrom": 4075,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S08_03",
-   "type": "graphic",
-   "from": 5824,
-   "dur": 105,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Technician working on electrical panel",
-    "who": "S08_03",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 5929,
+   "dur": 177,
+   "src": "footage/DC-010.mp4",
+   "startFrom": 2650,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S08_04",
-   "type": "graphic",
-   "from": 5929,
-   "dur": 177,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Fans spinning / HVAC close-up",
-    "who": "S08_04",
-    "role": "placeholder — not for delivery"
-   }
-  },
-  {
-   "id": "S08_05",
    "type": "graphic",
    "from": 6106,
    "dur": 305,
@@ -778,82 +765,64 @@
    "xfade": 0
   },
   {
-   "id": "S08_06",
-   "type": "graphic",
+   "id": "S08_05",
+   "type": "footage",
    "from": 6411,
    "dur": 257,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Data centre construction site / steel frame / cranes",
-    "who": "S08_06",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/IA-QTS.mp4",
+   "startFrom": 3350,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
-   "id": "S08_07",
-   "type": "graphic",
+   "id": "S08_06",
+   "type": "footage",
    "from": 6668,
-   "dur": 169,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Server racks close-up, blinking lights",
-    "who": "S08_07",
-    "role": "placeholder — not for delivery"
-   }
-  },
-  {
-   "id": "S08_08",
-   "type": "graphic",
-   "from": 6837,
-   "dur": 169,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Financial: stock ticker / trading screens",
-    "who": "S08_08",
-    "role": "placeholder — not for delivery"
-   }
+   "dur": 338,
+   "src": "footage/BIZ-043.mp4",
+   "startFrom": 329,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S09_01",
-   "type": "graphic",
-   "from": 7006,
-   "dur": 118,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Chapter card bg: transmission towers at night / grid",
-    "who": "S09_01",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 6998,
+   "dur": 126,
+   "src": "footage/BIZ-042.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 8,
+   "letterbox": false,
+   "dim": 0.2
   },
   {
    "id": "S09_02",
-   "type": "graphic",
+   "type": "footage",
    "from": 7124,
    "dur": 42,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Power plant chimney / steam at dusk",
-    "who": "S09_02",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-008.mp4",
+   "startFrom": 300,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": true,
+   "dim": 0.0
   },
   {
    "id": "S09_03",
-   "type": "graphic",
+   "type": "footage",
    "from": 7166,
    "dur": 50,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Earth at night from orbit (NASA)",
-    "who": "S09_03",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/MOOD-113.mp4",
+   "startFrom": 1250,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S09_04",
@@ -885,87 +854,106 @@
   },
   {
    "id": "S09_05",
-   "type": "graphic",
+   "type": "footage",
    "from": 7545,
    "dur": 196,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "US city skyline at night / suburbs lights",
-    "who": "S09_05",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/BIZ-085.mp4",
+   "startFrom": 50,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S10_01",
-   "type": "graphic",
-   "from": 7741,
-   "dur": 167,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Nuclear plant cooling towers",
-    "who": "S10_01",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 7733,
+   "dur": 175,
+   "src": "footage/EL-012.mp4",
+   "startFrom": 75,
+   "motion": "none",
+   "xfade": 8,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S10_02",
-   "type": "graphic",
+   "type": "footage",
    "from": 7908,
    "dur": 182,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Nuclear / Three Mile Island (only if licensed & confirmed) else generic cooling tower steam",
-    "who": "S10_02",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-008.mp4",
+   "startFrom": 500,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S10_03",
-   "type": "graphic",
+   "type": "footage",
    "from": 8090,
    "dur": 246,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Gas turbine / power plant interior / turbine hall",
-    "who": "S10_03",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-007.mp4",
+   "startFrom": 35,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S10_04",
    "type": "graphic",
    "from": 8336,
-   "dur": 64,
-   "component": "Quote",
+   "dur": 169,
+   "component": "PowerChain",
    "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Transmission towers aerial, lines receding",
-    "who": "S10_04",
-    "role": "placeholder — not for delivery"
-   }
+    "kicker": "The electricity value chain",
+    "title": "From power station to server rack",
+    "flowLabel": "POWER FLOW →",
+    "source": "Simplified. Bottlenecks: GE Vernova Q3 2026 results; Wood Mackenzie (2024); Berkeley Lab, Queued Up (2026 ed.).",
+    "stages": [
+     {
+      "icon": "plant",
+      "label": "Generation",
+      "who": "Gas turbines · nuclear · renewables",
+      "tag": "122 GW gas backlog + slots*"
+     },
+     {
+      "icon": "transformer",
+      "label": "Step-up transformer",
+      "who": "Siemens Energy · Hitachi Energy · GE Vernova"
+     },
+     {
+      "icon": "pylon",
+      "label": "Transmission",
+      "who": "Utilities · Quanta Services · cable makers",
+      "tag": "~5 yrs to connect"
+     },
+     {
+      "icon": "substation",
+      "label": "Substation",
+      "who": "Transformers · switchgear",
+      "tag": "2–4 yr transformer waits"
+     },
+     {
+      "icon": "switchgear",
+      "label": "Switchgear & UPS",
+      "who": "Eaton · Schneider · Vertiv"
+     },
+     {
+      "icon": "datacentre",
+      "label": "Data centre",
+      "who": "Hyperscalers · colocation · neoclouds"
+     }
+    ]
+   },
+   "xfade": 0
   },
   {
    "id": "S10_05",
    "type": "graphic",
-   "from": 8400,
-   "dur": 50,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Lineman / workers on pylon",
-    "who": "S10_05",
-    "role": "placeholder — not for delivery"
-   }
-  },
-  {
-   "id": "S10_06",
-   "type": "graphic",
-   "from": 8450,
-   "dur": 204,
+   "from": 8505,
+   "dur": 149,
    "component": "RangeBars",
    "props": {
     "kicker": "The waiting game",
@@ -992,69 +980,64 @@
    "xfade": 0
   },
   {
-   "id": "S10_07",
-   "type": "graphic",
+   "id": "S10_06",
+   "type": "footage",
    "from": 8654,
    "dur": 143,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Substation with large transformers",
-    "who": "S10_07",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-052.mp4",
+   "startFrom": 50,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
+  },
+  {
+   "id": "S10_07",
+   "type": "footage",
+   "from": 8797,
+   "dur": 144,
+   "src": "footage/BIZ-008.mp4",
+   "startFrom": 250,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S10_08",
-   "type": "graphic",
-   "from": 8797,
-   "dur": 144,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Transformer close-up / insulators / bushings",
-    "who": "S10_08",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 8941,
+   "dur": 88,
+   "src": "footage/BIZ-057.mp4",
+   "startFrom": 150,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S10_09",
-   "type": "graphic",
-   "from": 8941,
-   "dur": 88,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Factory floor: heavy electrical equipment / transformer manufacturing",
-    "who": "S10_09",
-    "role": "placeholder — not for delivery"
-   }
-  },
-  {
-   "id": "S10_10",
-   "type": "graphic",
+   "type": "footage",
    "from": 9029,
    "dur": 88,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Switchgear / high-voltage equipment close-up",
-    "who": "S10_10",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-006.mp4",
+   "startFrom": 25,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S11_01",
-   "type": "graphic",
-   "from": 9117,
-   "dur": 81,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "High-voltage cable reels / cable factory",
-    "who": "S11_01",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 9109,
+   "dur": 89,
+   "src": "footage/BIZ-055.mp4",
+   "startFrom": 75,
+   "motion": "none",
+   "xfade": 8,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S11_02",
@@ -1090,55 +1073,51 @@
   },
   {
    "id": "S11_03",
-   "type": "graphic",
+   "type": "footage",
    "from": 9475,
    "dur": 158,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Cable being laid / underground cable installation / cable ship",
-    "who": "S11_03",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-020.mp4",
+   "startFrom": 75,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S11_04",
-   "type": "graphic",
+   "type": "footage",
    "from": 9633,
    "dur": 157,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Workers in hard hats at substation / electrical construction",
-    "who": "S11_04",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/BIZ-057.mp4",
+   "startFrom": 450,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S11_05",
-   "type": "graphic",
+   "type": "footage",
    "from": 9790,
    "dur": 171,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Transmission line silhouette at sunset, slow",
-    "who": "S11_05",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-030.mp4",
+   "startFrom": 0,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": true,
+   "dim": 0.0
   },
   {
    "id": "S12_01",
-   "type": "graphic",
-   "from": 9961,
-   "dur": 59,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Chapter card bg: city financial district at night",
-    "who": "S12_01",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 9953,
+   "dur": 67,
+   "src": "footage/BIZ-043.mp4",
+   "startFrom": 400,
+   "motion": "none",
+   "xfade": 8,
+   "letterbox": false,
+   "dim": 0.2
   },
   {
    "id": "S12_02",
@@ -1275,58 +1254,42 @@
   },
   {
    "id": "S12_03",
-   "type": "graphic",
+   "type": "footage",
    "from": 10538,
    "dur": 176,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Trading floor / stock screens",
-    "who": "S12_03",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-016.mp4",
+   "startFrom": 375,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S12_04",
-   "type": "graphic",
+   "type": "footage",
    "from": 10714,
    "dur": 170,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Factory / heavy industrial production line",
-    "who": "S12_04",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/BIZ-008.mp4",
+   "startFrom": 300,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S12_05",
-   "type": "graphic",
+   "type": "footage",
    "from": 10884,
-   "dur": 37,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Electricity meter / household / suburban street at dusk",
-    "who": "S12_05",
-    "role": "placeholder — not for delivery"
-   }
+   "dur": 75,
+   "src": "footage/BIZ-085.mp4",
+   "startFrom": 200,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S12_06",
-   "type": "graphic",
-   "from": 10921,
-   "dur": 38,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Power lines over houses",
-    "who": "S12_06",
-    "role": "placeholder — not for delivery"
-   }
-  },
-  {
-   "id": "S12_07",
    "type": "graphic",
    "from": 10959,
    "dur": 448,
@@ -1362,121 +1325,112 @@
    "xfade": 0
   },
   {
-   "id": "S12_08",
-   "type": "graphic",
+   "id": "S12_07",
+   "type": "footage",
    "from": 11407,
    "dur": 247,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Empty / dark industrial building or quiet data hall (downturn mood)",
-    "who": "S12_08",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/BIZ-033.mp4",
+   "startFrom": 250,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S13_01",
-   "type": "graphic",
-   "from": 11654,
-   "dur": 132,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Laptop / chatbot screen (callback to open)",
-    "who": "S13_01",
-    "role": "placeholder — not for delivery"
-   }
+   "type": "footage",
+   "from": 11646,
+   "dur": 140,
+   "src": "footage/MOOD-049.mp4",
+   "startFrom": 50,
+   "motion": "none",
+   "xfade": 8,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S13_02",
-   "type": "graphic",
+   "type": "footage",
    "from": 11786,
    "dur": 90,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Cleanroom / fab wide",
-    "who": "S13_02",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/SEM-042.mp4",
+   "startFrom": 50,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S13_03",
-   "type": "graphic",
+   "type": "footage",
    "from": 11876,
    "dur": 72,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Container port / Netherlands industry",
-    "who": "S13_03",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/BIZ-057.mp4",
+   "startFrom": 250,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S13_04",
-   "type": "graphic",
+   "type": "footage",
    "from": 11948,
    "dur": 45,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Cooling towers / cable reels",
-    "who": "S13_04",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/DC-010.mp4",
+   "startFrom": 4650,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S13_05",
-   "type": "graphic",
+   "type": "footage",
    "from": 11993,
    "dur": 46,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Turbine / transformer",
-    "who": "S13_05",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-007.mp4",
+   "startFrom": 125,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S13_06",
-   "type": "graphic",
+   "type": "footage",
    "from": 12039,
    "dur": 46,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Transmission lines at sunset",
-    "who": "S13_06",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/EL-008.mp4",
+   "startFrom": 550,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": false,
+   "dim": 0.0
   },
   {
    "id": "S13_07",
-   "type": "graphic",
+   "type": "footage",
    "from": 12085,
    "dur": 119,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Earth at night from orbit (NASA), slow",
-    "who": "S13_07",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/MOOD-113.mp4",
+   "startFrom": 1550,
+   "motion": "pull",
+   "xfade": 0,
+   "letterbox": true,
+   "dim": 0.0
   },
   {
    "id": "S13_08",
-   "type": "graphic",
+   "type": "footage",
    "from": 12204,
    "dur": 171,
-   "component": "Quote",
-   "props": {
-    "kicker": "MISSING FOOTAGE",
-    "quote": "Wide aerial: data centre next to substation / power lines",
-    "who": "S13_08",
-    "role": "placeholder — not for delivery"
-   }
+   "src": "footage/IA-QTS.mp4",
+   "startFrom": 125,
+   "motion": "none",
+   "xfade": 0,
+   "letterbox": true,
+   "dim": 0.0
   },
   {
    "id": "S14_01",
@@ -1489,6 +1443,24 @@
   }
  ],
  "overlays": [
+  {
+   "id": "S00_ov1",
+   "from": 161,
+   "dur": 90,
+   "component": "SourceTag",
+   "props": {
+    "text": "QTS data centre, Aurora, Colorado · F. Soto (public domain)"
+   }
+  },
+  {
+   "id": "S00_ov2",
+   "from": 251,
+   "dur": 90,
+   "component": "SourceTag",
+   "props": {
+    "text": "NASA Ames supercomputing facility · NASA"
+   }
+  },
   {
    "id": "S01_ov1",
    "from": 868,
@@ -1510,13 +1482,11 @@
   },
   {
    "id": "S02_ov2",
-   "from": 1328,
-   "dur": 115,
-   "component": "CornerStat",
+   "from": 1505,
+   "dur": 90,
+   "component": "SourceTag",
    "props": {
-    "value": "~$220bn",
-    "label": "Amazon 2026 capex outlook",
-    "source": "Q3 2026 results · cash capex"
+    "text": "QTS data centre, Aurora, Colorado · F. Soto (public domain)"
    }
   },
   {
@@ -1541,16 +1511,6 @@
   },
   {
    "id": "S05_ov2",
-   "from": 3661,
-   "dur": 100,
-   "component": "LowerThird",
-   "props": {
-    "title": "ASML",
-    "sub": "Lithography systems · Veldhoven, Netherlands"
-   }
-  },
-  {
-   "id": "S05_ov3",
    "from": 4023,
    "dur": 115,
    "component": "CornerStat",
@@ -1558,6 +1518,17 @@
     "value": "~80%",
     "label": "SK hynix operating margin",
     "source": "Q3 2026 · KRW 83.3tn on KRW 104.6tn revenue"
+   }
+  },
+  {
+   "id": "S05_ov3",
+   "from": 3354,
+   "dur": 110,
+   "component": "CornerStat",
+   "props": {
+    "value": "up to $64bn",
+    "label": "TSMC 2026 capital spending plan",
+    "source": "Management guidance, Q3 2026 call"
    }
   },
   {
@@ -1571,8 +1542,17 @@
    }
   },
   {
+   "id": "S07_ov2",
+   "from": 5083,
+   "dur": 90,
+   "component": "SourceTag",
+   "props": {
+    "text": "NASA Ames supercomputing facility · NASA"
+   }
+  },
+  {
    "id": "S08_ov1",
-   "from": 5732,
+   "from": 5804,
    "dur": 120,
    "component": "CornerStat",
    "props": {
@@ -1605,6 +1585,15 @@
    }
   },
   {
+   "id": "S08_ov4",
+   "from": 6416,
+   "dur": 90,
+   "component": "SourceTag",
+   "props": {
+    "text": "QTS data centre, Aurora, Colorado · F. Soto (public domain)"
+   }
+  },
+  {
    "id": "S09_ov1",
    "from": 7117,
    "dur": 75,
@@ -1616,17 +1605,7 @@
   },
   {
    "id": "S10_ov1",
-   "from": 7916,
-   "dur": 105,
-   "component": "LowerThird",
-   "props": {
-    "title": "Crane Clean Energy Center",
-    "sub": "Formerly Three Mile Island Unit 1 · Pennsylvania"
-   }
-  },
-  {
-   "id": "S10_ov2",
-   "from": 8120,
+   "from": 8105,
    "dur": 115,
    "component": "CornerStat",
    "props": {
@@ -1636,7 +1615,7 @@
    }
   },
   {
-   "id": "S10_ov3",
+   "id": "S10_ov2",
    "from": 8951,
    "dur": 115,
    "component": "CornerStat",

@@ -12,22 +12,22 @@ export const BarChart: React.FC<
 > = ({bars, max, unit, stagger = 7, ...p}) => {
   const frame = useCurrentFrame();
   const m = max ?? Math.max(...bars.map((b) => b.value)) * 1.25;
-  const rowH = Math.min(118, 640 / bars.length);
+  const rowH = Math.min(150, 600 / bars.length);
   return (
     <Panel {...p}>
-      <div style={{display: 'flex', flexDirection: 'column', gap: rowH * 0.22, marginTop: 20}}>
+      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: rowH * 0.22, height: '100%', paddingBottom: 40}}>
         {bars.map((b, i) => {
           const a = prog(frame, 10 + i * stagger, 28);
           const w = (b.value / m) * 100 * a;
           return (
             <div key={b.label} style={{display: 'grid', gridTemplateColumns: '430px 1fr', alignItems: 'center', gap: 28, height: rowH * 0.78}}>
-              <div style={{fontFamily: F.head, fontWeight: 700, fontSize: Math.min(40, rowH * 0.42), color: b.highlight ? C.goldHi : C.off, textAlign: 'right', opacity: a}}>
+              <div style={{fontFamily: F.head, fontWeight: 700, fontSize: Math.min(46, rowH * 0.4), color: b.highlight ? C.goldHi : C.off, textAlign: 'right', opacity: a}}>
                 {b.label}
-                {b.note ? <div style={{fontFamily: F.mono, fontWeight: 400, fontSize: 18, color: C.muted}}>{b.note}</div> : null}
+                {b.note ? <div style={{fontFamily: F.mono, fontWeight: 400, fontSize: 21, color: C.muted}}>{b.note}</div> : null}
               </div>
               <div style={{position: 'relative', height: '62%'}}>
                 <div style={{position: 'absolute', inset: 0, width: `${w}%`, background: b.highlight ? goldGradient : `linear-gradient(90deg, ${C.navyLine}, #3A5573)`, borderRight: `3px solid ${b.highlight ? C.goldHi : C.muted}`}} />
-                <div style={{position: 'absolute', left: `calc(${w}% + 18px)`, top: '50%', transform: 'translateY(-50%)', fontFamily: F.head, fontWeight: 800, fontSize: Math.min(44, rowH * 0.45), color: C.off, whiteSpace: 'nowrap', opacity: a}}>
+                <div style={{position: 'absolute', left: `calc(${w}% + 18px)`, top: '50%', transform: 'translateY(-50%)', fontFamily: F.head, fontWeight: 800, fontSize: Math.min(52, rowH * 0.42), color: C.off, whiteSpace: 'nowrap', opacity: a}}>
                   {b.display ?? `${fmtNum(b.value * a, b.value % 1 ? 1 : 0)}${unit ?? ''}`}
                 </div>
               </div>
@@ -107,7 +107,7 @@ export const RangeBars: React.FC<Common & {unit: string; max: number; rows: {lab
   const frame = useCurrentFrame();
   return (
     <Panel {...p}>
-      <div style={{display: 'flex', flexDirection: 'column', gap: 46, marginTop: 50}}>
+      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 60, height: '100%', paddingBottom: 40}}>
         {rows.map((r, i) => {
           const a = prog(frame, 10 + i * 12, 30);
           return (
@@ -143,7 +143,7 @@ export const Matrix: React.FC<
   const colW = Math.floor(1240 / cols.length);
   return (
     <Panel {...p}>
-      <div style={{marginTop: 18}}>
+      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '100%', paddingBottom: 30}}>
         <div style={{display: 'grid', gridTemplateColumns: `420px repeat(${cols.length}, ${colW}px)`, borderBottom: `2px solid ${C.gold}`, paddingBottom: 12}}>
           <div />
           {cols.map((c) => (
@@ -153,7 +153,7 @@ export const Matrix: React.FC<
         {rows.map((r, i) => {
           const a = prog(frame, 12 + i * 8, 22);
           return (
-            <div key={r.name} style={{display: 'grid', gridTemplateColumns: `420px repeat(${cols.length}, ${colW}px)`, alignItems: 'center', minHeight: 92, borderBottom: `1px solid ${C.navyLine}`, opacity: a, transform: `translateX(${(1 - a) * -20}px)`}}>
+            <div key={r.name} style={{display: 'grid', gridTemplateColumns: `420px repeat(${cols.length}, ${colW}px)`, alignItems: 'center', minHeight: 104, borderBottom: `1px solid ${C.navyLine}`, opacity: a, transform: `translateX(${(1 - a) * -20}px)`}}>
               <div>
                 <div style={{fontFamily: F.head, fontWeight: 700, fontSize: 36, color: C.off}}>{r.name}</div>
                 {r.sub ? <div style={{fontFamily: F.mono, fontSize: 18, color: C.muted}}>{r.sub}</div> : null}

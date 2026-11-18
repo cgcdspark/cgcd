@@ -125,7 +125,10 @@ def main() -> int:
             continue
         a, b = scenes[cue["from"]]["start"], scenes[cue["to"]]["end"]
         n0, n1 = int(a * SR), min(total, int(b * SR))
-        bed = fit(load(p), n1 - n0)
+        src = load(p)
+        if cue.get("align") == "end" and len(src) > n1 - n0:
+            src = src[len(src) - (n1 - n0):]  # land the track's natural ending on the cue's end
+        bed = fit(src, n1 - n0)
         bed = fade(bed, cue.get("fade_in", 2), cue.get("fade_out", 3)) * db(cue.get("gain_db", -20))
         music[n0:n1] += bed
     env = envelope(voice)
