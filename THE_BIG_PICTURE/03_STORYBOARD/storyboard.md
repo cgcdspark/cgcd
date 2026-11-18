@@ -19,17 +19,22 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
-| 1 | scene start | Close-up: hands typing a question into a chatbot / laptop screen glow | `UNASSIGNED` |
-| 2 | L002 | Aerial or exterior of a large data centre campus | `UNASSIGNED` |
-| 3 | flows | Server hall, slow track along racks with blinking lights | `UNASSIGNED` |
-| 4 | L003 | Macro: coolant pipes / liquid cooling / chiller fans | `UNASSIGNED` |
-| 5 | flows | Transmission towers at dusk, wide | `UNASSIGNED` |
-| 6 | L004 | Abstract digital / code on screen | `UNASSIGNED` |
-| 7 | flows | Clouds / sky timelapse | `UNASSIGNED` |
-| 8 | L005 | Construction: concrete pour / steel beams / crane | `UNASSIGNED` |
-| 9 | flows | Copper cable spools / cable factory | `UNASSIGNED` |
-| 10 | flows | Power plant / substation at night | `UNASSIGNED` |
-| 11 | L006 | Earth at night from orbit (NASA) — city lights | `UNASSIGNED` |
+| 1 | scene start | Hands typing on a laptop | `MOOD-015` |
+| 2 | L002 | Data centre exterior, wide | `IA-QTS` |
+| 3 | flows | Rows of supercomputer racks | `DC-010` |
+| 4 | L003 | Server boards with liquid-cooling pipes | `DC-010` |
+| 5 | flows | Industrial stacks and steam, silhouette | `EL-008` |
+| 6 | L004 | Code on screen | `MOOD-053` |
+| 7 | flows | Clouds at sunset, aerial | `BIZ-033` |
+| 8 | L005 | City construction cranes, aerial | `BIZ-035` |
+| 9 | flows | Heavy industrial machine | `BIZ-008` |
+| 10 | flows | Steel structure of an industrial plant | `EL-052` |
+| 11 | L006 | Earth at night from orbit (NASA) | `MOOD-113` |
+
+**On-screen text**
+
+- SourceTag: 
+- SourceTag: 
 
 **Sound**: SFX_TYPING @ L001, SFX_SERVER_ROOM @ L002, SFX_HUM @ L003, SFX_IMPACT @ L005
 
@@ -39,7 +44,7 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
-| 1 | scene start | Slow aerial of transmission lines or industrial skyline (under title) | `UNASSIGNED` |
+| 1 | scene start | Industrial plant at night, aerial | `BIZ-053` |
 
 **On-screen text**
 
@@ -62,16 +67,17 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
-| 1 | scene start | Chapter card bg: financial district skyline | `UNASSIGNED` |
-| 2 | flows | Corporate campus / glass office towers | `UNASSIGNED` |
-| 3 | L011 | ORIGINAL GRAPHIC: The spending wave — Capital expenditure, latest full year | `BarChart` |
-| 4 | L013 | Construction site of a large data centre / cranes | `UNASSIGNED` |
-| 5 | flows | Server rack with GPU modules being installed | `UNASSIGNED` |
+| 1 | scene start | London's financial district at sunrise | `BIZ-043` |
+| 2 | L011 | Microsoft data centre, Middenmeer (still) | `DC-016` |
+| 3 | L011 | ORIGINAL GRAPHIC: The spending wave — Capital expenditure: latest year, and what comes next | `BarChart` |
+| 4 | L013 | Data centre building | `IA-QTS` |
+| 5 | flows | Supercomputer racks | `DC-010` |
 
 **On-screen text**
 
 - ChapterCard: PART 01 · THE GOLD RUSH
-- CornerStat: ~$220bn · Amazon 2026 capex outlook
+- SourceTag: 
+- SourceTag: 
 
 **Sound**: SFX_WHOOSH @ scene start
 
@@ -108,10 +114,10 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
-| 1 | scene start | Chapter card bg: silicon wafer macro | `UNASSIGNED` |
-| 2 | L031 | GPU / circuit board macro, slow move | `UNASSIGNED` |
+| 1 | scene start | Motherboard and processor socket, macro | `SEM-042` |
+| 2 | L031 | Circuit board macro | `SEM-041` |
 | 3 | L031 | ORIGINAL GRAPHIC: Nvidia · quarterly revenue | `BigStat` |
-| 4 | L033 | Chip design: engineer at screen with circuit layout / CAD | `UNASSIGNED` |
+| 4 | L033 | Engineer working on a circuit board | `SEM-001` |
 
 **On-screen text**
 
@@ -136,22 +142,22 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
-| 1 | scene start | Cleanroom: workers in bunny suits | `UNASSIGNED` |
-| 2 | L041 | Wafer handling robot / fab automation | `UNASSIGNED` |
-| 3 | flows | Silicon wafer close-up, rainbow sheen | `UNASSIGNED` |
-| 4 | L042 | Fab interior / overhead wafer transport | `UNASSIGNED` |
-| 5 | flows | Container ship / port cranes (Netherlands/Taiwan context generic) | `UNASSIGNED` |
-| 6 | L043 | ORIGINAL GRAPHIC: The semiconductor ecosystem — Who makes an AI chip? | `Flow` |
-| 7 | L045 | ASML lithography machine / EUV system (only if licensed & confirmed ASML) else generic lithography/laser optics | `UNASSIGNED` |
-| 8 | L046 | Memory chips / RAM modules macro | `UNASSIGNED` |
-| 9 | L047 | Microchip being placed / die bonding / tweezers on chip | `UNASSIGNED` |
-| 10 | flows | Circuit board macro with chips | `UNASSIGNED` |
+| 1 | scene start | Semiconductor cleanroom, researcher with wafer (DOE) | `SEM-054` |
+| 2 | L041 | ORIGINAL GRAPHIC: TSMC · foundry market share | `BigStat` |
+| 3 | L042 | Server motherboard, macro | `SEM-044` |
+| 4 | flows | Chipset close-up | `SEM-037` |
+| 5 | L043 | ORIGINAL GRAPHIC: The semiconductor ecosystem — Who makes an AI chip? | `Flow` |
+| 6 | L045 | Chipset with blue and red detail | `SEM-045` |
+| 7 | L046 | Server boards with memory modules | `DC-010` |
+| 8 | L047 | Hands working on a chip | `SEM-001` |
+| 9 | flows | Processor socket, macro | `SEM-042` |
 
 **On-screen text**
 
 - LowerThird: TSMC · Contract chipmaker · Hsinchu, Taiwan
-- LowerThird: ASML · Lithography systems · Veldhoven, Netherlands
 - CornerStat: ~80% · SK hynix operating margin
+- CornerStat: up to $64bn · TSMC 2026 capital spending plan
+- SourceTag: 
 
 **Sound**: SFX_MECH @ L041, SFX_HIT @ L046
 
@@ -168,7 +174,7 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
 | 1 | scene start | ORIGINAL GRAPHIC: Where value is captured — Gross margin, latest quarter | `BarChart` |
-| 2 | L052 | Data centre exterior at dusk / under construction, wide | `UNASSIGNED` |
+| 2 | L052 | Data centre building | `IA-QTS` |
 
 ## Act 4 — The data centre economy
 
@@ -185,16 +191,17 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
-| 1 | scene start | Chapter card bg: long server aisle | `UNASSIGNED` |
-| 2 | L061 | Data centre exterior / mechanical plant on roof | `UNASSIGNED` |
-| 3 | flows | Engineer walking server aisle | `UNASSIGNED` |
+| 1 | scene start | Long aisle of supercomputer racks | `DC-010` |
+| 2 | L061 | Modular supercomputing facility exterior | `DC-010` |
+| 3 | flows | Engineer in a hi-vis vest walking the racks | `DC-010` |
 | 4 | L062 | ORIGINAL GRAPHIC: Power density | `BigStat` |
-| 5 | L063 | Liquid cooling pipes / cold plates / coolant manifold close-up | `UNASSIGNED` |
-| 6 | flows | Chiller / cooling towers / big fans | `UNASSIGNED` |
+| 5 | L063 | Server boards with cooling pipes | `DC-010` |
+| 6 | flows | Dense cable trays | `DC-010` |
 
 **On-screen text**
 
 - ChapterCard: PART 03 · THE DATA CENTRE ECONOMY
+- SourceTag: 
 
 **Sound**: SFX_WHOOSH @ scene start, SFX_SERVER_ROOM @ L060
 
@@ -213,20 +220,19 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
-| 1 | scene start | Industrial cooling units / CRAH / data centre mechanical gallery | `UNASSIGNED` |
-| 2 | L071 | Electrical room: UPS / battery cabinets / switchboards | `UNASSIGNED` |
-| 3 | flows | Technician working on electrical panel | `UNASSIGNED` |
-| 4 | L072 | Fans spinning / HVAC close-up | `UNASSIGNED` |
-| 5 | L073 | ORIGINAL GRAPHIC: Where the data centre dollar goes — Estimated split of AI data centre capex to 2030 | `BarChart` |
-| 6 | L074 | Data centre construction site / steel frame / cranes | `UNASSIGNED` |
-| 7 | L075 | Server racks close-up, blinking lights | `UNASSIGNED` |
-| 8 | flows | Financial: stock ticker / trading screens | `UNASSIGNED` |
+| 1 | scene start | ORIGINAL GRAPHIC: Inside an AI data centre — Power in, heat out | `DataCentre` |
+| 2 | L071 | Technician working at an open rack | `DC-010` |
+| 3 | L072 | Cable trays above racks | `DC-010` |
+| 4 | L073 | ORIGINAL GRAPHIC: Where the data centre dollar goes — Estimated split of AI data centre capex to 2030 | `BarChart` |
+| 5 | L074 | Data centre building | `IA-QTS` |
+| 6 | L075 | Financial district, silhouettes | `BIZ-043` |
 
 **On-screen text**
 
 - CornerStat: +61% · Vertiv net sales, Q3 2026 y/y
 - CornerStat: 1.4% · Vacancy, N. American primary markets
 - CornerStat: $132.5bn · CoreWeave contract backlog
+- SourceTag: 
 
 **Sound**: SFX_HIT @ L071, SFX_MECH @ L072
 
@@ -246,11 +252,11 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
-| 1 | scene start | Chapter card bg: transmission towers at night / grid | `UNASSIGNED` |
-| 2 | L081 | Power plant chimney / steam at dusk | `UNASSIGNED` |
-| 3 | L082 | Earth at night from orbit (NASA) | `UNASSIGNED` |
+| 1 | scene start | Storm clouds and lightning at sea | `BIZ-042` |
+| 2 | L081 | Industrial stacks and steam, silhouette | `EL-008` |
+| 3 | L082 | Earth at night from orbit (NASA) | `MOOD-113` |
 | 4 | L082 | ORIGINAL GRAPHIC: Data centre electricity use — Global consumption, terawatt-hours per year | `ColumnChart` |
-| 5 | L084 | US city skyline at night / suburbs lights | `UNASSIGNED` |
+| 5 | L084 | American city at night, aerial | `BIZ-085` |
 
 **On-screen text**
 
@@ -274,22 +280,21 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
-| 1 | scene start | Nuclear plant cooling towers | `UNASSIGNED` |
-| 2 | L091 | Nuclear / Three Mile Island (only if licensed & confirmed) else generic cooling tower steam | `UNASSIGNED` |
-| 3 | L092 | Gas turbine / power plant interior / turbine hall | `UNASSIGNED` |
-| 4 | L093 | Transmission towers aerial, lines receding | `UNASSIGNED` |
-| 5 | flows | Lineman / workers on pylon | `UNASSIGNED` |
-| 6 | L094 | ORIGINAL GRAPHIC: The waiting game — How long the physical grid takes | `RangeBars` |
-| 7 | L095 | Substation with large transformers | `UNASSIGNED` |
-| 8 | flows | Transformer close-up / insulators / bushings | `UNASSIGNED` |
-| 9 | L096 | Factory floor: heavy electrical equipment / transformer manufacturing | `UNASSIGNED` |
-| 10 | flows | Switchgear / high-voltage equipment close-up | `UNASSIGNED` |
+| 1 | scene start | Industrial plant with stacks | `EL-012` |
+| 2 | L091 | Steam over industrial stacks (placeholder until TMI image) | `EL-008` |
+| 3 | L092 | Industrial skyline | `EL-007` |
+| 4 | L093 | ORIGINAL GRAPHIC: The electricity value chain — From power station to server rack | `PowerChain` |
+| 5 | L094 | ORIGINAL GRAPHIC: The waiting game — How long the physical grid takes | `RangeBars` |
+| 6 | L095 | 750 kV power transformer (still) | `EL-080` |
+| 7 | flows | Heavy industrial machining | `BIZ-008` |
+| 8 | L096 | Container port cranes | `BIZ-057` |
+| 9 | flows | Industrial plant | `EL-006` |
 
 **On-screen text**
 
-- LowerThird: Crane Clean Energy Center · Formerly Three Mile Island Unit 1 · Pennsylvania
 - CornerStat: 122 GW · GE Vernova gas backlog + slot reservations
 - CornerStat: 60–80% · Transformer price rise since Jan 2020
+- SourceTag: 
 
 **Sound**: SFX_HUM @ L095, SFX_HIT @ L092, SFX_MECH @ L096
 
@@ -306,11 +311,11 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
-| 1 | scene start | High-voltage cable reels / cable factory | `UNASSIGNED` |
+| 1 | scene start | Heavy cargo at a container terminal | `BIZ-055` |
 | 2 | L101 | ORIGINAL GRAPHIC: The order books — Backlog at the grid's equipment makers | `BarChart` |
-| 3 | L102 | Cable being laid / underground cable installation / cable ship | `UNASSIGNED` |
-| 4 | flows | Workers in hard hats at substation / electrical construction | `UNASSIGNED` |
-| 5 | L103 | Transmission line silhouette at sunset, slow | `UNASSIGNED` |
+| 3 | L102 | Wind farm, aerial | `EL-020` |
+| 4 | flows | Port cranes at work | `BIZ-057` |
+| 5 | L103 | Offshore wind farm | `EL-030` |
 
 **Sound**: SFX_MECH @ L100
 
@@ -332,14 +337,13 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
-| 1 | scene start | Chapter card bg: city financial district at night | `UNASSIGNED` |
+| 1 | scene start | Financial district | `BIZ-043` |
 | 2 | L111 | ORIGINAL GRAPHIC: Who captures the value? — The AI value chain, scored | `Matrix` |
-| 3 | L113 | Trading floor / stock screens | `UNASSIGNED` |
-| 4 | L114 | Factory / heavy industrial production line | `UNASSIGNED` |
-| 5 | L115 | Electricity meter / household / suburban street at dusk | `UNASSIGNED` |
-| 6 | flows | Power lines over houses | `UNASSIGNED` |
-| 7 | L115 | ORIGINAL GRAPHIC: Who pays — PJM capacity price, $ per MW-day | `ColumnChart` |
-| 8 | L116 | Empty / dark industrial building or quiet data hall (downturn mood) | `UNASSIGNED` |
+| 3 | L113 | Financial district | `BIZ-043` |
+| 4 | L114 | Industrial machine at work | `BIZ-008` |
+| 5 | L115 | City lights at night, aerial | `BIZ-085` |
+| 6 | L115 | ORIGINAL GRAPHIC: Who pays — PJM capacity price, $ per MW-day | `ColumnChart` |
+| 7 | L116 | Sky darkening over clouds | `BIZ-033` |
 
 **On-screen text**
 
@@ -363,14 +367,14 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 | # | Anchor | Visual | Asset / graphic |
 |---|---|---|---|
-| 1 | scene start | Laptop / chatbot screen (callback to open) | `UNASSIGNED` |
-| 2 | L121 | Cleanroom / fab wide | `UNASSIGNED` |
-| 3 | flows | Container port / Netherlands industry | `UNASSIGNED` |
-| 4 | L122 | Cooling towers / cable reels | `UNASSIGNED` |
-| 5 | flows | Turbine / transformer | `UNASSIGNED` |
-| 6 | flows | Transmission lines at sunset | `UNASSIGNED` |
-| 7 | L123 | Earth at night from orbit (NASA), slow | `UNASSIGNED` |
-| 8 | L124 | Wide aerial: data centre next to substation / power lines | `UNASSIGNED` |
+| 1 | scene start | Typing on a laptop (callback) | `MOOD-049` |
+| 2 | L121 | Processor socket, macro | `SEM-042` |
+| 3 | flows | Container port cranes | `BIZ-057` |
+| 4 | L122 | Server boards with cooling pipes | `DC-010` |
+| 5 | flows | Industrial skyline | `EL-007` |
+| 6 | flows | Steam over stacks | `EL-008` |
+| 7 | L123 | Earth at night from orbit (NASA) | `MOOD-113` |
+| 8 | L124 | Data centre exterior, wide | `IA-QTS` |
 
 **Sound**: SFX_RISER @ L123
 
@@ -386,7 +390,7 @@ Generated from `storyboard.json`. Timecodes = narration start. Footage IDs refer
 
 ## Music
 
-- `M_OPEN`: S00 → S01, -17 dB, auto-ducked under narration
-- `M_BODY_A`: S02 → S06, -21 dB, auto-ducked under narration
-- `M_BODY_B`: S07 → S10, -20 dB, auto-ducked under narration
-- `M_CLOSE`: S11 → S13, -18 dB, auto-ducked under narration
+- `M_OPEN`: S00 → S01, -11 dB, auto-ducked under narration
+- `M_BODY_A`: S02 → S06, -15 dB, auto-ducked under narration
+- `M_BODY_B`: S07 → S10, -14 dB, auto-ducked under narration
+- `M_CLOSE`: S11 → S14, -12 dB, auto-ducked under narration
