@@ -40,7 +40,7 @@ S04_03,CH3,236.82,241.48,graphic,BigStat,
 S04_04,CH3,241.48,248.27,footage,E2-BIZ-024,Silhouettes of a woman and a man shaking hands
 S04_05,CH3,248.27,253.71,footage,E2-MOOD-003,Person in the dark observing a lights image
 S04_06,CH3,253.71,255.95,graphic,BigWords,
-S04_07,CH3,255.95,271.87,graphic,ColumnChart,"Share of total revenue, by customer headquarters"
+S04_07,CH3,255.95,271.87,graphic,ColumnChart,China's share of revenue
 S04_08,CH3,271.87,275.79,footage,E2-BIZ-102,View from inside a car in night traffic
 S05_01,CH4,275.79,277.19,footage,E2-BIZ-106,"Touring the city at night, timelapse"
 S05_02,CH4,277.19,280.77,graphic,RegionMap,Where the chips went
@@ -53,7 +53,7 @@ S05_08,CH4,316.49,321.68,footage,E2-MOOD-003,Person in the dark observing a ligh
 S05_09,CH4,321.68,328.03,graphic,BigWords,
 S05_10,CH4,328.03,334.97,footage,E2-BIZ-092,Streets of a big city at night
 S06_01,CH5,334.97,341.61,graphic,CaseTimeline,
-S06_02,CH5,341.61,349.52,footage,E2-BIZ-014,Reflection of a screen in glasses
+S06_02,CH5,341.61,349.52,footage,MOOD-113,Lights of Human Activity Shine in NASA's Image of Earth at Night
 S06_03,CH5,349.52,356.91,graphic,CaseTimeline,
 S06_04,CH5,356.91,362.82,footage,BIZ-043,Floor of London's financial district
 S06_05,CH5,362.82,373.57,graphic,CaseTimeline,
@@ -70,10 +70,10 @@ S06_15,CH5,437.63,442.21,footage,E2-MOOD-004,Digital clock in the dark marking m
 S06_16,CH5,442.21,447.20,graphic,CaseTimeline,
 S06_17,CH5,447.20,451.94,graphic,BigWords,
 S06_18,CH5,451.94,461.84,footage,E2-MOOD-097,Black phone on laptop
-S07_01,CH6,461.84,463.04,footage,E2-MOOD-003,Person in the dark observing a lights image
-S07_02,CH6,463.04,466.51,graphic,BigWords,
+S07_01,CH6,461.84,465.24,footage,E2-MOOD-003,Person in the dark observing a lights image
+S07_02,CH6,465.24,466.51,graphic,BigWords,
 S07_03,CH6,466.51,483.84,graphic,AllegedVsKnown,What we actually know
-S07_04,CH6,483.84,497.67,footage,E2-BIZ-014,Reflection of a screen in glasses
+S07_04,CH6,483.84,497.67,footage,E2-BIZ-106,"Touring the city at night, timelapse"
 S07_05,CH6,497.67,500.17,footage,E2-BIZ-092,Streets of a big city at night
 S07_06,CH6,500.17,514.54,graphic,AllegedVsKnown,Who is looking at what
 S07_07,CH6,514.54,526.24,footage,BIZ-043,Floor of London's financial district

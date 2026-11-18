@@ -175,7 +175,7 @@ scene("S04", "CH3", "The Empire", [
     F("E2-BIZ-024", "Silhouettes shaking hands", at="L304", w=1),
     F("E2-MOOD-003", "Figure in the dark", w=0.8),
     G("BigWords", {"lines": ["CHINA."], "accent": "CHINA."}, at="L305", offset=2.4, w=1),
-    G("ColumnChart", {"kicker": "Nvidia revenue from China", "title": "Share of total revenue, by customer headquarters", "unit": "%", "cols": [
+    G("ColumnChart", {"kicker": "Nvidia revenue from China", "title": "China's share of revenue", "unit": "%", "cols": [
         {"label": "FY2025", "value": 19.2, "display": "19%", "highlight": True}, {"label": "FY2026", "value": 9.1, "display": "9%"}]}, at="L306", w=1),
     F("E2-BIZ-102", "Night drive through city traffic", at="L307", w=1),
 ], overlays=[chapter(3, "THE EMPIRE"), {"component": "CornerStat", "at": "L306", "offset": 7.5, "dur": 4.5, "props": {"value": "$0", "label": "China data-centre chip sales in Nvidia's outlook"}}],
@@ -225,7 +225,7 @@ scene("S06", "CH5", "Fifteen Days", [
     V("L515", "Days later, Reuters reported a relationship with yet another Nvidia employee. Again, Nvidia declined to comment.", pause=0.8),
 ], [
     G("CaseTimeline", case(0), w=1),
-    F("E2-BIZ-014", "Screen reflected in glasses", at="L502", offset=3.0, w=1),
+    F("MOOD-113", "Earth at night from orbit", at="L502", offset=3.0, w=1, **{"in": 40}),
     G("CaseTimeline", case(1), at="L503", w=1),
     F("BIZ-043", "Financial district, silhouettes", w=0.8, **{"in": 14}),
     G("CaseTimeline", case(2), at="L504", w=1),
@@ -262,10 +262,10 @@ scene("S07", "CH6", "What We Actually Know", [
     V("L611", "The board's answer: it does “not intend to reinstate” him.", say="The board's answer. It does not intend to reinstate him.", pause=0.9),
 ], [
     F("E2-MOOD-003", "Figure in the dark", w=1, dim=0.2),
-    G("BigWords", {"lines": ["A HONEY TRAP?"], "accent": "A HONEY TRAP?"}, at="L601", offset=0.8, w=1),
+    G("BigWords", {"lines": ["A HONEY TRAP?"], "accent": "A HONEY TRAP?"}, at="L601", offset=3.0, w=1),
     G("AllegedVsKnown", {"kicker": "The spy question", "title": "What we actually know", "left": ["US officials suspected an intelligence link (NYT)", "Singapore and Taiwan concerns (WSJ)", "Further relationships with employees (NYT, Reuters)"],
         "right": ["She has not been charged, anywhere", "DOJ: “no conclusions”", "China: the claims are “a smear”", "Board: no reason to believe secrets were compromised"]}, at="L602", w=3),
-    F("E2-BIZ-014", "Screen reflected in glasses", at="L604", offset=4.0, w=1),
+    F("E2-BIZ-106", "City at night, timelapse", at="L604", offset=4.0, w=1, **{"in": 8}),
     F("E2-BIZ-092", "City streets at night", at="L606", w=1),
     G("AllegedVsKnown", {"kicker": "The investigations", "title": "Who is looking at what", "leftTitle": "UNDER WAY", "rightTitle": "NOT ESTABLISHED",
         "left": ["DOJ: criminal case into Megaspeed", "SEC: inquiry (reported by WSJ)", "Malaysia: chip re-export check", "House: closed-door interview, 1 Dec"],

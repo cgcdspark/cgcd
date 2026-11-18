@@ -13,10 +13,10 @@ export const BigWords: React.FC<{lines: string[]; accent?: string; dur: number; 
   const {fps} = useVideoConfig();
   const o = outro(frame, dur, 10);
   return (
-    <AbsoluteFill style={{background: C.black, justifyContent: 'center', alignItems: 'center', opacity: o}}>
+    <AbsoluteFill style={{background: `radial-gradient(ellipse at 50% 45%, ${C.navy2} 0%, ${C.navy} 45%, ${C.black} 100%)`, justifyContent: 'center', alignItems: 'center', opacity: o}}>
       <div style={{textAlign: 'center'}}>
         {lines.map((l, i) => {
-          const s = pop(frame, fps, 3 + i * 9);
+          const s = i === 0 ? Math.max(0.55, pop(frame, fps, 0)) : pop(frame, fps, 2 + i * 8);
           return (
             <div key={i} style={{fontFamily: F.head, fontWeight: 800, fontSize: lines.length > 2 ? 120 : 170, lineHeight: 0.95, letterSpacing: '-0.035em', color: accent && l.includes(accent) ? A : C.off, opacity: s, transform: `scale(${1.08 - 0.08 * s})`}}>
               {l}

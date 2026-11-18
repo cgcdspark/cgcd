@@ -620,7 +620,7 @@
    "component": "ColumnChart",
    "props": {
     "kicker": "Nvidia revenue from China",
-    "title": "Share of total revenue, by customer headquarters",
+    "title": "China's share of revenue",
     "unit": "%",
     "cols": [
      {
@@ -904,8 +904,8 @@
    "type": "footage",
    "from": 8540,
    "dur": 198,
-   "src": "footage/E2-BIZ-014.mp4",
-   "startFrom": 0,
+   "src": "footage/MOOD-113.mp4",
+   "startFrom": 1000,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,
@@ -1348,7 +1348,7 @@
    "id": "S07_01",
    "type": "footage",
    "from": 11538,
-   "dur": 38,
+   "dur": 93,
    "src": "footage/E2-MOOD-003.mp4",
    "startFrom": 0,
    "motion": "none",
@@ -1359,8 +1359,8 @@
   {
    "id": "S07_02",
    "type": "graphic",
-   "from": 11576,
-   "dur": 87,
+   "from": 11631,
+   "dur": 32,
    "component": "BigWords",
    "props": {
     "lines": [
@@ -1398,8 +1398,8 @@
    "type": "footage",
    "from": 12096,
    "dur": 346,
-   "src": "footage/E2-BIZ-014.mp4",
-   "startFrom": 0,
+   "src": "footage/E2-BIZ-106.mp4",
+   "startFrom": 2,
    "motion": "none",
    "xfade": 0,
    "letterbox": false,

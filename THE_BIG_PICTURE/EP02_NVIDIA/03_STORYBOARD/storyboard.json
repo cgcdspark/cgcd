@@ -939,7 +939,7 @@
      "graphic": "ColumnChart",
      "props": {
       "kicker": "Nvidia revenue from China",
-      "title": "Share of total revenue, by customer headquarters",
+      "title": "China's share of revenue",
       "unit": "%",
       "cols": [
        {
@@ -1382,10 +1382,11 @@
      "w": 1
     },
     {
-     "asset": "E2-BIZ-014",
-     "need": "Screen reflected in glasses",
+     "asset": "MOOD-113",
+     "need": "Earth at night from orbit",
      "w": 1,
      "offset": 3.0,
+     "in": 40,
      "at": "L502"
     },
     {
@@ -1898,7 +1899,7 @@
       "accent": "A HONEY TRAP?"
      },
      "w": 1,
-     "offset": 0.8,
+     "offset": 3.0,
      "at": "L601"
     },
     {
@@ -1922,10 +1923,11 @@
      "at": "L602"
     },
     {
-     "asset": "E2-BIZ-014",
-     "need": "Screen reflected in glasses",
+     "asset": "E2-BIZ-106",
+     "need": "City at night, timelapse",
      "w": 1,
      "offset": 4.0,
+     "in": 8,
      "at": "L604"
     },
     {
