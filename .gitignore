@@ -1,0 +1,15 @@
+node_modules/
+__pycache__/
+.venv/
+THE_BIG_PICTURE/_models/
+THE_BIG_PICTURE/04_FOOTAGE/raw/
+THE_BIG_PICTURE/05_IMAGES/raw/
+THE_BIG_PICTURE/pipeline/remotion/public/footage/
+THE_BIG_PICTURE/pipeline/remotion/public/stills/
+THE_BIG_PICTURE/pipeline/remotion/out/
+THE_BIG_PICTURE/06_AUDIO/vo/*.wav
+THE_BIG_PICTURE/06_AUDIO/stems/
+THE_BIG_PICTURE/06_AUDIO/*.wav
+THE_BIG_PICTURE/06_AUDIO/music/
+THE_BIG_PICTURE/06_AUDIO/sfx/
+THE_BIG_PICTURE/09_RENDER/*.mp4

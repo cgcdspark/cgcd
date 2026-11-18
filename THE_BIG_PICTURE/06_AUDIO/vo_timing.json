@@ -1,0 +1,558 @@
+{
+ "total": 502.0,
+ "lines": [
+  {
+   "id": "L001",
+   "scene": "S00",
+   "start": 1.2,
+   "end": 5.403,
+   "text": "Every time you ask a chatbot a question, something happens that you never see."
+  },
+  {
+   "id": "L002",
+   "scene": "S00",
+   "start": 5.853,
+   "end": 11.154,
+   "text": "Somewhere, in a building the size of several football pitches, thousands of chips run a little hotter."
+  },
+  {
+   "id": "L003",
+   "scene": "S00",
+   "start": 11.504,
+   "end": 16.947,
+   "text": "Pumps push coolant through the racks. And beyond the fence line, a power grid strains to keep up."
+  },
+  {
+   "id": "L004",
+   "scene": "S00",
+   "start": 17.547,
+   "end": 22.984,
+   "text": "We talk about artificial intelligence as if it were weightless. Software. Code. The cloud."
+  },
+  {
+   "id": "L005",
+   "scene": "S00",
+   "start": 23.484,
+   "end": 27.817,
+   "text": "But the AI boom runs on concrete, copper, steel and electricity."
+  },
+  {
+   "id": "L006",
+   "scene": "S00",
+   "start": 28.317,
+   "end": 32.911,
+   "text": "And some of its biggest winners make nothing you would ever call artificial intelligence."
+  },
+  {
+   "id": "L010",
+   "scene": "S02",
+   "start": 39.911,
+   "end": 42.519,
+   "text": "Follow the money, and it starts with four companies."
+  },
+  {
+   "id": "L011",
+   "scene": "S02",
+   "start": 42.919,
+   "end": 51.971,
+   "text": "In their latest financial years, Microsoft, Alphabet, Amazon and Meta together spent more than four hundred billion dollars on capital expenditure."
+  },
+  {
+   "id": "L012",
+   "scene": "S02",
+   "start": 52.321,
+   "end": 59.61,
+   "text": "And they are accelerating. Amazon alone expects to spend around two hundred and twenty billion dollars in 2026."
+  },
+  {
+   "id": "L013",
+   "scene": "S02",
+   "start": 60.01,
+   "end": 64.648,
+   "text": "Most of that money pays for one thing: data centres, filled with AI chips."
+  },
+  {
+   "id": "L020",
+   "scene": "S03",
+   "start": 65.848,
+   "end": 69.208,
+   "text": "To see who captures that money, picture AI as a stack."
+  },
+  {
+   "id": "L021",
+   "scene": "S03",
+   "start": 69.608,
+   "end": 75.666,
+   "text": "At the top, the applications and models. Below them, the chips. Then the factories that make the chips."
+  },
+  {
+   "id": "L022",
+   "scene": "S03",
+   "start": 75.966,
+   "end": 82.93,
+   "text": "The data centres that house them. The power stations that feed them. The lines and substations that deliver that power."
+  },
+  {
+   "id": "L023",
+   "scene": "S03",
+   "start": 83.23,
+   "end": 88.804,
+   "text": "And at the very bottom, the transformers, switchgear and cables that make all of it physically possible."
+  },
+  {
+   "id": "L024",
+   "scene": "S03",
+   "start": 89.304,
+   "end": 93.437,
+   "text": "Most of the attention sits at the top. This story goes all the way down."
+  },
+  {
+   "id": "L030",
+   "scene": "S04",
+   "start": 95.437,
+   "end": 97.469,
+   "text": "The most visible winner is Nvidia."
+  },
+  {
+   "id": "L031",
+   "scene": "S04",
+   "start": 97.819,
+   "end": 105.34,
+   "text": "In the three months to October 2026, it reported revenue of almost one hundred and sixteen billion dollars."
+  },
+  {
+   "id": "L032",
+   "scene": "S04",
+   "start": 105.64,
+   "end": 113.091,
+   "text": "More than ninety percent of it came from data centres. And it kept roughly seventy-five cents of every dollar as gross profit."
+  },
+  {
+   "id": "L033",
+   "scene": "S04",
+   "start": 113.541,
+   "end": 116.855,
+   "text": "But Nvidia does not make its own chips. It designs them."
+  },
+  {
+   "id": "L040",
+   "scene": "S05",
+   "start": 117.655,
+   "end": 123.109,
+   "text": "Manufacturing goes to Taiwan Semiconductor Manufacturing Company, or TSMC."
+  },
+  {
+   "id": "L041",
+   "scene": "S05",
+   "start": 123.409,
+   "end": 131.265,
+   "text": "By one industry estimate, it took nearly three-quarters of all contract chipmaking revenue in the second quarter of 2026."
+  },
+  {
+   "id": "L042",
+   "scene": "S05",
+   "start": 131.565,
+   "end": 142.041,
+   "text": "High-performance computing now makes up about two-thirds of its sales. And it has told investors it plans to spend up to sixty-four billion dollars on new capacity this year."
+  },
+  {
+   "id": "L043",
+   "scene": "S05",
+   "start": 142.541,
+   "end": 145.958,
+   "text": "TSMC, in turn, relies on a single Dutch company."
+  },
+  {
+   "id": "L044",
+   "scene": "S05",
+   "start": 146.258,
+   "end": 153.554,
+   "text": "ASML is the world's only maker of the extreme ultraviolet lithography machines used to print the most advanced chips."
+  },
+  {
+   "id": "L045",
+   "scene": "S05",
+   "start": 153.854,
+   "end": 158.014,
+   "text": "The newest models are reported to cost hundreds of millions of dollars each."
+  },
+  {
+   "id": "L046",
+   "scene": "S05",
+   "start": 158.514,
+   "end": 170.038,
+   "text": "Then there is memory. SK hynix makes the high-bandwidth memory stacked beside each AI processor. In its latest quarter, it reported an operating margin of around eighty percent."
+  },
+  {
+   "id": "L047",
+   "scene": "S05",
+   "start": 170.438,
+   "end": 179.79,
+   "text": "And the finished pieces must be bonded together, in a process called advanced packaging. Another bottleneck, and another place TSMC is pouring money."
+  },
+  {
+   "id": "L050",
+   "scene": "S06",
+   "start": 180.79,
+   "end": 182.803,
+   "text": "Each link captures value differently."
+  },
+  {
+   "id": "L051",
+   "scene": "S06",
+   "start": 183.103,
+   "end": 190.735,
+   "text": "The designer earns the richest margins. The manufacturer carries the heaviest capital bill. The toolmaker holds a monopoly."
+  },
+  {
+   "id": "L052",
+   "scene": "S06",
+   "start": 191.135,
+   "end": 196.778,
+   "text": "But all of them depend on the same customers, and those customers are building something enormous."
+  },
+  {
+   "id": "L060",
+   "scene": "S07",
+   "start": 198.478,
+   "end": 202.658,
+   "text": "A chip is only useful inside a building that can power it and cool it."
+  },
+  {
+   "id": "L061",
+   "scene": "S07",
+   "start": 203.008,
+   "end": 208.392,
+   "text": "And an AI data centre is not a warehouse of computers. It is an industrial machine."
+  },
+  {
+   "id": "L062",
+   "scene": "S07",
+   "start": 208.842,
+   "end": 219.058,
+   "text": "Nvidia's latest rack-scale systems are specified at around one hundred and twenty kilowatts per rack. That's many times what a typical server rack was built for."
+  },
+  {
+   "id": "L063",
+   "scene": "S07",
+   "start": 219.358,
+   "end": 224.008,
+   "text": "Air can no longer carry that much heat away. So liquid is piped straight to the chips."
+  },
+  {
+   "id": "L070",
+   "scene": "S08",
+   "start": 224.808,
+   "end": 228.48,
+   "text": "That has turned cooling and power equipment into a growth industry."
+  },
+  {
+   "id": "L071",
+   "scene": "S08",
+   "start": 228.78,
+   "end": 236.858,
+   "text": "Vertiv, which makes both, reported a sixty-one percent jump in sales in its latest quarter, and said organic orders more than doubled."
+  },
+  {
+   "id": "L072",
+   "scene": "S08",
+   "start": 237.158,
+   "end": 243.792,
+   "text": "Eaton, which makes electrical equipment, says the backlog in its electrical business is up forty-six percent."
+  },
+  {
+   "id": "L073",
+   "scene": "S08",
+   "start": 244.242,
+   "end": 255.955,
+   "text": "McKinsey estimates that of the money going into AI data centres this decade, about sixty percent goes on chips and hardware, and about a quarter on power, cooling and electrical equipment."
+  },
+  {
+   "id": "L074",
+   "scene": "S08",
+   "start": 256.455,
+   "end": 266.412,
+   "text": "And space is still scarce. In North America's main markets, the property firm CBRE puts vacancy at a record low of 1.4 percent."
+  },
+  {
+   "id": "L075",
+   "scene": "S08",
+   "start": 266.712,
+   "end": 279.237,
+   "text": "Some of it is being built on borrowed money. CoreWeave, which rents out Nvidia chips, reports a contract backlog of more than one hundred and thirty billion dollars, and debt of around forty-seven billion."
+  },
+  {
+   "id": "L080",
+   "scene": "S09",
+   "start": 280.837,
+   "end": 284.364,
+   "text": "Which brings us to the problem that no one can code their way around."
+  },
+  {
+   "id": "L081",
+   "scene": "S09",
+   "start": 284.964,
+   "end": 285.84,
+   "text": "Electricity."
+  },
+  {
+   "id": "L082",
+   "scene": "S09",
+   "start": 286.64,
+   "end": 296.423,
+   "text": "In 2024, the world's data centres used around four hundred and fifteen terawatt-hours of electricity. About one and a half percent of global demand."
+  },
+  {
+   "id": "L083",
+   "scene": "S09",
+   "start": 296.723,
+   "end": 301.511,
+   "text": "The International Energy Agency expects that to more than double by 2030."
+  },
+  {
+   "id": "L084",
+   "scene": "S09",
+   "start": 301.811,
+   "end": 308.845,
+   "text": "In the United States, data centres are set to account for nearly half of all growth in electricity demand this decade."
+  },
+  {
+   "id": "L090",
+   "scene": "S10",
+   "start": 309.645,
+   "end": 316.031,
+   "text": "First, the power has to be generated. Big Tech is now signing deals to restart nuclear reactors."
+  },
+  {
+   "id": "L091",
+   "scene": "S10",
+   "start": 316.331,
+   "end": 323.212,
+   "text": "Microsoft agreed to buy the output of Three Mile Island's Unit One for twenty years, if it comes back online."
+  },
+  {
+   "id": "L092",
+   "scene": "S10",
+   "start": 323.612,
+   "end": 332.96,
+   "text": "Gas turbines are in such demand that GE Vernova's gas backlog and reserved production slots have reached one hundred and twenty-two gigawatts."
+  },
+  {
+   "id": "L093",
+   "scene": "S10",
+   "start": 333.46,
+   "end": 337.611,
+   "text": "Then the power has to be delivered. And here, the bottleneck is physical."
+  },
+  {
+   "id": "L094",
+   "scene": "S10",
+   "start": 338.011,
+   "end": 345.761,
+   "text": "Berkeley Lab found that the typical American power project built in 2025 waited around five years to connect to the grid."
+  },
+  {
+   "id": "L095",
+   "scene": "S10",
+   "start": 346.161,
+   "end": 357.329,
+   "text": "And every connection needs transformers. A large power transformer can weigh hundreds of tonnes, and the wait for one is commonly two years or more. For the largest units, up to four."
+  },
+  {
+   "id": "L096",
+   "scene": "S10",
+   "start": 357.629,
+   "end": 363.698,
+   "text": "Prices have climbed too: up sixty to eighty percent since 2020, according to Wood Mackenzie."
+  },
+  {
+   "id": "L100",
+   "scene": "S11",
+   "start": 364.698,
+   "end": 367.508,
+   "text": "This is where some of the quietest fortunes are being made."
+  },
+  {
+   "id": "L101",
+   "scene": "S11",
+   "start": 367.908,
+   "end": 378.701,
+   "text": "GE Vernova's order backlog has reached one hundred and ninety-seven billion dollars. Siemens Energy's stands at a record one hundred and sixty-four billion euros."
+  },
+  {
+   "id": "L102",
+   "scene": "S11",
+   "start": 379.001,
+   "end": 391.204,
+   "text": "Quanta Services, which builds power lines and substations, has a record backlog of nearly sixty-four billion dollars. And cable maker Prysmian posted record earnings in 2025."
+  },
+  {
+   "id": "L103",
+   "scene": "S11",
+   "start": 391.604,
+   "end": 397.057,
+   "text": "They do not sell intelligence. They sell the physical capacity that intelligence depends on."
+  },
+  {
+   "id": "L110",
+   "scene": "S12",
+   "start": 398.857,
+   "end": 400.2,
+   "text": "So who actually wins?"
+  },
+  {
+   "id": "L111",
+   "scene": "S12",
+   "start": 400.8,
+   "end": 411.88,
+   "text": "The chip designers capture the richest margins today, but they depend on a handful of buyers. Earlier this year, three direct customers accounted for more than half of Nvidia's revenue."
+  },
+  {
+   "id": "L112",
+   "scene": "S12",
+   "start": 412.23,
+   "end": 421.174,
+   "text": "The foundries and toolmakers hold positions that are almost impossible to copy, but they must keep investing tens of billions just to stay ahead."
+  },
+  {
+   "id": "L113",
+   "scene": "S12",
+   "start": 421.524,
+   "end": 428.193,
+   "text": "The cloud giants carry the biggest bill of all, and investors are watching how much of that spending turns into profit."
+  },
+  {
+   "id": "L114",
+   "scene": "S12",
+   "start": 428.543,
+   "end": 434.954,
+   "text": "The grid's equipment makers have something rarer: order books that stretch for years, from customers who cannot wait."
+  },
+  {
+   "id": "L115",
+   "scene": "S12",
+   "start": 435.354,
+   "end": 455.826,
+   "text": "And someone has to pay. On America's largest grid, run by PJM, the price of capacity has jumped more than tenfold in three years. Its independent market monitor attributes more than twenty-three billion dollars of added capacity costs to data centre demand. Costs that are passed on to electricity customers."
+  },
+  {
+   "id": "L116",
+   "scene": "S12",
+   "start": 456.276,
+   "end": 465.041,
+   "text": "None of this guarantees the future. Backlogs can shrink. Forecasts can be wrong. And capacity built for a boom can sit idle in a downturn."
+  },
+  {
+   "id": "L120",
+   "scene": "S13",
+   "start": 466.941,
+   "end": 470.987,
+   "text": "The AI revolution is usually told as a story about software."
+  },
+  {
+   "id": "L121",
+   "scene": "S13",
+   "start": 471.437,
+   "end": 477.6,
+   "text": "But follow the money, and it leads somewhere else. To chip plants in Taiwan and machine makers in the Netherlands."
+  },
+  {
+   "id": "L122",
+   "scene": "S13",
+   "start": 477.9,
+   "end": 482.892,
+   "text": "To cooling plants and cable mills. To turbines, transformers and power lines."
+  },
+  {
+   "id": "L123",
+   "scene": "S13",
+   "start": 483.392,
+   "end": 487.553,
+   "text": "The intelligence may be artificial. The infrastructure is very real."
+  },
+  {
+   "id": "L124",
+   "scene": "S13",
+   "start": 488.153,
+   "end": 492.6,
+   "text": "And the companies building it may turn out to be the hidden winners of the AI boom."
+  }
+ ],
+ "scenes": [
+  {
+   "id": "S00",
+   "start": 0.0,
+   "end": 34.511
+  },
+  {
+   "id": "S01",
+   "start": 34.511,
+   "end": 39.511
+  },
+  {
+   "id": "S02",
+   "start": 39.511,
+   "end": 65.648
+  },
+  {
+   "id": "S03",
+   "start": 65.648,
+   "end": 95.037
+  },
+  {
+   "id": "S04",
+   "start": 95.037,
+   "end": 117.655
+  },
+  {
+   "id": "S05",
+   "start": 117.655,
+   "end": 180.79
+  },
+  {
+   "id": "S06",
+   "start": 180.79,
+   "end": 198.078
+  },
+  {
+   "id": "S07",
+   "start": 198.078,
+   "end": 224.808
+  },
+  {
+   "id": "S08",
+   "start": 224.808,
+   "end": 280.237
+  },
+  {
+   "id": "S09",
+   "start": 280.237,
+   "end": 309.645
+  },
+  {
+   "id": "S10",
+   "start": 309.645,
+   "end": 364.698
+  },
+  {
+   "id": "S11",
+   "start": 364.698,
+   "end": 398.457
+  },
+  {
+   "id": "S12",
+   "start": 398.457,
+   "end": 466.141
+  },
+  {
+   "id": "S13",
+   "start": 466.141,
+   "end": 495.0
+  },
+  {
+   "id": "S14",
+   "start": 495.0,
+   "end": 502.0
+  }
+ ]
+}

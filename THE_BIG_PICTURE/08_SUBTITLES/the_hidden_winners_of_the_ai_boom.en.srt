@@ -1,0 +1,479 @@
+1
+00:00:01,200 --> 00:00:05,403
+Every time you ask a chatbot a question, something happens that you never see.
+
+2
+00:00:05,853 --> 00:00:09,107
+Somewhere, in a building the size of several football pitches,
+
+3
+00:00:09,107 --> 00:00:11,154
+thousands of chips run a little hotter.
+
+4
+00:00:11,504 --> 00:00:13,602
+Pumps push coolant through the racks.
+
+5
+00:00:13,602 --> 00:00:16,947
+And beyond the fence line, a power grid strains to keep up.
+
+6
+00:00:17,547 --> 00:00:21,396
+We talk about artificial intelligence as if it were weightless.
+
+7
+00:00:21,396 --> 00:00:22,984
+Software. Code. The cloud.
+
+8
+00:00:23,484 --> 00:00:27,817
+But the AI boom runs on concrete, copper, steel and electricity.
+
+9
+00:00:28,317 --> 00:00:30,614
+And some of its biggest winners make nothing
+
+10
+00:00:30,614 --> 00:00:32,911
+you would ever call artificial intelligence.
+
+11
+00:00:39,911 --> 00:00:42,519
+Follow the money, and it starts with four companies.
+
+12
+00:00:42,919 --> 00:00:47,197
+In their latest financial years, Microsoft, Alphabet, Amazon and Meta
+
+13
+00:00:47,197 --> 00:00:51,971
+together spent more than four hundred billion dollars on capital expenditure.
+
+14
+00:00:52,321 --> 00:00:56,032
+And they are accelerating. Amazon alone expects to spend
+
+15
+00:00:56,032 --> 00:00:59,610
+around two hundred and twenty billion dollars in 2026.
+
+16
+00:01:00,010 --> 00:01:04,648
+Most of that money pays for one thing: data centres, filled with AI chips.
+
+17
+00:01:05,848 --> 00:01:09,208
+To see who captures that money, picture AI as a stack.
+
+18
+00:01:09,608 --> 00:01:12,696
+At the top, the applications and models. Below them,
+
+19
+00:01:12,696 --> 00:01:15,666
+the chips. Then the factories that make the chips.
+
+20
+00:01:15,966 --> 00:01:19,979
+The data centres that house them. The power stations that feed them.
+
+21
+00:01:19,979 --> 00:01:22,930
+The lines and substations that deliver that power.
+
+22
+00:01:23,230 --> 00:01:25,449
+And at the very bottom, the transformers,
+
+23
+00:01:25,449 --> 00:01:28,804
+switchgear and cables that make all of it physically possible.
+
+24
+00:01:29,304 --> 00:01:33,437
+Most of the attention sits at the top. This story goes all the way down.
+
+25
+00:01:35,437 --> 00:01:37,469
+The most visible winner is Nvidia.
+
+26
+00:01:37,819 --> 00:01:40,373
+In the three months to October 2026,
+
+27
+00:01:40,373 --> 00:01:45,340
+it reported revenue of almost one hundred and sixteen billion dollars.
+
+28
+00:01:45,640 --> 00:01:48,859
+More than ninety percent of it came from data centres.
+
+29
+00:01:48,859 --> 00:01:53,091
+And it kept roughly seventy-five cents of every dollar as gross profit.
+
+30
+00:01:53,541 --> 00:01:56,855
+But Nvidia does not make its own chips. It designs them.
+
+31
+00:01:57,655 --> 00:02:03,109
+Manufacturing goes to Taiwan Semiconductor Manufacturing Company, or TSMC.
+
+32
+00:02:03,409 --> 00:02:07,468
+By one industry estimate, it took nearly three-quarters of all
+
+33
+00:02:07,468 --> 00:02:11,265
+contract chipmaking revenue in the second quarter of 2026.
+
+34
+00:02:11,565 --> 00:02:15,828
+High-performance computing now makes up about two-thirds of its sales.
+
+35
+00:02:15,828 --> 00:02:18,813
+And it has told investors it plans to spend up to
+
+36
+00:02:18,813 --> 00:02:22,041
+sixty-four billion dollars on new capacity this year.
+
+37
+00:02:22,541 --> 00:02:25,958
+TSMC, in turn, relies on a single Dutch company.
+
+38
+00:02:26,258 --> 00:02:29,843
+ASML is the world's only maker of the extreme ultraviolet
+
+39
+00:02:29,843 --> 00:02:33,554
+lithography machines used to print the most advanced chips.
+
+40
+00:02:33,854 --> 00:02:38,014
+The newest models are reported to cost hundreds of millions of dollars each.
+
+41
+00:02:38,514 --> 00:02:42,597
+Then there is memory. SK hynix makes the high-bandwidth memory
+
+42
+00:02:42,597 --> 00:02:46,284
+stacked beside each AI processor. In its latest quarter,
+
+43
+00:02:46,284 --> 00:02:50,038
+it reported an operating margin of around eighty percent.
+
+44
+00:02:50,438 --> 00:02:55,304
+And the finished pieces must be bonded together, in a process called advanced
+
+45
+00:02:55,304 --> 00:02:59,790
+packaging. Another bottleneck, and another place TSMC is pouring money.
+
+46
+00:03:00,790 --> 00:03:02,803
+Each link captures value differently.
+
+47
+00:03:03,103 --> 00:03:05,543
+The designer earns the richest margins.
+
+48
+00:03:05,543 --> 00:03:10,735
+The manufacturer carries the heaviest capital bill. The toolmaker holds a monopoly.
+
+49
+00:03:11,135 --> 00:03:13,753
+But all of them depend on the same customers,
+
+50
+00:03:13,753 --> 00:03:16,778
+and those customers are building something enormous.
+
+51
+00:03:18,478 --> 00:03:22,658
+A chip is only useful inside a building that can power it and cool it.
+
+52
+00:03:23,008 --> 00:03:28,392
+And an AI data centre is not a warehouse of computers. It is an industrial machine.
+
+53
+00:03:28,842 --> 00:03:34,014
+Nvidia's latest rack-scale systems are specified at around one hundred and twenty
+
+54
+00:03:34,014 --> 00:03:39,058
+kilowatts per rack. That's many times what a typical server rack was built for.
+
+55
+00:03:39,358 --> 00:03:41,765
+Air can no longer carry that much heat away.
+
+56
+00:03:41,765 --> 00:03:44,008
+So liquid is piped straight to the chips.
+
+57
+00:03:44,808 --> 00:03:48,480
+That has turned cooling and power equipment into a growth industry.
+
+58
+00:03:48,780 --> 00:03:52,910
+Vertiv, which makes both, reported a sixty-one percent jump in sales
+
+59
+00:03:52,910 --> 00:03:56,858
+in its latest quarter, and said organic orders more than doubled.
+
+60
+00:03:57,158 --> 00:03:59,615
+Eaton, which makes electrical equipment,
+
+61
+00:03:59,615 --> 00:04:03,792
+says the backlog in its electrical business is up forty-six percent.
+
+62
+00:04:04,242 --> 00:04:09,028
+McKinsey estimates that of the money going into AI data centres this decade,
+
+63
+00:04:09,028 --> 00:04:11,988
+about sixty percent goes on chips and hardware,
+
+64
+00:04:11,988 --> 00:04:15,955
+and about a quarter on power, cooling and electrical equipment.
+
+65
+00:04:16,455 --> 00:04:21,117
+And space is still scarce. In North America's main markets,
+
+66
+00:04:21,117 --> 00:04:26,412
+the property firm CBRE puts vacancy at a record low of 1.4 percent.
+
+67
+00:04:26,712 --> 00:04:30,105
+Some of it is being built on borrowed money. CoreWeave,
+
+68
+00:04:30,105 --> 00:04:34,610
+which rents out Nvidia chips, reports a contract backlog of more than one
+
+69
+00:04:34,610 --> 00:04:39,237
+hundred and thirty billion dollars, and debt of around forty-seven billion.
+
+70
+00:04:40,837 --> 00:04:44,364
+Which brings us to the problem that no one can code their way around.
+
+71
+00:04:44,964 --> 00:04:45,840
+Electricity.
+
+72
+00:04:46,640 --> 00:04:51,299
+In 2024, the world's data centres used around four hundred and fifteen
+
+73
+00:04:51,299 --> 00:04:56,423
+terawatt-hours of electricity. About one and a half percent of global demand.
+
+74
+00:04:56,723 --> 00:05:01,511
+The International Energy Agency expects that to more than double by 2030.
+
+75
+00:05:01,811 --> 00:05:05,238
+In the United States, data centres are set to account for
+
+76
+00:05:05,238 --> 00:05:08,845
+nearly half of all growth in electricity demand this decade.
+
+77
+00:05:09,645 --> 00:05:12,132
+First, the power has to be generated.
+
+78
+00:05:12,132 --> 00:05:16,031
+Big Tech is now signing deals to restart nuclear reactors.
+
+79
+00:05:16,331 --> 00:05:19,963
+Microsoft agreed to buy the output of Three Mile Island's
+
+80
+00:05:19,963 --> 00:05:23,212
+Unit One for twenty years, if it comes back online.
+
+81
+00:05:23,612 --> 00:05:28,518
+Gas turbines are in such demand that GE Vernova's gas backlog and reserved
+
+82
+00:05:28,518 --> 00:05:32,960
+production slots have reached one hundred and twenty-two gigawatts.
+
+83
+00:05:33,460 --> 00:05:37,611
+Then the power has to be delivered. And here, the bottleneck is physical.
+
+84
+00:05:38,011 --> 00:05:41,757
+Berkeley Lab found that the typical American power project
+
+85
+00:05:41,757 --> 00:05:45,761
+built in 2025 waited around five years to connect to the grid.
+
+86
+00:05:46,161 --> 00:05:48,629
+And every connection needs transformers.
+
+87
+00:05:48,629 --> 00:05:53,072
+A large power transformer can weigh hundreds of tonnes, and the wait for
+
+88
+00:05:53,072 --> 00:05:57,329
+one is commonly two years or more. For the largest units, up to four.
+
+89
+00:05:57,629 --> 00:06:01,831
+Prices have climbed too: up sixty to eighty percent since 2020,
+
+90
+00:06:01,831 --> 00:06:03,698
+according to Wood Mackenzie.
+
+91
+00:06:04,698 --> 00:06:07,508
+This is where some of the quietest fortunes are being made.
+
+92
+00:06:07,908 --> 00:06:13,539
+GE Vernova's order backlog has reached one hundred and ninety-seven billion dollars.
+
+93
+00:06:13,539 --> 00:06:18,701
+Siemens Energy's stands at a record one hundred and sixty-four billion euros.
+
+94
+00:06:19,001 --> 00:06:23,116
+Quanta Services, which builds power lines and substations,
+
+95
+00:06:23,116 --> 00:06:27,231
+has a record backlog of nearly sixty-four billion dollars.
+
+96
+00:06:27,231 --> 00:06:31,204
+And cable maker Prysmian posted record earnings in 2025.
+
+97
+00:06:31,604 --> 00:06:33,402
+They do not sell intelligence.
+
+98
+00:06:33,402 --> 00:06:37,057
+They sell the physical capacity that intelligence depends on.
+
+99
+00:06:38,857 --> 00:06:40,200
+So who actually wins?
+
+100
+00:06:40,800 --> 00:06:44,009
+The chip designers capture the richest margins today,
+
+101
+00:06:44,009 --> 00:06:47,521
+but they depend on a handful of buyers. Earlier this year,
+
+102
+00:06:47,521 --> 00:06:51,880
+three direct customers accounted for more than half of Nvidia's revenue.
+
+103
+00:06:52,230 --> 00:06:57,137
+The foundries and toolmakers hold positions that are almost impossible to copy,
+
+104
+00:06:57,137 --> 00:07:01,174
+but they must keep investing tens of billions just to stay ahead.
+
+105
+00:07:01,524 --> 00:07:04,180
+The cloud giants carry the biggest bill of all,
+
+106
+00:07:04,180 --> 00:07:08,193
+and investors are watching how much of that spending turns into profit.
+
+107
+00:07:08,543 --> 00:07:11,251
+The grid's equipment makers have something rarer:
+
+108
+00:07:11,251 --> 00:07:14,954
+order books that stretch for years, from customers who cannot wait.
+
+109
+00:07:15,354 --> 00:07:19,516
+And someone has to pay. On America's largest grid, run by PJM,
+
+110
+00:07:19,516 --> 00:07:25,019
+the price of capacity has jumped more than tenfold in three years. Its independent
+
+111
+00:07:25,019 --> 00:07:30,523
+market monitor attributes more than twenty-three billion dollars of added capacity
+
+112
+00:07:30,523 --> 00:07:35,826
+costs to data centre demand. Costs that are passed on to electricity customers.
+
+113
+00:07:36,276 --> 00:07:41,394
+None of this guarantees the future. Backlogs can shrink. Forecasts can be wrong.
+
+114
+00:07:41,394 --> 00:07:45,041
+And capacity built for a boom can sit idle in a downturn.
+
+115
+00:07:46,941 --> 00:07:50,987
+The AI revolution is usually told as a story about software.
+
+116
+00:07:51,437 --> 00:07:54,164
+But follow the money, and it leads somewhere else.
+
+117
+00:07:54,164 --> 00:07:57,600
+To chip plants in Taiwan and machine makers in the Netherlands.
+
+118
+00:07:57,900 --> 00:08:02,892
+To cooling plants and cable mills. To turbines, transformers and power lines.
+
+119
+00:08:03,392 --> 00:08:07,553
+The intelligence may be artificial. The infrastructure is very real.
+
+120
+00:08:08,153 --> 00:08:12,600
+And the companies building it may turn out to be the hidden winners of the AI boom.

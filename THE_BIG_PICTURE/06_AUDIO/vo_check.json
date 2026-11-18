@@ -1,0 +1,410 @@
+[
+ {
+  "id": "L001",
+  "ratio": 1.0,
+  "said": "Every time you ask a chatbot a question, something happens that you never see.",
+  "heard": "Every time you ask a chatbot a question, something happens that you never see."
+ },
+ {
+  "id": "L002",
+  "ratio": 1.0,
+  "said": "Somewhere, in a building the size of several football pitches, thousands of chips run a little hotter.",
+  "heard": "Somewhere, in a building the size of several football pitches, thousands of chips run a little hotter."
+ },
+ {
+  "id": "L003",
+  "ratio": 1.0,
+  "said": "Pumps push coolant through the racks. And beyond the fence line, a power grid strains to keep up.",
+  "heard": "pumps push coolant through the racks, and beyond the fence line, a power grid strains to keep up."
+ },
+ {
+  "id": "L004",
+  "ratio": 1.0,
+  "said": "We talk about artificial intelligence as if it were weightless. Software. Code. The cloud.",
+  "heard": "We talk about artificial intelligence as if it were weightless, software, code, the cloud."
+ },
+ {
+  "id": "L005",
+  "ratio": 1.0,
+  "said": "But the AI boom runs on concrete, copper, steel and electricity.",
+  "heard": "But the AI boom runs on concrete, copper, steel, and electricity."
+ },
+ {
+  "id": "L006",
+  "ratio": 1.0,
+  "said": "And some of its biggest winners make nothing you would ever call artificial intelligence.",
+  "heard": "And some of its biggest winners make nothing you would ever call artificial intelligence."
+ },
+ {
+  "id": "L010",
+  "ratio": 1.0,
+  "said": "Follow the money, and it starts with four companies.",
+  "heard": "Follow the money, and it starts with four companies."
+ },
+ {
+  "id": "L011",
+  "ratio": 0.9,
+  "said": "In their latest financial years, Microsoft, Alphabet, Amazon and Meta together spent more than four hundred billion dollars on capital expenditure.",
+  "heard": "In their latest financial years, Microsoft, Alphabet, Amazon, and Meta together spent more than $400 billion on capital expenditure."
+ },
+ {
+  "id": "L012",
+  "ratio": 0.812,
+  "said": "And they are accelerating. Amazon alone expects to spend around two hundred and twenty billion dollars in twenty twenty-six.",
+  "heard": "and they are accelerating. Amazon alone expects to spend around $220 billion in 2026."
+ },
+ {
+  "id": "L013",
+  "ratio": 0.929,
+  "said": "Most of that money pays for one thing: data centres, filled with AI chips.",
+  "heard": "Most of that money pays for one thing, data centers filled with AI chips."
+ },
+ {
+  "id": "L020",
+  "ratio": 1.0,
+  "said": "To see who captures that money, picture AI as a stack.",
+  "heard": "To see who captures that money, picture AI as a stack."
+ },
+ {
+  "id": "L021",
+  "ratio": 1.0,
+  "said": "At the top, the applications and models. Below them, the chips. Then the factories that make the chips.",
+  "heard": "At the top, the applications and models. Below them, the chips. Then the factories that make the chips."
+ },
+ {
+  "id": "L022",
+  "ratio": 0.95,
+  "said": "The data centres that house them. The power stations that feed them. The lines and substations that deliver that power.",
+  "heard": "The data centers that house them. The power stations that feed them. The lines and substations that deliver that power."
+ },
+ {
+  "id": "L023",
+  "ratio": 0.914,
+  "said": "And at the very bottom, the transformers, switchgear and cables that make all of it physically possible.",
+  "heard": "And at the very bottom, the transformers, switch gear, and cables that make all of it physically possible."
+ },
+ {
+  "id": "L024",
+  "ratio": 1.0,
+  "said": "Most of the attention sits at the top. This story goes all the way down.",
+  "heard": "most of the attention sits at the top. This story goes all the way down."
+ },
+ {
+  "id": "L030",
+  "ratio": 1.0,
+  "said": "The most visible winner is Nvidia.",
+  "heard": "The most visible winner is NVIDIA."
+ },
+ {
+  "id": "L031",
+  "ratio": 0.812,
+  "said": "In the three months to October 2026, it reported revenue of almost one hundred and sixteen billion dollars.",
+  "heard": "In the three months to October 2026, it reported revenue of almost $116 billion."
+ },
+ {
+  "id": "L032",
+  "ratio": 0.818,
+  "said": "More than ninety percent of it came from data centres. And it kept roughly seventy-five cents of every dollar as gross profit.",
+  "heard": "More than 90% of it came from data centers, and it kept roughly 75 cents of every dollar as gross profit."
+ },
+ {
+  "id": "L033",
+  "ratio": 1.0,
+  "said": "But Nvidia does not make its own chips. It designs them.",
+  "heard": "But NVIDIA does not make its own chips. It designs them."
+ },
+ {
+  "id": "L040",
+  "ratio": 1.0,
+  "said": "Manufacturing goes to Taiwan Semiconductor Manufacturing Company, or TSMC.",
+  "heard": "Manufacturing goes to Taiwan Semiconductor Manufacturing Company, or TSMC."
+ },
+ {
+  "id": "L041",
+  "ratio": 1.0,
+  "said": "By one industry estimate, it took nearly three-quarters of all contract chipmaking revenue in the second quarter of twenty twenty-six.",
+  "heard": "By one industry estimate, it took nearly three quarters of all contract chipmaking revenue in the second quarter of 2026."
+ },
+ {
+  "id": "L042",
+  "ratio": 0.935,
+  "said": "High-performance computing now makes up about two-thirds of its sales. And it has told investors it plans to spend up to sixty-four billion dollars on new capacity this year.",
+  "heard": "High-performance computing now makes up about two-thirds of its sales. And it has told investors it plans to spend up to $64 billion on new capacity this year."
+ },
+ {
+  "id": "L043",
+  "ratio": 1.0,
+  "said": "TSMC, in turn, relies on a single Dutch company.",
+  "heard": "TSMC, in turn, relies on a single Dutch company."
+ },
+ {
+  "id": "L044",
+  "ratio": 0.95,
+  "said": "ASML is the world's only maker of the extreme ultraviolet lithography machines used to print the most advanced chips.",
+  "heard": "Asmal is the world's only maker of the extreme ultraviolet lithography machines, used to print the most advanced chips."
+ },
+ {
+  "id": "L045",
+  "ratio": 1.0,
+  "said": "The newest models are reported to cost hundreds of millions of dollars each.",
+  "heard": "The newest models are reported to cost hundreds of millions of dollars each."
+ },
+ {
+  "id": "L046",
+  "ratio": 0.947,
+  "said": "Then there is memory. SK hynix makes the high-bandwidth memory stacked beside each AI processor. In its latest quarter, it reported an operating margin of around eighty percent.",
+  "heard": "Then there is memory. SK-Hynix makes the high bandwidth memory stacked beside each AI processor. In its latest quarter, it reported an operating margin of around 80%."
+ },
+ {
+  "id": "L047",
+  "ratio": 1.0,
+  "said": "And the finished pieces must be bonded together, in a process called advanced packaging. Another bottleneck, and another place TSMC is pouring money.",
+  "heard": "And the finished pieces must be bonded together, in a process called advanced packaging. Another bottleneck, and another place TSMC is pouring money."
+ },
+ {
+  "id": "L050",
+  "ratio": 1.0,
+  "said": "Each link captures value differently.",
+  "heard": "Each link captures value differently."
+ },
+ {
+  "id": "L051",
+  "ratio": 0.919,
+  "said": "The designer earns the richest margins. The manufacturer carries the heaviest capital bill. The toolmaker holds a monopoly.",
+  "heard": "The designer earns the richest margins. The manufacturer carries the heaviest capital bill. The tool maker holds a monopoly."
+ },
+ {
+  "id": "L052",
+  "ratio": 1.0,
+  "said": "But all of them depend on the same customers, and those customers are building something enormous.",
+  "heard": "but all of them depend on the same customers, and those customers are building something enormous."
+ },
+ {
+  "id": "L060",
+  "ratio": 1.0,
+  "said": "A chip is only useful inside a building that can power it and cool it.",
+  "heard": "A chip is only useful inside a building that can power it and cool it."
+ },
+ {
+  "id": "L061",
+  "ratio": 0.938,
+  "said": "And an AI data centre is not a warehouse of computers. It is an industrial machine.",
+  "heard": "and an AI data center is not a warehouse of computers. It is an industrial machine."
+ },
+ {
+  "id": "L062",
+  "ratio": 0.909,
+  "said": "Nvidia's latest rack-scale systems are specified at around one hundred and twenty kilowatts per rack. That's many times what a typical server rack was built for.",
+  "heard": "NVIDIA's latest rack scale systems are specified at around 120 kilowatts per rack. That's many times what a typical server rack was built for."
+ },
+ {
+  "id": "L063",
+  "ratio": 1.0,
+  "said": "Air can no longer carry that much heat away. So liquid is piped straight to the chips.",
+  "heard": "Air can no longer carry that much heat away, so liquid is piped straight to the chips."
+ },
+ {
+  "id": "L070",
+  "ratio": 1.0,
+  "said": "That has turned cooling and power equipment into a growth industry.",
+  "heard": "That has turned cooling and power equipment into a growth industry."
+ },
+ {
+  "id": "L071",
+  "ratio": 0.889,
+  "said": "Vertiv, which makes both, reported a sixty-one percent jump in sales in its latest quarter, and said organic orders more than doubled.",
+  "heard": "Vertive, which makes both, reported a 61 percent jump in sales in its latest quarter and said organic orders more than doubled."
+ },
+ {
+  "id": "L072",
+  "ratio": 0.909,
+  "said": "Eaton, which makes electrical equipment, says the backlog in its electrical business is up forty-six percent.",
+  "heard": "Eaton, which makes electrical equipment, says the backlog in its electrical business is up 46 percent."
+ },
+ {
+  "id": "L073",
+  "ratio": 0.935,
+  "said": "McKinsey estimates that of the money going into AI data centres this decade, about sixty percent goes on chips and hardware, and about a quarter on power, cooling and electrical equipment.",
+  "heard": "McKinsey estimates that of the money going into AI data centers this decade. About 60 percent goes on chips and hardware, and about a quarter on power, cooling, and electrical equipment."
+ },
+ {
+  "id": "L074",
+  "ratio": 0.893,
+  "said": "And space is still scarce. In North America's main markets, the property firm C. B. R. E. puts vacancy at a record low of one point four percent.",
+  "heard": "and space is still scarce. In North America's main markets, the property firm C.B.R.E. puts vacancy at a record low of 1.4%."
+ },
+ {
+  "id": "L075",
+  "ratio": 0.862,
+  "said": "Some of it is being built on borrowed money. CoreWeave, which rents out Nvidia chips, reports a contract backlog of more than one hundred and thirty billion dollars, and debt of around forty-seven billion.",
+  "heard": "Some of it is being built on borrowed money. CoreWeave, which rents out Nvidia chips, reports a contract backlog of more than $130 billion, and debt of around $47 billion."
+ },
+ {
+  "id": "L080",
+  "ratio": 1.0,
+  "said": "Which brings us to the problem that no one can code their way around.",
+  "heard": "Which brings us to the problem that no one can code their way around."
+ },
+ {
+  "id": "L081",
+  "ratio": 1.0,
+  "said": "Electricity.",
+  "heard": "Electricity."
+ },
+ {
+  "id": "L082",
+  "ratio": 0.696,
+  "said": "In twenty twenty-four, the world's data centres used around four hundred and fifteen terawatt-hours of electricity. About one and a half percent of global demand.",
+  "heard": "In 2024, the world's data centers used around 415 terawatt hours of electricity, about 1.5% of global demand."
+ },
+ {
+  "id": "L083",
+  "ratio": 1.0,
+  "said": "The International Energy Agency expects that to more than double by twenty thirty.",
+  "heard": "The International Energy Agency expects that to more than double by 2030."
+ },
+ {
+  "id": "L084",
+  "ratio": 0.952,
+  "said": "In the United States, data centres are set to account for nearly half of all growth in electricity demand this decade.",
+  "heard": "In the United States, data centers are set to account for nearly half of all growth in electricity demand this decade."
+ },
+ {
+  "id": "L090",
+  "ratio": 1.0,
+  "said": "First, the power has to be generated. Big Tech is now signing deals to restart nuclear reactors.",
+  "heard": "First, the power has to be generated. Big Tech is now signing deals to restart nuclear reactors."
+ },
+ {
+  "id": "L091",
+  "ratio": 0.78,
+  "said": "Microsoft agreed to buy the output of Three Mile Island's Unit One for twenty years, if it comes back online.",
+  "heard": "Microsoft agreed to buy the output of 3 Mile Islands Unit 1 for 20 years, if it comes back online."
+ },
+ {
+  "id": "L092",
+  "ratio": 0.864,
+  "said": "Gas turbines are in such demand that GE Vernova's gas backlog and reserved production slots have reached one hundred and twenty-two gigawatts.",
+  "heard": "Gas turbines are in such demand that GE Vernova's gas backlog and reserved production slots have reached 122 gigawatts."
+ },
+ {
+  "id": "L093",
+  "ratio": 1.0,
+  "said": "Then the power has to be delivered. And here, the bottleneck is physical.",
+  "heard": "then the power has to be delivered. And here, the bottleneck is physical."
+ },
+ {
+  "id": "L094",
+  "ratio": 1.0,
+  "said": "Berkeley Lab found that the typical American power project built in twenty twenty-five waited around five years to connect to the grid.",
+  "heard": "Berkeley Lab found that the typical American power project built in 2025 waited around five years to connect to the grid."
+ },
+ {
+  "id": "L095",
+  "ratio": 0.938,
+  "said": "And every connection needs transformers. A large power transformer can weigh hundreds of tonnes, and the wait for one is commonly two years or more. For the largest units, up to four.",
+  "heard": "and every connection needs transformers. A large power transformer can weigh hundreds of tons and the weight for one is commonly two years or more. For the largest units, up to four."
+ },
+ {
+  "id": "L096",
+  "ratio": 0.8,
+  "said": "Prices have climbed too: up sixty to eighty percent since twenty twenty, according to Wood Mackenzie.",
+  "heard": "Prices have climbed, too, up 60 to 80 percent since 2020, according to Wood McKenzie."
+ },
+ {
+  "id": "L100",
+  "ratio": 1.0,
+  "said": "This is where some of the quietest fortunes are being made.",
+  "heard": "This is where some of the quietest fortunes are being made."
+ },
+ {
+  "id": "L101",
+  "ratio": 0.652,
+  "said": "GE Vernova's order backlog has reached one hundred and ninety-seven billion dollars. Siemens Energy's stands at a record one hundred and sixty-four billion euros.",
+  "heard": "GE Vernova's order backlog has reached $197 billion. Siemens Energies stands at a record 164 billion euros."
+ },
+ {
+  "id": "L102",
+  "ratio": 0.885,
+  "said": "Quanta Services, which builds power lines and substations, has a record backlog of nearly sixty-four billion dollars. And cable maker Prysmian posted record earnings in twenty twenty-five.",
+  "heard": "Quanta Services, which builds power lines and substations, has a record backlog of nearly $64 billion, and cable maker Prismian posted record earnings in 2025."
+ },
+ {
+  "id": "L103",
+  "ratio": 1.0,
+  "said": "They do not sell intelligence. They sell the physical capacity that intelligence depends on.",
+  "heard": "They do not sell intelligence. They sell the physical capacity that intelligence depends on."
+ },
+ {
+  "id": "L110",
+  "ratio": 1.0,
+  "said": "So who actually wins?",
+  "heard": "So who actually wins?"
+ },
+ {
+  "id": "L111",
+  "ratio": 1.0,
+  "said": "The chip designers capture the richest margins today, but they depend on a handful of buyers. Earlier this year, three direct customers accounted for more than half of Nvidia's revenue.",
+  "heard": "The chip designers capture the richest margins today, but they depend on a handful of buyers. Earlier this year, three direct customers accounted for more than half of NVIDIA's revenue."
+ },
+ {
+  "id": "L112",
+  "ratio": 1.0,
+  "said": "The foundries and toolmakers hold positions that are almost impossible to copy, but they must keep investing tens of billions just to stay ahead.",
+  "heard": "The foundries and toolmakers hold positions that are almost impossible to copy, but they must keep investing tens of billions just to stay ahead."
+ },
+ {
+  "id": "L113",
+  "ratio": 1.0,
+  "said": "The cloud giants carry the biggest bill of all, and investors are watching how much of that spending turns into profit.",
+  "heard": "The cloud giants carry the biggest bill of all, and investors are watching how much of that spending turns into profit."
+ },
+ {
+  "id": "L114",
+  "ratio": 1.0,
+  "said": "The grid's equipment makers have something rarer: order books that stretch for years, from customers who cannot wait.",
+  "heard": "The grid's equipment makers have something rarer. Order books that stretch for years from customers who cannot wait."
+ },
+ {
+  "id": "L115",
+  "ratio": 0.941,
+  "said": "And someone has to pay. On America's largest grid, run by PJM, the price of capacity has jumped more than tenfold in three years. Its independent market monitor attributes more than twenty-three billion dollars of added capacity costs to data centre demand. Costs that are passed on to electricity customers.",
+  "heard": "and someone has to pay. On America's largest grid, run by PJM, the price of capacity has jumped more than tenfold in three years. Its independent market monitor attributes more than $23 billion of added capacity costs to data center demand. Costs that are passed on to electricity customers."
+ },
+ {
+  "id": "L116",
+  "ratio": 1.0,
+  "said": "None of this guarantees the future. Backlogs can shrink. Forecasts can be wrong. And capacity built for a boom can sit idle in a downturn.",
+  "heard": "None of this guarantees the future. Backlogs can shrink, forecasts can be wrong, and capacity built for a boom can sit idle in a downturn."
+ },
+ {
+  "id": "L120",
+  "ratio": 1.0,
+  "said": "The AI revolution is usually told as a story about software.",
+  "heard": "The AI revolution is usually told as a story about software."
+ },
+ {
+  "id": "L121",
+  "ratio": 1.0,
+  "said": "But follow the money, and it leads somewhere else. To chip plants in Taiwan and machine makers in the Netherlands.",
+  "heard": "but follow the money and it leads somewhere else, to chip plants in Taiwan and machine makers in the Netherlands."
+ },
+ {
+  "id": "L122",
+  "ratio": 1.0,
+  "said": "To cooling plants and cable mills. To turbines, transformers and power lines.",
+  "heard": "to cooling plants and cable mills, to turbines, transformers, and power lines."
+ },
+ {
+  "id": "L123",
+  "ratio": 1.0,
+  "said": "The intelligence may be artificial. The infrastructure is very real.",
+  "heard": "The intelligence may be artificial. The infrastructure is very real."
+ },
+ {
+  "id": "L124",
+  "ratio": 1.0,
+  "said": "And the companies building it may turn out to be the hidden winners of the AI boom.",
+  "heard": "and the companies building it may turn out to be the hidden winners of the AI boom."
+ }
+]

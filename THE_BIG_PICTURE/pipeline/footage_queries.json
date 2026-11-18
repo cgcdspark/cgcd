@@ -1,0 +1,238 @@
+{
+  "_comment": "Search queries for pipeline/footage_scout.py. Each category lists queries per source. mixkit = Mixkit video search; commons_video = Wikimedia Commons video files; commons_photo = high-res Commons photos (secondary list); nasa = NASA Image and Video Library (video). Audio queries are Mixkit music/SFX search terms.",
+  "categories": {
+    "semiconductors": {
+      "mixkit": [
+        "silicon wafer",
+        "microchip",
+        "chip",
+        "processor",
+        "circuit board",
+        "motherboard",
+        "electronics factory",
+        "laboratory technician",
+        "microscope",
+        "soldering"
+      ],
+      "commons_video": [
+        "silicon wafer",
+        "semiconductor fabrication",
+        "cleanroom",
+        "wafer",
+        "integrated circuit",
+        "photolithography"
+      ],
+      "commons_photo": [
+        "silicon wafer",
+        "cleanroom semiconductor",
+        "lithography machine",
+        "EUV lithography",
+        "fab cleanroom wafer"
+      ],
+      "nasa": [
+        "cleanroom",
+        "microchip",
+        "semiconductor"
+      ]
+    },
+    "data_centres": {
+      "mixkit": [
+        "data center",
+        "server",
+        "server room",
+        "server rack",
+        "network cables",
+        "fiber optic",
+        "ethernet cable",
+        "cooling fan",
+        "hard drive",
+        "network engineer"
+      ],
+      "commons_video": [
+        "data center",
+        "server room",
+        "supercomputer"
+      ],
+      "commons_photo": [
+        "data center",
+        "server room",
+        "datacenter cooling",
+        "supercomputer"
+      ],
+      "nasa": [
+        "supercomputer"
+      ]
+    },
+    "electricity": {
+      "mixkit": [
+        "power plant",
+        "electricity",
+        "power lines",
+        "electricity tower",
+        "high voltage",
+        "transmission tower",
+        "electrical substation",
+        "transformer",
+        "nuclear power plant",
+        "cooling tower",
+        "wind turbine",
+        "wind farm",
+        "solar panels",
+        "solar farm",
+        "electrician",
+        "cables",
+        "power grid",
+        "turbine",
+        "dam",
+        "city power"
+      ],
+      "commons_video": [
+        "power plant",
+        "transmission line",
+        "electrical substation",
+        "gas turbine",
+        "cooling tower",
+        "wind farm",
+        "high voltage",
+        "cable factory"
+      ],
+      "commons_photo": [
+        "electrical substation",
+        "power transformer",
+        "switchgear",
+        "gas turbine",
+        "cooling tower nuclear",
+        "transmission tower aerial",
+        "cable drum"
+      ],
+      "nasa": [
+        "wind turbine",
+        "solar array",
+        "power plant"
+      ]
+    },
+    "global_business": {
+      "mixkit": [
+        "skyline",
+        "financial district",
+        "stock market",
+        "trading",
+        "stock exchange",
+        "factory",
+        "industrial robot",
+        "robotic arm",
+        "container port",
+        "cargo ship",
+        "shipping containers",
+        "construction crane",
+        "construction site",
+        "office",
+        "business meeting",
+        "city night",
+        "city timelapse",
+        "money",
+        "coins",
+        "bank"
+      ],
+      "commons_video": [
+        "container port",
+        "container ship",
+        "industrial robot",
+        "construction crane",
+        "stock exchange"
+      ],
+      "commons_photo": [
+        "container terminal",
+        "skyline night",
+        "stock exchange trading floor"
+      ],
+      "nasa": []
+    },
+    "mood": {
+      "mixkit": [
+        "earth from space",
+        "planet earth",
+        "abstract technology",
+        "digital",
+        "artificial intelligence",
+        "futuristic",
+        "data",
+        "typing",
+        "laptop",
+        "coding",
+        "smartphone",
+        "phone screen",
+        "hologram"
+      ],
+      "commons_video": [
+        "earth at night ISS",
+        "timelapse city night"
+      ],
+      "commons_photo": [],
+      "nasa": [
+        "earth at night",
+        "city lights from space",
+        "ISS timelapse night",
+        "earth from space",
+        "black marble"
+      ]
+    }
+  },
+  "audio": {
+    "music": [
+      "mood/dark",
+      "mood/tension",
+      "mood/suspenseful",
+      "mood/ominous",
+      "mood/mysterious",
+      "mood/serious",
+      "mood/futuristic",
+      "mood/propulsive",
+      "mood/hypnotic",
+      "mood/mechanical",
+      "tag/cinematic",
+      "tag/documentary",
+      "tag/corporate",
+      "tag/technology",
+      "tag/investigation",
+      "tag/industry",
+      "film-score",
+      "drone-music",
+      "atmospheres",
+      "ambient",
+      "minimalism",
+      "underscore",
+      "rhythmic-underscore",
+      "electronica",
+      "instrument/piano"
+    ],
+    "sfx": [
+      "electricity",
+      "electric hum",
+      "buzz",
+      "hum",
+      "power",
+      "server",
+      "computer",
+      "whoosh",
+      "swoosh",
+      "impact",
+      "boom",
+      "hit",
+      "riser",
+      "glitch",
+      "digital",
+      "data",
+      "mechanical",
+      "industrial",
+      "machine",
+      "camera shutter",
+      "camera",
+      "typing",
+      "keyboard",
+      "transition",
+      "cinematic"
+    ],
+    "_comment": "music entries are Mixkit listing paths under /free-stock-music/ (genre, mood/<x>, tag/<x>, instrument/<x>); sfx entries are free-text searches"
+  }
+}

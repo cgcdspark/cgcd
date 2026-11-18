@@ -1,0 +1,86 @@
+shot_id,act,start_s,end_s,type,asset_or_component,description
+S00_01,ACT1,0.00,5.85,MISSING,,Close-up: hands typing a question into a chatbot / laptop screen glow
+S00_02,ACT1,5.85,8.94,MISSING,,Aerial or exterior of a large data centre campus
+S00_03,ACT1,8.94,11.50,MISSING,,"Server hall, slow track along racks with blinking lights"
+S00_04,ACT1,11.50,14.25,MISSING,,Macro: coolant pipes / liquid cooling / chiller fans
+S00_05,ACT1,14.25,17.55,MISSING,,"Transmission towers at dusk, wide"
+S00_06,ACT1,17.55,20.85,MISSING,,Abstract digital / code on screen
+S00_07,ACT1,20.85,23.48,MISSING,,Clouds / sky timelapse
+S00_08,ACT1,23.48,25.02,MISSING,,Construction: concrete pour / steel beams / crane
+S00_09,ACT1,25.02,26.56,MISSING,,Copper cable spools / cable factory
+S00_10,ACT1,26.56,28.32,MISSING,,Power plant / substation at night
+S00_11,ACT1,28.32,34.51,MISSING,,Earth at night from orbit (NASA) — city lights
+S01_01,ACT1,34.51,39.51,MISSING,,Slow aerial of transmission lines or industrial skyline (under title)
+S02_01,ACT2,39.51,41.48,MISSING,,Chapter card bg: financial district skyline
+S02_02,ACT2,41.48,42.92,MISSING,,Corporate campus / glass office towers
+S02_03,ACT2,42.92,60.01,graphic,BarChart,"Capital expenditure, latest full year"
+S02_04,ACT2,60.01,62.83,MISSING,,Construction site of a large data centre / cranes
+S02_05,ACT2,62.83,65.65,MISSING,,Server rack with GPU modules being installed
+S03_01,ACT2,65.65,95.04,graphic,ValueChain,Follow the money down the stack
+S04_01,ACT3,95.04,97.82,MISSING,,Chapter card bg: silicon wafer macro
+S04_02,ACT3,97.82,99.02,MISSING,,"GPU / circuit board macro, slow move"
+S04_03,ACT3,99.02,113.54,graphic,BigStat,
+S04_04,ACT3,113.54,117.66,MISSING,,Chip design: engineer at screen with circuit layout / CAD
+S05_01,ACT3,117.66,123.41,MISSING,,Cleanroom: workers in bunny suits
+S05_02,ACT3,123.41,127.49,MISSING,,Wafer handling robot / fab automation
+S05_03,ACT3,127.49,131.56,MISSING,,"Silicon wafer close-up, rainbow sheen"
+S05_04,ACT3,131.56,137.05,MISSING,,Fab interior / overhead wafer transport
+S05_05,ACT3,137.05,142.54,MISSING,,Container ship / port cranes (Netherlands/Taiwan context generic)
+S05_06,ACT3,142.54,153.85,graphic,Flow,Who makes an AI chip?
+S05_07,ACT3,153.85,158.51,MISSING,,ASML lithography machine / EUV system (only if licensed & confirmed ASML) else generic lithography/laser optics
+S05_08,ACT3,158.51,170.44,MISSING,,Memory chips / RAM modules macro
+S05_09,ACT3,170.44,176.19,MISSING,,Microchip being placed / die bonding / tweezers on chip
+S05_10,ACT3,176.19,180.79,MISSING,,Circuit board macro with chips
+S06_01,ACT3,180.79,191.13,graphic,BarChart,"Gross margin, latest quarter"
+S06_02,ACT3,191.13,198.08,MISSING,,"Data centre exterior at dusk / under construction, wide"
+S07_01,ACT4,198.08,203.01,MISSING,,Chapter card bg: long server aisle
+S07_02,ACT4,203.01,205.93,MISSING,,Data centre exterior / mechanical plant on roof
+S07_03,ACT4,205.93,208.84,MISSING,,Engineer walking server aisle
+S07_04,ACT4,208.84,219.36,graphic,BigStat,
+S07_05,ACT4,219.36,222.33,MISSING,,Liquid cooling pipes / cold plates / coolant manifold close-up
+S07_06,ACT4,222.33,224.81,MISSING,,Chiller / cooling towers / big fans
+S08_01,ACT4,224.81,228.78,MISSING,,Industrial cooling units / CRAH / data centre mechanical gallery
+S08_02,ACT4,228.78,232.97,MISSING,,Electrical room: UPS / battery cabinets / switchboards
+S08_03,ACT4,232.97,237.16,MISSING,,Technician working on electrical panel
+S08_04,ACT4,237.16,244.24,MISSING,,Fans spinning / HVAC close-up
+S08_05,ACT4,244.24,256.45,graphic,BarChart,Estimated split of AI data centre capex to 2030
+S08_06,ACT4,256.45,266.71,MISSING,,Data centre construction site / steel frame / cranes
+S08_07,ACT4,266.71,273.47,MISSING,,"Server racks close-up, blinking lights"
+S08_08,ACT4,273.47,280.24,MISSING,,Financial: stock ticker / trading screens
+S09_01,ACT5,280.24,284.96,MISSING,,Chapter card bg: transmission towers at night / grid
+S09_02,ACT5,284.96,286.64,MISSING,,Power plant chimney / steam at dusk
+S09_03,ACT5,286.64,288.64,MISSING,,Earth at night from orbit (NASA)
+S09_04,ACT5,288.64,301.81,graphic,ColumnChart,"Global consumption, terawatt-hours per year"
+S09_05,ACT5,301.81,309.64,MISSING,,US city skyline at night / suburbs lights
+S10_01,ACT5,309.64,316.33,MISSING,,Nuclear plant cooling towers
+S10_02,ACT5,316.33,323.61,MISSING,,Nuclear / Three Mile Island (only if licensed & confirmed) else generic cooling tower steam
+S10_03,ACT5,323.61,333.46,MISSING,,Gas turbine / power plant interior / turbine hall
+S10_04,ACT5,333.46,335.99,MISSING,,"Transmission towers aerial, lines receding"
+S10_05,ACT5,335.99,338.01,MISSING,,Lineman / workers on pylon
+S10_06,ACT5,338.01,346.16,graphic,RangeBars,How long the physical grid takes
+S10_07,ACT5,346.16,351.89,MISSING,,Substation with large transformers
+S10_08,ACT5,351.89,357.63,MISSING,,Transformer close-up / insulators / bushings
+S10_09,ACT5,357.63,361.16,MISSING,,Factory floor: heavy electrical equipment / transformer manufacturing
+S10_10,ACT5,361.16,364.70,MISSING,,Switchgear / high-voltage equipment close-up
+S11_01,ACT5,364.70,367.91,MISSING,,High-voltage cable reels / cable factory
+S11_02,ACT5,367.91,379.00,graphic,BarChart,Backlog at the grid's equipment makers
+S11_03,ACT5,379.00,385.30,MISSING,,Cable being laid / underground cable installation / cable ship
+S11_04,ACT5,385.30,391.60,MISSING,,Workers in hard hats at substation / electrical construction
+S11_05,ACT5,391.60,398.46,MISSING,,"Transmission line silhouette at sunset, slow"
+S12_01,ACT6,398.46,400.80,MISSING,,Chapter card bg: city financial district at night
+S12_02,ACT6,400.80,421.52,graphic,Matrix,"The AI value chain, scored"
+S12_03,ACT6,421.52,428.54,MISSING,,Trading floor / stock screens
+S12_04,ACT6,428.54,435.35,MISSING,,Factory / heavy industrial production line
+S12_05,ACT6,435.35,436.85,MISSING,,Electricity meter / household / suburban street at dusk
+S12_06,ACT6,436.85,438.35,MISSING,,Power lines over houses
+S12_07,ACT6,438.35,456.28,graphic,ColumnChart,"PJM capacity price, $ per MW-day"
+S12_08,ACT6,456.28,466.14,MISSING,,Empty / dark industrial building or quiet data hall (downturn mood)
+S13_01,ACT7,466.14,471.44,MISSING,,Laptop / chatbot screen (callback to open)
+S13_02,ACT7,471.44,475.03,MISSING,,Cleanroom / fab wide
+S13_03,ACT7,475.03,477.90,MISSING,,Container port / Netherlands industry
+S13_04,ACT7,477.90,479.73,MISSING,,Cooling towers / cable reels
+S13_05,ACT7,479.73,481.56,MISSING,,Turbine / transformer
+S13_06,ACT7,481.56,483.39,MISSING,,Transmission lines at sunset
+S13_07,ACT7,483.39,488.15,MISSING,,"Earth at night from orbit (NASA), slow"
+S13_08,ACT7,488.15,495.00,MISSING,,Wide aerial: data centre next to substation / power lines
+S14_01,ACT7,495.00,502.00,graphic,EndCard,

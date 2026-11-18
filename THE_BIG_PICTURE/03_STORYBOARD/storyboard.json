@@ -1,0 +1,1852 @@
+{
+ "meta": {
+  "title": "The Hidden Winners of the AI Boom",
+  "brand": "THE BIG PICTURE",
+  "voice": "af_heart",
+  "voice_lang": "en-us",
+  "speed": 1.0,
+  "fps": 25,
+  "show_captions": false,
+  "music": [
+   {
+    "track": "M_OPEN",
+    "from": "S00",
+    "to": "S01",
+    "gain_db": -17,
+    "fade_in": 1.5,
+    "fade_out": 2.5
+   },
+   {
+    "track": "M_BODY_A",
+    "from": "S02",
+    "to": "S06",
+    "gain_db": -21,
+    "fade_in": 2.0,
+    "fade_out": 3.0
+   },
+   {
+    "track": "M_BODY_B",
+    "from": "S07",
+    "to": "S10",
+    "gain_db": -20,
+    "fade_in": 2.0,
+    "fade_out": 3.0
+   },
+   {
+    "track": "M_CLOSE",
+    "from": "S11",
+    "to": "S13",
+    "gain_db": -18,
+    "fade_in": 2.0,
+    "fade_out": 4.0
+   }
+  ]
+ },
+ "scenes": [
+  {
+   "id": "S00",
+   "act": "ACT1",
+   "title": "Cold open",
+   "lead_in": 1.2,
+   "tail": 0.6,
+   "vo": [
+    {
+     "id": "L001",
+     "text": "Every time you ask a chatbot a question, something happens that you never see.",
+     "pause": 0.45
+    },
+    {
+     "id": "L002",
+     "text": "Somewhere, in a building the size of several football pitches, thousands of chips run a little hotter.",
+     "pause": 0.35
+    },
+    {
+     "id": "L003",
+     "text": "Pumps push coolant through the racks. And beyond the fence line, a power grid strains to keep up.",
+     "pause": 0.6
+    },
+    {
+     "id": "L004",
+     "text": "We talk about artificial intelligence as if it were weightless. Software. Code. The cloud.",
+     "pause": 0.5
+    },
+    {
+     "id": "L005",
+     "text": "But the AI boom runs on concrete, copper, steel and electricity.",
+     "pause": 0.5
+    },
+    {
+     "id": "L006",
+     "text": "And some of its biggest winners make nothing you would ever call artificial intelligence.",
+     "pause": 1.0
+    }
+   ],
+   "shots": [
+    {
+     "need": "Close-up: hands typing a question into a chatbot / laptop screen glow",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "need": "Aerial or exterior of a large data centre campus",
+     "asset": null,
+     "at": "L002",
+     "w": 1.2,
+     "letterbox": true
+    },
+    {
+     "need": "Server hall, slow track along racks with blinking lights",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "need": "Macro: coolant pipes / liquid cooling / chiller fans",
+     "asset": null,
+     "at": "L003",
+     "w": 1
+    },
+    {
+     "need": "Transmission towers at dusk, wide",
+     "asset": null,
+     "w": 1.2,
+     "letterbox": true
+    },
+    {
+     "need": "Abstract digital / code on screen",
+     "asset": null,
+     "at": "L004",
+     "w": 1
+    },
+    {
+     "need": "Clouds / sky timelapse",
+     "asset": null,
+     "w": 0.8
+    },
+    {
+     "need": "Construction: concrete pour / steel beams / crane",
+     "asset": null,
+     "at": "L005",
+     "w": 0.7
+    },
+    {
+     "need": "Copper cable spools / cable factory",
+     "asset": null,
+     "w": 0.7
+    },
+    {
+     "need": "Power plant / substation at night",
+     "asset": null,
+     "w": 0.8
+    },
+    {
+     "need": "Earth at night from orbit (NASA) — city lights",
+     "asset": null,
+     "at": "L006",
+     "w": 1,
+     "motion": "push"
+    }
+   ],
+   "overlays": [],
+   "sfx": [
+    {
+     "sfx": "SFX_TYPING",
+     "at": "L001",
+     "offset": -0.8,
+     "gain_db": -14
+    },
+    {
+     "sfx": "SFX_SERVER_ROOM",
+     "at": "L002",
+     "offset": 0.0,
+     "gain_db": -20,
+     "dur": 8
+    },
+    {
+     "sfx": "SFX_HUM",
+     "at": "L003",
+     "offset": 2.0,
+     "gain_db": -18,
+     "dur": 5
+    },
+    {
+     "sfx": "SFX_IMPACT",
+     "at": "L005",
+     "offset": 0.0,
+     "gain_db": -9
+    }
+   ]
+  },
+  {
+   "id": "S01",
+   "act": "ACT1",
+   "title": "Main title",
+   "lead_in": 0.0,
+   "tail": 0.0,
+   "hold": 5.0,
+   "vo": [],
+   "shots": [
+    {
+     "need": "Slow aerial of transmission lines or industrial skyline (under title)",
+     "asset": null,
+     "w": 1,
+     "dim": 0.35
+    }
+   ],
+   "overlays": [
+    {
+     "component": "TitleCard",
+     "at_scene_start": 0.2,
+     "dur": 4.6,
+     "props": {
+      "title": "THE HIDDEN WINNERS|OF THE AI BOOM"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "sfx": "SFX_RISER",
+     "at_scene_start": -2.2,
+     "gain_db": -13
+    },
+    {
+     "sfx": "SFX_BOOM",
+     "at_scene_start": 0.4,
+     "gain_db": -7
+    }
+   ]
+  },
+  {
+   "id": "S02",
+   "act": "ACT2",
+   "title": "The gold rush",
+   "lead_in": 0.4,
+   "tail": 0.4,
+   "vo": [
+    {
+     "id": "L010",
+     "text": "Follow the money, and it starts with four companies.",
+     "pause": 0.4
+    },
+    {
+     "id": "L011",
+     "text": "In their latest financial years, Microsoft, Alphabet, Amazon and Meta together spent more than four hundred billion dollars on capital expenditure.",
+     "pause": 0.35
+    },
+    {
+     "id": "L012",
+     "text": "And they are accelerating. Amazon alone expects to spend around two hundred and twenty billion dollars in 2026.",
+     "say": "And they are accelerating. Amazon alone expects to spend around two hundred and twenty billion dollars in twenty twenty-six.",
+     "pause": 0.4
+    },
+    {
+     "id": "L013",
+     "text": "Most of that money pays for one thing: data centres, filled with AI chips.",
+     "pause": 0.6
+    }
+   ],
+   "shots": [
+    {
+     "need": "Chapter card bg: financial district skyline",
+     "asset": null,
+     "w": 1.1,
+     "dim": 0.2
+    },
+    {
+     "need": "Corporate campus / glass office towers",
+     "asset": null,
+     "w": 0.8
+    },
+    {
+     "graphic": "BarChart",
+     "at": "L011",
+     "w": 3.2,
+     "props": {
+      "kicker": "The spending wave",
+      "title": "Capital expenditure, latest full year",
+      "source": "Microsoft: fiscal year to June 2026, cash PP&E plus finance-lease assets (10-K). Alphabet, Amazon (cash capex), Meta (incl. finance-lease principal): calendar 2025 (company results). US$ billions.",
+      "bars": [
+       {
+        "label": "Microsoft",
+        "note": "FY to Jun 2026",
+        "value": 140.6,
+        "display": "~$141bn"
+       },
+       {
+        "label": "Amazon",
+        "note": "2025",
+        "value": 131.8,
+        "display": "$131.8bn",
+        "highlight": true
+       },
+       {
+        "label": "Alphabet",
+        "note": "2025",
+        "value": 91.4,
+        "display": "$91.4bn"
+       },
+       {
+        "label": "Meta",
+        "note": "2025",
+        "value": 72.2,
+        "display": "$72.2bn"
+       }
+      ]
+     }
+    },
+    {
+     "need": "Construction site of a large data centre / cranes",
+     "asset": null,
+     "at": "L013",
+     "w": 1
+    },
+    {
+     "need": "Server rack with GPU modules being installed",
+     "asset": null,
+     "w": 1
+    }
+   ],
+   "overlays": [
+    {
+     "component": "ChapterCard",
+     "at_scene_start": 0.0,
+     "dur": 3.4,
+     "props": {
+      "act": "PART 01",
+      "title": "THE GOLD RUSH"
+     }
+    },
+    {
+     "component": "CornerStat",
+     "at": "L012",
+     "offset": 0.8,
+     "dur": 4.6,
+     "props": {
+      "value": "~$220bn",
+      "label": "Amazon 2026 capex outlook",
+      "source": "Q3 2026 results · cash capex"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "sfx": "SFX_WHOOSH",
+     "at_scene_start": 0.0,
+     "gain_db": -12
+    }
+   ]
+  },
+  {
+   "id": "S03",
+   "act": "ACT2",
+   "title": "The stack",
+   "lead_in": 0.2,
+   "tail": 0.8,
+   "vo": [
+    {
+     "id": "L020",
+     "text": "To see who captures that money, picture AI as a stack.",
+     "pause": 0.4
+    },
+    {
+     "id": "L021",
+     "text": "At the top, the applications and models. Below them, the chips. Then the factories that make the chips.",
+     "pause": 0.3
+    },
+    {
+     "id": "L022",
+     "text": "The data centres that house them. The power stations that feed them. The lines and substations that deliver that power.",
+     "pause": 0.3
+    },
+    {
+     "id": "L023",
+     "text": "And at the very bottom, the transformers, switchgear and cables that make all of it physically possible.",
+     "pause": 0.5
+    },
+    {
+     "id": "L024",
+     "text": "Most of the attention sits at the top. This story goes all the way down.",
+     "pause": 0.8
+    }
+   ],
+   "shots": [
+    {
+     "graphic": "ValueChain",
+     "w": 1,
+     "props": {
+      "kicker": "The AI value chain",
+      "title": "Follow the money down the stack",
+      "source": "Company examples are illustrative, not exhaustive.",
+      "layers": [
+       {
+        "label": "AI applications & models",
+        "examples": "Chatbots · assistants · model labs"
+       },
+       {
+        "label": "GPUs & semiconductors",
+        "examples": "Nvidia · AMD · Broadcom"
+       },
+       {
+        "label": "Chip manufacturing",
+        "examples": "TSMC · ASML · SK hynix"
+       },
+       {
+        "label": "Data centres",
+        "examples": "Hyperscalers · colocation · neoclouds"
+       },
+       {
+        "label": "Electricity generation",
+        "examples": "Gas turbines · nuclear · renewables"
+       },
+       {
+        "label": "Transmission & substations",
+        "examples": "Utilities · grid builders"
+       },
+       {
+        "label": "Transformers, switchgear & cables",
+        "examples": "Hitachi Energy · Siemens Energy · Prysmian"
+       }
+      ]
+     }
+    }
+   ],
+   "overlays": [],
+   "sfx": [
+    {
+     "sfx": "SFX_DATA",
+     "at": "L021",
+     "offset": 0.0,
+     "gain_db": -18
+    }
+   ]
+  },
+  {
+   "id": "S04",
+   "act": "ACT3",
+   "title": "Nvidia",
+   "lead_in": 0.4,
+   "tail": 0.3,
+   "vo": [
+    {
+     "id": "L030",
+     "text": "The most visible winner is Nvidia.",
+     "pause": 0.35
+    },
+    {
+     "id": "L031",
+     "text": "In the three months to October 2026, it reported revenue of almost one hundred and sixteen billion dollars.",
+     "pause": 0.3
+    },
+    {
+     "id": "L032",
+     "text": "More than ninety percent of it came from data centres. And it kept roughly seventy-five cents of every dollar as gross profit.",
+     "pause": 0.45
+    },
+    {
+     "id": "L033",
+     "text": "But Nvidia does not make its own chips. It designs them.",
+     "pause": 0.5
+    }
+   ],
+   "shots": [
+    {
+     "need": "Chapter card bg: silicon wafer macro",
+     "asset": null,
+     "w": 1.0,
+     "dim": 0.2
+    },
+    {
+     "need": "GPU / circuit board macro, slow move",
+     "asset": null,
+     "at": "L031",
+     "w": 1
+    },
+    {
+     "graphic": "BigStat",
+     "at": "L031",
+     "offset": 1.2,
+     "w": 2.2,
+     "props": {
+      "kicker": "Nvidia · quarterly revenue",
+      "value": 115.8,
+      "decimals": 1,
+      "prefix": "$",
+      "suffix": "bn",
+      "label": "Revenue, quarter ended 25 Oct 2026",
+      "sublabel": "Data centre: $107.6bn · GAAP gross margin 74.8%",
+      "source": "Source: Nvidia Q3 FY2027 results (released 17 Nov 2026). Reported GAAP figures."
+     }
+    },
+    {
+     "need": "Chip design: engineer at screen with circuit layout / CAD",
+     "asset": null,
+     "at": "L033",
+     "w": 1
+    }
+   ],
+   "overlays": [
+    {
+     "component": "ChapterCard",
+     "at_scene_start": 0.0,
+     "dur": 3.4,
+     "props": {
+      "act": "PART 02",
+      "title": "THE CHIP ECONOMY"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "sfx": "SFX_WHOOSH",
+     "at_scene_start": 0.0,
+     "gain_db": -12
+    },
+    {
+     "sfx": "SFX_HIT",
+     "at": "L031",
+     "offset": 1.2,
+     "gain_db": -12
+    }
+   ]
+  },
+  {
+   "id": "S05",
+   "act": "ACT3",
+   "title": "TSMC, ASML, memory, packaging",
+   "lead_in": 0.0,
+   "tail": 0.4,
+   "vo": [
+    {
+     "id": "L040",
+     "text": "Manufacturing goes to Taiwan Semiconductor Manufacturing Company, or TSMC.",
+     "pause": 0.3
+    },
+    {
+     "id": "L041",
+     "text": "By one industry estimate, it took nearly three-quarters of all contract chipmaking revenue in the second quarter of 2026.",
+     "say": "By one industry estimate, it took nearly three-quarters of all contract chipmaking revenue in the second quarter of twenty twenty-six.",
+     "pause": 0.3
+    },
+    {
+     "id": "L042",
+     "text": "High-performance computing now makes up about two-thirds of its sales. And it has told investors it plans to spend up to sixty-four billion dollars on new capacity this year.",
+     "pause": 0.5
+    },
+    {
+     "id": "L043",
+     "text": "TSMC, in turn, relies on a single Dutch company.",
+     "pause": 0.3
+    },
+    {
+     "id": "L044",
+     "text": "ASML is the world's only maker of the extreme ultraviolet lithography machines used to print the most advanced chips.",
+     "pause": 0.3
+    },
+    {
+     "id": "L045",
+     "text": "The newest models are reported to cost hundreds of millions of dollars each.",
+     "pause": 0.5
+    },
+    {
+     "id": "L046",
+     "text": "Then there is memory. SK hynix makes the high-bandwidth memory stacked beside each AI processor. In its latest quarter, it reported an operating margin of around eighty percent.",
+     "pause": 0.4
+    },
+    {
+     "id": "L047",
+     "text": "And the finished pieces must be bonded together, in a process called advanced packaging. Another bottleneck, and another place TSMC is pouring money.",
+     "pause": 0.6
+    }
+   ],
+   "shots": [
+    {
+     "need": "Cleanroom: workers in bunny suits",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "need": "Wafer handling robot / fab automation",
+     "asset": null,
+     "at": "L041",
+     "w": 1
+    },
+    {
+     "need": "Silicon wafer close-up, rainbow sheen",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "need": "Fab interior / overhead wafer transport",
+     "asset": null,
+     "at": "L042",
+     "w": 1
+    },
+    {
+     "need": "Container ship / port cranes (Netherlands/Taiwan context generic)",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "graphic": "Flow",
+     "at": "L043",
+     "w": 4.2,
+     "props": {
+      "kicker": "The semiconductor ecosystem",
+      "title": "Who makes an AI chip?",
+      "source": "Simplified. *Foundry revenue share: TrendForce industry estimate, Q2 2026. ASML is the only supplier of EUV lithography systems.",
+      "nodes": [
+       {
+        "id": "d",
+        "x": 0,
+        "y": 60,
+        "w": 360,
+        "tag": "Design",
+        "label": "Chip designers",
+        "sub": "Nvidia · AMD · Broadcom"
+       },
+       {
+        "id": "e",
+        "x": 690,
+        "y": 0,
+        "w": 360,
+        "tag": "Equipment",
+        "label": "Lithography & tools",
+        "sub": "ASML (sole EUV supplier) · Applied Materials"
+       },
+       {
+        "id": "f",
+        "x": 690,
+        "y": 270,
+        "w": 360,
+        "tag": "Manufacturing",
+        "label": "Foundry",
+        "sub": "TSMC · ~72% of foundry revenue*",
+        "accent": true
+       },
+       {
+        "id": "m",
+        "x": 690,
+        "y": 540,
+        "w": 360,
+        "tag": "Memory",
+        "label": "High-bandwidth memory",
+        "sub": "SK hynix · Samsung · Micron"
+       },
+       {
+        "id": "p",
+        "x": 1340,
+        "y": 270,
+        "w": 360,
+        "tag": "Assembly",
+        "label": "Advanced packaging",
+        "sub": "TSMC CoWoS · expanding"
+       },
+       {
+        "id": "o",
+        "x": 1340,
+        "y": 540,
+        "w": 360,
+        "tag": "Buyers",
+        "label": "AI accelerators",
+        "sub": "→ hyperscaler data centres"
+       }
+      ],
+      "edges": [
+       {
+        "from": "d",
+        "to": "f",
+        "label": "designs"
+       },
+       {
+        "from": "e",
+        "to": "f",
+        "label": "machines"
+       },
+       {
+        "from": "f",
+        "to": "p"
+       },
+       {
+        "from": "m",
+        "to": "p"
+       },
+       {
+        "from": "p",
+        "to": "o"
+       }
+      ]
+     }
+    },
+    {
+     "need": "ASML lithography machine / EUV system (only if licensed & confirmed ASML) else generic lithography/laser optics",
+     "asset": null,
+     "at": "L045",
+     "w": 1
+    },
+    {
+     "need": "Memory chips / RAM modules macro",
+     "asset": null,
+     "at": "L046",
+     "w": 1
+    },
+    {
+     "need": "Microchip being placed / die bonding / tweezers on chip",
+     "asset": null,
+     "at": "L047",
+     "w": 1
+    },
+    {
+     "need": "Circuit board macro with chips",
+     "asset": null,
+     "w": 0.8
+    }
+   ],
+   "overlays": [
+    {
+     "component": "LowerThird",
+     "at": "L040",
+     "offset": 0.4,
+     "dur": 4.0,
+     "props": {
+      "title": "TSMC",
+      "sub": "Contract chipmaker · Hsinchu, Taiwan"
+     }
+    },
+    {
+     "component": "LowerThird",
+     "at": "L044",
+     "offset": 0.2,
+     "dur": 4.0,
+     "props": {
+      "title": "ASML",
+      "sub": "Lithography systems · Veldhoven, Netherlands"
+     }
+    },
+    {
+     "component": "CornerStat",
+     "at": "L046",
+     "offset": 2.4,
+     "dur": 4.6,
+     "props": {
+      "value": "~80%",
+      "label": "SK hynix operating margin",
+      "source": "Q3 2026 · KRW 83.3tn on KRW 104.6tn revenue"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "sfx": "SFX_MECH",
+     "at": "L041",
+     "offset": 0.0,
+     "gain_db": -16
+    },
+    {
+     "sfx": "SFX_HIT",
+     "at": "L046",
+     "offset": 2.4,
+     "gain_db": -14
+    }
+   ]
+  },
+  {
+   "id": "S06",
+   "act": "ACT3",
+   "title": "Where chip value is captured",
+   "lead_in": 0.0,
+   "tail": 0.6,
+   "vo": [
+    {
+     "id": "L050",
+     "text": "Each link captures value differently.",
+     "pause": 0.3
+    },
+    {
+     "id": "L051",
+     "text": "The designer earns the richest margins. The manufacturer carries the heaviest capital bill. The toolmaker holds a monopoly.",
+     "pause": 0.4
+    },
+    {
+     "id": "L052",
+     "text": "But all of them depend on the same customers, and those customers are building something enormous.",
+     "pause": 0.7
+    }
+   ],
+   "shots": [
+    {
+     "graphic": "BarChart",
+     "w": 3,
+     "props": {
+      "kicker": "Where value is captured",
+      "title": "Gross margin, latest quarter",
+      "unit": "%",
+      "source": "Gross margin, GAAP / IFRS. Nvidia: quarter to 25 Oct 2026. TSMC, ASML: quarter to 30 Sep 2026. Company reports.",
+      "bars": [
+       {
+        "label": "Nvidia",
+        "note": "chip design",
+        "value": 74.8,
+        "display": "74.8%",
+        "highlight": true
+       },
+       {
+        "label": "TSMC",
+        "note": "foundry",
+        "value": 66.4,
+        "display": "66.4%"
+       },
+       {
+        "label": "ASML",
+        "note": "equipment",
+        "value": 57.5,
+        "display": "57.5%"
+       }
+      ]
+     }
+    },
+    {
+     "need": "Data centre exterior at dusk / under construction, wide",
+     "asset": null,
+     "at": "L052",
+     "w": 1,
+     "letterbox": true
+    }
+   ],
+   "overlays": [],
+   "sfx": []
+  },
+  {
+   "id": "S07",
+   "act": "ACT4",
+   "title": "The data centre economy",
+   "lead_in": 0.4,
+   "tail": 0.3,
+   "vo": [
+    {
+     "id": "L060",
+     "text": "A chip is only useful inside a building that can power it and cool it.",
+     "pause": 0.35
+    },
+    {
+     "id": "L061",
+     "text": "And an AI data centre is not a warehouse of computers. It is an industrial machine.",
+     "pause": 0.45
+    },
+    {
+     "id": "L062",
+     "text": "Nvidia's latest rack-scale systems are specified at around one hundred and twenty kilowatts per rack. That's many times what a typical server rack was built for.",
+     "pause": 0.3
+    },
+    {
+     "id": "L063",
+     "text": "Air can no longer carry that much heat away. So liquid is piped straight to the chips.",
+     "pause": 0.5
+    }
+   ],
+   "shots": [
+    {
+     "need": "Chapter card bg: long server aisle",
+     "asset": null,
+     "w": 1.0,
+     "dim": 0.2
+    },
+    {
+     "need": "Data centre exterior / mechanical plant on roof",
+     "asset": null,
+     "at": "L061",
+     "w": 1
+    },
+    {
+     "need": "Engineer walking server aisle",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "graphic": "BigStat",
+     "at": "L062",
+     "w": 3.0,
+     "props": {
+      "kicker": "Power density",
+      "value": 120,
+      "prefix": "~",
+      "suffix": " kW",
+      "label": "Power per rack · Nvidia GB200 NVL72",
+      "sublabel": "Vendor specifications range from about 120 to 132 kW",
+      "source": "Source: Nvidia and server-vendor specifications for GB200 NVL72 rack systems. Kilowatts per rack."
+     }
+    },
+    {
+     "need": "Liquid cooling pipes / cold plates / coolant manifold close-up",
+     "asset": null,
+     "at": "L063",
+     "w": 1.2
+    },
+    {
+     "need": "Chiller / cooling towers / big fans",
+     "asset": null,
+     "w": 1
+    }
+   ],
+   "overlays": [
+    {
+     "component": "ChapterCard",
+     "at_scene_start": 0.0,
+     "dur": 3.4,
+     "props": {
+      "act": "PART 03",
+      "title": "THE DATA CENTRE ECONOMY"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "sfx": "SFX_WHOOSH",
+     "at_scene_start": 0.0,
+     "gain_db": -12
+    },
+    {
+     "sfx": "SFX_SERVER_ROOM",
+     "at": "L060",
+     "offset": 0.0,
+     "gain_db": -22,
+     "dur": 10
+    }
+   ]
+  },
+  {
+   "id": "S08",
+   "act": "ACT4",
+   "title": "Picks and shovels",
+   "lead_in": 0.0,
+   "tail": 0.4,
+   "vo": [
+    {
+     "id": "L070",
+     "text": "That has turned cooling and power equipment into a growth industry.",
+     "pause": 0.3
+    },
+    {
+     "id": "L071",
+     "text": "Vertiv, which makes both, reported a sixty-one percent jump in sales in its latest quarter, and said organic orders more than doubled.",
+     "pause": 0.3
+    },
+    {
+     "id": "L072",
+     "text": "Eaton, which makes electrical equipment, says the backlog in its electrical business is up forty-six percent.",
+     "pause": 0.45
+    },
+    {
+     "id": "L073",
+     "text": "McKinsey estimates that of the money going into AI data centres this decade, about sixty percent goes on chips and hardware, and about a quarter on power, cooling and electrical equipment.",
+     "pause": 0.5
+    },
+    {
+     "id": "L074",
+     "text": "And space is still scarce. In North America's main markets, the property firm CBRE puts vacancy at a record low of 1.4 percent.",
+     "pause": 0.3,
+     "say": "And space is still scarce. In North America's main markets, the property firm C. B. R. E. puts vacancy at a record low of one point four percent."
+    },
+    {
+     "id": "L075",
+     "text": "Some of it is being built on borrowed money. CoreWeave, which rents out Nvidia chips, reports a contract backlog of more than one hundred and thirty billion dollars, and debt of around forty-seven billion.",
+     "pause": 0.6
+    }
+   ],
+   "shots": [
+    {
+     "need": "Industrial cooling units / CRAH / data centre mechanical gallery",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "need": "Electrical room: UPS / battery cabinets / switchboards",
+     "asset": null,
+     "at": "L071",
+     "w": 1
+    },
+    {
+     "need": "Technician working on electrical panel",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "need": "Fans spinning / HVAC close-up",
+     "asset": null,
+     "at": "L072",
+     "w": 1
+    },
+    {
+     "graphic": "BarChart",
+     "at": "L073",
+     "w": 3.4,
+     "props": {
+      "kicker": "Where the data centre dollar goes",
+      "title": "Estimated split of AI data centre capex to 2030",
+      "unit": "%",
+      "source": "Industry estimate: McKinsey & Company, 'The cost of compute' (2025). Share of cumulative AI data centre capex to 2030. Approximate.",
+      "bars": [
+       {
+        "label": "Chips & IT hardware",
+        "value": 60,
+        "display": "~60%",
+        "highlight": true
+       },
+       {
+        "label": "Power, cooling & electrical",
+        "value": 25,
+        "display": "~25%"
+       },
+       {
+        "label": "Land & buildings",
+        "value": 15,
+        "display": "~15%"
+       }
+      ]
+     }
+    },
+    {
+     "need": "Data centre construction site / steel frame / cranes",
+     "asset": null,
+     "at": "L074",
+     "w": 1
+    },
+    {
+     "need": "Server racks close-up, blinking lights",
+     "asset": null,
+     "at": "L075",
+     "w": 1
+    },
+    {
+     "need": "Financial: stock ticker / trading screens",
+     "asset": null,
+     "w": 1
+    }
+   ],
+   "overlays": [
+    {
+     "component": "CornerStat",
+     "at": "L071",
+     "offset": 0.5,
+     "dur": 4.8,
+     "props": {
+      "value": "+61%",
+      "label": "Vertiv net sales, Q3 2026 y/y",
+      "source": "Company results, Oct 2026"
+     }
+    },
+    {
+     "component": "CornerStat",
+     "at": "L074",
+     "offset": 2.2,
+     "dur": 4.6,
+     "props": {
+      "value": "1.4%",
+      "label": "Vacancy, N. American primary markets",
+      "source": "CBRE, H1 2026 report · record low",
+      "side": "left"
+     }
+    },
+    {
+     "component": "CornerStat",
+     "at": "L075",
+     "offset": 2.6,
+     "dur": 5.0,
+     "props": {
+      "value": "$132.5bn",
+      "label": "CoreWeave contract backlog",
+      "source": "30 Sep 2026 · debt ~$47bn · company filing"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "sfx": "SFX_HIT",
+     "at": "L071",
+     "offset": 0.5,
+     "gain_db": -14
+    },
+    {
+     "sfx": "SFX_MECH",
+     "at": "L072",
+     "offset": 0.0,
+     "gain_db": -18
+    }
+   ]
+  },
+  {
+   "id": "S09",
+   "act": "ACT5",
+   "title": "The electricity bottleneck",
+   "lead_in": 0.6,
+   "tail": 0.3,
+   "vo": [
+    {
+     "id": "L080",
+     "text": "Which brings us to the problem that no one can code their way around.",
+     "pause": 0.6
+    },
+    {
+     "id": "L081",
+     "text": "Electricity.",
+     "pause": 0.8
+    },
+    {
+     "id": "L082",
+     "text": "In 2024, the world's data centres used around four hundred and fifteen terawatt-hours of electricity. About one and a half percent of global demand.",
+     "say": "In twenty twenty-four, the world's data centres used around four hundred and fifteen terawatt-hours of electricity. About one and a half percent of global demand.",
+     "pause": 0.3
+    },
+    {
+     "id": "L083",
+     "text": "The International Energy Agency expects that to more than double by 2030.",
+     "say": "The International Energy Agency expects that to more than double by twenty thirty.",
+     "pause": 0.3
+    },
+    {
+     "id": "L084",
+     "text": "In the United States, data centres are set to account for nearly half of all growth in electricity demand this decade.",
+     "pause": 0.5
+    }
+   ],
+   "shots": [
+    {
+     "need": "Chapter card bg: transmission towers at night / grid",
+     "asset": null,
+     "w": 1.2,
+     "dim": 0.2
+    },
+    {
+     "need": "Power plant chimney / steam at dusk",
+     "asset": null,
+     "at": "L081",
+     "w": 1,
+     "letterbox": true
+    },
+    {
+     "need": "Earth at night from orbit (NASA)",
+     "asset": null,
+     "at": "L082",
+     "w": 1
+    },
+    {
+     "graphic": "ColumnChart",
+     "at": "L082",
+     "offset": 2.0,
+     "w": 3.4,
+     "props": {
+      "kicker": "Data centre electricity use",
+      "title": "Global consumption, terawatt-hours per year",
+      "unit": " TWh",
+      "source": "IEA, Energy and AI (April 2025). 2024 estimate; 2030 is the IEA Base Case projection. TWh per year.",
+      "cols": [
+       {
+        "label": "2024",
+        "value": 415,
+        "display": "415"
+       },
+       {
+        "label": "2030",
+        "value": 945,
+        "display": "~945",
+        "projection": true,
+        "highlight": true
+       }
+      ]
+     }
+    },
+    {
+     "need": "US city skyline at night / suburbs lights",
+     "asset": null,
+     "at": "L084",
+     "w": 1
+    }
+   ],
+   "overlays": [
+    {
+     "component": "ChapterCard",
+     "at": "L081",
+     "offset": -0.3,
+     "dur": 3.0,
+     "props": {
+      "act": "PART 04",
+      "title": "THE ELECTRICITY BOTTLENECK"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "sfx": "SFX_HUM",
+     "at": "L080",
+     "offset": 0.0,
+     "gain_db": -18,
+     "dur": 6
+    },
+    {
+     "sfx": "SFX_BOOM",
+     "at": "L081",
+     "offset": 0.0,
+     "gain_db": -8
+    }
+   ]
+  },
+  {
+   "id": "S10",
+   "act": "ACT5",
+   "title": "Generation, grid, transformers",
+   "lead_in": 0.0,
+   "tail": 0.4,
+   "vo": [
+    {
+     "id": "L090",
+     "text": "First, the power has to be generated. Big Tech is now signing deals to restart nuclear reactors.",
+     "pause": 0.3
+    },
+    {
+     "id": "L091",
+     "text": "Microsoft agreed to buy the output of Three Mile Island's Unit One for twenty years, if it comes back online.",
+     "pause": 0.4
+    },
+    {
+     "id": "L092",
+     "text": "Gas turbines are in such demand that GE Vernova's gas backlog and reserved production slots have reached one hundred and twenty-two gigawatts.",
+     "pause": 0.5
+    },
+    {
+     "id": "L093",
+     "text": "Then the power has to be delivered. And here, the bottleneck is physical.",
+     "pause": 0.4
+    },
+    {
+     "id": "L094",
+     "text": "Berkeley Lab found that the typical American power project built in 2025 waited around five years to connect to the grid.",
+     "say": "Berkeley Lab found that the typical American power project built in twenty twenty-five waited around five years to connect to the grid.",
+     "pause": 0.4
+    },
+    {
+     "id": "L095",
+     "text": "And every connection needs transformers. A large power transformer can weigh hundreds of tonnes, and the wait for one is commonly two years or more. For the largest units, up to four.",
+     "pause": 0.3
+    },
+    {
+     "id": "L096",
+     "text": "Prices have climbed too: up sixty to eighty percent since 2020, according to Wood Mackenzie.",
+     "say": "Prices have climbed too: up sixty to eighty percent since twenty twenty, according to Wood Mackenzie.",
+     "pause": 0.6
+    }
+   ],
+   "shots": [
+    {
+     "need": "Nuclear plant cooling towers",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "need": "Nuclear / Three Mile Island (only if licensed & confirmed) else generic cooling tower steam",
+     "asset": null,
+     "at": "L091",
+     "w": 1
+    },
+    {
+     "need": "Gas turbine / power plant interior / turbine hall",
+     "asset": null,
+     "at": "L092",
+     "w": 1
+    },
+    {
+     "need": "Transmission towers aerial, lines receding",
+     "asset": null,
+     "at": "L093",
+     "w": 1,
+     "letterbox": true
+    },
+    {
+     "need": "Lineman / workers on pylon",
+     "asset": null,
+     "w": 0.8
+    },
+    {
+     "graphic": "RangeBars",
+     "at": "L094",
+     "w": 3.4,
+     "props": {
+      "kicker": "The waiting game",
+      "title": "How long the physical grid takes",
+      "unit": "years",
+      "max": 6,
+      "source": "Grid connection: Berkeley Lab, Queued Up (2026 ed.), typical US project reaching operation in 2025. Transformers: Wood Mackenzie (2024), average ~120 weeks, longer for large units. Years.",
+      "rows": [
+       {
+        "label": "Grid connection",
+        "min": 5,
+        "max": 5,
+        "display": "~5 yrs",
+        "highlight": true
+       },
+       {
+        "label": "Large power transformer",
+        "min": 2.3,
+        "max": 4,
+        "display": "2–4 yrs"
+       }
+      ]
+     }
+    },
+    {
+     "need": "Substation with large transformers",
+     "asset": null,
+     "at": "L095",
+     "w": 1
+    },
+    {
+     "need": "Transformer close-up / insulators / bushings",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "need": "Factory floor: heavy electrical equipment / transformer manufacturing",
+     "asset": null,
+     "at": "L096",
+     "w": 1
+    },
+    {
+     "need": "Switchgear / high-voltage equipment close-up",
+     "asset": null,
+     "w": 1
+    }
+   ],
+   "overlays": [
+    {
+     "component": "LowerThird",
+     "at": "L091",
+     "offset": 0.3,
+     "dur": 4.2,
+     "props": {
+      "title": "Crane Clean Energy Center",
+      "sub": "Formerly Three Mile Island Unit 1 · Pennsylvania"
+     }
+    },
+    {
+     "component": "CornerStat",
+     "at": "L092",
+     "offset": 1.2,
+     "dur": 4.6,
+     "props": {
+      "value": "122 GW",
+      "label": "GE Vernova gas backlog + slot reservations",
+      "source": "30 Sep 2026 · company results"
+     }
+    },
+    {
+     "component": "CornerStat",
+     "at": "L096",
+     "offset": 0.4,
+     "dur": 4.6,
+     "props": {
+      "value": "60–80%",
+      "label": "Transformer price rise since Jan 2020",
+      "source": "Industry estimate · Wood Mackenzie",
+      "side": "left"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "sfx": "SFX_HUM",
+     "at": "L095",
+     "offset": 0.0,
+     "gain_db": -15,
+     "dur": 6
+    },
+    {
+     "sfx": "SFX_HIT",
+     "at": "L092",
+     "offset": 1.2,
+     "gain_db": -14
+    },
+    {
+     "sfx": "SFX_MECH",
+     "at": "L096",
+     "offset": 0.0,
+     "gain_db": -18
+    }
+   ]
+  },
+  {
+   "id": "S11",
+   "act": "ACT5",
+   "title": "The quiet fortunes",
+   "lead_in": 0.0,
+   "tail": 0.6,
+   "vo": [
+    {
+     "id": "L100",
+     "text": "This is where some of the quietest fortunes are being made.",
+     "pause": 0.4
+    },
+    {
+     "id": "L101",
+     "text": "GE Vernova's order backlog has reached one hundred and ninety-seven billion dollars. Siemens Energy's stands at a record one hundred and sixty-four billion euros.",
+     "pause": 0.3
+    },
+    {
+     "id": "L102",
+     "text": "Quanta Services, which builds power lines and substations, has a record backlog of nearly sixty-four billion dollars. And cable maker Prysmian posted record earnings in 2025.",
+     "pause": 0.4,
+     "say": "Quanta Services, which builds power lines and substations, has a record backlog of nearly sixty-four billion dollars. And cable maker Prysmian posted record earnings in twenty twenty-five."
+    },
+    {
+     "id": "L103",
+     "text": "They do not sell intelligence. They sell the physical capacity that intelligence depends on.",
+     "pause": 0.8
+    }
+   ],
+   "shots": [
+    {
+     "need": "High-voltage cable reels / cable factory",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "graphic": "BarChart",
+     "at": "L101",
+     "w": 3.4,
+     "props": {
+      "kicker": "The order books",
+      "title": "Backlog at the grid's equipment makers",
+      "unit": "",
+      "source": "Reported order backlogs. GE Vernova and Quanta Services: 30 Sep 2026 (USD). Siemens Energy: 30 Sep 2026, fiscal year-end (EUR). Company results.",
+      "bars": [
+       {
+        "label": "GE Vernova",
+        "value": 197,
+        "display": "$197bn",
+        "highlight": true
+       },
+       {
+        "label": "Siemens Energy",
+        "value": 164,
+        "display": "€164bn"
+       },
+       {
+        "label": "Quanta Services",
+        "value": 63.7,
+        "display": "$63.7bn"
+       }
+      ]
+     }
+    },
+    {
+     "need": "Cable being laid / underground cable installation / cable ship",
+     "asset": null,
+     "at": "L102",
+     "w": 1
+    },
+    {
+     "need": "Workers in hard hats at substation / electrical construction",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "need": "Transmission line silhouette at sunset, slow",
+     "asset": null,
+     "at": "L103",
+     "w": 1.4,
+     "letterbox": true
+    }
+   ],
+   "overlays": [],
+   "sfx": [
+    {
+     "sfx": "SFX_MECH",
+     "at": "L100",
+     "offset": 0.0,
+     "gain_db": -18
+    }
+   ]
+  },
+  {
+   "id": "S12",
+   "act": "ACT6",
+   "title": "Who actually wins?",
+   "lead_in": 0.4,
+   "tail": 0.4,
+   "vo": [
+    {
+     "id": "L110",
+     "text": "So who actually wins?",
+     "pause": 0.6
+    },
+    {
+     "id": "L111",
+     "text": "The chip designers capture the richest margins today, but they depend on a handful of buyers. Earlier this year, three direct customers accounted for more than half of Nvidia's revenue.",
+     "pause": 0.35
+    },
+    {
+     "id": "L112",
+     "text": "The foundries and toolmakers hold positions that are almost impossible to copy, but they must keep investing tens of billions just to stay ahead.",
+     "pause": 0.35
+    },
+    {
+     "id": "L113",
+     "text": "The cloud giants carry the biggest bill of all, and investors are watching how much of that spending turns into profit.",
+     "pause": 0.35
+    },
+    {
+     "id": "L114",
+     "text": "The grid's equipment makers have something rarer: order books that stretch for years, from customers who cannot wait.",
+     "pause": 0.4
+    },
+    {
+     "id": "L115",
+     "text": "And someone has to pay. On America's largest grid, run by PJM, the price of capacity has jumped more than tenfold in three years. Its independent market monitor attributes more than twenty-three billion dollars of added capacity costs to data centre demand. Costs that are passed on to electricity customers.",
+     "pause": 0.45
+    },
+    {
+     "id": "L116",
+     "text": "None of this guarantees the future. Backlogs can shrink. Forecasts can be wrong. And capacity built for a boom can sit idle in a downturn.",
+     "pause": 0.7
+    }
+   ],
+   "shots": [
+    {
+     "need": "Chapter card bg: city financial district at night",
+     "asset": null,
+     "w": 1.0,
+     "dim": 0.2
+    },
+    {
+     "graphic": "Matrix",
+     "at": "L111",
+     "w": 5.5,
+     "props": {
+      "kicker": "Who captures the value?",
+      "title": "The AI value chain, scored",
+      "source": "THE BIG PICTURE editorial assessment based on company reports (latest quarter, 2026). Not investment advice.",
+      "cols": [
+       "Margins",
+       "Capital needs",
+       "Pricing power",
+       "Key risk"
+      ],
+      "rows": [
+       {
+        "name": "Chip designers",
+        "sub": "e.g. Nvidia",
+        "cells": [
+         {
+          "rating": 3
+         },
+         {
+          "text": "Low",
+          "tone": "good"
+         },
+         {
+          "rating": 3
+         },
+         {
+          "text": "Few buyers"
+         }
+        ]
+       },
+       {
+        "name": "Foundry & tools",
+        "sub": "e.g. TSMC, ASML",
+        "cells": [
+         {
+          "rating": 2
+         },
+         {
+          "text": "Very high",
+          "tone": "bad"
+         },
+         {
+          "rating": 3
+         },
+         {
+          "text": "Geopolitics"
+         }
+        ]
+       },
+       {
+        "name": "Cloud giants",
+        "sub": "hyperscalers",
+        "cells": [
+         {
+          "rating": 2
+         },
+         {
+          "text": "Extreme",
+          "tone": "bad"
+         },
+         {
+          "rating": 2
+         },
+         {
+          "text": "Returns"
+         }
+        ]
+       },
+       {
+        "name": "Neoclouds",
+        "sub": "e.g. CoreWeave",
+        "cells": [
+         {
+          "rating": 1
+         },
+         {
+          "text": "Debt-funded",
+          "tone": "bad"
+         },
+         {
+          "rating": 1
+         },
+         {
+          "text": "Leverage"
+         }
+        ]
+       },
+       {
+        "name": "Power & cooling kit",
+        "sub": "e.g. Vertiv, Eaton",
+        "cells": [
+         {
+          "rating": 2
+         },
+         {
+          "text": "Moderate"
+         },
+         {
+          "rating": 2
+         },
+         {
+          "text": "Cycle"
+         }
+        ]
+       },
+       {
+        "name": "Grid equipment",
+        "sub": "e.g. GE Vernova, Siemens Energy",
+        "cells": [
+         {
+          "rating": 2
+         },
+         {
+          "text": "Moderate"
+         },
+         {
+          "rating": 3
+         },
+         {
+          "text": "Execution"
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "need": "Trading floor / stock screens",
+     "asset": null,
+     "at": "L113",
+     "w": 1
+    },
+    {
+     "need": "Factory / heavy industrial production line",
+     "asset": null,
+     "at": "L114",
+     "w": 1
+    },
+    {
+     "need": "Electricity meter / household / suburban street at dusk",
+     "asset": null,
+     "at": "L115",
+     "w": 1
+    },
+    {
+     "need": "Power lines over houses",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "graphic": "ColumnChart",
+     "at": "L115",
+     "offset": 3.0,
+     "w": 2.6,
+     "props": {
+      "kicker": "Who pays",
+      "title": "PJM capacity price, $ per MW-day",
+      "source": "PJM Base Residual Auction results, RTO clearing price, $/MW-day. 2026/27 and 2027/28 cleared at the agreed price cap.",
+      "cols": [
+       {
+        "label": "2024/25",
+        "value": 28.92,
+        "display": "$29"
+       },
+       {
+        "label": "2025/26",
+        "value": 269.92,
+        "display": "$270"
+       },
+       {
+        "label": "2026/27",
+        "value": 329.17,
+        "display": "$329"
+       },
+       {
+        "label": "2027/28",
+        "value": 333.44,
+        "display": "$333",
+        "highlight": true
+       }
+      ]
+     }
+    },
+    {
+     "need": "Empty / dark industrial building or quiet data hall (downturn mood)",
+     "asset": null,
+     "at": "L116",
+     "w": 1.2
+    }
+   ],
+   "overlays": [
+    {
+     "component": "ChapterCard",
+     "at_scene_start": 0.0,
+     "dur": 3.0,
+     "props": {
+      "act": "PART 05",
+      "title": "WHO ACTUALLY WINS?"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "sfx": "SFX_WHOOSH",
+     "at_scene_start": 0.0,
+     "gain_db": -12
+    },
+    {
+     "sfx": "SFX_DATA",
+     "at": "L111",
+     "offset": 0.0,
+     "gain_db": -20
+    }
+   ]
+  },
+  {
+   "id": "S13",
+   "act": "ACT7",
+   "title": "The bigger picture",
+   "lead_in": 0.8,
+   "tail": 1.2,
+   "vo": [
+    {
+     "id": "L120",
+     "text": "The AI revolution is usually told as a story about software.",
+     "pause": 0.45
+    },
+    {
+     "id": "L121",
+     "text": "But follow the money, and it leads somewhere else. To chip plants in Taiwan and machine makers in the Netherlands.",
+     "pause": 0.3
+    },
+    {
+     "id": "L122",
+     "text": "To cooling plants and cable mills. To turbines, transformers and power lines.",
+     "pause": 0.5
+    },
+    {
+     "id": "L123",
+     "text": "The intelligence may be artificial. The infrastructure is very real.",
+     "pause": 0.6
+    },
+    {
+     "id": "L124",
+     "text": "And the companies building it may turn out to be the hidden winners of the AI boom.",
+     "pause": 1.2
+    }
+   ],
+   "shots": [
+    {
+     "need": "Laptop / chatbot screen (callback to open)",
+     "asset": null,
+     "w": 1
+    },
+    {
+     "need": "Cleanroom / fab wide",
+     "asset": null,
+     "at": "L121",
+     "w": 1
+    },
+    {
+     "need": "Container port / Netherlands industry",
+     "asset": null,
+     "w": 0.8
+    },
+    {
+     "need": "Cooling towers / cable reels",
+     "asset": null,
+     "at": "L122",
+     "w": 0.8
+    },
+    {
+     "need": "Turbine / transformer",
+     "asset": null,
+     "w": 0.8
+    },
+    {
+     "need": "Transmission lines at sunset",
+     "asset": null,
+     "w": 0.8
+    },
+    {
+     "need": "Earth at night from orbit (NASA), slow",
+     "asset": null,
+     "at": "L123",
+     "w": 1.4,
+     "motion": "pull",
+     "letterbox": true
+    },
+    {
+     "need": "Wide aerial: data centre next to substation / power lines",
+     "asset": null,
+     "at": "L124",
+     "w": 1.2,
+     "letterbox": true
+    }
+   ],
+   "overlays": [],
+   "sfx": [
+    {
+     "sfx": "SFX_RISER",
+     "at": "L123",
+     "offset": -1.5,
+     "gain_db": -16
+    }
+   ]
+  },
+  {
+   "id": "S14",
+   "act": "ACT7",
+   "title": "End card",
+   "lead_in": 0.0,
+   "tail": 0.0,
+   "hold": 7.0,
+   "vo": [],
+   "shots": [
+    {
+     "graphic": "EndCard",
+     "w": 1,
+     "props": {}
+    }
+   ],
+   "overlays": [],
+   "sfx": [
+    {
+     "sfx": "SFX_BOOM",
+     "at_scene_start": 0.3,
+     "gain_db": -9
+    }
+   ]
+  }
+ ]
+}
