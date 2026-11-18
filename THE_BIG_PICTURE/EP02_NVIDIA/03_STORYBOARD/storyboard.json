@@ -109,7 +109,7 @@
   ],
   "thumbnail": {
    "left": "DC-010@70",
-   "right": "E2-MOOD-003@4"
+   "right": "E2-MOOD-004@3"
   },
   "thumb_variants": [
    4,
@@ -1382,11 +1382,11 @@
      "w": 1
     },
     {
-     "asset": "MOOD-113",
-     "need": "Earth at night from orbit",
+     "asset": "E2-BIZ-102",
+     "need": "Night drive through city traffic",
      "w": 1,
      "offset": 3.0,
-     "in": 40,
+     "in": 1,
      "at": "L502"
     },
     {
@@ -2519,7 +2519,7 @@
      "w": 1,
      "motion": "push",
      "letterbox": true,
-     "in": 24,
+     "in": 27,
      "at": "L902"
     },
     {

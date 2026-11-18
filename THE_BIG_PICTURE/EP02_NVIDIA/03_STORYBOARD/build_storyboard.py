@@ -225,7 +225,7 @@ scene("S06", "CH5", "Fifteen Days", [
     V("L515", "Days later, Reuters reported a relationship with yet another Nvidia employee. Again, Nvidia declined to comment.", pause=0.8),
 ], [
     G("CaseTimeline", case(0), w=1),
-    F("MOOD-113", "Earth at night from orbit", at="L502", offset=3.0, w=1, **{"in": 40}),
+    F("E2-BIZ-102", "Night drive through city traffic", at="L502", offset=3.0, w=1, **{"in": 1}),
     G("CaseTimeline", case(1), at="L503", w=1),
     F("BIZ-043", "Financial district, silhouettes", w=0.8, **{"in": 14}),
     G("CaseTimeline", case(2), at="L504", w=1),
@@ -335,7 +335,7 @@ scene("S10", "CLOSE", "Close", [
     V("L903", "Now that company has to prove it can survive without him.", pause=1.6),
 ], [
     F("E2-BIZ-092", "City streets at night", w=1),
-    F("MOOD-113", "Earth at night from orbit", at="L902", w=1, motion="push", letterbox=True, **{"in": 24}),
+    F("MOOD-113", "Earth at night from orbit", at="L902", w=1, motion="push", letterbox=True, **{"in": 27}),
     F("E2-MOOD-004", "Digital clock at midnight", at="L903", w=1, letterbox=True),
 ], sfx=[X("SFX2_BRASS", "L903", -14, offset=2.0)], lead_in=0.6, tail=1.0)
 
@@ -357,7 +357,7 @@ meta = {
     # music drops to silence just before key lines, so they land harder
     "music_cuts": [{"at": "L008", "offset": -0.8, "dur": 2.6}, {"at": "L111", "offset": -0.6, "dur": 2.2}, {"at": "L512", "offset": 2.0, "dur": 4.5},
                    {"at": "L514", "offset": -0.4, "dur": 4.5}, {"at": "L601", "offset": -0.5, "dur": 2.0}, {"at": "L805", "offset": -0.3, "dur": 3.0}],
-    "thumbnail": {"left": "DC-010@70", "right": "E2-MOOD-003@4"},
+    "thumbnail": {"left": "DC-010@70", "right": "E2-MOOD-004@3"},
     "thumb_variants": [4, 5, 6],
     "short_hooks": {"S00": "How Jensen Huang lost|Nvidia in *4 days*", "S02": "Nvidia was *30 days*|from going bust", "S03": "The bet Wall Street|*hated*",
                     "S04": "Nvidia's profit in|*one quarter*", "S05": "The Singapore company|at the *centre* of it all", "S06": "*15 days* that ended|Jensen Huang's reign",
