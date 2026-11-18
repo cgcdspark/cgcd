@@ -26,7 +26,7 @@ export const BarChart: React.FC<
                 {b.note ? <div style={{fontFamily: F.mono, fontWeight: 400, fontSize: 21, color: C.muted}}>{b.note}</div> : null}
               </div>
               <div style={{position: 'relative', height: '62%'}}>
-                <div style={{position: 'absolute', inset: 0, width: `${w}%`, background: b.highlight ? goldGradient : `linear-gradient(90deg, ${C.navyLine}, #3A5573)`, borderRight: `3px solid ${b.highlight ? C.goldHi : C.muted}`}} />
+                <div style={{position: 'absolute', inset: 0, width: `${w}%`, background: b.highlight ? goldGradient : `linear-gradient(90deg, ${C.navyLine}, #5B616B)`, borderRight: `3px solid ${b.highlight ? C.goldHi : C.muted}`}} />
                 <div style={{position: 'absolute', left: `calc(${w}% + 18px)`, top: '50%', transform: 'translateY(-50%)', fontFamily: F.head, fontWeight: 800, fontSize: Math.min(52, rowH * 0.42), color: C.off, whiteSpace: 'nowrap', opacity: a}}>
                   {b.display ?? `${fmtNum(b.value * a, b.value % 1 ? 1 : 0)}${unit ?? ''}`}
                 </div>
@@ -65,7 +65,7 @@ export const ColumnChart: React.FC<
                     ? `repeating-linear-gradient(135deg, ${C.gold}55 0 10px, transparent 10px 20px)`
                     : c.highlight
                       ? goldGradient
-                      : `linear-gradient(180deg, #3A5573, ${C.navyLine})`,
+                      : `linear-gradient(180deg, #5B616B, ${C.navyLine})`,
                   border: c.projection ? `2px dashed ${C.gold}` : 'none',
                 }}
               />
@@ -114,8 +114,8 @@ export const RangeBars: React.FC<Common & {unit: string; max: number; rows: {lab
             <div key={r.label} style={{display: 'grid', gridTemplateColumns: '520px 1fr 230px', alignItems: 'center', gap: 30}}>
               <div style={{fontFamily: F.head, fontWeight: 700, fontSize: 40, color: r.highlight ? C.goldHi : C.off, textAlign: 'right', opacity: a}}>{r.label}</div>
               <div style={{position: 'relative', height: 44, background: 'rgba(255,255,255,0.04)', borderLeft: `2px solid ${C.muted}`}}>
-                <div style={{position: 'absolute', top: 0, bottom: 0, left: 0, width: `${(r.min / max) * 100 * a}%`, background: r.highlight ? goldGradient : '#3A5573'}} />
-                <div style={{position: 'absolute', top: 0, bottom: 0, left: `${(r.min / max) * 100 * a}%`, width: `${((r.max - r.min) / max) * 100 * a}%`, background: r.highlight ? `repeating-linear-gradient(135deg, ${C.gold}aa 0 8px, transparent 8px 16px)` : 'repeating-linear-gradient(135deg, #3A5573 0 8px, transparent 8px 16px)'}} />
+                <div style={{position: 'absolute', top: 0, bottom: 0, left: 0, width: `${(r.min / max) * 100 * a}%`, background: r.highlight ? goldGradient : '#5B616B'}} />
+                <div style={{position: 'absolute', top: 0, bottom: 0, left: `${(r.min / max) * 100 * a}%`, width: `${((r.max - r.min) / max) * 100 * a}%`, background: r.highlight ? `repeating-linear-gradient(135deg, ${C.gold}aa 0 8px, transparent 8px 16px)` : 'repeating-linear-gradient(135deg, #5B616B 0 8px, transparent 8px 16px)'}} />
               </div>
               <div style={{fontFamily: F.head, fontWeight: 800, fontSize: 42, color: C.off, opacity: a}}>{r.display}</div>
             </div>
